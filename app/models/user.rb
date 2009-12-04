@@ -1,9 +1,9 @@
 # == Schema Information
-# Schema version: 20090615182949
 #
 # Table name: users
 #
 #  id                        :integer         not null, primary key
+#  login                     :string(40)
 #  name                      :string(100)     default("")
 #  email                     :string(100)
 #  crypted_password          :string(40)
@@ -14,7 +14,6 @@
 #  remember_token_expires_at :datetime
 #  activation_code           :string(40)
 #  activated_at              :datetime
-#  balance                   :float
 #
 
 require 'digest/sha1'

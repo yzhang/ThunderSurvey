@@ -1,0 +1,10 @@
+.DS_Store
+db/*.sqlite3
+config/database.yml
+log/*.log
+tmp/**/*
+doc/**/*
+test/**/*
+coverage
+public/images/captcha/*
+public/system
