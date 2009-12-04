@@ -1,0 +1,11 @@
+<h1>Editing form</h1>
+
+<% semantic_form_for(@form) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'form', :object => f %>
+  <%= f.commit_button %>
+<% end %>
+
+<%= link_to 'Show', @form %> |
+<%= link_to 'Back', forms_path %>

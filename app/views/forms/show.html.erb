@@ -1,0 +1,20 @@
+<p>
+  <b>Title:</b>
+  <%=h @form.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @form.description %>
+</p>
+
+<% semantic_form_for :field do |form| %>
+  <%= form.inputs :name, :prompt %>
+  <%= form.input :required, :as => :radio %>
+  <%= form.input :input %>
+  <%= form.commit_button %>
+<% end %>
+
+
+<%= link_to 'Edit', edit_form_path(@form) %> |
+<%= link_to 'Back', forms_path %>

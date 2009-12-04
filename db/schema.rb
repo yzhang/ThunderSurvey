@@ -35,4 +35,21 @@ ActiveRecord::Schema.define(:version => 20090626181217) do
     t.integer "role_id"
     t.integer "user_id"
   end
+  
+  create_table :forms, :force => true do |t|
+    t.string :title
+    t.text :description
+
+    t.timestamps
+  end
+  
+  create_table :fields, :force => true do |t|
+    t.integer :form_id
+    t.string  :name
+    t.string  :prompt
+    t.boolean :required
+    t.string  :input
+
+    t.timestamps
+  end
 end

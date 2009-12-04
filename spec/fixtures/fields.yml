@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  prompt: MyString
+  required: false
+  input: MyString
+
+two:
+  name: MyString
+  prompt: MyString
+  required: false
+  input: MyString
