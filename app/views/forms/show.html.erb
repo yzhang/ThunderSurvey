@@ -1,19 +1,22 @@
 <p>
-  <b>Title:</b>
+  <b>表单名称:</b>
   <%=h @form.title %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>表单说明:</b>
   <%=h @form.description %>
 </p>
 
-<% semantic_form_for :field do |form| %>
-  <%= form.inputs :name, :prompt %>
-  <%= form.input :required, :as => :radio %>
-  <%= form.input :input %>
-  <%= form.commit_button %>
+<% @form.fields.each do |field| %>
+  <%= render 'field', :object => field %>
+  <%= link_to 'Edit', edit_form_field_path(@form, field) %>|
+  <%= link_to 'Delete', form_field_path(@form, field), :method => 'delete', :confirm => 'Are you sure?' %>
 <% end %>
+
+<h2>添加新问题</h2>
+
+<%= render :partial => '/fields/form' %>
 
 
 <%= link_to 'Edit', edit_form_path(@form) %> |

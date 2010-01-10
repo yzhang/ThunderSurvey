@@ -1,0 +1,22 @@
+<% form_for :field, :url => form_fields_path(@form) do |form| %>
+  <p>
+    <%= form.label :name, '标题' %>
+    <%= form.text_field :name %>
+  </p>
+  
+  <p>
+    <%= form.label :prompt, '提示' %>
+    <%= form.text_field :prompt %>
+  </p>
+  
+  <p>
+    <%= form.label :input, '类型' %>
+    <%= form.select :input, [['单行文字', 'string'], ['大段文字', 'text'], ['多选一', 'radio']] %>
+  </p>
+  
+  <p>
+    <%= form.submit '增加问题' %>
+    <%= form.check_box :required %>    
+    <%= form.label :required, '设为必填项' %>
+  </p>
+<% end %>
