@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
     form.resources :fields do |field|
       field.resources :options
     end
+    form.resources :rows
   end
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
@@ -12,7 +13,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   map.resource :session
-
+  
+  map.thanks '/thanks', :controller => 'home', :action => 'thanks'
   map.root :controller => 'home'
   # The priority is based upon order of creation: first created -> highest priority.
 

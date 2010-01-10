@@ -1,23 +1,18 @@
-<p>
-  <b>表单名称:</b>
+<h2>
   <%=h @form.title %>
-</p>
+</h2>
 
 <p>
-  <b>表单说明:</b>
   <%=h @form.description %>
 </p>
 
+<% form_tag form_rows_path(@form) do %>
+
 <% @form.fields.each do |field| %>
   <%= render 'field', :object => field %>
-  <%= link_to 'Edit', edit_form_field_path(@form, field) %>|
-  <%= link_to 'Delete', form_field_path(@form, field), :method => 'delete', :confirm => 'Are you sure?' %>
 <% end %>
 
-<h2>添加新问题</h2>
-
-<%= render :partial => '/fields/form' %>
-
-
-<%= link_to 'Edit', edit_form_path(@form) %> |
-<%= link_to 'Back', forms_path %>
+<p>
+  <%= submit_tag '提交' %>
+</p>
+<% end %>

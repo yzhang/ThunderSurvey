@@ -1,7 +1,7 @@
 <p>
   <%= label_tag field.name %>
   <%  field.options.each do |option| %>
-    <%= radio_button_tag field.id, false %>
+    <%= radio_button_tag "row[f#{field.id}]", option.value %>
     <%= label_tag option.value %>
   <% end %>
 </p>

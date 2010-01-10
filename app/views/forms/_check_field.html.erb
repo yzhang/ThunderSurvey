@@ -1,7 +1,7 @@
 <p>
   <%= label_tag field.name %>
   <%  field.options.each do |option| %>
-    <%= check_box_tag field.id, false %>
+    <%= check_box_tag "row[f#{field.id}]", option.value %>
     <%= label_tag option.value %>
   <% end %>
 </p>

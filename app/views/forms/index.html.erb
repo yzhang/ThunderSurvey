@@ -1,22 +1,13 @@
-<h1>Listing forms</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
+<h1>All forms</h1>
 
 <% @forms.each do |form| %>
-  <tr>
-    <td><%=h form.title %></td>
-    <td><%=h form.description %></td>
-    <td><%= link_to 'Show', form %></td>
-    <td><%= link_to 'Edit', edit_form_path(form) %></td>
-    <td><%= link_to 'Destroy', form, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <%= link_to form.title, form %></td>
+  (<%= link_to 'Show', form_rows_path(form) %> |
+   <%= link_to 'Edit', edit_form_path(form) %> |
+   <%= link_to 'Destroy', form, :confirm => 'Are you sure?', :method => :delete %>
+  )
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New form', new_form_path %>
+<p>
+  <%= link_to 'New form', new_form_path %>
+</p>

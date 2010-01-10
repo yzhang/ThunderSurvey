@@ -1,11 +1,23 @@
 <h1>Editing form</h1>
 
-<% semantic_form_for(@form) do |f| %>
+<% form_for(@form) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => 'form', :object => f %>
-  <%= f.commit_button %>
+  <%= f.submit '更新' %>
 <% end %>
 
-<%= link_to 'Show', @form %> |
+
+<% @form.fields.each do |field| %>
+  <%= render 'field', :object => field %>
+  <%= link_to 'Edit', edit_form_field_path(@form, field) %>|
+  <%= link_to 'Delete', form_field_path(@form, field), :method => 'delete', :confirm => 'Are you sure?' %>
+<% end %>
+
+<h2>添加新问题</h2>
+
+<%= render :partial => '/fields/form' %>
+
+
+<%= link_to 'Edit', edit_form_path(@form) %> |
 <%= link_to 'Back', forms_path %>

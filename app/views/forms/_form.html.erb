@@ -1,4 +1,9 @@
-<% form.inputs do %>
-  <%= form.input :title, :label => 'Title' %>
-  <%= form.input :description, :label => 'Description' %>
-<% end %>
+<p>
+  <b>表单名称:</b>
+  <%=form.text_field :title %>
+</p>
+
+<p>
+  <b>表单说明:</b>
+  <%= form.text_field :description %>
+</p>

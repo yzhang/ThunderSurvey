@@ -1,0 +1,16 @@
+<h1>Form</h1>
+
+<table>
+  <tr>
+    <% @form.fields.each do |field| -%>
+      <th><%= field.name %>
+    <% end -%>
+  </tr>
+  <% @rows.each do |row| -%>
+    <tr>
+      <% @form.fields.each do |field| -%>
+        <td><%= row.send("f#{field.id}") %></td>
+      <% end -%>
+    </tr>
+  <% end -%>
+</table>
