@@ -7,9 +7,10 @@
 </p>
 
 <% form_tag form_rows_path(@form) do %>
+<%= @row.errors.full_messages %>
 
 <% @form.fields.each do |field| %>
-  <%= render 'field', :object => field %>
+  <%= render '/forms/field', :object => field %>
 <% end %>
 
 <p>

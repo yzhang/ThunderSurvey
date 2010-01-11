@@ -22,6 +22,18 @@ class FieldsController < ApplicationController
     end
   end
   
+  def update
+    @field = @form.fields.find(params[:id])
+    
+    respond_to do |format|
+      if @field.update_attributes(params[:field])
+        format.html {redirect_to @form}
+      else
+        format.html {render 'edit'}
+      end
+    end
+  end
+  
   def destroy
     @field = @form.fields.find(params[:id])
     @form.fields.delete(@field) if @field

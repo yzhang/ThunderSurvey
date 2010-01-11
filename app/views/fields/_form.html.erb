@@ -1,4 +1,4 @@
-<% form_for :field, :url => form_fields_path(@form) do |form| %>
+<% form_for [@form, @field] do |form| %>
   <p>
     <%= form.label :name, '标题' %>
     <%= form.text_field :name %>

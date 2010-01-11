@@ -8,13 +8,13 @@ class RowsController < ApplicationController
   
   def create
     klass = @form.klass
-    row = klass.new(params[:row])
+    @row = klass.new(params[:row])
     
     respond_to do |want|
-      if row.save
+      if @row.save
         want.html {redirect_to thanks_path}
       else
-        want.html {render '/form/show'}
+        want.html {render :template => '/forms/show'}
       end
     end
   end
