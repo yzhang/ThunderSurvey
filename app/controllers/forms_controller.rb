@@ -14,7 +14,8 @@ class FormsController < ApplicationController
   # GET /forms/1.xml
   def show
     @form = Form.find(params[:id])
-
+    @row = @form.klass.new
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @form }
@@ -46,7 +47,7 @@ class FormsController < ApplicationController
     respond_to do |format|
       if @form.save
         flash[:notice] = 'Form was successfully created.'
-        format.html { redirect_to(@form) }
+        format.html { redirect_to(edit_form_path(@form)) }
         format.xml  { render :xml => @form, :status => :created, :location => @form }
       else
         format.html { render :action => "new" }

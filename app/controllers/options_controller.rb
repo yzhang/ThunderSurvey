@@ -7,7 +7,7 @@ class OptionsController < ApplicationController
     
     respond_to do |format|
       if @field.save
-        format.html {redirect_to @form }
+        format.html {redirect_to edit_form_field_path(@form, @field) }
       else
         format.html {render 'edit'}
       end

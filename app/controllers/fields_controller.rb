@@ -15,7 +15,7 @@ class FieldsController < ApplicationController
     
     respond_to do |format|
       if @form.save
-        format.html {redirect_to @form}
+        format.html {redirect_to edit_form_field_path(@form, @field)}
       else
         format.html {render 'new'}
       end
@@ -27,7 +27,7 @@ class FieldsController < ApplicationController
     
     respond_to do |format|
       if @field.update_attributes(params[:field])
-        format.html {redirect_to @form}
+        format.html {redirect_to edit_form_path(@form)}
       else
         format.html {render 'edit'}
       end
@@ -40,7 +40,7 @@ class FieldsController < ApplicationController
     @form.save
     
     respond_to do |format|
-      format.html {redirect_to @form}
+      format.html {redirect_to edit_form_path(@form)}
     end
   end
   

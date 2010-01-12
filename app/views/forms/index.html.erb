@@ -1,11 +1,13 @@
 <h1>All forms</h1>
 
 <% @forms.each do |form| %>
-  <%= link_to form.title, form %></td>
+  <p>
+  <%= link_to form.title, form %>
   (<%= link_to 'Show', form_rows_path(form) %> |
    <%= link_to 'Edit', edit_form_path(form) %> |
    <%= link_to 'Destroy', form, :confirm => 'Are you sure?', :method => :delete %>
   )
+  </p>
 <% end %>
 
 <p>
