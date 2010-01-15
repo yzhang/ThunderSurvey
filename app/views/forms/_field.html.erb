@@ -1,1 +1,4 @@
-<%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>
+<div class='field'>  
+  <%= label_tag field.id,field.name,:class => 'q_title' %>
+  <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %> 
+</div>

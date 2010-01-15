@@ -1,18 +1,19 @@
 <% form_for [@form, @field] do |form| %>
   <p>
-    <%= form.label :name, '标题' %>
+    <%= form.label :name, '文本' %>
     <%= form.text_field :name %>
+  </p>
+      
+  <p>
+    <%= form.label :input, '类型' %>
+    <%= form.select :input, [['单行文字', 'string'], ['大段文字', 'text'], ['多选一', 'radio'], ['多选多', 'check'], ['下拉列表', 'drop']] %>
   </p>
   
   <p>
     <%= form.label :prompt, '提示' %>
     <%= form.text_field :prompt %>
   </p>
-  
-  <p>
-    <%= form.label :input, '类型' %>
-    <%= form.select :input, [['单行文字', 'string'], ['大段文字', 'text'], ['多选一', 'radio'], ['多选多', 'check'], ['下拉列表', 'drop']] %>
-  </p>
+
   
   <p>
     <%= form.submit '增加问题' %>

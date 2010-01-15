@@ -16,7 +16,8 @@
 
 <h2>添加新问题</h2>
 
-<%= render :partial => '/fields/form' %>
+<%=link_to 'New field',new_form_field_path(@form)%>  <br />
+<%#= render :partial => '/fields/form' %>
 
 
 <%= link_to 'Edit', edit_form_path(@form) %> |

@@ -15,9 +15,9 @@ class FieldsController < ApplicationController
     
     respond_to do |format|
       if @form.save
-        format.html {redirect_to edit_form_field_path(@form, @field)}
+        format.html { redirect_to form_path(@form) }
       else
-        format.html {render 'new'}
+        format.html { render 'new' }
       end
     end
   end
