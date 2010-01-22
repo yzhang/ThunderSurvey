@@ -27,7 +27,12 @@
   <div id="main_container">
     <div id="header">
         <div id="nav">
-			sss
+          <% if logged_in? %>	
+            <%= link_to '注销', logout_path, :method => 'delete' %>
+          <% else %>
+            <%= link_to '注册新用户', signup_path %> |
+            已经注册了？<%= link_to '立即登录', login_path %>
+          <% end %>
         </div>
       
         <div class="logo">

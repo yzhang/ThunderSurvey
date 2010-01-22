@@ -18,26 +18,34 @@
 
 require 'digest/sha1'
 
-class User < ActiveRecord::Base
+class User
+  include MongoMapper::Document
+  include Paperclip
+  
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  validates_presence_of     :name
-  validates_length_of       :name, :maximum => 100
-
-  validates_presence_of     :email
-  validates_length_of       :email,    :within => 6..100 #r@a.wk
-  validates_uniqueness_of   :email
-  validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
-
+  key :name, String, :required => true, :length => {:maximum => 100}
+  key :email, String, :required => true, :unique => true, :length => {:minimum => 6}, :format => Authentication.email_regex
+  key :crypted_password, String
+  key :salt, String
+  key :updated_at, Time
+  key :created_at, Time
+  key :remember_token, String
+  key :remember_token_expires_at, Time
+  key :type, String
+  key :contact, String
+  key :phone_number, String
+  key :description, String, :length => {:maximum => 1024}
+  key :logo_file_name, String
+  key :website, String
+  key :activation_code, String
+  key :activated_at, Time
+  
+  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  
   before_create :make_activation_code 
-
-  # HACK HACK HACK -- how to do attr_accessible from here?
-  # prevents a user from submitting a crafted form that bypasses activation
-  # anything else you want your user to change should be added here.
-  attr_accessible :email, :name, :password, :password_confirmation
-  has_and_belongs_to_many :roles
   
   # Activates the user in the database.
   def activate!
@@ -65,7 +73,7 @@ class User < ActiveRecord::Base
   #
   def self.authenticate(email, password)
     return nil if email.blank? || password.blank?
-    u = find :first, :conditions => ['email = ? and activated_at IS NOT NULL', email] # need to get the salt
+    u = find(:first, :conditions => {:email => email, :activation_code => nil}) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 

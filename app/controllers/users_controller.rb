@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     success = @user && @user.save
     if success && @user.errors.empty?
       # set first user as admin
-      @user.roles << Role.find_or_create_by_title('superuser') if User.count == 1
+      #@user.roles << Role.find_or_create_by_title('superuser') if User.count == 1
       @user.activate!
       redirect_back_or_default('/')
       flash[:notice] = "非常感谢您的注册，您的激活码已经发送到你的信箱"

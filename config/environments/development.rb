@@ -15,3 +15,6 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+logger = Logger.new('log/development.log')
+MongoMapper.connection = Mongo::Connection.new('127.0.0.1', 27017, :logger => logger)
