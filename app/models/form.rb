@@ -1,10 +1,17 @@
+require 'digest/sha1'
+
 class Form
   include MongoMapper::Document
+  include Authentication
   
   key :title, String, :required => true
   key :description, String
+  key :user_id, String
+  key :edit_key, String
   
   many :fields
+  
+  before_create :make_edit_key
   
   def klass
     klass = Class.new
@@ -26,5 +33,10 @@ class Form
     end
     
     klass
+  end
+  
+  private
+  def make_edit_key
+    self.edit_key = self.class.make_token
   end
 end

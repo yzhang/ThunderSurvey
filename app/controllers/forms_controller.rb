@@ -1,8 +1,11 @@
 class FormsController < ApplicationController
+  before_filter :login_required, :only => [:new, :create, :index, :destroy]
+  before_filter :verify_edit_key, :only => [:edit, :update]
+  
   # GET /forms
   # GET /forms.xml
   def index
-    @forms = Form.all
+    @forms = Form.find_all_by_user_id(current_user.id.to_s)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -35,14 +38,13 @@ class FormsController < ApplicationController
 
   # GET /forms/1/edit
   def edit
-    @form = Form.find(params[:id])
     @field = Field.new
   end
 
   # POST /forms
   # POST /forms.xml
   def create
-    @form = Form.new(params[:form])
+    @form = current_user.forms.build(params[:form])
 
     respond_to do |format|
       if @form.save
@@ -59,8 +61,6 @@ class FormsController < ApplicationController
   # PUT /forms/1
   # PUT /forms/1.xml
   def update
-    @form = Form.find(params[:id])
-
     respond_to do |format|
       if @form.update_attributes(params[:form])
         flash[:notice] = 'Form was successfully updated.'
@@ -82,6 +82,15 @@ class FormsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(forms_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  private 
+  def verify_edit_key
+    @form = Form.find(params[:id])
+    if @form.edit_key != params[:edit_key]
+      flash[:notice] = "对不起，您没有权限编辑此表单"
+      redirect_to root_path
     end
   end
 end

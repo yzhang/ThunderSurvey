@@ -34,7 +34,7 @@ class User
   key :created_at, Time
   key :remember_token, String
   key :remember_token_expires_at, Time
-  key :type, String
+  key :kind, String
   key :contact, String
   key :phone_number, String
   key :description, String, :length => {:maximum => 1024}
@@ -45,7 +45,9 @@ class User
   
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
-  before_create :make_activation_code 
+  before_create :make_activation_code
+  
+  many :forms
   
   # Activates the user in the database.
   def activate!
