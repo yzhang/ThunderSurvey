@@ -6,7 +6,5 @@ class Field
   key :required, Boolean, :required => true
   key :input, String, :required => true
   
-  many :options     
-  
-  
+  many :options
 end

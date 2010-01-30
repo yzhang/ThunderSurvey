@@ -3,7 +3,13 @@ class FieldsController < ApplicationController
   before_filter :verify_edit_key, :only => [:new, :create, :edit, :update, :destroy]
   
   def new
-    @field = Field.new
+    @field = Field.new(:name => "新问题#{@form.fields.count}", :input => 'string')
+    @form.fields << @field
+    @form.save
+    
+    respond_to do |want|
+      want.html { render :partial => '/forms/field', :object => @field, :locals => {:parent => @form} }
+    end
   end
   
   def edit
@@ -42,9 +48,8 @@ class FieldsController < ApplicationController
         format.html {redirect_to edit_form_path(@form)}
         format.js   {
           render :update do |page|
-            page.replace_html(@field.id, :partial => '/forms/field', :object => @field)
-            page.visual_effect('highlight', @field.id)
-            page << "$('#field_form#{@field.id}').hide();"
+            page.replace_html(@field.id, :partial => '/forms/field', :object => @field, :locals => {:parent => @form})
+            page.visual_effect('highlight', "question#{@field.id}")
           end
         }
       else

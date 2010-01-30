@@ -4,15 +4,14 @@
   <%= render :partial => 'form', :object => f %>
   <%= f.submit '更新表单' %>
   <%= link_to '预览表单', form_path(@form), :target => '_blank' %> |
-  <%= link_to_function '添加问题', '$("#form_container").toggle();$(".new_field").reset();$("#field_name").focus();' %>  <br />
+  <%= link_to_remote('新问题', {:update => 'fields', 
+                            :url => new_form_field_path(@form, :edit_key => @form.edit_key), 
+                            :position => :bottom,
+                            :method => 'get'}) %>
 <% end %>
 
 <div id="fields">
 <% @form.fields.each do |field| %>
-  <%= render 'field', :object => field %>
+  <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form} %>
 <% end %>
-</div>
-
-<div id="form_container" style="display:none;">
-  <%= render :partial => '/fields/form' %>
 </div>

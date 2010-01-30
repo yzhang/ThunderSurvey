@@ -1,8 +1,8 @@
-<% remote_form_for [@form, @field], :id => "field_form#{@field.id}", :html => {:class => 'field_form'} do |form| %>
+<% remote_form_for [form, field], :html => {:class => 'field_form'} do |form| %>
   <p>
     <%= form.label :name, '问题名称' %>
     <%= form.text_field :name %>
-    <%= hidden_field_tag :edit_key, @form.edit_key %>
+    <%= hidden_field_tag :edit_key, parent.edit_key %>
   </p>
   <p>
     <%= form.label :prompt, '问题描述' %>
@@ -17,6 +17,8 @@
   <p>
     <%= form.submit '保存' %>
     <%= form.check_box :required %>    
-    <%= form.label :required, '设为必填项' %>
+    <%= form.label :required, '设为必填项' %> |
+    <%= link_to_function('取消', "$('##{field.id} .question').show();
+                                $('##{field.id} .form').hide();") %>
   </p>
 <% end %>
