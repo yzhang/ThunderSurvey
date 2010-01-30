@@ -1,0 +1,8 @@
+<p id="option<%= option.id %>">
+  <%= radio_button_tag 'radio', false %>
+  <%= text_field_tag "options[#{option.id}]", option.value, :class => 'option' %>
+  <%= link_to_remote '删除选项', :update => "flash", 
+                :url => form_field_option_path(parent, field, option),
+                :method => 'delete',
+                :success => "$('#option#{option.id}').fade();" %>
+</p>

@@ -497,6 +497,7 @@ width:16px;
   height:  22px;
   font-size: 18px;
 }
+
 .edit_form textarea.form {
   width: 580px;
   height: 46px;
@@ -504,7 +505,7 @@ width:16px;
   font-size: 14px;
 }
 
-#form_container input[type=text], #fields input[type=text] {
+input.field[type=text] {
   padding: 2px 5px;
   height:  16px;
   font-size: 12px;
@@ -512,5 +513,8 @@ width:16px;
 }
 
 .field_form { background-color: #FFF4C2; padding: 10px; margin-top: 10px;}
-
 label {padding-right: 10px;}
+
+div.field {
+  margin: 20px 0;
+}

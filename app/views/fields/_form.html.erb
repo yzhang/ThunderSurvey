@@ -1,18 +1,29 @@
 <% remote_form_for [form, field], :html => {:class => 'field_form'} do |form| %>
   <p>
     <%= form.label :name, '问题名称' %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, :class => 'field' %>
     <%= hidden_field_tag :edit_key, parent.edit_key %>
   </p>
   <p>
     <%= form.label :prompt, '问题描述' %>
-    <%= form.text_field :prompt %>
+    <%= form.text_field :prompt, :class => 'field' %>
   </p>
   
   <p>
     <%= form.label :input, '问题类型' %>
-    <%= form.select :input, [['单行文字', 'string'], ['大段文字', 'text'], ['多选一', 'radio'], ['多选多', 'check'], ['下拉列表', 'drop']] %>
+    <%= form.select :input, [['单行文字', 'string'], ['大段文字', 'text'], ['多选一', 'radio'], ['多选多', 'check'], ['下拉列表', 'drop']],
+                    {}, :onchange => "$('#field_options#{field.id}').html($('##{field.id}_' + $(this).val()).html());" %>
   </p>
+  
+  <div id="field_options<%= field.id %>">
+    <%= render :partial => "/fields/#{field.input}_form", :locals => {:form => form, :field => field, :parent => parent} %>
+  </div>
+  
+  <% ['radio'].each do |input| %>
+    <div id="<%= field.id %>_<%= input %>" style="display:none">
+      <%= render :partial => "/fields/#{input}_form", :locals => {:form => form, :field => field, :parent => parent} %>
+    </div>
+  <% end %>
   
   <p>
     <%= form.submit '保存' %>

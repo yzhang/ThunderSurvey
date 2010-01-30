@@ -1,41 +1,13 @@
-<% remote_form_for [@form, @field], :id => "field_form#{@field.id}", :html => {:class => 'field_form'} do |form| %>
+<div>
   <p>
-    <%= form.label :name, '问题名称' %>
-    <%= form.text_field :name %>
-    <%= hidden_field_tag :edit_key, @form.edit_key %>
+    <%= link_to_remote '增加选项', :update => "options#{field.id}",
+                  :url => new_form_field_option_path(parent, field),
+                  :position => :bottom,
+                  :method => 'get' %>
   </p>
-  <p>
-    <%= form.label :prompt, '问题描述' %>
-    <%= form.text_field :prompt %>
-  </p>
-  
-  <p>
-    <%= form.label :input, '问题类型' %>
-    <%= form.select :input, [['单行文字', 'string'], ['大段文字', 'text'], ['多选一', 'radio'], ['多选多', 'check'], ['下拉列表', 'drop']] %>
-  </p>
-  
-  <% field.options.each do |option| %>
-    <p>
-      <%= radio_button_tag 'radio', false %>
-      <%= option.value %>
-      (<%= link_to 'Remove', form_field_option_path(@form, field, option), :method => 'delete', :confirm => 'Are you sure?' %>)
-    </p>
-  <% end %>
-  
-  <% form.fields_for :options do |o| %>
-    <p>
-      <%= radio_button_tag 'radio', false %>
-      <%= o.text_field "values[]" %>
-      <%= o.text_field "values[]" %>
-    </p>
-  <% end %>
-  
-  <p>
-    <%= form.submit '保存' %>
-    <%= form.check_box :required %>    
-    <%= form.label :required, '设为必填项' %>
-  </p>
-<% end %>
-
-
-
+  <div id="options<%= field.id %>">
+    <% field.options.each do |option| %>
+      <%= render :partial => '/shared/option', :object => option, :locals => {:parent => parent, :field => field} %>
+    <% end %>
+  </div>
+</div>

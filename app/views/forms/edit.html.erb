@@ -7,6 +7,7 @@
   <%= link_to_remote('新问题', {:update => 'fields', 
                             :url => new_form_field_path(@form, :edit_key => @form.edit_key), 
                             :position => :bottom,
+                            :success  => '$("div.field .question").last().hide();$("div.field .form").last().show();$("input#field_name").last().focus();',
                             :method => 'get'}) %>
 <% end %>
 
