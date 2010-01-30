@@ -1,9 +1,6 @@
 <p>
-  <b>表单名称:</b>
-  <%=form.text_field :title %>
+  <%=form.text_field :title, :size => '50' %>
 </p>
-
 <p>
-  <b>表单说明:</b>
-  <%= form.text_field :description %>
+  <%= form.text_area :description, :class => 'form' %>
 </p>

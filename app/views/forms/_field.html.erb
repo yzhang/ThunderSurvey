@@ -1,4 +1,13 @@
-<div class='field'>  
+<div class='field' id="<%= field.id %>">  
   <%= label_tag field.id,field.name,:class => 'q_title' %>
-  <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %> 
+  <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>
+  <%= link_to_remote('编辑', :update => field.id,
+                           :url => edit_form_field_path(@form, field, :edit_key => @form.edit_key),
+                           :success => "$('##{field.id}').highlight();$('#field_name').focus();",
+                           :method => 'get')
+                            %> |
+  <%= link_to_remote('删除', {:update => 'flash', 
+                            :url => form_field_path(@form, field, :edit_key => @form.edit_key), 
+                            :success => "$('##{field.id}').highlight();$('##{field.id}').fade();",
+                            :method => 'delete', :confirm => 'Are you sure?'}) %>
 </div>

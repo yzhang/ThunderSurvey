@@ -1,24 +1,18 @@
-<h1>Editing form</h1>
-
-<% form_for(@form) do |f| %>
+<% remote_form_for(@form, :url => form_path(@form, :edit_key => @edit_key)) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => 'form', :object => f %>
-  <%= f.submit '更新' %>
+  <%= f.submit '更新表单' %>
+  <%= link_to '预览表单', form_path(@form), :target => '_blank' %> |
+  <%= link_to_function '添加问题', '$("#form_container").toggle();$(".new_field").reset();$("#field_name").focus();' %>  <br />
 <% end %>
 
-
+<div id="fields">
 <% @form.fields.each do |field| %>
   <%= render 'field', :object => field %>
-  <%= link_to 'Edit', edit_form_field_path(@form, field) %>|
-  <%= link_to 'Delete', form_field_path(@form, field), :method => 'delete', :confirm => 'Are you sure?' %>
 <% end %>
+</div>
 
-<h2>添加新问题</h2>
-
-<%=link_to 'New field',new_form_field_path(@form)%>  <br />
-<%#= render :partial => '/fields/form' %>
-
-
-<%= link_to 'Edit', edit_form_path(@form) %> |
-<%= link_to 'Back', forms_path %>
+<div id="form_container" style="display:none;">
+  <%= render :partial => '/fields/form' %>
+</div>

@@ -28,10 +28,10 @@ class FormsController < ApplicationController
   # GET /forms/new
   # GET /forms/new.xml
   def new
-    @form = Form.new
+    @form = current_user.forms.create(:title => '未命名表单', :description => '描述一下你的表单吧')
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { redirect_to edit_form_path(@form, :edit_key => @form.edit_key)}
       format.xml  { render :xml => @form }
     end
   end
@@ -63,9 +63,16 @@ class FormsController < ApplicationController
   def update
     respond_to do |format|
       if @form.update_attributes(params[:form])
-        flash[:notice] = 'Form was successfully updated.'
-        format.html { redirect_to(@form) }
-        format.xml  { head :ok }
+        format.html { 
+          flash[:notice] = 'Form was successfully updated.'
+          redirect_to(@form) 
+        }
+        format.js {
+          render :update do |page|
+            page.visual_effect('highlight', '.edit_form')
+          end
+        }
+        format.xml  { render :xml => @form, :status => :updated, :location => @form }        
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @form.errors, :status => :unprocessable_entity }
@@ -88,7 +95,9 @@ class FormsController < ApplicationController
   private 
   def verify_edit_key
     @form = Form.find(params[:id])
-    if @form.edit_key != params[:edit_key]
+    @edit_key = params[:edit_key]
+    
+    if @form.edit_key != @edit_key
       flash[:notice] = "对不起，您没有权限编辑此表单"
       redirect_to root_path
     end

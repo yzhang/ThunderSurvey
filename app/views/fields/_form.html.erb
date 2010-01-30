@@ -1,22 +1,21 @@
-<% form_for [@form, @field] do |form| %>
+<% remote_form_for [@form, @field], :id => "field_form#{@field.id}", :html => {:class => 'field_form'} do |form| %>
   <p>
-    <%= form.label :name, '文本' %>
+    <%= form.label :name, '问题名称' %>
     <%= form.text_field :name %>
+    <%= hidden_field_tag :edit_key, @form.edit_key %>
   </p>
-      
   <p>
-    <%= form.label :input, '类型' %>
+    <%= form.label :prompt, '问题描述' %>
+    <%= form.text_field :prompt %>
+  </p>
+  
+  <p>
+    <%= form.label :input, '问题类型' %>
     <%= form.select :input, [['单行文字', 'string'], ['大段文字', 'text'], ['多选一', 'radio'], ['多选多', 'check'], ['下拉列表', 'drop']] %>
   </p>
   
   <p>
-    <%= form.label :prompt, '提示' %>
-    <%= form.text_field :prompt %>
-  </p>
-
-  
-  <p>
-    <%= form.submit '增加问题' %>
+    <%= form.submit '保存' %>
     <%= form.check_box :required %>    
     <%= form.label :required, '设为必填项' %>
   </p>
