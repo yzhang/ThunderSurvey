@@ -26,3 +26,5 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+logger = Logger.new('log/development.log')
+MongoMapper.connection = Mongo::Connection.new('127.0.0.1', 27017, :logger => logger)

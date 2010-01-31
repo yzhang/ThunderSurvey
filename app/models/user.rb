@@ -26,7 +26,7 @@ class User
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  key :name, String, :required => true, :length => {:maximum => 100}
+  key :name, String #, :required => true, :length => {:maximum => 100}
   key :email, String, :required => true, :unique => true, :length => {:minimum => 6}, :format => Authentication.email_regex
   key :crypted_password, String
   key :salt, String
