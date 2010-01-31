@@ -3,7 +3,7 @@
 <% @forms.each do |form| %>
   <p>
   <%= link_to form.title, form %>
-  (<%= link_to 'Show', form_rows_path(form) %> |
+  (<%= link_to 'Show', form_rows_path(form, :edit_key => form.edit_key) %> |
    <%= link_to 'Edit', edit_form_path(form, :edit_key => form.edit_key) %> |
    <%= link_to 'Destroy', form, :confirm => 'Are you sure?', :method => :delete %>
   )

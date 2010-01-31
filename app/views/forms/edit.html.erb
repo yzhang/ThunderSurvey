@@ -13,6 +13,6 @@
 
 <div id="fields">
 <% @form.fields.each do |field| %>
-  <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form} %>
+  <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
 <% end %>
 </div>

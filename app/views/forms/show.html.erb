@@ -9,7 +9,7 @@
 <% form_tag form_rows_path(@form),:class => 'formtastic' do %>
 <%= @row.errors.full_messages %>
 <% @form.fields.each do |field| %>
-  <%= render '/forms/field', :object => field %>
+  <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form}%>
 <% end %>
 <p>
   <%= submit_tag '提交' %>

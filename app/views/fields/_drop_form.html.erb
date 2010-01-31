@@ -1,16 +1,13 @@
-<% field.options.each do |option| %>
+<div>
+  <div id="options<%= field.id %>">
+    <% field.options.each do |option| %>
+      <%= render :partial => '/shared/drop_option', :locals => {:option => option, :parent => parent, :field => field} %>
+    <% end %>
+  </div>
   <p>
-    <%= option.value %>
-    (<%= link_to 'Remove', form_field_option_path(@form, field, option), :method => 'delete', :confirm => 'Are you sure?' %>)
+    <%= link_to_remote '增加选项', :update => "options#{field.id}",
+                  :url => new_form_field_option_path(parent, field, :input => 'drop', :edit_key => parent.edit_key),
+                  :position => :bottom,
+                  :method => 'get' %>
   </p>
-<% end %>
-
-
-<% form_for :option, :url => form_field_options_path(@form, field) do |form| %>
-  <p>
-    <%= form.text_field :value %>
-  </p>
-  <p>
-    <%= form.submit "增加" %>
-  </p>
-<% end %>
+</div>

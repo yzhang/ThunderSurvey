@@ -1,6 +1,6 @@
 class FieldsController < ApplicationController
   before_filter :set_form
-  before_filter :verify_edit_key, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :verify_edit_key, :only => [:new, :edit, :update, :destroy]
   
   def new
     @field = Field.new(:name => "新问题#{@form.fields.count + 1}", :input => 'string')
@@ -11,7 +11,7 @@ class FieldsController < ApplicationController
     @field = @form.fields.find(@field.id)
     
     respond_to do |want|
-      want.html { render :partial => "/forms/field", :locals => {:parent => @form, :field => @field}, :layout => false}
+      want.html { render :partial => "/fields/field", :locals => {:parent => @form, :field => @field}, :layout => false}
     end
   end
   
@@ -31,7 +31,7 @@ class FieldsController < ApplicationController
         format.html {redirect_to edit_form_path(@form)}
         format.js   {
           render :update do |page|
-            page.replace(@field.id, :partial => '/forms/field', :object => @field, :locals => {:parent => @form})
+            page.replace(@field.id, :partial => '/fields/field', :object => @field, :locals => {:parent => @form})
             page.visual_effect('highlight', "question#{@field.id}")
           end
         }
@@ -54,14 +54,5 @@ class FieldsController < ApplicationController
   private
   def set_form
     @form = Form.find(params[:form_id])
-  end
-  
-  def verify_edit_key
-    @edit_key = params[:edit_key]
-    
-    if @form.edit_key != @edit_key
-      flash[:notice] = "对不起，您没有权限编辑此表单"
-      redirect_to root_path
-    end
   end
 end

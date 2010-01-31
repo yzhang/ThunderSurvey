@@ -1,30 +1,19 @@
 class OptionsController < ApplicationController
   before_filter :set_field
+  before_filter :verify_edit_key, :only => [:new, :destroy]
   
   def new
+    @input = ['check', 'radio', 'drop'].include?(params[:input]) ? params[:input] : 'radio'
     @option = Option.new(:value => "选项#{@field.options.count + 1}")
     @field.options << @option
     @field.save
     
     respond_to do |want|
       want.html {
-        render :partial => '/shared/radio_option', :locals => {:parent => @form, :field => @field, :option => @option}
+        render :partial => "/shared/#{@input}_option", :locals => {:parent => @form, :field => @field, :option => @option}
       }
     end
   end
-    
-  # def create
-  #   @option = Option.new(params[:option])
-  #   @field.options << @option
-  #   
-  #   respond_to do |format|
-  #     if @field.save
-  #       format.html {redirect_to edit_form_field_path(@form, @field) }
-  #     else
-  #       format.html {render 'edit'}
-  #     end
-  #   end
-  # end
   
   def destroy
     @option = @field.options.find(params[:id])

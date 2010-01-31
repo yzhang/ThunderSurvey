@@ -19,12 +19,6 @@
     <%= render :partial => "/fields/#{field.input}_form", :locals => {:form => form, :field => field, :parent => parent} %>
   </div>
   
-  <% ['radio'].each do |input| %>
-    <div id="<%= field.id %>_<%= input %>" style="display:none">
-      <%= render :partial => "/fields/#{input}_form", :locals => {:form => form, :field => field, :parent => parent} %>
-    </div>
-  <% end %>
-  
   <p>
     <%= form.submit '保存' %>
     <%= form.check_box :required %>    
@@ -32,4 +26,10 @@
     <%= link_to_function('取消', "$('##{field.id} .question').show();
                                 $('##{field.id} .form').hide();") %>
   </p>
+<% end %>
+
+<% ['radio', 'check', 'drop'].each do |input| %>
+  <div id="<%= field.id %>_<%= input %>" style="display:none">
+    <%= render :partial => "/fields/#{input}_form", :locals => {:form => form, :field => field, :parent => parent} %>
+  </div>
 <% end %>

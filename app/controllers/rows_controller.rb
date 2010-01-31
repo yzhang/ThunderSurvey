@@ -1,6 +1,7 @@
 class RowsController < ApplicationController
   before_filter :set_form
-  
+  before_filter :verify_edit_key, :only => [:index]
+
   def index
     klass = @form.klass
     @rows = klass.find(:all)

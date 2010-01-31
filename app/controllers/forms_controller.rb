@@ -1,5 +1,6 @@
 class FormsController < ApplicationController
   before_filter :login_required, :only => [:new, :create, :index, :destroy]
+  before_filter :set_form, :only => [:edit, :update]
   before_filter :verify_edit_key, :only => [:edit, :update]
   
   # GET /forms
@@ -38,24 +39,6 @@ class FormsController < ApplicationController
 
   # GET /forms/1/edit
   def edit
-    @field = Field.new
-  end
-
-  # POST /forms
-  # POST /forms.xml
-  def create
-    @form = current_user.forms.build(params[:form])
-
-    respond_to do |format|
-      if @form.save
-        flash[:notice] = 'Form was successfully created.'
-        format.html { redirect_to(edit_form_path(@form)) }
-        format.xml  { render :xml => @form, :status => :created, :location => @form }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @form.errors, :status => :unprocessable_entity }
-      end
-    end
   end
 
   # PUT /forms/1
@@ -93,13 +76,7 @@ class FormsController < ApplicationController
   end
   
   private 
-  def verify_edit_key
+  def set_form
     @form = Form.find(params[:id])
-    @edit_key = params[:edit_key]
-    
-    if @form.edit_key != @edit_key
-      flash[:notice] = "对不起，您没有权限编辑此表单"
-      redirect_to root_path
-    end
   end
 end
