@@ -5,6 +5,10 @@ class RowsController < ApplicationController
   def index
     klass = @form.klass
     @rows = klass.find(:all)
+    
+    respond_to do |want|
+      want.html { render :layout => 'simple'}
+    end
   end
   
   def create
