@@ -22,7 +22,7 @@ class FormsController < ApplicationController
     
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @form }
+      format.json  { render :json => @form.to_json }
     end
   end
 
@@ -30,15 +30,33 @@ class FormsController < ApplicationController
   # GET /forms/new.xml
   def new
     @form = current_user.forms.create(:title => '未命名表单', :description => '描述一下你的表单吧')
-
+    @field = Field.new
+    
     respond_to do |format|
       format.html { redirect_to edit_form_path(@form, :edit_key => @form.edit_key)}
       format.xml  { render :xml => @form }
     end
   end
+  
+  def create
+    @form = current_user.forms.build(params[:form])
+    
+    respond_to do |format|
+      if @form.save
+        format.html { redirect_to edit_form_path(@form, :edit_key => @form.edit_key) }
+        format.json  { render :json => @form.to_json }
+      else
+        format.html { render :action => "new" }
+        format.json  { render :json => @form.errors.to_json }
+      end
+    end
+  end
 
   # GET /forms/1/edit
   def edit
+    respond_to do |want|
+      want.html { render :layout => "simple"}
+    end
   end
 
   # PUT /forms/1

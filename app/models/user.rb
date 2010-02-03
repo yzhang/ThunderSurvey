@@ -26,7 +26,7 @@ class User
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  key :name, String #, :required => true, :length => {:maximum => 100}
+  key :login, String #, :required => true, :length => {:maximum => 100}
   key :email, String, :required => true, :unique => true, :length => {:minimum => 6}, :format => Authentication.email_regex
   key :crypted_password, String
   key :salt, String
@@ -76,6 +76,7 @@ class User
   def self.authenticate(email, password)
     return nil if email.blank? || password.blank?
     u = find(:first, :conditions => {:email => email, :activation_code => nil}) # need to get the salt
+    u ||= find(:first, :conditions => {:login => email, :activation_code => nil}) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
