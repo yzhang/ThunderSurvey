@@ -19,7 +19,7 @@ class RowsController < ApplicationController
       if @row.save
         want.html {redirect_to thanks_path}
       else
-        want.html {render :template => '/forms/show'}
+        want.html {render :template => '/forms/show',:layout => 'simple'}
       end
     end
   end

@@ -1,18 +1,29 @@
+<% content_for :headers do -%>   
+  <%= javascript_include_tag 'form' %>
+<% end -%>
+<%= link_to_remote('新问题', {:update => 'fields', 
+                          :url => new_form_field_path(@form, :edit_key => @form.edit_key), 
+                          :position => :bottom,
+                          :success  => '$("div.field .question").last().hide();$("div.field .form").last().show();$("input#field_name").last().focus();',
+                          :method => 'get'}) %>
+<hr />
 <% remote_form_for(@form, :url => form_path(@form, :edit_key => @edit_key)) do |f| %>
   <%= f.error_messages %>
 
-  <%= render :partial => 'form', :object => f %>
+  <%= render :partial => 'form', :object => f %>   
+  
+  <div id="fields">
+  <% @form.fields.each do |field| %>
+    <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
+  <% end %>
+  </div>
+  
   <%= f.submit '更新表单' %>
-  <%= link_to '预览表单', form_path(@form), :target => '_blank' %> |
-  <%= link_to_remote('新问题', {:update => 'fields', 
-                            :url => new_form_field_path(@form, :edit_key => @form.edit_key), 
-                            :position => :bottom,
-                            :success  => '$("div.field .question").last().hide();$("div.field .form").last().show();$("input#field_name").last().focus();',
-                            :method => 'get'}) %>
+
 <% end %>
 
-<div id="fields">
-<% @form.fields.each do |field| %>
-  <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
-<% end %>
-</div>
+                  
+
+<hr />
+
+<%= link_to '预览表单', form_path(@form), :target => '_blank' %>

@@ -1,3 +1,4 @@
+
 <h2>
   <%=h @form.title %>
 </h2>
@@ -6,11 +7,11 @@
   <%=h @form.description %>
 </p>
 
-<% form_tag form_rows_path(@form),:class => 'formtastic' do %>
-<%= @row.errors.full_messages %>
-<% @form.fields.each do |field| %>
-  <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form}%>
-<% end %>
+<% form_tag form_rows_path(@form),:class => 'conforge' do %>
+  <%= @row.errors.full_messages %>      
+  <% @form.fields.each do |field| %> 
+    <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form}%>
+  <% end %>
 <p>
   <%= submit_tag '提交' %>
 </p>

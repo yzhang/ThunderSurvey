@@ -3,7 +3,7 @@ class FieldsController < ApplicationController
   before_filter :verify_edit_key, :only => [:new, :edit, :update, :destroy]
   
   def new
-    @field = Field.new(:name => "新问题#{@form.fields.count + 1}", :input => 'string')
+    @field = Field.new(:name => "新问题#{@form.fields.length + 1}", :input => 'string')
     @form.fields << @field
     @form.save
     
