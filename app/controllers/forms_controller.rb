@@ -54,6 +54,8 @@ class FormsController < ApplicationController
 
   # GET /forms/1/edit
   def edit
+    @field = Field.new(:input => 'string')
+    
     respond_to do |want|
       want.html { render :layout => "simple"}
     end

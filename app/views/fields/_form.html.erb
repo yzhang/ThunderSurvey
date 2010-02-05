@@ -1,13 +1,13 @@
 <% remote_form_for [parent, field], :html => {:class => 'field_form'} do |form| %>
   <p>
     <%= form.label :name, '问题名称' %>
-    <%= form.text_field :name, :class => 'field' %>
+    <%= form.text_field :name %>
     <%= hidden_field_tag :edit_key, parent.edit_key %>
     <%= form.hidden_field :uuid %>
   </p>
   <p>
     <%= form.label :prompt, '问题描述' %>
-    <%= form.text_field :prompt, :class => 'field' %>
+    <%= form.text_field :prompt %>
   </p>
   
   <p>
@@ -23,7 +23,7 @@
   <p>
     <%= form.submit '保存', :onclick => 'field_done_editing(this);' %>
     <%= form.check_box :required %>    
-    <%= form.label :required, '设为必填项' %> |
-    <%= link_to_function('取消', "field_cancel_editing(this);") %>
+    <%= form.label :required, '设为必填项' %> 
+    | <%= link_to_function('取消', "field_cancel_editing(this);") %>
   </p>
 <% end %>

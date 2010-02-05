@@ -2,13 +2,13 @@ class FieldsController < ApplicationController
   before_filter :set_form
   before_filter :verify_edit_key, :only => [:new, :edit, :update, :destroy]
   
-  def new
-    @field = Field.new(:name => "新问题#{@form.fields.count + 1}", :input => 'string', :uuid => Time.now.to_i.to_s)
-    
-    respond_to do |want|
-      want.html { render :partial => "/fields/field", :locals => {:parent => @form, :field => @field}, :layout => false}
-    end
-  end
+  # def new
+  #   @field = Field.new(:name => "新问题#{@form.fields.count + 1}", :input => 'string', :uuid => Time.now.to_i.to_s)
+  #   
+  #   respond_to do |want|
+  #     want.html { render :partial => "/fields/field", :locals => {:parent => @form, :field => @field}, :layout => false}
+  #   end
+  # end
   
   def edit
     @field = @form.fields.find(params[:id])

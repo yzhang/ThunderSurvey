@@ -1,20 +1,24 @@
+<% content_for :headers do -%>   
+  <%= javascript_include_tag 'form' %>
+  <%= javascript_include_tag 'field' %>
+  <script type="text/javascript" charset="utf-8">
+    var field_count = <%= @form.fields.count %>;
+  </script>
+<% end -%>
+
+<%= link_to_function('新问题', 'form_add_field(this)') %>
+<hr />
 <% remote_form_for(@form, :url => form_path(@form, :edit_key => @edit_key)) do |f| %>
   <%= f.error_messages %>
 
-  <%= render :partial => 'form', :object => f %>
+  <%= render :partial => 'form', :object => f %>   
   <%= f.submit '更新表单' %>
-  <%= link_to '预览表单', form_path(@form), :target => '_blank' %> |
-  <%= link_to_remote('新问题', {:update => 'fields', 
-                            :url => new_form_field_path(@form, :edit_key => @form.edit_key), 
-                            :position => :bottom,
-                            :success  => '$("div.field .question").last().hide();$("div.field .form").last().show();$("input#field_name").last().focus();',
-                            :method => 'get'}) %>
-<% end %>
+<% end %>  
 
 <div id="fields">
-<% @form.fields.each do |field| %>
-  <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
-<% end %>
+  <% @form.fields.each do |field| %>
+    <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
+  <% end %>
 </div>
 
 <% ['radio', 'check', 'drop'].each do |input| %>
@@ -22,3 +26,11 @@
     <%= render :partial => "/fields/#{input}_form", :locals => {:parent => @form, :field => nil} %>
   </div>
 <% end %>
+
+<div id="new_field" style="display:none;">
+  <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
+</div>
+
+<hr />
+
+<%= link_to '预览表单', form_path(@form), :target => '_blank' %>

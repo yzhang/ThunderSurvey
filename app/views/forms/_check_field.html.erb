@@ -1,4 +1,4 @@
 <%  field.options.each do |option| %>
   <%= check_box_tag "row[f#{field.id}][]", option.value %>
-  <%= label_tag option.value %>
+  <%= option.value %>
 <% end %>

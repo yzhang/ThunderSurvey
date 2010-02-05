@@ -6,9 +6,9 @@ font-family:Verdana, Arial, Helvetica, sans-serif;
 font-size:12px;
 margin:0px auto auto auto;
 color:#514c48;
-}
+}   
 
-p{
+p{  
 text-align:justify;
 line-height:15px;
 padding:5px 0 5px 0;
@@ -111,7 +111,7 @@ background: transparent;
 voice-family: "\"}\"";
 voice-family: inherit;
 float: left;
-margin-top: 8px;
+margin-top: 18px;
 }
 
 #modernbricksmenu ul{
@@ -225,7 +225,11 @@ background-color: #FEFFFE;
 border-top:1px #71C3E2 dashed;
 padding: 20px;
 margin: auto;
-width: 950px;
+width: 910px;
+}
+
+#main_content p a{
+	font-size:12px;
 }
 
 #left_content{

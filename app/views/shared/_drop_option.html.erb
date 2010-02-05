@@ -1,7 +1,4 @@
 <p>
   <%= text_field_tag "options[]", option.value %>
-  <%= link_to_remote '删除', :update => "flash", 
-                :url => form_field_option_path(parent, field, option, :edit_key => parent.edit_key),
-                :method => 'delete',
-                :success => "$('#option#{option.id}').fade();" %>
+  <%= link_to_function '删除', 'field_remove_option(this);' %>
 </p>
