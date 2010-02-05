@@ -1,13 +1,8 @@
-<div>
-  <div id="options<%= field.id %>">
-    <% field.options.each do |option| %>
-      <%= render :partial => '/shared/drop_option', :locals => {:option => option, :parent => parent, :field => field} %>
-    <% end %>
-  </div>
-  <p>
-    <%= link_to_remote '增加选项', :update => "options#{field.id}",
-                  :url => new_form_field_option_path(parent, field, :input => 'drop', :edit_key => parent.edit_key),
-                  :position => :bottom,
-                  :method => 'get' %>
-  </p>
+<div class="options">
+  <% field.options.each do |option| %>
+    <%= render :partial => '/shared/drop_option', :locals => {:option => option, :parent => parent, :field => field} %>
+  <% end if field %>
 </div>
+<p>
+  <%= link_to_function '增加选项', "field_add_option(this, 'drop')" %>
+</p>

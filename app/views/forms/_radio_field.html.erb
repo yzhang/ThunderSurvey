@@ -1,6 +1,4 @@
-<p>
-  <%  field.options.each do |option| %>
-    <%= radio_button_tag "row[f#{field.id}]", option.value %>
-    <%= label_tag option.value %>
-  <% end %>
-</p>
+<%  field.options.each do |option| %>
+  <%= radio_button_tag "row[f#{field.id}]", option.value %>
+  <%= label_tag option.value %>
+<% end %>

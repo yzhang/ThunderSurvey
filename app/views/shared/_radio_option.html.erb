@@ -1,6 +1,6 @@
-<p id="option<%= option.id %>">
+<p>
   <%= radio_button_tag 'radio', false %>
-  <%= text_field_tag "options[#{option.id}]", option.value %>
+  <%= text_field_tag "options[]", option.value %>
   <%= link_to_remote '删除', :update => "flash", 
                 :url => form_field_option_path(parent, field, option, :edit_key => parent.edit_key),
                 :method => 'delete',
