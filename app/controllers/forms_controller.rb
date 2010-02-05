@@ -29,7 +29,7 @@ class FormsController < ApplicationController
   # GET /forms/new
   # GET /forms/new.xml
   def new
-    @form = current_user.forms.create(:title => '未命名表单', :description => '描述一下你的表单吧')
+    @form = current_user.forms.create(:title => "未命名表单", :description => '描述一下你的表单吧')
     @field = Field.new
     
     respond_to do |format|

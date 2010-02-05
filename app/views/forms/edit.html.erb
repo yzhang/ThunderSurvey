@@ -2,7 +2,7 @@
   <%= javascript_include_tag 'form' %>
   <%= javascript_include_tag 'field' %>
   <script type="text/javascript" charset="utf-8">
-    var field_count = <%= @form.fields.count %>;
+    var field_count = <%= @form.fields.count + 1 %>;
   </script>
 <% end -%>
 

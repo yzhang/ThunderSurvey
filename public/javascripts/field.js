@@ -59,11 +59,10 @@ function field_add_option(e, type)
   var options = $(e).closest('.input_options').find('.options');
   var option = '<p>';
 
-  switch(type) {
-    case 'radio':
-      option += '<input type="radio" />';
-    case 'check':
-      option += '<input type="checkbox" />';
+  if(type == 'radio') {
+    option += '<input type="radio" />';
+  } else if (type == 'check') {
+    option += '<input type="checkbox" />';
   }
   
   option += '<input type="text" name="options[]" />';
