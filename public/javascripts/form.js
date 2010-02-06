@@ -34,6 +34,22 @@ $(document).ready(function($) {
           this.value = "描述一下你的表单吧";
       }
   });
+  
+  $("#fields").sortable({axis:'y', cursor: 'move', forcePlaceholderSize: true, items: '.field'});
+  $("#fields").disableSelection();
+  
+  // 更新排序结果
+  $('#fields').bind('sortupdate', function(event, ui) {
+    var i = 1;
+    data = []
+    $("#fields").find(".field").each(function(){
+      uuid = $(this).find('#field_uuid').val();
+      data.push('<input type="hidden" name="uuids[' + uuid + ']" value="' + i + '" />')
+      i += 1;
+    });
+    $("#field_positions").html(data.join(''));
+    $(".edit_form #form_submit").submit();
+  });
 });
 
 function form_add_field(e)
@@ -47,4 +63,5 @@ function form_add_field(e)
   field_count += 1;
   now = new Date();
   new_field.find('.form #field_uuid').val(now.getTime());
+  new_field.find('#field_submit').submit();
 }

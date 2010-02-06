@@ -6,6 +6,7 @@ class Field
   key :required, Boolean, :required => true
   key :input, String, :required => true
   key :uuid,  String
+  key :position, Integer
   
   many :options
   

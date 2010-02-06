@@ -19,7 +19,7 @@ class FieldsController < ApplicationController
   end
   
   def create
-    @field = @form.fields.find(:conditions => {:uuid => params[:field][:uuid]}) || Field.new(params[:field])
+    @field = @form.find_field_by_uuid(params[:field][:uuid]) || Field.new(params[:field])
     
     if @field.new_record?
       @form.fields << @field

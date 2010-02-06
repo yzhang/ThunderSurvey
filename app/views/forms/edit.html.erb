@@ -11,12 +11,14 @@
 <% remote_form_for(@form, :url => form_path(@form, :edit_key => @edit_key)) do |f| %>
   <%= f.error_messages %>
 
-  <%= render :partial => 'form', :object => f %>   
+  <%= render :partial => 'form', :object => f %>
+  
+  <div id="field_positions" style="display:none"></div>
   <%= f.submit '更新表单' %>
 <% end %>  
 
 <div id="fields">
-  <% @form.fields.each do |field| %>
+  <% @fields.each do |field| %>
     <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
   <% end %>
 </div>

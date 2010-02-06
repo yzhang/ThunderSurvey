@@ -35,6 +35,22 @@ class Form
     klass
   end
   
+  def sort_fields(positions)
+    return if positions.nil? || !positions.is_a?(Hash) || positions.empty?
+    
+    positions.each do |uuid, position|
+      field = self.find_field_by_uuid(uuid)
+      if field
+        field.position = position 
+        field.save
+      end
+    end
+  end
+  
+  def find_field_by_uuid(uuid)
+    self.fields.detect{|f| f.uuid == uuid}
+  end
+  
   private
   def make_edit_key
     self.edit_key = self.class.make_token
