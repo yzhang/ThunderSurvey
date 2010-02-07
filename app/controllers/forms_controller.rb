@@ -55,7 +55,7 @@ class FormsController < ApplicationController
   # GET /forms/1/edit
   def edit
     @field = Field.new(:input => 'string')
-    @fields = @form.fields.sort {|f1, f2| f1.position <=> f2.position}
+    @fields = @form.fields#.sort {|f1, f2| f1.position <=> f2.position}
     respond_to do |want|
       want.html { render :layout => "simple"}
     end

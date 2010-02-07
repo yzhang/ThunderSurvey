@@ -1,7 +1,7 @@
 <% remote_form_for [parent, field], :html => {:class => 'field_form'} do |form| %>
   <p>
     <%= form.label :name, '问题名称' %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name,:onfocus => "clear_initial(this);",:onblur => "set_initial(this)" %>
     <%= hidden_field_tag :edit_key, parent.edit_key %>
     <%= form.hidden_field :uuid %>
   </p>
