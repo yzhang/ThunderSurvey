@@ -50,7 +50,8 @@ $(document).ready(function($) {
     });
     $("#field_positions").html(data.join(''));
     $(".edit_form #form_submit").submit();
-  });
+  });  
+
 });     
 
 
@@ -84,4 +85,10 @@ function form_add_field(e)
   new_field.find('.form #field_uuid').val(now.getTime());
   new_field.find('#field_submit').submit();    
   $('#form').scrollTo('max')
-}
+} 
+
+
+$(window).resize(function() {
+   $('#form').height($(window).height() - 10);  
+   $('#form').css('min-height','240px')
+});

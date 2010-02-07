@@ -10,7 +10,7 @@
 
 <div id="form">
   
-<% remote_form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'form_body'}) do |f| %>
+<% remote_form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => 'form', :object => f %>
