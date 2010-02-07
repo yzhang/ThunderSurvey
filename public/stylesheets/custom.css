@@ -1,1 +1,8 @@
 form.conforge div.field label{ float:left;width:12em;font-size:12px;color:#514c48;text-align:right; margin-right:2em;}  
+
+#form{      
+	margin:10px 0px;
+	position:relative;
+	height:488px;        
+	overflow:auto;
+}

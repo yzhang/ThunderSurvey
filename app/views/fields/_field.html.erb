@@ -3,7 +3,6 @@
     <%= label_tag field.id,field.name, :class => 'q_title' %>
     <div class="input">
       <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>      
-      <%= field.position %>
     </div>
     
     <%= link_to_function('编辑', "$(this).parent().hide();
