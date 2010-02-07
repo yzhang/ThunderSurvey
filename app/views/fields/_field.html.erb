@@ -2,7 +2,8 @@
   <div class="question" id="question<%= field.id %>">
     <%= label_tag field.id,field.name, :class => 'q_title' %>
     <div class="input">
-      <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>
+      <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>      
+      <%= field.position %>
     </div>
     
     <%= link_to_function('编辑', "$(this).parent().hide();
@@ -11,7 +12,7 @@
                             %> |
     <%= link_to_remote('删除', {:update => 'flash', 
                             :url => form_field_path(parent, field, :edit_key => parent.edit_key), 
-                            :after => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();",
+                            :after => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1",
                             :method => 'delete'}) %>
   </div>
   <div class="form" style="display:none;">

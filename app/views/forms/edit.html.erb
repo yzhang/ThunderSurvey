@@ -17,8 +17,8 @@
   <%= f.submit '更新表单' %>
 <% end %>  
 
-<div id="fields">
-  <% @fields.each do |field| %>
+<div id="fields">   
+  <% @fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
     <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
   <% end %>
 </div>
