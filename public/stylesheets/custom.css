@@ -21,7 +21,7 @@ div.field {
   padding: 10px;
 }
 
-div.field:hover {
+div.edit:hover {
   background-color: #FFF9DD;
 }
 
@@ -40,4 +40,22 @@ div.field:hover {
 
 .opration{
 	float:right;
-}
+}   
+
+.placeholder{
+	background:#eee;  
+	height:60px;
+}        
+
+/* --- result ------ */
+#result{
+ 	width:800px;
+	padding:10px;  
+	margin:10px 0px;
+	position:relative;
+	height:520px;        
+	overflow:auto;   
+}    
+
+
+    

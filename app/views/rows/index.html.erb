@@ -1,16 +1,40 @@
-<h1>Form</h1>
-
-<table>
-  <tr>
+<% content_for :headers do -%>
+  <%= javascript_include_tag 'result' %>    
+  <style type="text/css" media="screen">
+    table{
+      table-layout:fixed;
+    }  
+    table th{width:150px;}
+    table th.check{width:40px;}
+    table th div{
+       width:150px;overflow:hidden;
+    }
+  </style>
+<% end -%>
+<h1>Form</h1>   
+<div id="result"> 
+  <% form_tag edit_individual_form_rows_path(@form) do %>
+  <table class='res'>
+  <thead>            
+    <tr>    
+      <th class='check'>&nbsp;</th>   
     <% @form.fields.each do |field| -%>
-      <th><%= field.name %>
+      <th><div><%= field.name %></div></th>
     <% end -%>
-  </tr>
-  <% @rows.each do |row| -%>
-    <tr>
-      <% @form.fields.each do |field| -%>
-        <td><%= row.send("f#{field.id}") %></td>
-      <% end -%>
     </tr>
-  <% end -%>
-</table>
+  </thead>
+  <tbody>        
+    <% @rows.each do |row| -%>
+      <tr> 
+         <td><%= check_box_tag "row_ids[]", row.id %></td> 
+        <% @form.fields.each do |field| -%>
+          <td ><%= row.send("f#{field.id}") %></td>
+        <% end -%>
+      </tr>
+    <% end -%>
+  </tbody>
+  </table>  
+  <% end %>
+</div>
+
+           

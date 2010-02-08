@@ -36,7 +36,7 @@ $(document).ready(function($) {
   });      
 
   
-  $("#fields").sortable({axis:'y', cursor: 'move', forcePlaceholderSize: true, items: '.field'});
+  $("#fields").sortable({axis:'y', cursor: 'move', forcePlaceholderSize: true, items: '.field',placeholder: 'placeholder' });
   $("#fields").disableSelection();
   
   // 更新排序结果
@@ -84,7 +84,8 @@ function form_add_field(e)
   now = new Date();
   new_field.find('.form #field_uuid').val(now.getTime());
   new_field.find('#field_submit').submit();    
-  $('#form').scrollTo('max')
+  $('#form').scrollTo('max');
+  $.scrollTo('max')
 } 
 
 

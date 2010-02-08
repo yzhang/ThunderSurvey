@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
     form.resources :fields do |field|
       field.resources :options
     end
-    form.resources :rows
+    form.resources :rows,:collection => { :edit_individual => :post, :update_individual => :put }
   end
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

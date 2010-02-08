@@ -467,7 +467,7 @@ table{
   margin-top: 20px;
   background-color: white;
 }
-table th,table td{padding:3px 5px 3px 5px}
+table th,table td{padding:3px 15px 3px 5px}
 table thead tr{
   background-color:#D6EFF4;
 }
@@ -478,13 +478,11 @@ table th.group,table.contact th.group,table.contact td.group{background-color:#D
 table tbody th{
   text-align:left;
   border-top:1px solid#cfcfcf;
-  width: 60%;  
 }
 table tbody td{
   text-align:center;
   border-left:1px solid#cfcfcf;
   border-top:1px solid#cfcfcf;
-  width: 20%;
 }
 table button{background-color:#FFF8C5;border:1px outset#FDB939;color:#0078a5;padding:0.3em 0;width:100%}
 
