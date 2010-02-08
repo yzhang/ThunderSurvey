@@ -1,6 +1,14 @@
 class FieldsController < ApplicationController
   before_filter :set_form
-  before_filter :verify_edit_key, :only => [:new, :edit, :update, :destroy]
+  before_filter :verify_edit_key, :only => [:edit, :update, :destroy, :index, :create]
+
+  def index
+    @fields = @form.fields
+    
+    respond_to do |want|
+      want.json { render :json => @fields.to_json }
+    end
+  end
   
   # def new
   #   @field = Field.new(:name => "新问题#{@form.fields.count + 1}", :input => 'string', :uuid => Time.now.to_i.to_s)
@@ -35,6 +43,7 @@ class FieldsController < ApplicationController
           render :update do |page|
           end
         }
+        format.json {render :json => @field.to_json}
       else
         format.html {render 'edit'}
       end
@@ -51,6 +60,7 @@ class FieldsController < ApplicationController
           render :update do |page|
           end
         }
+        format.json {render :json => @field.to_json}
       else
         format.html {render 'edit'}
       end
@@ -64,6 +74,7 @@ class FieldsController < ApplicationController
     
     respond_to do |format|
       format.html {render :text => "Successful."}
+      format.json {render :json => @field.to_json}
     end
   end
   

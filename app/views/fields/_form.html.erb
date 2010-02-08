@@ -4,6 +4,7 @@
     <%= form.text_field :name %>
     <%= hidden_field_tag :edit_key, parent.edit_key %>
     <%= form.hidden_field :uuid %>
+    <%= form.hidden_field :position %>
   </p>
   <p>
     <%= form.label :prompt, '问题描述' %>

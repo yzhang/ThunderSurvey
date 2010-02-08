@@ -60,8 +60,10 @@ function form_add_field(e)
   new_field.find('.form').show();
   new_field.find('.form #field_name').val('新问题' + field_count);
   new_field.find('.question label').html('新问题' + field_count);
-  field_count += 1;
+
   now = new Date();
   new_field.find('.form #field_uuid').val(now.getTime());
+  new_field.find('.form #field_position').val(field_count);
   new_field.find('#field_submit').submit();
+  field_count += 1;
 }
