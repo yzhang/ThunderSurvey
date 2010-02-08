@@ -7,9 +7,8 @@
   <%=h @form.description %>
 </p>
 
-<% form_tag form_rows_path(@form),:class => 'conforge' do %>
-  <%= @row.errors.full_messages %>      
-  <% @form.fields.each do |field| %> 
+<% form_tag form_rows_path(@form),:class => 'conforge' do %>  
+  <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form}%>
   <% end %>
 <p>

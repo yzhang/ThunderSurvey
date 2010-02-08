@@ -1,20 +1,24 @@
-<div class='field'>
-  <div class="question" id="question<%= field.id %>">
+<div class='field edit' onmouseover="toggel_opration(this);" onmouseout="toggel_opration(this);">
+  <div class="question" id="question<%= field.id %>">     
+    <div class='opration' style='display:none;'>
+      <%= link_to_function('编辑', "$(this).parent().parent().hide();
+                                  $(this).parent().parent().next().show();
+                                  $(this).parent().parent().next().find('#field_name').focus();")
+                              %> |
+      <%= link_to_remote('删除', {:update => 'flash', 
+                              :url => form_field_path(parent, field, :edit_key => parent.edit_key), 
+                              :after => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1",
+                              :method => 'delete',
+                              :confirm => '你确定嘛'}) %>
+    </div>
     <%= label_tag field.id,field.name, :class => 'q_title' %>
     <div class="input">
-      <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>
+      <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>      
     </div>
-    
-    <%= link_to_function('编辑', "$(this).parent().hide();
-                                $(this).parent().next().show();
-                                $(this).parent().next().find('#field_name').focus();")
-                            %> |
-    <%= link_to_remote('删除', {:update => 'flash', 
-                            :url => form_field_path(parent, field, :edit_key => parent.edit_key), 
-                            :after => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();",
-                            :method => 'delete'}) %>
+
+
   </div>
-  <div class="form" style="display:none;">
+  <div class="form edit" style="display:none;">
     <%= render :partial => '/fields/form', :locals => {:parent => parent, :field => field} %>
   </div>
 </div>

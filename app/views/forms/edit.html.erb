@@ -2,23 +2,24 @@
   <%= javascript_include_tag 'form' %>
   <%= javascript_include_tag 'field' %>
   <script type="text/javascript" charset="utf-8">
-    var field_count = <%= @form.fields.count + 1 %>;
+    var field_count = <%= @form.fields.length + 1 %>;   
   </script>
 <% end -%>
 
-<%= link_to_function('新问题', 'form_add_field(this)') %>
-<hr />
-<% remote_form_for(@form, :url => form_path(@form, :edit_key => @edit_key)) do |f| %>
+<%= link_to_function('新问题', 'form_add_field(this);') %>  |  <%= link_to_function('保存', "$('#form_submit').submit();") %>  
+
+<div id="form">
+  
+<% remote_form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => 'form', :object => f %>
-  
+  <%=f.submit 'submit',:id => 'form_submit',:style => 'display:none;' %>
   <div id="field_positions" style="display:none"></div>
-  <%= f.submit '更新表单' %>
 <% end %>  
 
-<div id="fields">
-  <% @fields.each do |field| %>
+<div id="fields">   
+  <% @fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
     <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
   <% end %>
 </div>
@@ -31,8 +32,9 @@
 
 <div id="new_field" style="display:none;">
   <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
-</div>
+</div>  
 
-<hr />
+</div>  
+
 
 <%= link_to '预览表单', form_path(@form), :target => '_blank' %>
