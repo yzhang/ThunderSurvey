@@ -7,7 +7,7 @@ class RowsController < ApplicationController
     @rows = klass.find(:all)
     
     respond_to do |want|
-      want.html { render :layout => 'simple'}
+      want.html { render :layout => 'grid'}
     end
   end
   

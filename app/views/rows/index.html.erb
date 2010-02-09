@@ -1,3 +1,6 @@
+<h1><%= @form.title %></h1>
+
+<% if false %>
 <% content_for :headers do -%>
   <%= javascript_include_tag 'result' %>    
   <style type="text/css" media="screen">
@@ -11,7 +14,6 @@
     }
   </style>
 <% end -%>
-<h1>Form</h1>   
 <div id="result"> 
   <% form_tag edit_individual_form_rows_path(@form) do %>
   <table class='res'>
@@ -36,5 +38,49 @@
   </table>  
   <% end %>
 </div>
+<% end %>
 
-           
+<script>
+function requiredFieldValidator(value) {
+	if (value == null || value == undefined || !value.length)
+		return {valid:false, msg:"This is a required field"};
+	else
+		return {valid:true, msg:null};
+}
+
+
+var grid;
+
+var data = [];
+
+var columns = [
+  <% @form.fields.each do |field| -%>
+	{id:"<%= field.id %>", name:"<%= field.name %>", field:"<%= field.id %>", width:120, cssClass:"cell-title", editor:TextCellEditor, validator:requiredFieldValidator},
+  <% end -%>
+];
+
+var options = {
+	editable: true,
+	enableAddRow: false,
+	enableCellNavigation: true,
+	asyncEditorLoading: false
+};
+
+
+
+$(function()
+{
+	<% @rows.each_with_index do |row, i| -%>
+	  var i = <%= i %>;
+	  var d = (data[i] = {});
+    
+    <% @form.fields.each do |field| -%>
+      d["<%= field.id %>"] = "<%= row.send("f#{field.id}") %>";
+    <% end -%>
+  <% end -%>
+	grid = new Slick.Grid($("#myGrid"), data, columns, options);
+})
+
+</script>
+
+<div id="myGrid" style="width:900px;height:500px;"></div>
