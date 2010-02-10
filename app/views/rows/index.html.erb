@@ -1,86 +1,31 @@
 <h1><%= @form.title %></h1>
 
-<% if false %>
-<% content_for :headers do -%>
-  <%= javascript_include_tag 'result' %>    
-  <style type="text/css" media="screen">
-    table{
-      table-layout:fixed;
-    }  
-    table th{width:150px;}
-    table th.check{width:40px;}
-    table th div{
-       width:150px;overflow:hidden;
-    }
-  </style>
-<% end -%>
-<div id="result"> 
-  <% form_tag edit_individual_form_rows_path(@form) do %>
-  <table class='res'>
-  <thead>            
-    <tr>    
-      <th class='check'>&nbsp;</th>   
-    <% @form.fields.each do |field| -%>
-      <th><div><%= field.name %></div></th>
-    <% end -%>
-    </tr>
-  </thead>
-  <tbody>        
-    <% @rows.each do |row| -%>
-      <tr> 
-         <td><%= check_box_tag "row_ids[]", row.id %></td> 
-        <% @form.fields.each do |field| -%>
-          <td ><%= row.send("f#{field.id}") %></td>
-        <% end -%>
-      </tr>
-    <% end -%>
-  </tbody>
-  </table>  
-  <% end %>
-</div>
-<% end %>
+<table id="rows"></table>
+<div id="pager"></div> 
 
-<script>
-function requiredFieldValidator(value) {
-	if (value == null || value == undefined || !value.length)
-		return {valid:false, msg:"This is a required field"};
-	else
-		return {valid:true, msg:null};
-}
-
-
-var grid;
-
-var data = [];
-
-var columns = [
-  <% @form.fields.each do |field| -%>
-	{id:"<%= field.id %>", name:"<%= field.name %>", field:"<%= field.id %>", width:120, cssClass:"cell-title", editor:TextCellEditor, validator:requiredFieldValidator},
-  <% end -%>
-];
-
-var options = {
-	editable: true,
-	enableAddRow: false,
-	enableCellNavigation: true,
-	asyncEditorLoading: false
-};
-
-
-
-$(function()
-{
-	<% @rows.each_with_index do |row, i| -%>
-	  var i = <%= i %>;
-	  var d = (data[i] = {});
+<script type="text/javascript" charset="utf-8">
+  jQuery("#rows").jqGrid({
+    url:'?format=json&edit_key=<%= @form.edit_key %>', 
+    datatype: "json", 
+    colNames:[
+      'ID',
+      <% @form.fields.each do |field| %>
+        '<%= field.name %>',
+      <% end %>],
+    colModel:[
+      {name:'id',index:'id', width:55}, 
+      <% @form.fields.each do |field| %>
+        {name:'f<%= field.id %>',index:'f<%= field.id %>', width:120}, 
+      <% end %>
+    ], 
+    rowNum: <%= @rows.size %>, 
+    rowList:[100], 
+    pager: '#pager', 
+    sortname: 'id', 
+    viewrecords: true, 
+    sortorder: "desc", 
+    caption:"<%= @form.title %>" 
+  }); 
     
-    <% @form.fields.each do |field| -%>
-      d["<%= field.id %>"] = "<%= row.send("f#{field.id}") %>";
-    <% end -%>
-  <% end -%>
-	grid = new Slick.Grid($("#myGrid"), data, columns, options);
-})
-
+  jQuery("#list2").jqGrid('navGrid','#pager',{edit:false,add:false,del:false}); 
 </script>
-
-<div id="myGrid" style="width:900px;height:500px;"></div>

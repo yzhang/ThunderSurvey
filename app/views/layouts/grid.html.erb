@@ -7,20 +7,19 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
   <%= stylesheet_link_tag "style",'custom'  %>
   <%= stylesheet_link_tag "jquery-ui"  %>
-  <%= stylesheet_link_tag "slick/slick.grid"  %>
-  <%= stylesheet_link_tag "slick/slick-default-theme" %>
-  <%= stylesheet_link_tag "slick/examples" %>
+  <%= stylesheet_link_tag "ui.jqgrid" %>
 
   <script src="/javascripts/jquery.js" type="text/javascript"></script>
   <script src="/javascripts/jquery-ui.js" type="text/javascript"></script>
   <script src="/javascripts/jrails.js" type="text/javascript"></script>
-  <script src="/javascripts/jquery.scroll-to.js" type="text/javascript"></script>
   <script src="/javascripts/application.js" type="text/javascript"></script> 
 
-  <script language="JavaScript" src="/javascripts/jquery.rule.js"></script>
-  <script language="JavaScript" src="/javascripts/jquery.event.drag.js"></script>
-  <script language="JavaScript" src="/javascripts/slick/slick.editors.js"></script>
-  <script language="JavaScript" src="/javascripts/slick/slick.grid.js"></script>
+  <script language="JavaScript" src="/javascripts/i18n/grid.locale-cn.js"></script>
+  <script type="text/javascript">
+  	$.jgrid.no_legacy_api = true;
+  	$.jgrid.useJSON = true;
+  </script>
+  <script language="JavaScript" src="/javascripts/jquery.jqgrid.js"></script>
 
   <%= yield :headers %>                                                   
   <title>Frontend</title>

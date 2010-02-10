@@ -8,6 +8,17 @@ class RowsController < ApplicationController
     
     respond_to do |want|
       want.html { render :layout => 'grid'}
+      want.json {
+        rows = []
+        @rows.each_with_index do |row, i|
+          cell = [i + 1]
+          @form.fields.each { |field| cell << row.send("f#{field.id}") }
+          rows << {:id => i + 1, :cell => cell}
+        end
+        
+        data = {:page => 1, :total => 1, :records => klass.count, :rows => rows}
+        render :json => data.to_json
+      }
     end
   end
   
