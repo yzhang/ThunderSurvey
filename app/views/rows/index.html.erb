@@ -8,23 +8,27 @@
     url:'?format=json&edit_key=<%= @form.edit_key %>', 
     datatype: "json", 
     colNames:[
+      'INTERN',
       'ID',
       <% @form.fields.each do |field| %>
         '<%= field.name %>',
       <% end %>
-      '操作', 'Intern'],
+      '时间',
+      '操作'],
     colModel:[
-      {name:'id',index:'id', width:55}, 
+      {name:'id',index:'id', width:120, hidden:true, editable:true},
+      {name:'number',index:'number', width:30, align:"right"}, 
       <% @form.fields.each do |field| %>
-        {name:'f<%= field.id %>',index:'f<%= field.id %>', width:120, editable:true,align:"right"}, 
+        {name:'f<%= field.id %>',index:'f<%= field.id %>', width:100, editable:true,align:"right"}, 
       <% end %>
-      {name:'option',index:'option', width:120},
-      {name:'intern',index:'intern', width:120, hidden:true, editable:true}
+      {name:'time',index:'time', width:120},
+      {name:'option',index:'option', width:120}
     ], 
     rowNum: <%= @rows.size %>, 
     rowList:[100], 
     pager: '#pager', 
     sortname: 'id', 
+    height: 400,
     viewrecords: true, 
     sortorder: "desc", 
     gridComplete: function() { 

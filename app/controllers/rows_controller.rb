@@ -4,18 +4,19 @@ class RowsController < ApplicationController
 
   def index
     klass = @form.klass
-    @rows = klass.find(:all)
+    @rows = klass.find(:all, :order => 'created_at')
     
     respond_to do |want|
       want.html { render :layout => 'grid'}
       want.json {
         rows = []
         @rows.each_with_index do |row, i|
-          cell = [i + 1]
+          cell = [row.id]
+          cell << i + 1
           @form.fields.each { |field| cell << row.send("f#{field.id}") }
+          cell << row.created_at
           cell << ''
-          cell << row.id
-          rows << {:id => i + 1, :cell => cell}
+          rows << {:id => row.id, :cell => cell}
         end
         
         data = {:page => 1, :total => 1, :records => klass.count, :rows => rows}
@@ -26,7 +27,9 @@ class RowsController < ApplicationController
   
   def create
     return update if params[:oper] == 'edit'
+    return destroy if params[:oper] == 'del'
     
+    params[:row][:created_at] = Time.now
     klass = @form.klass
     @row = klass.new(params[:row])
     
@@ -41,8 +44,7 @@ class RowsController < ApplicationController
   
   def update
     klass = @form.klass
-    @row = klass.find(params[:intern])
-    params.delete(:id)
+    @row = klass.find(params.delete(:id))
     params.reject! do |k, v|
       !@row.respond_to?(k)
     end
@@ -53,6 +55,16 @@ class RowsController < ApplicationController
       else
         want.html {render :template => '/forms/show',:layout => 'simple'}
       end
+    end
+  end
+  
+  def destroy
+    klass = @form.klass
+    @row = klass.find(params[:id])
+    @row.destroy if @row
+    
+    respond_to do |want|
+      want.html {render :text => "success"}
     end
   end
   

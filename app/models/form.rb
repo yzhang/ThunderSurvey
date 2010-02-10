@@ -17,7 +17,8 @@ class Form
     klass = Class.new
     klass.send(:include, MongoMapper::Document)
     klass.set_collection_name(self.id.to_s)
-    
+    klass.key "created_at", Time
+
     self.fields.each do |field|
       klass.key "f#{field.id}", String
       klass.validates_presence_of "f#{field.id}", :message => "#{field.name} can't be blank" if field.required
