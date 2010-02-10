@@ -13,6 +13,8 @@ class RowsController < ApplicationController
         @rows.each_with_index do |row, i|
           cell = [i + 1]
           @form.fields.each { |field| cell << row.send("f#{field.id}") }
+          cell << ''
+          cell << row.id
           rows << {:id => i + 1, :cell => cell}
         end
         
@@ -23,12 +25,31 @@ class RowsController < ApplicationController
   end
   
   def create
+    return update if params[:oper] == 'edit'
+    
     klass = @form.klass
     @row = klass.new(params[:row])
     
     respond_to do |want|
       if @row.save
         want.html {redirect_to thanks_path}
+      else
+        want.html {render :template => '/forms/show',:layout => 'simple'}
+      end
+    end
+  end
+  
+  def update
+    klass = @form.klass
+    @row = klass.find(params[:intern])
+    params.delete(:id)
+    params.reject! do |k, v|
+      !@row.respond_to?(k)
+    end
+    
+    respond_to do |want|
+      if @row.update_attributes(params)
+        want.html {render :text => "success"}
       else
         want.html {render :template => '/forms/show',:layout => 'simple'}
       end

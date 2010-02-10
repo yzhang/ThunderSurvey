@@ -11,12 +11,15 @@
       'ID',
       <% @form.fields.each do |field| %>
         '<%= field.name %>',
-      <% end %>],
+      <% end %>
+      '操作', 'Intern'],
     colModel:[
       {name:'id',index:'id', width:55}, 
       <% @form.fields.each do |field| %>
-        {name:'f<%= field.id %>',index:'f<%= field.id %>', width:120}, 
+        {name:'f<%= field.id %>',index:'f<%= field.id %>', width:120, editable:true,align:"right"}, 
       <% end %>
+      {name:'option',index:'option', width:120},
+      {name:'intern',index:'intern', width:120, hidden:true, editable:true}
     ], 
     rowNum: <%= @rows.size %>, 
     rowList:[100], 
@@ -24,8 +27,19 @@
     sortname: 'id', 
     viewrecords: true, 
     sortorder: "desc", 
-    caption:"<%= @form.title %>" 
+    gridComplete: function() { 
+      var options = jQuery("#rows").jqGrid('getDataIDs'); 
+      for(var i=0;i < options.length;i++){ 
+        var cl = options[i]; 
+        be = "<a href='#' onclick=\"jQuery('#rows').jqGrid('editRow', '"+cl+"');\">编辑</a>|"; 
+        se = "<a href='#' onclick=\"jQuery('#rows').jqGrid('saveRow', '"+cl+"');\">保存</a>|"; 
+        ce = "<a href='#' onclick=\"jQuery('#rows').jqGrid('restoreRow', '"+cl+"');\">取消</a>";
+        jQuery("#rows").jqGrid('setRowData',options[i],{option:be+se+ce}); 
+      } 
+    },
+    editurl: "rows",
+    caption:"<%= @form.title %>"
   }); 
-    
-  jQuery("#list2").jqGrid('navGrid','#pager',{edit:false,add:false,del:false}); 
+  
+  jQuery("#rows").jqGrid('navGrid',"#pager",{edit:true,add:false,del:true}); 
 </script>
