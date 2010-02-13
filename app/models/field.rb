@@ -11,6 +11,10 @@ class Field
   
   many :options
   
+  TYPES = [['单行文字', 'string'], ['大段文字', 'text'], 
+            ['多选一', 'radio'], ['多选多', 'check'], 
+            ['下拉列表', 'drop'], ['日期', 'date']]
+  
   def update_options(options)
     return true if options.nil? || !options.is_a?(Array)
     

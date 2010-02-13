@@ -87,9 +87,3 @@ function form_add_field(e)
   $('#form').scrollTo('max');
   $.scrollTo('max')
 } 
-
-
-$(window).resize(function() {
-   $('#form').height($(window).height() - 10);  
-   $('#form').css('min-height','240px')
-});

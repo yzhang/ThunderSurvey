@@ -11,6 +11,7 @@ function field_done_editing(e)
   field_div.find('.question label').html(field_name)
   
   var field_input = $(field_div).find("#field_input").val();
+  var field_uuid  = $(field_div).find("#field_uuid").val();
   var input = '';
   
   if(field_input == 'text') {
@@ -34,9 +35,15 @@ function field_done_editing(e)
       input += option;
     });
     input += "</select>";
+  } else if(field_input == 'date') {
+    input += '<input type="text" id="' + field_uuid + '"/>';
   }
 
   field_div.find('.question .input').html(input);
+  
+  if(field_input == 'date') {
+    $("#" + field_uuid).datepicker();
+  }
 }
 
 function field_cancel_editing(e)
