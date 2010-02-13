@@ -7,6 +7,7 @@ class Field
   key :input, String, :required => true
   key :uuid,  String
   key :position, Integer
+  key :intern, String
   
   many :options
   

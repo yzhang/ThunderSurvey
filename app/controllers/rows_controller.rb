@@ -9,18 +9,23 @@ class RowsController < ApplicationController
     respond_to do |want|
       want.html { render :layout => params[:embed].blank? ? 'application' : "grid"}
       want.json {
-        rows = []
-        @rows.each_with_index do |row, i|
-          cell = [row.id]
-          cell << i + 1
-          @form.fields.each { |field| cell << row.send("f#{field.id}") }
-          cell << row.created_at
-          cell << ''
-          rows << {:id => row.id, :cell => cell}
-        end
+        # 如果grid参数不为0，则为Grid调用，否则为ActiveResource
+        if params[:grid] == '0'
+          render :json => @rows.to_json
+        else
+          rows = []
+          @rows.each_with_index do |row, i|
+            cell = [row.id]
+            cell << i + 1
+            @form.fields.each { |field| cell << row.send("f#{field.id}") }
+            cell << row.created_at
+            cell << ''
+            rows << {:id => row.id, :cell => cell}
+          end
         
-        data = {:page => 1, :total => 1, :records => klass.count, :rows => rows}
-        render :json => data.to_json
+          data = {:page => 1, :total => 1, :records => klass.count, :rows => rows}
+          render :json => data.to_json
+        end
       }
     end
   end
