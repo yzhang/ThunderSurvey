@@ -42,7 +42,7 @@ function field_done_editing(e)
   field_div.find('.question .input').html(input);
   
   if(field_input == 'date') {
-    $("#" + field_uuid).datepicker();
+    $("#" + field_uuid).datepicker({changeMonth:true, changeYear:true});
   }
 }
 
