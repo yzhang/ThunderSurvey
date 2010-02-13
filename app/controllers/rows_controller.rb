@@ -7,7 +7,7 @@ class RowsController < ApplicationController
     @rows = klass.find(:all, :order => 'created_at')
     
     respond_to do |want|
-      want.html { render :layout => 'grid'}
+      want.html { render :layout => params[:embed].blank? ? 'application' : "grid"}
       want.json {
         rows = []
         @rows.each_with_index do |row, i|

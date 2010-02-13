@@ -1,9 +1,7 @@
 <div class='field edit' onmouseover="toggel_opration(this);" onmouseout="toggel_opration(this);">
   <div class="question" id="question<%= field.id %>">     
     <div class='opration' style='display:none;'>
-      <%= link_to_function('编辑', "$(this).parent().parent().hide();
-                                  $(this).parent().parent().next().show();
-                                  $(this).parent().parent().next().find('#field_name').focus();")
+      <%= link_to_function('编辑', "field_start_editing(this);")
                               %> |
       <%= link_to_remote('删除', {:update => 'flash', 
                               :url => form_field_path(parent, field, :edit_key => parent.edit_key), 

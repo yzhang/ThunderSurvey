@@ -21,7 +21,7 @@ class FormsController < ApplicationController
     @row = @form.klass.new
     
     respond_to do |format|
-      format.html { render :layout => 'simple'}# show.html.erb
+      format.html { render :layout => params[:embed].blank? ? 'application' : "simple"}# show.html.erb
       format.json  { render :json => @form.to_json }
     end
   end
@@ -57,7 +57,7 @@ class FormsController < ApplicationController
     @field = Field.new(:input => 'string')
     @fields = @form.fields#.sort {|f1, f2| f1.position <=> f2.position}
     respond_to do |want|
-      want.html { render :layout => "simple"}
+      want.html { render :layout => params[:embed].blank? ? 'application' : "simple"}
     end
   end
 

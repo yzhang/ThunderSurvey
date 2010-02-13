@@ -46,6 +46,20 @@ function field_cancel_editing(e)
   field.find('.form').hide();
 }
 
+function field_start_editing(e)
+{
+  if(typeof(field_start_editing.current_editing_field) == 'undefined') {
+    field_start_editing.current_editing_field = e;
+  } else {
+    field_cancel_editing(field_start_editing.current_editing_field)
+    field_start_editing.current_editing_field = e;
+  }
+  var form = $(e).closest('.field')
+  form.find(".question").hide();
+  form.find(".form").show();
+  form.find('.form #field_name').focus();
+}
+
 function field_input_changed(e)
 {
   var form = $(e).closest('form');
