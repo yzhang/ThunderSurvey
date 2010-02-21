@@ -44,7 +44,16 @@ div.edit:hover {
 .placeholder{
 	background:#eee;  
 	height:60px;
-}        
+}          
+
+.q_title{
+	margin:0px; 
+	padding:0px;
+}   
+
+.prompt{
+	color:#eee;
+}
 
 /* --- result ------ */
 #result{

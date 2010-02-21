@@ -6,8 +6,8 @@ class Field
   key :required, Boolean, :required => true
   key :input, String, :required => true
   key :uuid,  String
-  key :position, Integer
-  key :intern, String
+  key :position, Integer  # 排序用
+  key :intern, String     # 类保留字段型,如email字段,paypal字段等
   
   many :options
   
