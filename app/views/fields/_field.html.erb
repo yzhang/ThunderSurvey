@@ -1,13 +1,14 @@
 <div class='field edit' onmouseover="toggel_opration(this);" onmouseout="toggel_opration(this);">
   <div class="question" id="question<%= field.id %>">     
     <div class='opration' style='display:none;'>
-      <%= link_to_function('编辑', "field_start_editing(this);")
+      <%= link_to('编辑', '#', :onclick => "field_start_editing(this);", :remote => true)
                               %> |
-      <%= link_to_remote('删除', {:update => 'flash', 
-                              :url => form_field_path(parent, field, :edit_key => parent.edit_key), 
-                              :after => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1",
-                              :method => 'delete',
-                              :confirm => '你确定嘛'}) %>
+      <%= link_to('删除', form_field_path(parent, field, :edit_key => parent.edit_key),
+                          :update => 'flash', 
+                          :onclick => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1; return true;",
+                          :method => 'delete',
+                          :confirm => '你确定嘛', 
+                          :remote => true) %>
     </div>
     <%= label_tag field.id,field.name, :class => 'q_title' %>
     <div class="input">

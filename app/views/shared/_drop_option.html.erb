@@ -1,4 +1,4 @@
 <p>
   <%= text_field_tag "options[]", option.value %>
-  <%= link_to_function '删除', 'field_remove_option(this);' %>
+  <%= link_to '删除', '#', :onclick => 'field_remove_option(this);' %>
 </p>

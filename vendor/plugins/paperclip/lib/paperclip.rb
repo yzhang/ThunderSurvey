@@ -34,9 +34,10 @@ require 'paperclip/processor'
 require 'paperclip/thumbnail'
 require 'paperclip/storage'
 require 'paperclip/interpolations'
+require 'paperclip/style'
 require 'paperclip/attachment'
-if defined? RAILS_ROOT
-  Dir.glob(File.join(File.expand_path(RAILS_ROOT), "lib", "paperclip_processors", "*.rb")).each do |processor|
+if defined?(Rails.root) && Rails.root
+  Dir.glob(File.join(File.expand_path(Rails.root), "lib", "paperclip_processors", "*.rb")).each do |processor|
     require processor
   end
 end
@@ -237,10 +238,10 @@ module Paperclip
         attachment_for(name).file?
       end
 
-      # validates_each(name) do |record, attr, value|
-      #         attachment = record.attachment_for(name)
-      #         attachment.send(:flush_errors) unless attachment.valid?
-      #       end
+      validates_each(name) do |record, attr, value|
+        attachment = record.attachment_for(name)
+        attachment.send(:flush_errors)
+      end
     end
 
     # Places ActiveRecord-style validations on the size of the file assigned. The
