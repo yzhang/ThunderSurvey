@@ -4,3 +4,13 @@
 <p>
   <%= form.text_area :description, :class => 'form' %>
 </p>
+<div style="display:none;" id="notify_setting">
+  <p>
+    <%= form.label :notify_type, '通知方式' %>
+    <%= form.radio_button :notify_type, 'email' %>邮件通知
+  </p>
+  <p>
+    <%= form.label :notify_email, '发送通知到此信箱' %>
+    <%= form.text_field :notify_email %>
+  </p>
+</div>

@@ -6,10 +6,12 @@
   </script>
 <% end -%>
 
-<%= link_to_function('新问题', 'form_add_field(this);') %>  |  <%= link_to_function('保存', "$('#form_submit').submit();") %>  
+<%= link_to('新问题', '#', :onclick => 'form_add_field(this);') %>  |  
+<%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();") %> |
+<%= link_to('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
 
 <div id="form">
-  <% remote_form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}) do |f| %>
+  <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}, :remote => true) do |f| %>
     <%= f.error_messages %>
 
     <%= render :partial => 'form', :object => f %>

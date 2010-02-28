@@ -1,4 +1,5 @@
-class UserMailer < ActionMailer::Base
+class Mailer < ActionMailer::Base
+  default :from => 
   def signup_notification(user)
     setup_email(user)
     @subject    += 'Please activate your new account'

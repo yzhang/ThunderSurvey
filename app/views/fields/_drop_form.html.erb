@@ -4,5 +4,5 @@
   <% end if field %>
 </div>
 <p>
-  <%= link_to_function '增加选项', "field_add_option(this, 'drop')" %>
+  <%= link_to '增加选项', '#', :onclick => "field_add_option(this, 'drop')", :remote => true %>
 </p>

@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
+  <meta name="csrf-token" content="<%= form_authenticity_token %>" />
+  <meta name="csrf-param" content="authenticity_token" />
+  
   <%= stylesheet_link_tag "style",'custom'  %>
   <%= stylesheet_link_tag "jquery-ui" %>
   <%= stylesheet_link_tag "ui.jqgrid" %>
@@ -13,7 +16,8 @@
   <script src="/javascripts/jquery-ui.js" type="text/javascript"></script>
   <script src="/javascripts/jrails.js" type="text/javascript"></script>
   <script src="/javascripts/application.js" type="text/javascript"></script> 
-
+  <script src="/javascripts/rails.js" type="text/javascript"></script>
+  
   <script language="JavaScript" src="/javascripts/i18n/grid.locale-cn.js"></script>
   <script type="text/javascript">
   	$.jgrid.no_legacy_api = true;

@@ -1,6 +1,8 @@
 require 'digest/sha1'
 
 class Form
+  include ActiveModel::Validations
+
   include MongoMapper::Document
   include Authentication
   
@@ -8,14 +10,21 @@ class Form
   key :description, String
   key :user_id, String
   key :edit_key, String
+  key :notify_email, String
+  key :notify_type, String, :default => 'email'
+  key :thanks_url  # 新用户注册成功后跳转的URL
   
   many :fields
+  
+  validates :title, :presence => true
+  validates :notify_email, :format => {:with => Authentication.email_regex}
   
   before_create :make_edit_key
   
   def klass
     klass = Class.new
     klass.send(:include, MongoMapper::Document)
+    klass.send(:include, ActiveModel::Validations)
     klass.set_collection_name(self.id.to_s)
     klass.key "created_at", Time
 
@@ -34,6 +43,17 @@ class Form
     end
     
     klass
+  end
+  
+  def deliver_notification
+    case self.notify_type
+    when 'email'
+      deliver_email_notification
+    end
+  end
+  
+  def deliver_email_notification
+    Mailer.registrant_notification(self).deliver unless self.notify_email.blank?
   end
   
   def sort_fields(positions)
