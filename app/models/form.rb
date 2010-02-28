@@ -12,6 +12,7 @@ class Form
   key :edit_key, String
   key :notify_email, String
   key :notify_type, String, :default => 'email'
+  key :thanks_url  # 新用户注册成功后跳转的URL
   
   many :fields
   

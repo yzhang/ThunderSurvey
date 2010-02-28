@@ -41,7 +41,11 @@ class RowsController < ApplicationController
     respond_to do |want|
       if @row.save
         @form.deliver_notification
-        want.html {redirect_to thanks_path}
+        if @form.thanks_url.blank?
+          want.html {redirect_to thanks_path}
+        else
+          want.html {redirect_to @form.thanks_url}
+        end
       else
         want.html {render :template => '/forms/show',:layout => 'simple'}
       end
