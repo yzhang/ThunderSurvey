@@ -13,11 +13,12 @@ class Form
   key :notify_email, String
   key :notify_type, String, :default => 'email'
   key :thanks_url  # 新用户注册成功后跳转的URL
+  key :mongo_id    # 用于ActiveResource传送表单ID
   
   many :fields
   
   validates :title, :presence => true
-  validates :notify_email, :format => {:with => Authentication.email_regex}
+  validates :notify_email, :format => {:with => Authentication.email_regex}, :allow_blank => true
   
   before_create :make_edit_key
   
