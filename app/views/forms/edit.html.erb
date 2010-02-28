@@ -6,8 +6,9 @@
   </script>
 <% end -%>
 
-<%= link_to('新问题', '#', :onclick => 'form_add_field(this);', :remote => true) %>  |  
-<%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();", :remote => true) %>  
+<%= link_to('新问题', '#', :onclick => 'form_add_field(this);') %>  |  
+<%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();") %> |
+<%= link_to('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
 
 <div id="form">
   <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}, :remote => true) do |f| %>

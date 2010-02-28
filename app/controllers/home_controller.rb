@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def thanks
     respond_to do |want|
-      want.html { render :layout => false}
+      want.html { render :layout => params[:embed].blank? ? 'application' : "simple"}
     end
   end
 end

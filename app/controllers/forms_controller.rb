@@ -80,7 +80,11 @@ class FormsController < ApplicationController
         format.xml  { render :xml => @form, :status => :updated, :location => @form }        
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @form.errors, :status => :unprocessable_entity }
+        format.js {
+          render :update do |page|
+            page << "alert('#{@form.errors.full_messages}')"
+          end
+        }
       end
     end
   end

@@ -4,7 +4,7 @@ class RowsController < ApplicationController
 
   def index
     klass = @form.klass
-    @rows = klass.find(:all, :order => 'created_at')
+    @rows = klass.all(:order => 'created_at')
     
     respond_to do |want|
       want.html { render :layout => params[:embed].blank? ? 'application' : "grid"}
@@ -40,6 +40,7 @@ class RowsController < ApplicationController
     
     respond_to do |want|
       if @row.save
+        @form.deliver_notification
         want.html {redirect_to thanks_path}
       else
         want.html {render :template => '/forms/show',:layout => 'simple'}
