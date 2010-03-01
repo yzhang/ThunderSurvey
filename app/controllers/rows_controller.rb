@@ -15,12 +15,12 @@ class RowsController < ApplicationController
         else
           rows = []
           @rows.each_with_index do |row, i|
-            cell = [row.id]
+            cell = [row.id.to_s]
             cell << i + 1
             @form.fields.each { |field| cell << row.send("f#{field.id}") }
             cell << row.created_at
             cell << ''
-            rows << {:id => row.id, :cell => cell}
+            rows << {:id => row.id.to_s, :cell => cell}
           end
         
           data = {:page => 1, :total => 1, :records => klass.count, :rows => rows}
