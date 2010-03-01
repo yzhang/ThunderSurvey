@@ -15,6 +15,10 @@ class Field
             ['多选一', 'radio'], ['多选多', 'check'], 
             ['下拉列表', 'drop'], ['日期', 'date']]
   
+  def id
+    self._id.to_s
+  end
+  
   def update_options(options)
     return true if options.nil? || !options.is_a?(Array)
     
