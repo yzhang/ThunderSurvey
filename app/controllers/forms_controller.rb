@@ -22,6 +22,7 @@ class FormsController < ApplicationController
     
     respond_to do |format|
       format.html { render :layout => params[:embed].blank? ? 'application' : "simple"}# show.html.erb
+      @form.mongo_id = @form.id.to_s
       format.json  { render :json => @form.to_json }
     end
   end
@@ -44,7 +45,10 @@ class FormsController < ApplicationController
     respond_to do |format|
       if @form.save
         format.html { redirect_to edit_form_path(@form, :edit_key => @form.edit_key) }
-        format.json  { render :json => @form.to_json }
+        format.json  do
+          @form.mongo_id = @form.id.to_s
+          render :json => @form.to_json
+        end
       else
         format.html { render :action => "new" }
         format.json  { render :json => @form.errors.to_json }
@@ -77,7 +81,10 @@ class FormsController < ApplicationController
             page.visual_effect('highlight', '.edit_form')
           end
         }
-        format.xml  { render :xml => @form, :status => :updated, :location => @form }        
+        format.json  do
+          @form.mongo_id = @form.id.to_s
+          render :json => @form.to_json
+        end      
       else
         format.html { render :action => "edit" }
         format.js {
@@ -85,6 +92,7 @@ class FormsController < ApplicationController
             page << "alert('#{@form.errors.full_messages}')"
           end
         }
+        format.json  { render :json => @form.errors.to_json }
       end
     end
   end
@@ -97,7 +105,7 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(forms_url) }
-      format.xml  { head :ok }
+      format.json  { render :json => {:result => 'ok'}.to_json }
     end
   end
   
