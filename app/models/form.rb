@@ -31,9 +31,14 @@ class Form
   end
   
   def klass
-    klass = Class.new
+    @klass ||= user_klass
+  end
+  
+  def user_klass
+    klass ||= Class.new
     klass.send(:include, MongoMapper::Document)
     klass.send(:include, ActiveModel::Validations)
+    klass.send(:include, ActiveModel::Naming)
     klass.set_collection_name(self.id.to_s)
     klass.key "created_at", Time
     klass.class_eval <<-METHOD
@@ -41,10 +46,16 @@ class Form
         self._id.to_s
       end
     METHOD
+
+    klass.instance_eval <<-NAME
+      def name
+        'UserForm'
+      end
+    NAME
     
     self.fields.each do |field|
       klass.key "f#{field.id}", String
-      klass.validates_presence_of "f#{field.id}", :message => "#{field.name} can't be blank" if field.required
+      klass.validates_presence_of "f#{field.id}".to_sym, :message => "#{field.name} can't be blank" if field.required
       
       if field.input == 'check'
         klass.class_eval <<-METHOD
@@ -55,7 +66,6 @@ class Form
         METHOD
       end
     end
-    
     klass
   end
   
