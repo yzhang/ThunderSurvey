@@ -1,15 +1,23 @@
 <% content_for :headers do -%>   
+<%= stylesheet_link_tag 'button' %>
   <%= javascript_include_tag 'form' %>
   <%= javascript_include_tag 'field' %>
   <%= javascript_include_tag 'jquery.scrollTo' %>
   <script type="text/javascript" charset="utf-8">
     var field_count = <%= @form.fields.length + 1 %>;   
   </script>
-<% end -%>
-
-<%= link_to('新问题', '#', :onclick => 'form_add_field(this);') %>  |  
-<%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();") %> |
-<%= link_to('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
+<% end -%>  
+<section class='form_oprate'>
+  <nav >    
+    <div class='new'>
+       <%= pretty_button('新问题', '#', :onclick => 'form_add_field(this);') %> 
+    </div>
+    <div class='setting'>   
+    <%= pretty_button('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
+    <%= pretty_button('保存',   '#', :onclick => "$('#form_submit').submit();") %>
+    </div>
+  </nav>
+</section>
 
 <section id="form">
   <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}, :remote => true) do |f| %>
@@ -37,5 +45,6 @@
   </div>  
 </section>  
 
-
-<%= link_to '预览表单', form_path(@form), :target => '_blank' %>
+<section class='form_preview'>
+  <%= link_to '预览表单', form_path(@form), :target => '_blank' %>
+</section>

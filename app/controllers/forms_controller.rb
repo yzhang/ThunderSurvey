@@ -21,7 +21,7 @@ class FormsController < ApplicationController
     @row = @form.klass.new
     
     respond_to do |format|
-      format.html { render :layout => params[:embed].blank? ? 'application' : "simple"}# show.html.erb
+      format.html { render :layout => params[:embed].blank? ? 'simple' : "embed"}# show.html.erb
       @form.mongo_id = @form.id.to_s
       format.json  { render :json => @form.to_json }
     end

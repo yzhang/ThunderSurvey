@@ -1,3 +1,14 @@
+/*
+    Name: Sandsorad online form
+    Date: March 2010
+    Description: For online form creation
+    Version: 1.0
+    Author: Stephen/Yuanyi
+*/
+
+
+/***** Global *****/
+
 *{
 	margin:0px;
 	padding:0px;
@@ -16,9 +27,13 @@ header,section,footer{
 	display:block;
 } 
 
-h1{
-	margin:10px 0px;
-} 
+/* Headings */
+h2 {font-size: 1.571em} /* 22px */
+h3 {font-size: 1.429em} /* 20px */
+h4 {font-size: 1.286em} /* 18px */
+h5 {font-size: 1.143em} /* 16px */
+h6 {font-size: 1em} /* 14px */ 
+
 
 ul li{
 	list-style:none;
@@ -50,7 +65,7 @@ nav.login{
 
 #main_container{
 	margin:0 auto;
-	width:799px;   
+	width:699px;   
 }  
 
 .content{
@@ -70,32 +85,38 @@ section.form_list ul li{
 }
 
 /* ---   form -----*/ 
-
-#form{
-	height:503px;
+#form{   
+	height:503px;     
+	position:relative;
+	overflow:auto;
+	margin:0px 20px;
 }
 
 #form p{
 	margin-bottom:10px;
+}   
+
+.form_oprate{ 
+	height:25px;
+	padding:5px 10px;
+	margin-bottom:10px;
+	border-bottom:1px solid #eee;
+} 
+
+.form_preview{  
+	padding:5px 10px; 
+	border-top:1px solid #eee;
 }
 
-form.conforge div.field label{ float:left;width:12em;font-size:12px;color:#514c48;text-align:right; margin-right:2em;}  
+ 
 
-.edit_form input[type=text] {
+#edit_form input[type=text] {
   padding: 2px 5px;
   height:  22px;
   font-size: 18px;
 }
 
-.edit_form textarea.form {
-  width: 680px;
-  height: 46px;
-  padding: 2px 5px;
-  font-size: 14px;
-}
-
-.field_form { background-color: #FFF4C2; padding: 10px; margin-top: 10px;}
-label {padding-right: 10px;}
+.field_form { padding: 10px; margin-top: 10px;}
 
 div.field {
   margin: 10px 0;
@@ -103,15 +124,10 @@ div.field {
 }
 
 div.edit:hover {
-  background-color: #FFF9DD;
+  background-color: #FDF2C6;
 }
 
-#form{        
-	padding:10px;  
-	margin:10px 0px;
-	position:relative;
-	overflow:auto;
-}           
+          
 
 .edit{
 	cursor: move;
@@ -126,13 +142,36 @@ div.edit:hover {
 	height:60px;
 }          
 
-.q_title{
+.q_title{     
+	font-weight:bold;
 	margin:0px; 
 	padding:0px;
 }   
 
 .prompt{
 	color:#eee;
+} 
+
+
+/* ----  form field setting -----*/
+#form_title{
+	font-weight:bold;
+}
+
+#form_description{
+	font-size:12px;  
+	width: 580px;
+  	height: 46px;
+  	padding: 2px 5px;
+  	font-size: 14px;
+}   
+
+.new{
+	float:left;
+}
+
+.setting{
+	float:right;
 }
 
 /* --- result ------ */

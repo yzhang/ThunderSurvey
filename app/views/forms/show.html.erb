@@ -12,7 +12,7 @@
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form}%>
   <% end %>
-<p style='padding-left:16em;'>
+<p>
   <%= submit_tag '提交' %>
 </p>
 <% end %>

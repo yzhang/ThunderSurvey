@@ -40,7 +40,7 @@ function field_done_editing(e)
   }
 
   field_div.find('.question .input').html(input);
-  
+  field_div.css('background-color','') 
   if(field_input == 'date') {
     $("#" + field_uuid).datepicker({changeMonth:true, changeYear:true});
   }
@@ -51,6 +51,7 @@ function field_cancel_editing(e)
   var field = $(e).closest('.field');
   field.find('.question').show();
   field.find('.form').hide();
+  field.css('background-color','') 
 }
 
 function field_start_editing(e)
@@ -61,14 +62,16 @@ function field_start_editing(e)
     field_cancel_editing(field_start_editing.current_editing_field)
     field_start_editing.current_editing_field = e;
   }
-  var form = $(e).closest('.field')
-  form.find(".question").hide();
-  form.find(".form").show();
-  form.find('.form #field_name').focus();
+  var field = $(e).closest('.field')
+  field.css('background-color','#FDF2C6')
+  field.find(".question").hide();
+  field.find(".form").show();
+  field.find('.form #field_name').focus();
 }
 
 function field_input_changed(e)
-{
+{                             
+  var field = $(e).closest('.field')
   var form = $(e).closest('form');
   var input = $(e).val();
   var input_options = $('#' + input + '_input').html();

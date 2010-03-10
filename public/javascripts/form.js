@@ -76,6 +76,7 @@ function form_add_field(e)
   new_field.find('.question').hide();
   new_field.find('.form').show();
   new_field.find('.form #field_name').val('新问题' + field_count).css('color','#666');
+  new_field.css('background-color','#FDF2C6')  
   new_field.find('.question label').html('新问题' + field_count);  
   // initial position
   new_field.find('.field_position').val(field_count) 

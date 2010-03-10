@@ -1,6 +1,6 @@
 <div class='field' id="<%= field.id %>">
   <div class="question" id="question<%= field.id %>">
-    <%= label_tag field.id,field.name, :class => 'q_title' %>
+    <%= label_tag field.id,field.name, :class => 'q_title' %><br />
     <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>
     <%= @row.errors.on("f#{field.id}") %>
   </div>
