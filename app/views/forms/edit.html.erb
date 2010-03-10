@@ -1,6 +1,7 @@
 <% content_for :headers do -%>   
   <%= javascript_include_tag 'form' %>
   <%= javascript_include_tag 'field' %>
+  <%= javascript_include_tag 'jquery.scrollTo' %>
   <script type="text/javascript" charset="utf-8">
     var field_count = <%= @form.fields.length + 1 %>;   
   </script>
@@ -10,7 +11,7 @@
 <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();") %> |
 <%= link_to('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
 
-<div id="form">
+<section id="form">
   <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}, :remote => true) do |f| %>
     <%= f.error_messages %>
 
@@ -34,7 +35,7 @@
   <div id="new_field" style="display:none;">
     <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
   </div>  
-</div>  
+</section>  
 
 
 <%= link_to '预览表单', form_path(@form), :target => '_blank' %>

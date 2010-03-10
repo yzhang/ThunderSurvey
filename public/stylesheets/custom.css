@@ -1,3 +1,84 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+
+body{  
+	font-family:"Lucida Grande","Geneva","Arial","Verdana","sans-serif";
+	font-size:12px;
+	text-align:left;
+	word-spacing:1px;
+	background:#50555D;
+
+}            
+
+header,section,footer{
+	display:block;
+} 
+
+h1{
+	margin:10px 0px;
+} 
+
+ul li{
+	list-style:none;
+}
+
+/* ---- header -----*/
+
+header.all{       
+	padding:10px;
+	margin-bottom:10px;
+	height:24px;
+	background:#fff;
+	-moz-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+}                     
+
+.logo{ 
+	float:left;
+	width:200px;
+	}
+
+nav.login{
+	float:right;
+} 
+
+/* ----- header ---- */      
+
+#main_container{
+	margin:0 auto;
+	width:799px;   
+}  
+
+.content{
+	background:#fff;
+	padding:10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}    
+
+footer{
+	padding:10px 20px;
+}
+
+
+section.form_list ul li{
+	margin:10px;
+}
+
+/* ---   form -----*/ 
+
+#form{
+	height:503px;
+}
+
+#form p{
+	margin-bottom:10px;
+}
+
 form.conforge div.field label{ float:left;width:12em;font-size:12px;color:#514c48;text-align:right; margin-right:2em;}  
 
 .edit_form input[type=text] {
@@ -26,7 +107,6 @@ div.edit:hover {
 }
 
 #form{        
-	width:800px;
 	padding:10px;  
 	margin:10px 0px;
 	position:relative;

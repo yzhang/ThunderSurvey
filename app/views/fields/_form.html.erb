@@ -24,8 +24,8 @@
     <%= form.submit '保存', :onclick => 'field_done_editing(this);' %>
     <%= form.check_box :required %>    
     <%= form.label :required, '设为必填项' %> 
-    | <%#= link_to('取消', '#', :onclick => "field_cancel_editing(this);", :remote => true) %>  
-      <%= link_to('删除', {:update => 'flash', 
+    | <%= link_to('取消', '#', :onclick => "field_cancel_editing(this);", :remote => true) %>  
+      <%#= link_to('删除', {:update => 'flash', 
                             :url => form_field_path(parent, field, :edit_key => parent.edit_key), 
                             :after => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1",
                             :method => 'delete',

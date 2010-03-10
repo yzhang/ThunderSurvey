@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     
     if @form.edit_key != @edit_key
       flash[:notice] = "对不起，您没有权限操作此表单"
-      redirect_to root_path
+      redirect_to '/'
     end
   end
 end

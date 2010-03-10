@@ -3,12 +3,11 @@
     <div class='opration' style='display:none;'>    
        <% if field.intern.blank? -%>  
       <%= link_to('编辑', '#', :onclick => "field_start_editing(this);", :remote => true)
-                              %> |
+                              %> | 
       <%= link_to('删除', form_field_path(parent, field, :edit_key => parent.edit_key),
                           :update => 'flash', 
                           :onclick => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1; return true;",
                           :method => 'delete',
-                          :confirm => '你确定嘛', 
                           :remote => true) %>  
                           <% else %>
                           保留字段

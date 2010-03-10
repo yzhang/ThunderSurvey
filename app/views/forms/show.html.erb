@@ -1,17 +1,18 @@
+<header>
+    <h1>
+    <%=h @form.title %>
+    </h1>   
+    <p>
+      <%=h @form.description %>
+    </p>
+</header>
 
-<h2>
-  <%=h @form.title %>
-</h2>
-
-<p>
-  <%=h @form.description %>
-</p>
 
 <% form_tag form_rows_path(@form),:class => 'conforge' do %>  
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form}%>
   <% end %>
-<p>
+<p style='padding-left:16em;'>
   <%= submit_tag '提交' %>
 </p>
 <% end %>
