@@ -12,8 +12,8 @@ class Form
   key :edit_key, String
   key :notify_email, String
   key :notify_type, String, :default => 'email'
-  key :thanks_url  # 新用户注册成功后跳转的URL
-  key :mongo_id    # 用于ActiveResource传送表单ID
+  key :thanks_url, String  # 新用户注册成功后跳转的URL
+  key :maximum_rows, Integer, :default => 0 #允许的最大记录数
   
   many :fields
   
@@ -24,6 +24,10 @@ class Form
   
   def id
     self._id.to_s
+  end
+  
+  def allow_insert?
+    self.maximum_rows != 0 && self.klass.count < self.maximum_rows
   end
   
   def klass

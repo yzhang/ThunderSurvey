@@ -39,7 +39,7 @@ class RowsController < ApplicationController
     @row = klass.new(params[:row])
     
     respond_to do |want|
-      if @row.save
+      if @form.allow_insert? && @row.save
         @form.deliver_notification
         if @form.thanks_url.blank?
           want.html {redirect_to thanks_path}

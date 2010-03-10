@@ -21,8 +21,11 @@ class FormsController < ApplicationController
     @row = @form.klass.new
     
     respond_to do |format|
-      format.html { render :layout => params[:embed].blank? ? 'application' : "simple"}# show.html.erb
-      @form.mongo_id = @form.id.to_s
+      if @form.allow_insert?
+        format.html { render :layout => params[:embed].blank? ? 'application' : "simple"}# show.html.erb
+      else
+        format.html { render :text => '对不起，此表单不允许插入新记录'}
+      end
       format.json  { render :json => @form.to_json }
     end
   end
@@ -46,7 +49,6 @@ class FormsController < ApplicationController
       if @form.save
         format.html { redirect_to edit_form_path(@form, :edit_key => @form.edit_key) }
         format.json  do
-          @form.mongo_id = @form.id.to_s
           render :json => @form.to_json
         end
       else
@@ -82,7 +84,6 @@ class FormsController < ApplicationController
           end
         }
         format.json  do
-          @form.mongo_id = @form.id.to_s
           render :json => @form.to_json
         end      
       else
