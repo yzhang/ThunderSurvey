@@ -18,15 +18,15 @@ function field_done_editing(e)
     input += "<textarea></textarea>";
   } else if(field_input == 'radio') {
     field_div.find('.form .options input[type=text]').each(function(){
-      input += '<input type="radio" />';
-      input += '<label>' + $(this).val(); + '</label>';
+      input += "<p><input type='radio' style='margin-right:5px;'/>";
+      input += "<label>" + $(this).val(); + "</label></p>";
     });
   } else if(field_input == 'string') {
     input += '<input type="text" />';
   } else if(field_input == 'check') {
     field_div.find('.form .options input[type=text]').each(function(){
-      input += '<input type="checkbox" />';
-      input += '<label>' + $(this).val(); + '</label>';
+      input += '<p><input type="checkbox" style="margin-right:5px;"/>';
+      input += '<label>' + $(this).val(); + '</label></p>';
     });
   } else if(field_input == 'drop') {
     input += "<select>";

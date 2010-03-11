@@ -72,7 +72,7 @@ nav.login{
 	background:#fff;
 	padding:10px;
 	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	-webkit-border-radius: 5px; 
 }    
 
 footer{
@@ -86,7 +86,7 @@ section.form_list ul li{
 
 /* ---   form -----*/ 
 #form{   
-	height:503px;     
+  	height:553px;
 	position:relative;
 	overflow:auto;
 	margin:0px 20px;
@@ -108,13 +108,6 @@ section.form_list ul li{
 	border-top:1px solid #eee;
 }
 
- 
-
-#edit_form input[type=text] {
-  padding: 2px 5px;
-  height:  22px;
-  font-size: 18px;
-}
 
 .field_form { padding: 10px; margin-top: 10px;}
 
@@ -126,8 +119,6 @@ div.field {
 div.edit:hover {
   background-color: #FDF2C6;
 }
-
-          
 
 .edit{
 	cursor: move;
@@ -184,5 +175,34 @@ div.edit:hover {
 	overflow:auto;   
 }    
 
+/*  ------ form show cotainer -------- */
+
+#form_container{ 
+	padding:10px;
+	margin:0 auto;
+	width:45em;
+	background:#fff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+} 
+
+/* ---- input setting ------*/
+input[type=text] {
+  height:  18px;
+  font-size: 12px;
+}                 
+
+textarea{
+	width:400px;
+	height:100px;
+} 
+
+.input_options input[type=text]{
+	margin:0 5px;
+}   
+    
+.question p{
+	margin:5px 0;
+}
 
     

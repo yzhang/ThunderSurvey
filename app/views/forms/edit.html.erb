@@ -10,9 +10,10 @@
 <section class='form_oprate'>
   <nav >    
     <div class='new'>
-       <%= pretty_button('新问题', '#', :onclick => 'form_add_field(this);') %> 
+    <%= pretty_button('新问题', '#', :onclick => 'form_add_field(this);') %> 
     </div>
-    <div class='setting'>   
+    <div class='setting'>       
+    <%= pretty_button('查看结果', form_rows_path(@form, :edit_key => @form.edit_key)) %>
     <%= pretty_button('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
     <%= pretty_button('保存',   '#', :onclick => "$('#form_submit').submit();") %>
     </div>

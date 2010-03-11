@@ -4,7 +4,7 @@
   </header>
   <ul>
 <% @forms.each do |form| %>
-  <li><%= link_to form.title, form %>
+  <li><%= link_to form.title, form,:target => '_blank' %>
   (<%= link_to 'Show', form_rows_path(form, :edit_key => form.edit_key) %> |
    <%= link_to 'Edit', edit_form_path(form, :edit_key => form.edit_key) %> |
    <%= link_to 'Destroy', form, :confirm => 'Are you sure?', :method => :delete %>
