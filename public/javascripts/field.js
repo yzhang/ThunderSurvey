@@ -62,7 +62,7 @@ function field_start_editing(e)
     field_cancel_editing(field_start_editing.current_editing_field)
     field_start_editing.current_editing_field = e;
   }
-  var field = $(e).closest('.field')
+  var field = $(e).closest('.field') 
   field.css('background-color','#FDF2C6')
   field.find(".question").hide();
   field.find(".form").show();

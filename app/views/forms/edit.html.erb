@@ -6,46 +6,48 @@
   <script type="text/javascript" charset="utf-8">
     var field_count = <%= @form.fields.length + 1 %>;   
   </script>
-<% end -%>  
-<section class='form_oprate'>
-  <nav >    
-    <div class='new'>
-    <%= pretty_button('新问题', '#', :onclick => 'form_add_field(this);') %> 
+<% end -%>   
+<div id="form_wrapper"> 
+  <section class='form_oprate'>
+    <nav >    
+      <div class='new'>
+      <%= pretty_button('新问题', '#', :onclick => 'form_add_field(this);') %> 
+      </div>
+      <div class='setting'>       
+      <%= pretty_button('查看结果', form_rows_path(@form, :edit_key => @form.edit_key)) %>
+      <%= pretty_button('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
+      <%= pretty_button('保存',   '#', :onclick => "$('#form_submit').submit();") %>
+      </div>
+    </nav>
+  </section>
+
+  <section id="form">
+    <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}, :remote => true) do |f| %>
+      <%= f.error_messages %>
+
+      <%= render :partial => 'form', :object => f %>
+      <%=f.submit 'submit',:id => 'form_submit',:style => 'display:none;' %>
+      <div id="field_positions" style="display:none"></div>
+    <% end %>  
+
+    <div id="fields">   
+      <% @fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
+        <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
+      <% end %>
     </div>
-    <div class='setting'>       
-    <%= pretty_button('查看结果', form_rows_path(@form, :edit_key => @form.edit_key)) %>
-    <%= pretty_button('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
-    <%= pretty_button('保存',   '#', :onclick => "$('#form_submit').submit();") %>
-    </div>
-  </nav>
-</section>
 
-<section id="form">
-  <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}, :remote => true) do |f| %>
-    <%= f.error_messages %>
-
-    <%= render :partial => 'form', :object => f %>
-    <%=f.submit 'submit',:id => 'form_submit',:style => 'display:none;' %>
-    <div id="field_positions" style="display:none"></div>
-  <% end %>  
-
-  <div id="fields">   
-    <% @fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
-      <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
+    <% ['radio', 'check', 'drop'].each do |input| %>
+      <div id="<%= input %>_input" style="display:none">
+        <%= render :partial => "/fields/#{input}_form", :locals => {:parent => @form, :field => nil} %>
+      </div>
     <% end %>
-  </div>
 
-  <% ['radio', 'check', 'drop'].each do |input| %>
-    <div id="<%= input %>_input" style="display:none">
-      <%= render :partial => "/fields/#{input}_form", :locals => {:parent => @form, :field => nil} %>
-    </div>
-  <% end %>
+    <div id="new_field" style="display:none;">
+      <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
+    </div>  
+  </section>  
 
-  <div id="new_field" style="display:none;">
-    <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
-  </div>  
-</section>  
-
-<section class='form_preview'>
-  <%= link_to '预览表单', form_path(@form), :target => '_blank' %>
-</section>
+  <section class='form_preview'>
+    <%= link_to '预览表单', form_path(@form), :target => '_blank' %>
+  </section>
+</div>

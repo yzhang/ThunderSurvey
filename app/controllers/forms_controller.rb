@@ -21,9 +21,11 @@ class FormsController < ApplicationController
     @row = @form.klass.new
     
     respond_to do |format|
-      format.html { render :layout => params[:embed].blank? ? 'simple' : "embed"}# show.html.erb
-      @form.mongo_id = @form.id.to_s
-      format.json  { render :json => @form.to_json }
+      if @form.allow_insert?
+        format.html { render :layout => params[:embed].blank? ? 'simple' : "embed" }# show.html.erb
+      else
+        format.html { render :text => '对不起，此表单不允许插入新记录'}
+      end
     end
   end
 
@@ -46,7 +48,6 @@ class FormsController < ApplicationController
       if @form.save
         format.html { redirect_to edit_form_path(@form, :edit_key => @form.edit_key) }
         format.json  do
-          @form.mongo_id = @form.id.to_s
           render :json => @form.to_json
         end
       else
@@ -61,7 +62,7 @@ class FormsController < ApplicationController
     @field = Field.new(:input => 'string')
     @fields = @form.fields#.sort {|f1, f2| f1.position <=> f2.position}
     respond_to do |want|
-      want.html { render :layout => params[:embed].blank? ? 'application' : "simple"}
+      want.html { render :layout => params[:embed].blank? ? 'application' : "embed"}
     end
   end
 
@@ -82,7 +83,6 @@ class FormsController < ApplicationController
           end
         }
         format.json  do
-          @form.mongo_id = @form.id.to_s
           render :json => @form.to_json
         end      
       else

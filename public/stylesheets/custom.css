@@ -44,7 +44,7 @@ ul li{
 header.all{       
 	padding:10px;
 	margin-bottom:10px;
-	height:24px;
+	height:25px;
 	background:#fff;
 	-moz-border-radius-bottomleft: 5px;
 	-webkit-border-bottom-left-radius: 5px;
@@ -68,7 +68,7 @@ nav.login{
 	width:699px;   
 }  
 
-.content{
+.content{          
 	background:#fff;
 	padding:10px;
 	-moz-border-radius: 5px;
@@ -84,9 +84,14 @@ section.form_list ul li{
 	margin:10px;
 }
 
-/* ---   form -----*/ 
+/* ---   form -----*/   
+
+#form_wrapper{
+	height:550px;
+}            
+
 #form{   
-  	height:553px;
+  	height:484px;
 	position:relative;
 	overflow:auto;
 	margin:0px 20px;

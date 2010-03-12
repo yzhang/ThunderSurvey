@@ -1,26 +1,24 @@
 <div class='field edit' onmouseover="toggel_opration(this);" onmouseout="toggel_opration(this);">
+  <div class='opration' style='display:none;'>    
+     <% if field.intern.blank? -%>  
+    <%= link_to('编辑', '#', :onclick => "field_start_editing(this);", :remote => true)
+                            %> | 
+    <%= link_to('删除', form_field_path(parent, field, :edit_key => parent.edit_key),
+                        :update => 'flash', 
+                        :onclick => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1; return true;",
+                        :method => 'delete',
+                        :remote => true) %>  
+                        <% else %>
+                        保留字段
+                        <% end -%>
+  </div>
   <div class="question" id="question<%= field.id %>">     
-    <div class='opration' style='display:none;'>    
-       <% if field.intern.blank? -%>  
-      <%= link_to('编辑', '#', :onclick => "field_start_editing(this);", :remote => true)
-                              %> | 
-      <%= link_to('删除', form_field_path(parent, field, :edit_key => parent.edit_key),
-                          :update => 'flash', 
-                          :onclick => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1; return true;",
-                          :method => 'delete',
-                          :remote => true) %>  
-                          <% else %>
-                          保留字段
-                          <% end -%>
-    </div>
     <%= label_tag field.id,field.name, :class => 'q_title' %> <%= render_required(field) %>
     <div class="input">
       <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>
       <br />
       <span class='prompt'><%=h field.prompt %></span>    
     </div>
-
-
   </div>
   <div class="form edit" style="display:none;">
     <%= render :partial => '/fields/form', :locals => {:parent => parent, :field => field} %>

@@ -6,15 +6,13 @@
 <% @forms.each do |form| %>
   <li><%= link_to form.title, form,:target => '_blank' %>
   (<%= link_to 'Show', form_rows_path(form, :edit_key => form.edit_key) %> |
-   <%= link_to 'Edit', edit_form_path(form, :edit_key => form.edit_key) %> |
+  <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=780,height=655,left=0,top=0');" title="tool tip">编辑</a> |
    <%= link_to 'Destroy', form, :confirm => 'Are you sure?', :method => :delete %>
   )</li>
 <% end %>                  
   </ul>
 </section>
   <p> 
-    <%=link_to '新建表单',new_form_path %>    
-    <% if false %>
-    <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=980,height=900,left=0,top=0');" title="tool tip">New form</a>
-    <% end -%>
+    <%#=link_to '新建表单',new_form_path %>    
+    <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="tool tip">New form</a>
   </p>
