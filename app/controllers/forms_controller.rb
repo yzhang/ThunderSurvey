@@ -26,6 +26,9 @@ class FormsController < ApplicationController
       else
         format.html { render :text => '对不起，此表单不允许插入新记录'}
       end
+      format.json  do
+        render :json => @form.to_json
+      end
     end
   end
 
