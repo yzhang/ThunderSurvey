@@ -47,9 +47,7 @@ class FormsController < ApplicationController
     respond_to do |format|
       if @form.save
         format.html { redirect_to edit_form_path(@form, :edit_key => @form.edit_key) }
-        format.json  do
-          render :json => @form.to_json
-        end
+        format.json { render :json => @form.to_json }
       else
         format.html { render :action => "new" }
         format.json  { render :json => @form.errors.to_json }

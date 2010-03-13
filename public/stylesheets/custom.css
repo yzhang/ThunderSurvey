@@ -150,7 +150,9 @@ div.edit:hover {
 
 
 /* ----  form field setting -----*/
-#form_title{
+#form_title{     
+	height:20px;
+	font-size:14px;
 	font-weight:bold;
 }
 
@@ -159,7 +161,6 @@ div.edit:hover {
 	width: 580px;
   	height: 46px;
   	padding: 2px 5px;
-  	font-size: 14px;
 }   
 
 .new{

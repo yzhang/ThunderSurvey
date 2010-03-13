@@ -6,7 +6,7 @@
 <% @forms.each do |form| %>
   <li><%= link_to form.title, form,:target => '_blank' %>
   (<%= link_to 'Show', form_rows_path(form, :edit_key => form.edit_key) %> |
-  <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=780,height=655,left=0,top=0');" title="tool tip">编辑</a> |
+  <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=880,height=655,left=0,top=0');" title="tool tip">编辑</a> |
    <%= link_to 'Destroy', form, :confirm => 'Are you sure?', :method => :delete %>
   )</li>
 <% end %>                  
