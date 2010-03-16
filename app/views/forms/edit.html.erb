@@ -1,21 +1,27 @@
 <% content_for :headers do -%>   
-<%= stylesheet_link_tag 'button' %>
+  <%= stylesheet_link_tag 'button' %>
   <%= javascript_include_tag 'form' %>
   <%= javascript_include_tag 'field' %>
   <%= javascript_include_tag 'jquery.scrollTo' %>
   <script type="text/javascript" charset="utf-8">
     var field_count = <%= @form.fields.length + 1 %>;   
+    
+    $(window).resize(function() {  
+      height = $(window).height() - 100;     
+      form_height = height - 65
+      $('#form_wrapper').height(height); 
+      $('#form').height(form_height);
+    });
   </script>
 <% end -%>   
 <div id="form_wrapper"> 
   <section class='form_oprate'>
     <nav >    
       <div class='new'>
-      <%= pretty_button('新问题', '#', :onclick => 'form_add_field(this);') %> 
+      <%= pretty_button('新问题', '#', :onclick => 'form_add_field(this);',:id => 'add_question') %> 
       </div>
       <div class='setting'>       
-      <%= pretty_button('查看结果', form_rows_path(@form, :edit_key => @form.edit_key)) %>
-      <%= pretty_button('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
+      <%= pretty_button('通知设置',   '#', :onclick => "$('#notify_setting,#form_header,#fields,#add_question').toggle();",:id => 'notify') %>
       <%= pretty_button('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();") %>
       </div>
     </nav>
@@ -24,8 +30,19 @@
   <section id="form">
     <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}, :remote => true) do |f| %>
       <%= f.error_messages %>
-
-      <%= render :partial => 'form', :object => f %>
+      <div id="form_header">
+         <%= render :partial => 'form', :object => f %>
+      </div>
+      <div style="display:none;" id="notify_setting">
+        <p>
+          <%= f.label :notify_type, '通知方式' %>
+          <%= f.radio_button :notify_type, 'email' %>邮件通知
+        </p>
+        <p>
+          <%= f.label :notify_email, '发送通知到此信箱' %>
+          <%= f.text_field :notify_email %>
+        </p>
+      </div>
       <%=f.submit 'submit',:id => 'form_submit',:style => 'display:none;' %>
       <div id="field_positions" style="display:none"></div>
     <% end %>  
@@ -44,7 +61,7 @@
 
     <div id="new_field" style="display:none;">
       <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
-    </div>  
+    </div>
   </section>  
 
   <section class='form_preview'>
