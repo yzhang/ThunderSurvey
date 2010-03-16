@@ -49,6 +49,7 @@ $(document).ready(function($) {
       i += 1;
     });
     $("#field_positions").html(data.join(''));
+		$("#saving").show();
     $(".edit_form #form_submit").submit();
   });  
 
@@ -100,6 +101,7 @@ function form_add_field(e)
   field_count += 1;
   now = new Date();
   new_field.find('.form #field_uuid').val(now.getTime());
+	$("#saving").show();
   new_field.find('#field_submit').submit();    
   $('#form').scrollTo('max');
   $.scrollTo('max')

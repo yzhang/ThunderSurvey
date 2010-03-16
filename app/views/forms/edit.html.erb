@@ -16,7 +16,7 @@
       <div class='setting'>       
       <%= pretty_button('查看结果', form_rows_path(@form, :edit_key => @form.edit_key)) %>
       <%= pretty_button('通知设置',   '#', :onclick => "$('#notify_setting').toggle();") %>
-      <%= pretty_button('保存',   '#', :onclick => "$('#form_submit').submit();") %>
+      <%= pretty_button('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();") %>
       </div>
     </nav>
   </section>

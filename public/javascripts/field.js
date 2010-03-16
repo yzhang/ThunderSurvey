@@ -3,6 +3,7 @@ function field_done_editing(e)
 {
   var field_div = $(e).closest('.field');
   
+	$("#saving").show();
   field_div.find('.question').show();
   field_div.find('.form').hide();
   

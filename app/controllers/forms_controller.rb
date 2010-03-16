@@ -80,7 +80,7 @@ class FormsController < ApplicationController
         }
         format.js {
           render :update do |page|
-            page.visual_effect('highlight', '.edit_form')
+            page << '$("#saving").hide();'
           end
         }
         format.json  do

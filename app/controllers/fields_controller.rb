@@ -41,6 +41,7 @@ class FieldsController < ApplicationController
         @field.update_options(params[:options])
         format.js   {
           render :update do |page|
+            page << '$("#saving").hide();'
           end
         }
         format.json {render :json => @field.to_json}
@@ -58,6 +59,7 @@ class FieldsController < ApplicationController
         @field.update_options(params[:options])
         format.js   {
           render :update do |page|
+            page << '$("#saving").hide();'
           end
         }
         format.json {render :json => @field.to_json}
