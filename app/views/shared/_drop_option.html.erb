@@ -1,4 +1,4 @@
 <p>
-  <%= text_field_tag "options[]", option.value %>
+  <%= text_field_tag "options[]", value, :onfocus => "clear_option_initial(this);",:onblur => "set_option_initial(this)", :style => 'color:#666;' %>
   <%= link_to '删除', '#', :onclick => 'field_remove_option(this);' %>
 </p>

@@ -41,6 +41,7 @@ class FieldsController < ApplicationController
         @field.update_options(params[:options])
         format.js   {
           render :update do |page|
+            page << '$("#saving").hide();'
           end
         }
         format.json {render :json => @field.to_json}
@@ -58,6 +59,7 @@ class FieldsController < ApplicationController
         @field.update_options(params[:options])
         format.js   {
           render :update do |page|
+            page << '$("#saving").hide();'
           end
         }
         format.json {render :json => @field.to_json}
@@ -73,7 +75,11 @@ class FieldsController < ApplicationController
     @form.save
     
     respond_to do |format|
-      format.html {render :text => "Successful."}
+      format.js {
+        render :update do |page|
+          page << "$('##{@field.id}.field').highlight(); $('##{@field.id}.field').fade();field_count -= 1;"
+        end
+      }
       format.json {render :json => @field.to_json}
     end
   end

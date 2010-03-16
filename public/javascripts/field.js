@@ -3,6 +3,7 @@ function field_done_editing(e)
 {
   var field_div = $(e).closest('.field');
   
+	$("#saving").show();
   field_div.find('.question').show();
   field_div.find('.form').hide();
   
@@ -66,6 +67,7 @@ function field_start_editing(e)
   field.css('background-color','#FDF2C6')
   field.find(".question").hide();
   field.find(".form").show();
+	clear_initial.question_title = field.find('.form #field_name').val();
   field.find('.form #field_name').focus();
 }
 
@@ -81,6 +83,7 @@ function field_input_changed(e)
 function field_add_option(e, type)
 {
   var options = $(e).closest('.input_options').find('.options');
+  var count   = options.find('input[type=text]').size() + 1;
   var option = '<p>';
 
   if(type == 'radio') {
@@ -89,7 +92,7 @@ function field_add_option(e, type)
     option += '<input type="checkbox" />';
   }
   
-  option += '<input type="text" name="options[]" />';
+  option += '<input type="text" name="options[]" value="选项' + count + '" style="color:#666;" onfocus="clear_option_initial(this);" onblur="set_option_initial(this)" />';
   option += '<a href="#" onclick="field_remove_option(this);">删除</a>';
   option += '</p>';
   
@@ -102,6 +105,6 @@ function field_remove_option(e)
   $(e).parent().remove();
 }   
 
-function toggel_opration(e){
+function toggle_opration(e){
 	$(e).find('.opration').toggle();
 }

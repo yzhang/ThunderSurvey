@@ -1,7 +1,7 @@
 <% form_for [parent, field], :html => {:class => 'field_form'}, :remote => true do |form| %>
   <p>
     <%= form.label :name, '问题名称' %>   
-    <%= form.text_field :name,:onfocus => "clear_initial(this);",:onblur => "set_initial(this)" %> 
+    <%= form.text_field :name, :onfocus => "clear_initial(this);",:onblur => "set_initial(this)" %> 
     <%= hidden_field_tag :edit_key, parent.edit_key %>
     <%= form.hidden_field :uuid %> 
     <%= form.hidden_field :position,:class => 'field_position' %>
@@ -23,12 +23,7 @@
   <p>
     <%= form.submit '保存', :onclick => 'field_done_editing(this);' %>
     <%= form.check_box :required %>    
-    <%= form.label :required, '设为必填项' %> 
-    | <%= link_to('取消', '#', :onclick => "field_cancel_editing(this);", :remote => true) %>  
-      <%#= link_to('删除', {:update => 'flash', 
-                            :url => form_field_path(parent, field, :edit_key => parent.edit_key), 
-                            :after => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1",
-                            :method => 'delete',
-                            :confirm => '你确定嘛'}, :remote => true) %>
+    <%= form.label :required, '设为必填项' %>
+    | <%= link_to('取消', '#', :onclick => "field_cancel_editing(this);", :remote => true) %>
   </p>   
 <% end %>

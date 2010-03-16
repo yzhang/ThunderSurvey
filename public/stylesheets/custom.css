@@ -211,4 +211,16 @@ textarea{
 	margin:5px 0;
 }
 
+#saving {
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	background-color:#FAD163;
+	color:#000000;
+	font-weight:bold;
+	padding:0.4em 0.8em;
+	position:absolute;
+	right:50%;
+	top:0;
+	z-index:2;
+}
     
