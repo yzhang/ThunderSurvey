@@ -25,7 +25,11 @@ body{
 
 header,section,footer{
 	display:block;
-} 
+}
+
+footer {
+	height: 25px;
+}
 
 /* Headings */
 h2 {font-size: 1.571em} /* 22px */
@@ -84,14 +88,8 @@ section.form_list ul li{
 	margin:10px;
 }
 
-/* ---   form -----*/   
-
-#form_wrapper{
-	height:550px;
-}            
-
+/* ---   form -----*/              
 #form{   
-  	height:484px;
 	position:relative;
 	overflow:auto;
 	margin:0px 20px;
@@ -111,6 +109,7 @@ section.form_list ul li{
 .form_preview{  
 	padding:5px 10px; 
 	border-top:1px solid #eee;
+	height: 25px;
 }
 
 
