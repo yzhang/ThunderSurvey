@@ -57,6 +57,7 @@ $(document).ready(function($) {
 
 function clear_initial(obj){
    if(/新问题\d/.test(obj.value)){
+			clear_initial.question_title = obj.value;
 	    obj.value = ''; 
 		obj.style.color = "#000";
 	}
@@ -64,7 +65,22 @@ function clear_initial(obj){
 
 function set_initial(obj){
    if(obj.value == ''){
-	    obj.value = '新问题'+ (field_count -1);
+	    obj.value = clear_initial.question_title;
+		obj.style.color = "#666"
+	}
+}
+
+function clear_option_initial(obj){
+   if(/选项\d/.test(obj.value)){
+			clear_option_initial.option_title = obj.value;
+	    obj.value = ''; 
+		obj.style.color = "#000";
+	}
+}
+
+function set_option_initial(obj){
+   if(obj.value == ''){
+	    obj.value = clear_option_initial.option_title;
 		obj.style.color = "#666"
 	}
 }

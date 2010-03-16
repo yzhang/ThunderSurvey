@@ -13,7 +13,7 @@ class Field
   
   TYPES = [['单行文字', 'string'], ['大段文字', 'text'], 
             ['多选一', 'radio'], ['多选多', 'check'], 
-            ['下拉列表', 'drop'], ['日期', 'date']]
+            ['下拉列表', 'drop']]
   
   def id
     self._id.to_s

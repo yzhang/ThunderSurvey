@@ -36,7 +36,7 @@
       <% end %>
     </div>
 
-    <% ['radio', 'check', 'drop'].each do |input| %>
+    <% ['string', 'text', 'radio', 'check', 'drop'].each do |input| %>
       <div id="<%= input %>_input" style="display:none">
         <%= render :partial => "/fields/#{input}_form", :locals => {:parent => @form, :field => nil} %>
       </div>
