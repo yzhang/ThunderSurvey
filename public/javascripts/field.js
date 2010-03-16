@@ -102,6 +102,6 @@ function field_remove_option(e)
   $(e).parent().remove();
 }   
 
-function toggel_opration(e){
+function toggle_opration(e){
 	$(e).find('.opration').toggle();
 }

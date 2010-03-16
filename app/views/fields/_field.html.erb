@@ -1,16 +1,16 @@
-<div class='field edit' onmouseover="toggel_opration(this);" onmouseout="toggel_opration(this);">
+<div class='field edit' onmouseover="toggle_opration(this);" onmouseout="toggle_opration(this);" id="<%= field.id %>">
   <div class='opration' style='display:none;'>    
-     <% if field.intern.blank? -%>  
-    <%= link_to('编辑', '#', :onclick => "field_start_editing(this);", :remote => true)
+    <% if field.intern.blank? -%>  
+      <%= link_to('编辑', '#', :onclick => "field_start_editing(this);", :remote => true)
                             %> | 
-    <%= link_to('删除', form_field_path(parent, field, :edit_key => parent.edit_key),
-                        :update => 'flash', 
-                        :onclick => "$(this).closest('.field').highlight(); $(this).closest('.field').fade();field_count -= 1; return true;",
+      <%= link_to('删除', form_field_path(parent, field, :edit_key => parent.edit_key),
+                        :update => 'flash',
                         :method => 'delete',
+                        :confirm => '确定要删除此问题吗？',
                         :remote => true) %>  
-                        <% else %>
-                        保留字段
-                        <% end -%>
+    <% else %>
+      保留字段
+    <% end -%>
   </div>
   <div class="question" id="question<%= field.id %>">     
     <%= label_tag field.id,field.name, :class => 'q_title' %> <%= render_required(field) %>
