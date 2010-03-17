@@ -11,7 +11,8 @@
       form_height = height - 65
       $('#form_wrapper').height(height); 
       $('#form').height(form_height);
-    });
+    });   
+    
   </script>
 <% end -%>   
 <div id="form_wrapper"> 
@@ -20,19 +21,22 @@
       <div class='new'>
       <%= pretty_button('新问题', '#', :onclick => 'form_add_field(this);',:id => 'add_question') %> 
       </div>
-      <div class='setting'>       
-      <%= pretty_button('通知设置',   '#', :onclick => "$('#notify_setting,#form_header,#fields,#add_question').toggle();",:id => 'notify') %>
-      <%= pretty_button('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();") %>
+      <div class='setting'>     
+      <%= pretty_button('通知设置',   '#', :onclick => "$('#notify_setting,#form_header,#fields,#add_question').toggle(function(){$('#noitfy').text('<<通知设置')});",:id => 'notify') %>    
+      <%= pretty_button('保存',   '#', :onclick => "$('#form_height').val($('#form').height());$('#form_submit').submit();$('#saving').show();") %>
       </div>
     </nav>
   </section>
-
-  <section id="form">
+   
+  <section id="form">  
     <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}, :remote => true) do |f| %>
-      <%= f.error_messages %>
+      <%= f.error_messages %> 
+      <!-- 表单头 -->
       <div id="form_header">
          <%= render :partial => 'form', :object => f %>
-      </div>
+      </div>  
+      
+      <!-- 表单通知设定 -->
       <div style="display:none;" id="notify_setting">
         <p>
           <%= f.label :notify_type, '通知方式' %>
@@ -46,7 +50,7 @@
       <%=f.submit 'submit',:id => 'form_submit',:style => 'display:none;' %>
       <div id="field_positions" style="display:none"></div>
     <% end %>  
-
+    <!-- 表单项 --> 
     <div id="fields">   
       <% @fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
         <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
@@ -62,8 +66,8 @@
     <div id="new_field" style="display:none;">
       <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
     </div>
-  </section>  
-
+  </section>
+  <!-- 表单尾 -->
   <section class='form_preview'>
     <%= link_to '预览表单', form_path(@form), :target => '_blank' %>
   </section>

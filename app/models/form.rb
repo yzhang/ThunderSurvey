@@ -14,8 +14,8 @@ class Form
   key :notify_type, String, :default => 'email'
   key :thanks_url, String  # 新用户注册成功后跳转的URL
   key :maximum_rows, Integer, :default => 0 #允许的最大记录数
-  
-  many :fields
+  key :height,Integer
+  many :fields, :default => 0
   
   validates :title, :presence => true
   validates :notify_email, :format => {:with => Authentication.email_regex}, :allow_blank => true
