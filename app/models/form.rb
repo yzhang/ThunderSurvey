@@ -21,6 +21,7 @@ class Form
   validates :notify_email, :format => {:with => Authentication.email_regex}, :allow_blank => true
   
   before_create :make_edit_key
+ # before_save :sort_inputable
   
   def id
     self._id.to_s

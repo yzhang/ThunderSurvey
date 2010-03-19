@@ -53,7 +53,7 @@
     <!-- 表单项 --> 
     <div id="fields">   
       <% @fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
-        <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} %>
+        <%= render :partial => '/fields/field', :object => field, :locals => {:parent => @form} unless (field.inputable == false) %>
       <% end %>
     </div>
 
