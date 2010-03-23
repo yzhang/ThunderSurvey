@@ -47,7 +47,7 @@
     </header>
     
     <section class="content">
-        <section id="flash"><%= flash_div %></section>
+        <section id="flash"><%= raw(flash_div) %></section>
         <div id="saving" style="display:none;">正在保存...</div>
         <%= yield %>
     </section>
