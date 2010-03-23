@@ -101,8 +101,8 @@ class FormsController < ApplicationController
   # DELETE /forms/1
   # DELETE /forms/1.xml
   def destroy
-    @form = Form.find(params[:id])
-    @form.destroy
+    @form = Form.find(params[:id], :conditions => {:user_id => current_user.id.to_s})
+    @form.destroy if @form
 
     respond_to do |format|
       format.html { redirect_to(forms_url) }
