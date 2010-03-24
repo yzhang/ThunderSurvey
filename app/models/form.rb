@@ -12,7 +12,7 @@ class Form
   key :edit_key, String
   key :notify_email, String
   key :notify_type, String, :default => 'email'
-  key :thanks_url, String  # 新用户注册成功后跳转的URL
+  key :thanks_message, String  # 新用户注册成功后跳转的URL
   key :maximum_rows, Integer, :default => 0 #允许的最大记录数
   key :height,Integer
   many :fields, :default => 0

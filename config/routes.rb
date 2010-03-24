@@ -6,9 +6,13 @@ Confforge::Application.routes.draw do
 
     resources :rows do
       collection do
-    post :edit_individual
-    put :update_individual
+        post :edit_individual
+        put :update_individual
+      end
     end
+    
+    member do
+      get :thanks
     end
   end
 

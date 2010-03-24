@@ -41,12 +41,9 @@ class RowsController < ApplicationController
     respond_to do |want|
       if @form.allow_insert? && @row.save
         @form.deliver_notification
-        if @form.thanks_url.blank?
-          want.html {redirect_to thanks_path}
-        else
-          want.html {redirect_to @form.thanks_url}
-        end
+        want.html {redirect_to thanks_form_path(@form)}
       else
+        raise @row.errors.to_s
         want.html {render :template => '/forms/show',:layout => 'simple'}
       end
     end

@@ -1,6 +1,6 @@
 class FormsController < ApplicationController
   before_filter :login_required, :only => [:new, :create, :index, :destroy]
-  before_filter :set_form, :only => [:edit, :update]
+  before_filter :set_form, :only => [:edit, :update, :thanks]
   before_filter :verify_edit_key, :only => [:edit, :update]
   
   # GET /forms
@@ -22,7 +22,7 @@ class FormsController < ApplicationController
     
     respond_to do |format|
       if @form.allow_insert?
-        format.html { render :layout => params[:embed].blank? ? 'simple' : "embed" }# show.html.erb
+        format.html { render :layout => 'simple' }# show.html.erb
       else
         format.html { render :text => '对不起，此表单不允许插入新记录'}
       end
@@ -102,11 +102,17 @@ class FormsController < ApplicationController
   # DELETE /forms/1.xml
   def destroy
     @form = Form.find(params[:id], :conditions => {:user_id => current_user.id.to_s})
-    @form.destroy if @form
+    Form.delete(@form._id) if @form
 
     respond_to do |format|
       format.html { redirect_to(forms_url) }
       format.json  { render :json => {:result => 'ok'}.to_json }
+    end
+  end
+  
+  def thanks
+    respond_to do |want|
+      want.html { render :layout => "simple"}
     end
   end
   

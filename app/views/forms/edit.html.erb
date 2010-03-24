@@ -46,6 +46,10 @@
           <%= f.label :notify_email, '发送通知到此信箱' %>
           <%= f.text_field :notify_email %>
         </p>
+        <p>
+          <%= f.label :thanks_message, '提交成功后的感谢信息' %><br />
+          <%= f.text_area :thanks_message %>
+        </p>
       </div>
       <%=f.submit 'submit',:id => 'form_submit',:style => 'display:none;' %>
       <div id="field_positions" style="display:none"></div>
