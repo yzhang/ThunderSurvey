@@ -41,7 +41,7 @@ class RowsController < ApplicationController
     respond_to do |want|
       if @form.allow_insert? && @row.save
         @form.deliver_notification
-        want.html {redirect_to thanks_form_path(@form)}
+        want.html {redirect_to thanks_form_path(@form,:embed => params[:embed] )}
       else
         raise @row.errors.to_s
         want.html {render :template => '/forms/show',:layout => 'simple'}
