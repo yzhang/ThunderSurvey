@@ -15,13 +15,17 @@ class Form
   key :thanks_message, String  # 新用户注册成功后跳转的URL
   key :maximum_rows, Integer, :default => 0 #允许的最大记录数
   key :height,Integer
+  
+  key :created_at, Time, :default => Time.now
+  key :updated_at, Time, :default => Time.now
+  
   many :fields, :default => 0
   
   validates :title, :presence => true
   validates :notify_email, :format => {:with => Authentication.email_regex}, :allow_blank => true
   
   before_create :make_edit_key
- # before_save :sort_inputable
+  before_save   :update_timestamps
   
   def id
     self._id.to_s
@@ -100,5 +104,10 @@ class Form
   private
   def make_edit_key
     self.edit_key = self.class.make_token
+  end
+  
+  def update_timestamps
+    self.created_at ||= Time.now
+    self.updated_at = Time.now
   end
 end

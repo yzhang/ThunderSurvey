@@ -6,7 +6,7 @@ class FormsController < ApplicationController
   # GET /forms
   # GET /forms.xml
   def index
-    @forms = Form.find_all_by_user_id(current_user.id.to_s)
+    @forms = Form.all(:user_id => current_user.id.to_s, :order => 'updated_at DESC').paginate(:page => params[:page], :per_page => '20')
 
     respond_to do |format|
       format.html # index.html.erb
