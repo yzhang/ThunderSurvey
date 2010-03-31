@@ -59,8 +59,10 @@ class RowsController < ApplicationController
     respond_to do |want|
       if @row.update_attributes(params)
         want.html {render :text => "success"}
+        want.json {render :json => @row.to_json}
       else
         want.html {render :template => '/forms/show',:layout => 'simple'}
+        want.json {render :json => @row.errors.to_json}
       end
     end
   end
@@ -68,10 +70,11 @@ class RowsController < ApplicationController
   def destroy
     klass = @form.klass
     @row = klass.find(params[:id])
-    @row.destroy if @row
+    klass.delete(@row._id) if @row
     
     respond_to do |want|
       want.html {render :text => "success"}
+      want.json {render :json => [:ok]}
     end
   end
   
