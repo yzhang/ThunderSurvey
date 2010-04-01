@@ -8,7 +8,7 @@
     
     $(window).resize(function() {  
       height = $(window).height() - 100;     
-      form_height = height - 65
+      form_height = height - 65;
       $('#form_wrapper').height(height); 
       $('#form').height(form_height);
     });   
@@ -29,31 +29,7 @@
   </section>
    
   <section id="form">  
-    <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key),:html => {:id => 'edit_form'}, :remote => true) do |f| %>
-      <%= f.error_messages %> 
-      <!-- 表单头 -->
-      <div id="form_header">
-         <%= render :partial => 'form', :object => f %>
-      </div>  
-      
-      <!-- 表单通知设定 -->
-      <div style="display:none;" id="notify_setting">
-        <p>
-          <%= f.label :notify_type, '通知方式' %>
-          <%= f.radio_button :notify_type, 'email' %>邮件通知
-        </p>
-        <p>
-          <%= f.label :notify_email, '发送通知到此信箱' %>
-          <%= f.text_field :notify_email %>
-        </p>
-        <p>
-          <%= f.label :thanks_message, '提交成功后的感谢信息' %><br />
-          <%= f.text_area :thanks_message %>
-        </p>
-      </div>
-      <%=f.submit 'submit',:id => 'form_submit',:style => 'display:none;' %>
-      <div id="field_positions" style="display:none"></div>
-    <% end %>  
+    <%= render :partial => 'setting' %>  
     <!-- 表单项 --> 
     <div id="fields">   
       <% @fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
