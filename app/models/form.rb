@@ -1,4 +1,6 @@
 require 'digest/sha1'
+require 'net/http'
+require 'uri'
 
 class Form
   include ActiveModel::Validations
@@ -11,6 +13,7 @@ class Form
   key :user_id, String
   key :edit_key, String
   key :notify_email, String
+  key :notify_url, String
   key :notify_type, String, :default => 'email'
   key :thanks_message, String  # 新用户注册成功后跳转的URL
   key :maximum_rows, Integer, :default => 0 #允许的最大记录数
@@ -74,15 +77,24 @@ class Form
     klass
   end
   
-  def deliver_notification
+  def deliver_notification(row)
     case self.notify_type
     when 'email'
-      deliver_email_notification
+      deliver_email_notification(row)
+    when 'url'
+      url_callback(row)
     end
   end
   
-  def deliver_email_notification
+  def deliver_email_notification(row)
     Mailer.registrant_notification(self).deliver unless self.notify_email.blank?
+  end
+  
+  def url_callback(row)
+    return if self.notify_url.blank?
+    
+    url = URI.parse(self.notify_url)
+    res = Net::HTTP.post_form(url, {'form_id'=> self.id, 'row_id'=>row.id})
   end
   
   def sort_fields(positions)
