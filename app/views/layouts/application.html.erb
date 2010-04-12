@@ -25,35 +25,39 @@
   	$.jgrid.useJSON = true;
   </script>
   <script language="JavaScript" src="/javascripts/jquery.jqgrid.js"></script>
-
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){     
+      $('.button').button();
+     })    
+     
+  </script>
   <%= yield :headers %>                                                   
   <title>沙路在线表单</title>
 </head>
 
-<body>
+<body>   
+  <header class='header'>
+    <div class="logo">
+      <a href="/">沙路在线表单</a>
+    </div>
+    <nav class='login'>
+      <% if logged_in? %>	
+        <%= link_to '注销', logout_path, :method => 'delete' %>
+      <% else %>
+        <%= link_to '注册新用户', signup_path %> |
+        已经注册了？<%= link_to '立即登录', login_path %>
+      <% end %>
+    </nav>
+  </header>
   <div id="main_container">
-    <header class='all'>
-      <div class="logo">
-        <a href="/">沙路在线表单</a>
-      </div>
-      <nav class='login'>
-        <% if logged_in? %>	
-          <%= link_to '注销', logout_path, :method => 'delete' %>
-        <% else %>
-          <%= link_to '注册新用户', signup_path %> |
-          已经注册了？<%= link_to '立即登录', login_path %>
-        <% end %>
-      </nav>
-    </header>
-    
     <section class="content">
         <section id="flash"><%= raw(flash_div) %></section>
         <div id="saving" style="display:none;">正在保存...</div>
         <%= yield %>
     </section>
-    <footer>
-         sandsroad
-    </footer>
-  </div>
+  </div> 
+  <footer>
+       sandsroad
+  </footer>
 </body>
 </html>

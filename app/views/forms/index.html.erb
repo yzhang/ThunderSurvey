@@ -1,21 +1,39 @@
+<% content_for :headers do -%>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){     
+     $("td.title").hover(
+       function(){$(this).find('.action').toggle()})
+     })    
+  </script>
+<% end -%>
 <section class='form_list'>
-  <header>
-    <h1>你的表单</h1>
-  </header>
-  <ul>
-<% @forms.each do |form| %>
-  <li><%= link_to form.title, form,:target => '_blank' %>
-  (<%= link_to '查看结果', form_rows_path(form, :edit_key => form.edit_key) %> |
-  <% if false %>
-  <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=880,height=655,left=0,top=0');" title="tool tip">编辑</a> |
-  <% end %>
-  <%= link_to '编辑', edit_form_path(form, :edit_key => form.edit_key), :target => '_blank' %>
-  <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %>
-  )</li>
-<% end %>                  
-  </ul>
-  <%= will_paginate @forms %>
+  <header class='pagenav'>
+    <h1>控制面板</h1>      
+  </header>       
+    <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>
+  <%= will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻'  %>
+  <table border="0" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>最后更新</th>
+    </tr> 
+  </thead>
+  <tbody> 
+    <% @forms.each do |form| %> 
+    <tr>
+      <td class='title'><strong><%= link_to form.title, form,:target => '_blank'%></strong>
+      <div class='action' style='display:none'>
+        <%= link_to '结果', form_rows_path(form, :edit_key => form.edit_key), :target => '_blank' %> |
+        <%= link_to '编辑', edit_form_path(form, :edit_key => form.edit_key), :target => '_blank' %> | 
+        <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %>
+      </div>  
+      </td>  
+      <td><%= form.updated_at.to_date %></td>
+    <% end %>       
+  </tbody>
+  </table>
+  <%= will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>
 </section>
-  <p> 
-    <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="tool tip">New form</a>
-  </p>
+
+         

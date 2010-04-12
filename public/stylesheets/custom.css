@@ -19,7 +19,7 @@ body{
 	font-size:12px;
 	text-align:left;
 	word-spacing:1px;
-	background:#50555D;
+	background:#EEEEEE;
 
 }            
 
@@ -29,6 +29,44 @@ header,section,footer{
 
 footer {
 	height: 25px;
+}  
+
+/* ---- href ------*/    
+a {
+	font-size: 12px;
+	text-decoration: none;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+	color: #0099FF;
+}
+a:active {
+	text-decoration: none;
+	color: #000000;
+}
+a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+
+.ag:link {
+	color: #0099FF;
+	text-decoration: none;
+}
+.ag:hover {
+	text-decoration: underline;
+	color: #0099FF;
+}
+.ag:active {
+	text-decoration: none;
+}
+.ag:visited {
+	text-decoration: none;
+	color: #009900;
 }
 
 /* Headings */
@@ -45,15 +83,12 @@ ul li{
 
 /* ---- header -----*/
 
-header.all{       
-	padding:10px;
+.header{       
+	padding:5px 10px;
+	height:18px;
 	margin-bottom:10px;
-	height:25px;
 	background:#fff;
-	-moz-border-radius-bottomleft: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-webkit-border-bottom-right-radius: 5px;
+	border-bottom:1px solid #ccc;
 }                     
 
 .logo{ 
@@ -65,7 +100,19 @@ nav.login{
 	float:right;
 } 
 
-/* ----- header ---- */      
+/* ----- header ---- */ 
+
+.pagenav{
+   border-bottom:1px dotted #ccc;
+   margin-bottom:10px;          
+}
+
+header h1{
+	width:200px;
+	font-size:18px; 
+	padding:10px;
+   
+}     
 
 #main_container{
 	margin:0 auto;
@@ -79,7 +126,8 @@ nav.login{
 	-webkit-border-radius: 5px; 
 }    
 
-footer{
+footer{  
+	text-align:center;
 	padding:10px 20px;
 }
 
@@ -223,3 +271,70 @@ textarea{
 	z-index:2;
 }
     
+/* --- table ---*/
+table{    
+	border:1px solid #ccc;
+	width:100%;
+}  
+
+table thead tr th, table tfoot tr th {
+	background:url(/images/bg/blue-grad.png);    
+	text-align:center;
+	font-size: 14px;
+	padding: 4px;
+}
+
+table tr td{
+	border-bottom:1px solid #eee;
+	text-align:center;
+}
+
+table td{        
+	font-size:14px;
+	color: #565770;
+	padding: 7px 7px 5px;
+	vertical-align: top;
+	height:35px;
+}
+
+.action a{
+	font-size:10px;
+}  
+
+table td a{
+	font-size:14px;
+}     
+
+table tbody tr:hover;{
+	background:#000;
+}
+
+
+.flickr_pagination {   
+	margin:10px;
+  text-align: center;
+  padding: .3em; }
+  .flickr_pagination a, .flickr_pagination span {
+    padding: .2em .5em; }
+  .flickr_pagination span.disabled {
+    color: #AAA; }
+  .flickr_pagination span.current {
+    font-weight: bold;
+    color: #FF0084; }
+  .flickr_pagination a {
+    border: 1px solid #DDDDDD;
+    color: #0063DC;
+    text-decoration: none; }
+    .flickr_pagination a:hover, .flickr_pagination a:focus {
+      border-color: #003366;
+      background: #0063DC;
+      color: white; }
+  .flickr_pagination .page_info {
+    color: #aaa;
+    padding-top: .8em; }
+  .flickr_pagination .prev_page, .flickr_pagination .next_page {
+    border-width: 2px; }
+  .flickr_pagination .prev_page {
+    margin-right: 1em; }
+  .flickr_pagination .next_page {
+    margin-left: 1em; }
