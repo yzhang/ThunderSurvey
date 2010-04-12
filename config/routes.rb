@@ -11,6 +11,11 @@ Confforge::Application.routes.draw do
       end
     end
     
+    collection do
+      post :edit_individual
+      put  :update_individual
+    end
+    
     member do
       get :thanks
     end

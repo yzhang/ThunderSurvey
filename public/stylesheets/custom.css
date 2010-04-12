@@ -143,12 +143,12 @@ section.form_list ul li{
 	margin:0px 20px;
 }
 
-#form p{
+#form p,.setting_form p{
 	margin-bottom:10px;
 }   
 
 .form_oprate{ 
-	height:25px;
+	height:30px;
 	padding:5px 10px;
 	margin-bottom:10px;
 	border-bottom:1px solid #eee;
@@ -279,18 +279,14 @@ table{
 
 table thead tr th, table tfoot tr th {
 	background:url(/images/bg/blue-grad.png);    
-	text-align:center;
 	font-size: 14px;
 	padding: 4px;
 }
 
-table tr td{
-	border-bottom:1px solid #eee;
-	text-align:center;
-}
 
-table td{        
-	font-size:14px;
+table td{  
+	border-bottom:1px solid #eee;        
+	font-size:10px;
 	color: #565770;
 	padding: 7px 7px 5px;
 	vertical-align: top;
@@ -298,20 +294,31 @@ table td{
 }
 
 .action a{
-	font-size:10px;
+	font-size:12px;
 }  
 
 table td a{
-	font-size:14px;
+	font-size:12px;
 }     
 
 table tbody tr:hover;{
 	background:#000;
-}
+}            
+         
+.tablenav{    
+	height:40px;
+	clear:both;
+} 
+
+.left{float:left;padding:10px .3em;}
+.right{float:right;}
+
+
+/* pagination*/
 
 
 .flickr_pagination {   
-	margin:10px;
+  margin:10px;
   text-align: center;
   padding: .3em; }
   .flickr_pagination a, .flickr_pagination span {
@@ -338,3 +345,4 @@ table tbody tr:hover;{
     margin-right: 1em; }
   .flickr_pagination .next_page {
     margin-left: 1em; }
+

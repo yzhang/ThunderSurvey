@@ -1,0 +1,13 @@
+<header class='header'>
+  <div class="logo">
+    <a href="/">沙路在线表单</a>
+  </div>
+  <nav class='login'>
+    <% if logged_in? %>	
+      你好 <%=current_user.login %> <%= link_to '注销', logout_path, :method => 'delete' %>
+    <% else %>
+      <%= link_to '注册新用户', signup_path %> |
+      已经注册了？<%= link_to '立即登录', login_path %>
+    <% end %>
+  </nav>
+</header>

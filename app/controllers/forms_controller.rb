@@ -6,7 +6,7 @@ class FormsController < ApplicationController
   # GET /forms
   # GET /forms.xml
   def index
-    @forms = Form.all(:user_id => current_user.id.to_s,:order => 'updated_at DESC').paginate(:page => params[:page], :per_page => '20')
+    @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '20')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,7 +79,10 @@ class FormsController < ApplicationController
           redirect_to(@form) 
         }
         format.js {
-          render :update do |page|
+          render :update do |page|  
+            if params[:mod] == 'dialog' 
+              page << "$('#notify_setting').dialog('close')"
+            end                                             
             page << '$("#saving").hide();'
           end
         }
@@ -89,8 +92,8 @@ class FormsController < ApplicationController
       else
         format.html { render :action => "edit" }
         format.js {
-          render :update do |page|
-            page << "alert('#{@form.errors.full_messages}')"
+          render :update do |page|   
+              page << "alert('#{@form.errors.full_messages}')"
           end
         }
         format.json  { render :json => @form.errors.to_json }
@@ -114,7 +117,9 @@ class FormsController < ApplicationController
     respond_to do |want|
       want.html { render :layout => params[:embed] ? 'embed' : 'simple' }
     end
-  end
+  end   
+  
+ 
   
   private 
   def set_form

@@ -121,5 +121,6 @@ class Form
   def update_timestamps
     self.created_at ||= Time.now
     self.updated_at = Time.now
-  end
+  end                 
+  
 end
