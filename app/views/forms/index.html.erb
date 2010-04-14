@@ -43,7 +43,7 @@
         <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %>
       </div>  
       </td>                                                                                 
-      <td><%= truncate(form.description,80) %></th>
+      <td><%= truncate(form.description,:length => 80) %></th>
       <td><%= form.klass.count %></td>
       <td><%= form.updated_at.to_date%></td>
     <% end %>       

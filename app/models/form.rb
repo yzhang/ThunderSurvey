@@ -16,7 +16,7 @@ class Form
   key :notify_url, String
   key :notify_type, String, :default => 'email'
   key :thanks_message, String  # 新用户注册成功后跳转的URL
-  key :maximum_rows, Integer, :default => 0 #允许的最大记录数
+  key :maximum_rows, Integer
   key :height,Integer
   
   key :created_at, Time, :default => Time.now

@@ -39,7 +39,7 @@
   <%= render :partial => '/shared/header' %>
   <div id="main_container">
     <section class="content">
-        <section id="flash"><%= raw(flash_div) %></section>
+        <%= render :partial => '/shared/notice' %> 
         <div id="saving" style="display:none;">正在保存...</div>
         <%= yield %>
     </section>
