@@ -35,7 +35,8 @@ class Form
   end
   
   def allow_insert?
-    self.maximum_rows == 0 || self.klass.count < self.maximum_rows
+   # self.maximum_rows == 0  || self.klass.count < self.maximum_rows
+    return true
   end
   
   def klass
@@ -63,7 +64,7 @@ class Form
     
     self.fields.each do |field|
       klass.key "f#{field.id}", String
-      klass.validates_presence_of "f#{field.id}".to_sym, :message => "#{field.name} can't be blank" if field.required
+      klass.validates_presence_of "f#{field.id}".to_sym, :message => "#{field.name} 不能为空" if field.required
       
       if field.input == 'check'
         klass.class_eval <<-METHOD

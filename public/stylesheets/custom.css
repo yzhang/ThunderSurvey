@@ -241,10 +241,15 @@ div.edit:hover {
 
 /* ---- input setting ------*/
 input[type=text] {
-  height:  18px;
+  min-width:200px;
+  height:18px;
   font-size: 12px;
 }                 
+    
 
+label{
+  color:#4C4C4C;  
+}
 textarea{
 	width:400px;
 	height:100px;
@@ -311,8 +316,43 @@ table tbody tr:hover;{
 } 
 
 .left{float:left;padding:10px .3em;}
-.right{float:right;}
+.right{float:right;}  
 
+/* for juhuiyi */
+
+.submit{
+	background: #ABABAB; 
+	display: inline-block; 
+	padding: 5px 40px 6px; 
+	color: #fff; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	border:none; 
+	font-size:14px;
+	position: relative;
+	cursor: pointer;
+	margin-bottom:5px;
+	margin-left:50px;
+}  
+
+.submit:hover{
+	background: #0099FF;
+}
+
+.desc{
+	margin-left:10px;
+}  
+
+.error{
+	color:red;
+}     
+
+.required{
+	color:#CC004A;
+}
 
 /* pagination*/
 
@@ -346,3 +386,14 @@ table tbody tr:hover;{
   .flickr_pagination .next_page {
     margin-left: 1em; }
 
+
+
+/* ** ** paragraph styling ** ** */
+p {margin:0 0 1.52em;}
+	p img.left {float:left;margin:1.52em 1.52em 1.52em 0;padding:0;}
+	p img.right {float:right;margin:1.52em 0 1.52em 1.52em;}
+
+/* ** ** forms ** ** */
+form fieldset {-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius:5px; padding-top:5px; padding-left:5px; border:1px solid #ccc; }
+form fieldset legend {font-size:1.4em; padding:0 5px;}
+form input[type=text], form input[type=email], form input[type=url] {-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius:4px; height:14px; margin-bottom:5px; border:1px solid #ccc; padding:4px 0 1px 5px;}

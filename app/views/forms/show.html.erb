@@ -1,7 +1,7 @@
 <% unless params[:embed] -%>
 <header>
     <h1><%=h @form.title %></h1>   
-    <div>
+    <div class='desc'>
       <%=raw(simple_format(@form.description)) %>
     </div>
 </header>
@@ -12,6 +12,6 @@
     <%= hidden_field_tag :embed,params[:embed] %>
   <% end %>
 <p>
-  <%= submit_tag '提交' %>
+  <%= submit_tag '提交',:class => 'submit' %>
 </p>     
-<% end %>
+<% end %>   
