@@ -44,7 +44,9 @@ function field_done_editing(e)
   field_div.css('background-color','') 
   if(field_input == 'date') {
     $("#" + field_uuid).datepicker({changeMonth:true, changeYear:true});
-  }
+  }                                                      
+  // 设定表单高度
+  $('#form_height').val($('#fields').innerHeight());      
 }
 
 function field_cancel_editing(e)
@@ -103,6 +105,8 @@ function field_add_option(e, type)
 function field_remove_option(e)
 {
   $(e).parent().remove();
+  // 设定表单高度
+  $('#form_height').val($('#fields').innerHeight());
 }   
 
 function toggle_opration(e){

@@ -6,12 +6,7 @@
   <script type="text/javascript" charset="utf-8">
     var field_count = <%= @form.fields.length + 1 %>;   
     
-    $(window).resize(function() {  
-      height = $(window).height() - 100;     
-      form_height = height - 65;
-      $('#form_wrapper').height(height); 
-      $('#form').height(form_height);
-    }); 
+
   </script>
 <% end -%>   
 <div id="form_wrapper"> 
@@ -22,12 +17,13 @@
       </div>
       <div class='setting'>     
       <%= link_to('通知设置',   '#', :onclick => "$('#notify_setting').dialog({height:280,width:450});",:class => 'button',:id => 'notify') %>
-      <%= link_to('保存',   '#', :onclick => "$('#form_height').val($('#form').height());$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
+      <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
     </nav>
   </section>
    
-  <section id="form">  
+  <section id="form" >
+    <%= @form.height %>  
     <%= render :partial => 'setting' %>  
     <!-- 表单项 --> 
     <div id="fields">   
@@ -50,6 +46,4 @@
   <section class='form_preview'>
     <%= link_to '预览表单', form_path(@form), :target => '_blank',:class => 'button' %>
   </section>
-  
-  
-</div>
+</div>  

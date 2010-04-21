@@ -108,7 +108,7 @@ function form_add_field(e)
   field_count += 1;
   now = new Date();
   new_field.find('.form #field_uuid').val(now.getTime());
-	$("#saving").show();
+  $("#saving").show();
   new_field.find('#field_submit').submit();    
   $('#form').scrollTo('max');
   $.scrollTo('max')
