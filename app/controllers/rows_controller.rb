@@ -35,13 +35,14 @@ class RowsController < ApplicationController
     return destroy if params[:oper] == 'del'
     
     params[:row][:created_at] = Time.now
+
     klass = @form.klass
     @row = klass.new(params[:row])
     
     respond_to do |want|
       if @form.allow_insert? && @row.save
-        @form.deliver_notification(@row)
-        want.html {redirect_to thanks_form_path(@form,:embed => params[:embed] )}
+        @res = @form.deliver_notification(@row)
+        want.html {redirect_to thanks_form_path(@form,:embed => params[:embed],:res => @res )}
       else
        # raise @row.errors.to_s
         want.html {render :template => '/forms/show',:layout => params[:embed].blank? ? 'simple' : 'embed' }

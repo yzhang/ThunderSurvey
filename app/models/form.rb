@@ -50,6 +50,7 @@ class Form
     klass.send(:include, ActiveModel::Naming)
     klass.set_collection_name(self.id.to_s)
     klass.key "created_at", Time
+    klass.key 'order_id',Integer #保存订单信息
     klass.class_eval <<-METHOD
       def id
         self._id.to_s
@@ -65,6 +66,7 @@ class Form
     self.fields.each do |field|
       klass.key "f#{field.id}", String
       klass.validates_presence_of "f#{field.id}".to_sym, :message => "#{field.name} 不能为空" if field.required
+      klass.validates_format_of "f#{field.id}".to_sym, :message => ' 必须为email格式',:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i if field.intern == 'email'
       
       if field.input == 'check'
         klass.class_eval <<-METHOD
@@ -95,7 +97,8 @@ class Form
     return if self.notify_url.blank?
     
     url = URI.parse(self.notify_url)
-    res = Net::HTTP.post_form(url, {'form_id'=> self.id, 'row_id'=>row.id})
+    res = Net::HTTP.post_form(url, {'form_id'=> self.id, 'row_id'=>row.id,'order_id' => row.order_id }) 
+    return res.body
   end
   
   def sort_fields(positions)
