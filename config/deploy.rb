@@ -59,7 +59,9 @@ namespace :deploy do
   
   desc "Rake database"
   task :migrate, :roles => :app, :only => {:primary => true} do
-    #run "cd #{deploy_to}/current && RAILS_ENV=#{env} rake db:schema:load"
+    run "cd #{deploy_to}/current/public && ln -s . add_expires_header"
+    run "cd #{deploy_to}/current && rm public/stylesheets/*.cache.css"
+    run "cd #{deploy_to}/current && rm public/javascripts/*.cache.js"
   end
   
   desc "Restart the app server"
