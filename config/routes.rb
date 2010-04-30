@@ -23,11 +23,9 @@ Confforge::Application.routes.draw do
 
   match '/logout' => 'sessions#destroy', :as => :logout
   match '/login' => 'sessions#new', :as => :login
-  match '/register' => 'users#create', :as => :register
-  match '/signup' => 'users#new', :as => :signup
-  resources :users
+
   resource :session
   match '/thanks' => 'home#thanks', :as => :thanks
-  match '/' => 'forms#index'
+  root :to => 'forms#index'
   match '/:controller(/:action(/:id))'
 end
