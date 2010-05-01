@@ -3,8 +3,6 @@ class FormsController < ApplicationController
   before_filter :set_form, :only => [:edit, :update, :thanks]
   before_filter :verify_edit_key, :only => [:edit, :update]
   
-  # GET /forms
-  # GET /forms.xml
   def index
     @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '20')
 
