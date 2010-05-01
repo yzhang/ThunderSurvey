@@ -1,0 +1,7 @@
+A <%= @exception.class %> occurred in <%= @controller.controller_name %>#<%= @controller.action_name %>:
+
+  <%= raw @exception.message %>
+  <%= raw @backtrace.first %>
+
+<%  sections = [] %>
+<%= raw sections.join %>
