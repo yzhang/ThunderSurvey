@@ -41,6 +41,28 @@ namespace :deploy do
     #web.enable
   end
   
+  task :conf do
+    # put up the maintenance screen
+    #     ENV['REASON'] = 'an application upgrade'
+    #     ENV['UNTIL']  = Time.now.+(600).strftime("%H:%M %Z")
+    #     web.disable
+    set :deploy_to, "/home/yzhang/app/biaodan"
+    set :branch, "conf"
+    set :env, "production"
+    
+    transaction do
+      update_code
+      symlink
+      copy_configs
+      migrate
+    end
+    
+    restart
+
+    # remove the maintenance screen
+    #web.enable
+  end
+  
   desc "Rake database"
   task :migrate, :roles => :app, :only => {:primary => true} do
     run "cd #{deploy_to}/current/public && ln -s . add_expires_header"
