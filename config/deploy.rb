@@ -19,7 +19,7 @@ namespace :deploy do
   end
   
   desc "Long deploy will update the code migrate the database and restart the servers"
-  task :conf do
+  task :master do
     # put up the maintenance screen
     #     ENV['REASON'] = 'an application upgrade'
     #     ENV['UNTIL']  = Time.now.+(600).strftime("%H:%M %Z")
