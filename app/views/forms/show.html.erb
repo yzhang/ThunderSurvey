@@ -1,5 +1,5 @@
 <% unless @form.klass.all(:order_id => params[:order_id].to_i).blank? %>
-订单已完成 
+订单已完成  
 <% else %>
 <% unless params[:embed] -%>
 <header>
@@ -9,7 +9,6 @@
     </div>
 </header>
 <% end -%>   
-<%= @form.notify_url %>      
 <% form_tag form_rows_path(@form),:class => 'conforge' do %>    
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form} unless (field.inputable == false)%>   

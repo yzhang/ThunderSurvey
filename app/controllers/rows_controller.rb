@@ -1,6 +1,7 @@
 class RowsController < ApplicationController
   before_filter :set_form
-  before_filter :verify_edit_key, :only => [:index]
+  before_filter :verify_edit_key, :only => [:index]    
+  skip_before_filter :verify_authenticity_token
 
   def index
     klass = @form.klass
@@ -42,7 +43,7 @@ class RowsController < ApplicationController
     respond_to do |want|
       if @form.allow_insert? && @row.save
         @res = @form.deliver_notification(@row)
-        want.html {redirect_to thanks_form_path(@form,:embed => params[:embed],:res => @res )}
+        want.html {redirect_to thanks_form_path(@form,:embed => params[:embed],:res => @res)}
       else
        # raise @row.errors.to_s
         want.html {render :template => '/forms/show',:layout => params[:embed].blank? ? 'simple' : 'embed' }
