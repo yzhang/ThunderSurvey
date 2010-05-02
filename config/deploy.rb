@@ -7,9 +7,9 @@ set :repository, "git@github.com:yzhang/Confforge.git"
 set :scm, :git
 set :deploy_via, :remote_cache
 
-role :app, "51qiangzuo.com", :primary => true
-role :web, "51qiangzuo.com"
-role :db,  "51qiangzuo.com", :primary => true
+role :app, "f.51qiangzuo.com", :primary => true
+role :web, "f.51qiangzuo.com"
+role :db,  "f.51qiangzuo.com", :primary => true
 
 namespace :deploy do
   set :deploy_to, "/home/yzhang/app/biaodan"  
@@ -17,22 +17,6 @@ namespace :deploy do
   desc "Custom after update code to put production database.yml in place."
   task :copy_configs, :roles => :app do
   end
-  # 
-  # desc "Deploy to dev server"
-  # task :dev do
-  #   set :deploy_to, "/home/jill/dev"
-  #   set :branch, "dev"
-  #   set :env, "development"
-  #   
-  #   transaction do
-  #     update_code
-  #     symlink
-  #     copy_configs
-  #     migrate
-  #   end
-  #   
-  #   restart
-  # end
   
   desc "Long deploy will update the code migrate the database and restart the servers"
   task :master do
@@ -41,7 +25,29 @@ namespace :deploy do
     #     ENV['UNTIL']  = Time.now.+(600).strftime("%H:%M %Z")
     #     web.disable
     set :deploy_to, "/home/yzhang/app/biaodan"
-    set :branch, "master"
+    set :branch, "conf"
+    set :env, "production"
+    
+    transaction do
+      update_code
+      symlink
+      copy_configs
+      migrate
+    end
+    
+    restart
+
+    # remove the maintenance screen
+    #web.enable
+  end
+  
+  task :conf do
+    # put up the maintenance screen
+    #     ENV['REASON'] = 'an application upgrade'
+    #     ENV['UNTIL']  = Time.now.+(600).strftime("%H:%M %Z")
+    #     web.disable
+    set :deploy_to, "/home/yzhang/app/biaodan"
+    set :branch, "conf"
     set :env, "production"
     
     transaction do
@@ -82,8 +88,8 @@ namespace :deploy do
   desc "Rake database"
   task :migrate, :roles => :app, :only => {:primary => true} do
     run "cd #{deploy_to}/current/public && ln -s . add_expires_header"
-    run "cd #{deploy_to}/current && rm public/stylesheets/*.cache.css"
-    run "cd #{deploy_to}/current && rm public/javascripts/*.cache.js"
+    run "cd #{deploy_to}/current && rm -rf public/stylesheets/*.cache.css"
+    run "cd #{deploy_to}/current && rm -rf public/javascripts/*.cache.js"
   end
   
   desc "Restart the app server"

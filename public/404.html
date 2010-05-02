@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
+<html>                       
+<head>                       
+  <meta charset="utf-8" />  
+  <meta name='viewport' content='width=device-width' />
+  <title>页面未找到 (404)</title> 
   <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
+    body { background-color: #B0B0B0; color: #666; text-align: center; font-family: arial, sans-serif; }
+    div.dialog { 
+      background:#fff;
       width: 25em;
-      padding: 0 4em;
+      padding: 1em 4em;
       margin: 4em auto 0 auto;
       border: 1px solid #ccc;
       border-right-color: #999;
       border-bottom-color: #999;
     }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+    h1 { font-size: 100%;font-size:2em;  line-height: 1.5em; }
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
+  <div class="dialog">           
+    <a href='/'><img src='/images/logo.png' border="0" /></a>
+    <h1>服务器找不到您请求的页面.</h1>         
+    <img src='/images/bg/404.gif' border="0" />
+    <p>有可能输入的地址有误或者页面被重命名了.</p> 
+    >>返回<a href='/'>抢座网首页</a>
   </div>
 </body>
 </html>
