@@ -4,13 +4,14 @@ class RowsController < ApplicationController
 
   def index
     klass = @form.klass
-    @rows = klass.all(:order => 'created_at')
+    @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
     
     respond_to do |want|
       want.html { render :layout => params[:embed].blank? ? 'application' : "grid"}
       want.json {
         # 如果grid参数不为0，则为Grid调用，否则为ActiveResource
         if params[:grid] == '0'
+          @rows << {:total_entries => @rows.total_entries}
           render :json => @rows.to_json
         else
           rows = []
