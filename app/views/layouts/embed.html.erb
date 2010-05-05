@@ -1,10 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-  "http://www.w3.org/TR/html4/strict.dtd">
+<!doctype html>      
 
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="zh">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
+<head>
+  <meta name='viewport' content='width=device-width' />
+  <meta charset="utf-8" />
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
   <meta name="csrf-param" content="authenticity_token" />
   
@@ -13,7 +13,7 @@
           :cache => 'embed.cache' %>
   
   <%= yield :headers %>                                                   
-  <title>Frontend</title>
+  <title>在线表单</title>
 </head>
 
 <body style="background:#FFF;">
