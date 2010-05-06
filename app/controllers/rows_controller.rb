@@ -55,7 +55,6 @@ class RowsController < ApplicationController
         @res = @form.deliver_notification(@row)
         want.html {redirect_to thanks_form_path(@form,:embed => params[:embed],:res => @res)}
       else
-       # raise @row.errors.to_s
         want.html {render :template => '/forms/show',:layout => params[:embed].blank? ? 'simple' : 'embed' }
       end
     end

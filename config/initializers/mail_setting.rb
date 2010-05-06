@@ -8,4 +8,4 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 } 
 
-ActionMailer::Base.default_url_options[:host] = (Rails.env == 'production' ? "51qiangzuo.com" : "localhost:3001")
+ActionMailer::Base.default_url_options[:host] = (Rails.env == 'production' ? "www.51qiangzuo.com" : "localhost:3001")
