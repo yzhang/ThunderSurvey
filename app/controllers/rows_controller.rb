@@ -1,6 +1,6 @@
 class RowsController < ApplicationController
   before_filter :set_form
-  before_filter :verify_edit_key, :only => [:index]    
+  before_filter :verify_edit_key, :only => [:index, :show]    
   skip_before_filter :verify_authenticity_token
 
   def index
@@ -29,6 +29,15 @@ class RowsController < ApplicationController
           render :json => data.to_json
         end
       }
+    end
+  end
+  
+  def show
+    klass = @form.klass
+    @row = klass.find(params[:id])
+    
+    respond_to do |wants|
+      wants.json {render :json => @row.to_json}
     end
   end
   
