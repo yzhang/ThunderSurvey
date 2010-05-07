@@ -1,17 +1,18 @@
 class RowsController < ApplicationController
   before_filter :set_form
-  before_filter :verify_edit_key, :only => [:index]    
+  before_filter :verify_edit_key, :only => [:index, :show]    
   skip_before_filter :verify_authenticity_token
 
   def index
     klass = @form.klass
-    @rows = klass.all(:order => 'created_at')
+    @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
     
     respond_to do |want|
       want.html { render :layout => params[:embed].blank? ? 'application' : "grid"}
       want.json {
         # 如果grid参数不为0，则为Grid调用，否则为ActiveResource
         if params[:grid] == '0'
+          @rows << {:total_entries => @rows.total_entries}
           render :json => @rows.to_json
         else
           rows = []
@@ -31,6 +32,15 @@ class RowsController < ApplicationController
     end
   end
   
+  def show
+    klass = @form.klass
+    @row = klass.find(params[:id])
+    
+    respond_to do |wants|
+      wants.json {render :json => @row.to_json}
+    end
+  end
+  
   def create
     return update if params[:oper] == 'edit'
     return destroy if params[:oper] == 'del'
@@ -45,7 +55,6 @@ class RowsController < ApplicationController
         @res = @form.deliver_notification(@row)
         want.html {redirect_to thanks_form_path(@form,:embed => params[:embed],:res => @res)}
       else
-       # raise @row.errors.to_s
         want.html {render :template => '/forms/show',:layout => params[:embed].blank? ? 'simple' : 'embed' }
       end
     end

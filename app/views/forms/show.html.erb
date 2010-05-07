@@ -1,5 +1,5 @@
 <% unless @form.klass.all(:order_id => params[:order_id].to_i).blank? %>
-订单已完成  
+  订单已完成 
 <% else %>
 <% unless params[:embed] -%>
 <header>
@@ -15,10 +15,6 @@
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form} unless (field.inputable == false)%>   
     <%= hidden_field_tag :embed,params[:embed] %>
     <%= hidden_field_tag 'row[order_id]',params[:order_id]%>
+    <p><%= submit_tag '提交',:class => 'submit' %></p>     
   <% end %>
-<p>
-  <%= submit_tag '提交',:class => 'submit' %>
-</p>     
-<% end %>   
-
 <% end %>

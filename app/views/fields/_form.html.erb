@@ -21,7 +21,7 @@
   </div>
   
   <p>
-    <%= form.submit '保存', :onclick => 'field_done_editing(this);' %>
+    <%= form.submit '保存', :onclick => 'field_done_editing(this);return false;' %>
     <%= form.check_box :required %>    
     <%= form.label :required, '设为必填项' %>
     | <%= link_to('取消', '#', :onclick => "field_cancel_editing(this);", :remote => true) %>
