@@ -1,7 +1,10 @@
+<% unless params[:embed] -%>  
 <p>
 <%=form.text_field :title, :size => '40' %>
-</p>
+</p>  
+
 <p>
 <%= form.text_area :description %>
-</p>
+</p>                              
+<% end %>
 <%= form.hidden_field :height,:id => 'form_height' %>

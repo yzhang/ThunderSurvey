@@ -186,7 +186,6 @@ div.edit:hover {
 }          
 
 .q_title{     
-	font-weight:bold;
 	margin:0px; 
 	padding:0px;
 }   
@@ -198,17 +197,22 @@ div.edit:hover {
 
 /* ----  form field setting -----*/
 #form_title{     
-	height:20px;
-	font-size:14px;
+	height:30px;
+	font-size:18px;
 	font-weight:bold;
 }
 
 #form_description{
+	background:#F6F6F6;
 	font-size:12px;  
 	width: 580px;
   	height: 46px;
   	padding: 2px 5px;
-}   
+} 
+
+#form_description:hover,#form_description:focus{
+	background:#fff;
+}  
 
 .new{
 	float:left;
@@ -321,26 +325,30 @@ table tbody tr:hover;{
 /* for juhuiyi */
 
 .submit{
-	background: #ABABAB; 
+	font-family:'微软雅黑' arial '宋体'; 
+	background: url(/images/bg/btn.gif) #525252;
 	display: inline-block; 
-	padding: 5px 40px 6px; 
+	height:25px; 
 	color: #fff; 
-	-moz-border-radius: 5px; 
-	-webkit-border-radius: 5px;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	border:none; 
-	font-size:14px;
+	border: 2px solid;
+	border-color:#D9D9D9 #535353 #535353 #C1C1C1;
+	font-size:16px; 
 	position: relative;
-	cursor: pointer;
+	cursor: pointer;  
+	padding:0 30px;
 	margin-bottom:5px;
 	margin-left:50px;
 }  
 
-.submit:hover{
-	background: #0099FF;
-}
+input[type="text"],input[type="password"],textarea{
+	background:#F6F6F6;
+}   
+
+input[type="text"]:hover,input[type="password"]:hover, input[type="text"]:focus,input[type="password"]:focus,
+textarea:hover,textarea:focus,textarea {
+    background:#fff;
+}  
+
 
 .desc{
 	margin-left:10px;
@@ -390,10 +398,10 @@ table tbody tr:hover;{
 
 /* ** ** paragraph styling ** ** */
 p {margin:0 0 1.52em;}
-	p img.left {float:left;margin:1.52em 1.52em 1.52em 0;padding:0;}
-	p img.right {float:right;margin:1.52em 0 1.52em 1.52em;}
+p img.left {float:left;margin:1.52em 1.52em 1.52em 0;padding:0;}
+p img.right {float:right;margin:1.52em 0 1.52em 1.52em;}
 
 /* ** ** forms ** ** */
-form fieldset {-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius:5px; padding-top:5px; padding-left:5px; border:1px solid #ccc; }
+form fieldset {/*-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius:5px;*/ padding-top:5px; padding-left:5px; border:1px solid #ccc; }
 form fieldset legend {font-size:1.4em; padding:0 5px;}
-form input[type=text], form input[type=email], form input[type=url] {-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius:4px; height:14px; margin-bottom:5px; border:1px solid #ccc; padding:4px 0 1px 5px;}
+form input[type=text], form input[type=email], form input[type=url] {/*-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius:4px;*/ height:14px; margin-bottom:5px; border:1px solid #ccc; padding:4px 0 1px 5px;}
