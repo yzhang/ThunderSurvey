@@ -98,7 +98,7 @@ class Form
     
     url = URI.parse(self.notify_url)
     res = Net::HTTP.post_form(url, {'form_id'=> self.id, 'row_id'=>row.id,'order_id' => row.order_id }) 
-    return res.body
+    return  res.body
   end
   
   def sort_fields(positions)
