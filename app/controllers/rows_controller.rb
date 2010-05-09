@@ -53,9 +53,21 @@ class RowsController < ApplicationController
     respond_to do |want|
       if @form.allow_insert? && @row.save
         @res = @form.deliver_notification(@row)
-        want.html {redirect_to thanks_form_path(@form,:embed => params[:embed],:res => @res)}
+       # want.html {redirect_to thanks_form_path(@form,:embed => params[:embed],:res => @res)}   
+        want.js { render :js => "parent.window.location='#{@res}'" }
       else
         want.html {render :template => '/forms/show',:layout => params[:embed].blank? ? 'simple' : 'embed' }
+        want.js { 
+          render :update do |page|   
+            @form.fields.each do |field|  
+              if @row.errors["f#{field.id}"].any?
+                page.replace_html field.id.to_s + '_field',@row.errors["f#{field.id}"]
+              else
+                page.replace_html field.id.to_s + '_field',''   
+              end
+            end
+          end
+           }
       end
     end
   end

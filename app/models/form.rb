@@ -95,7 +95,6 @@ class Form
   
   def url_callback(row)
     return if self.notify_url.blank?
-    
     url = URI.parse(self.notify_url)
     res = Net::HTTP.post_form(url, {'form_id'=> self.id, 'row_id'=>row.id,'order_id' => row.order_id }) 
     return  res.body

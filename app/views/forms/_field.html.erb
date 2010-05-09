@@ -2,6 +2,6 @@
   <div class="question" id="question<%= field.id %>">
     <%= label_tag field.id,field.name, :class => 'q_title'%><%=content_tag(:abbr,'*',:class=> 'required') if field.required %><br />
     <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>
-    <span class='error'><%= @row.errors["f#{field.id}"] %></span>
+    <span id="<%=field.id%>_field" class='error'></span>
   </div>
 </div>
