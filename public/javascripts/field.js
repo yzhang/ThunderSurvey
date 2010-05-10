@@ -46,7 +46,9 @@ function field_done_editing(e)
     $("#" + field_uuid).datepicker({changeMonth:true, changeYear:true});
   }                                                      
   // 设定表单高度
-  $('#form_height').val($('#fields').innerHeight());      
+  $('#form_height').val($('#fields').innerHeight());
+	// 保存字段设置
+	field_div.find('.form #field_submit').submit();     
 }
 
 function field_cancel_editing(e)

@@ -17,6 +17,8 @@ class FormsController < ApplicationController
   def show
     @form = Form.find(params[:id])
     @row = @form.klass.new
+    @embed = params[:embed]
+    @order_id = params[:order_id]
     
     respond_to do |format|
       if @form.allow_insert?

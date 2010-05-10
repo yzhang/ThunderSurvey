@@ -99,9 +99,9 @@ function form_add_field(e)
   var new_field = $("#fields").find('.field').last();
   new_field.find('.question').hide();
   new_field.find('.form').show();
-  new_field.find('.form #field_name').val('新问题' + field_count).css('color','#666');
+  new_field.find('.form #field_name').val('新问题' + (field_count - 100)).css('color','#666');
   new_field.css('background-color','#FDF2C6')  
-  new_field.find('.question label').html('新问题' + field_count);  
+  new_field.find('.question label').html('新问题' + (field_count - 100));  
   // initial position
   new_field.find('.field_position').val(field_count) 
   // focus guide

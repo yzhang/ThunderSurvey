@@ -4,9 +4,8 @@
   <%= javascript_include_tag 'field' %>
   <%= javascript_include_tag 'jquery.scrollTo' %>
   <script type="text/javascript" charset="utf-8">
-    var field_count = <%= @form.fields.length + 1 %>;   
-    
-
+    // 100以下的留给保留字段
+    var field_count = <%= @form.fields.length + 101 %>; 
   </script>
 <% end -%>   
 <div id="form_wrapper"> 
@@ -16,7 +15,6 @@
       <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> </button>
       </div>
       <div class='setting'>     
-      <%#= link_to('通知设置',   '#', :onclick => "$('#notify_setting').dialog({height:280,width:450});",:class => 'button',:id => 'notify') %>
       <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
     </nav>
