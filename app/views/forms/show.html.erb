@@ -1,20 +1,21 @@
 <% unless @form.klass.all(:order_id => params[:order_id].to_i).blank? %>
   订单已完成 
 <% else %>
-  <% unless params[:embed] -%>
-    <header>
-      <h1><%=h @form.title %></h1>   
-      <div class='desc'>
-        <%=raw(simple_format(@form.description)) %>
-      </div>
-    </header>
-  <% end -%>  
-  <% form_tag form_rows_path(@form),:class => 'conforge' do %>  
+<% unless params[:embed] -%>
+<header>
+    <h1><%=h @form.title %></h1>   
+    <div class='desc'>
+      <%=raw(simple_format(@form.description)) %>
+    </div>
+</header>
+<% end -%>   
+<div id='errors' class='error'></div>        
+  <% form_tag form_rows_path(@form),:class => 'conforge', :remote => true do %>    
     <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
       <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form} unless (field.inputable == false)%>   
     <% end %>
     <%= hidden_field_tag :embed, @embed %>
     <%= hidden_field_tag 'row[order_id]', @order_id%>
     <p><%= submit_tag '提交',:class => 'submit' %></p>     
-  <% end %>
-<% end %>
+   <% end %>
+<% end %> 
