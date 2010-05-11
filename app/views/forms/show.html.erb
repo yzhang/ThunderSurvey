@@ -24,6 +24,6 @@
     <% end %>         
     <%= hidden_field_tag :embed, @embed %>
     <%= hidden_field_tag 'row[order_id]', @order_id%>
-    <p><%= submit_tag '提交',:class => 'submit',:onclick => "remote_action(this)" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
+    <p><%= submit_tag '提交',:class => 'submit',:onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
    <% end %>
 <% end %> 
