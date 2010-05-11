@@ -46,18 +46,16 @@ class RowsController < ApplicationController
     return destroy if params[:oper] == 'del'
     
     params[:row][:created_at] = Time.now
-
+    
     klass = @form.klass
     @row = klass.new(params[:row])
     
     respond_to do |want|
       if @form.allow_insert? && @row.save
-        @res = @form.deliver_notification(@row)
-        want.js do
-          render :update do |page|
-            page << "window.location='#{thanks_form_url(@form, :embed => true)}'"
-          end
-        end
+        @res = @form.deliver_notification(@row)   
+        # 这里返回到活动的感谢谢,res是返回的对应订单感谢地址
+       # want.js {  render :js => "window.location='#{thanks_form_url(@form, :embed => true)}'" }
+         want.js{ render :js =>  "window.location='#{@res}'" }
       else
         @embed = params[:embed]
         @order_id = @row.order_id
