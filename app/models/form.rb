@@ -93,12 +93,13 @@ class Form
     Mailer.registrant_notification(self).deliver unless self.notify_email.blank?
   end
   
-  def url_callback(row)
-    return if self.notify_url.blank?
-    url = URI.parse(self.notify_url)
-    res = Net::HTTP.post_form(url, {'form_id'=> self.id, 'row_id'=>row.id,'order_id' => row.order_id }) 
-    return  res.body
-  end
+  # 改为报名成功直接返回会议网站
+  # def url_callback(row)
+  #   return if self.notify_url.blank?
+  #   url = URI.parse(self.notify_url)
+  #   res = Net::HTTP.post_form(url, {'form_id'=> self.id, 'row_id'=>row.id,'order_id' => row.order_id }) 
+  #   return  res.body
+  # end
   
   def sort_fields(positions)
     return if positions.nil? || !positions.is_a?(Hash) || positions.empty?

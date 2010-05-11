@@ -52,10 +52,10 @@ class RowsController < ApplicationController
     
     respond_to do |want|
       if @form.allow_insert? && @row.save
-        @res = @form.deliver_notification(@row)
+        params = ["form_id=#{@form.id}", "row_id=#{@row.id}","order_id=#{@row.order_id}"].join("&")
         want.js do
           render :update do |page|
-            page << "window.location='#{thanks_form_url(@form, :embed => true)}'"
+            page << "parent.window.location='#{@form.notify_url}?#{params}'"
           end
         end
       else
