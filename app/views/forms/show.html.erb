@@ -1,3 +1,11 @@
+<% content_for :headers do -%>
+  <script type="text/javascript" charset="utf-8"> 
+  function remote_action(e){
+    $('#spinner').show();
+    $('.submit').attr('disable','true') 
+  }
+  </script>
+<% end -%>
 <% unless @form.klass.all(:order_id => params[:order_id].to_i).blank? %>
   订单已完成 
 <% else %>
@@ -16,6 +24,6 @@
     <% end %>
     <%= hidden_field_tag :embed, @embed %>
     <%= hidden_field_tag 'row[order_id]', @order_id%>
-    <p><%= submit_tag '提交',:class => 'submit' %></p>  
+    <p><%= submit_tag '提交',:class => 'submit',:onclick => "remote_action(this)" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
    <% end %>
 <% end %> 

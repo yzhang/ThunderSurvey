@@ -63,7 +63,8 @@ class RowsController < ApplicationController
         @order_id = @row.order_id
         want.html {render :template => '/forms/show',:layout => params[:embed].blank? ? 'simple' : 'embed' }
         want.js { 
-          render :update do |page|   
+          render :update do |page|
+            page.hide 'spinner'   
             @form.fields.each do |field|  
               if @row.errors["f#{field.id}"].any?
                 page.replace_html field.id.to_s + '_field',@row.errors["f#{field.id}"]

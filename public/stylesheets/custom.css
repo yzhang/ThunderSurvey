@@ -244,12 +244,6 @@ div.edit:hover {
 } 
 
 /* ---- input setting ------*/
-input[type=text] {
-  min-width:200px;
-  height:18px;
-  font-size: 12px;
-}                 
-    
 
 label{
   color:#4C4C4C;  
@@ -325,30 +319,32 @@ table tbody tr:hover;{
 /* for juhuiyi */
 
 .submit{
-	font-family:'微软雅黑' arial '宋体'; 
-	background: url(/images/bg/btn.gif) #525252;
-	display: inline-block; 
-	height:25px; 
-	color: #fff; 
-	border: 2px solid;
-	border-color:#D9D9D9 #535353 #535353 #C1C1C1;
-	font-size:16px; 
-	position: relative;
+	font-family:'微软雅黑' arial '宋体';   
+	background: url(/images/bg/btn-short.png);     
+	height:26px;
+	width:100px;
+	color: #fff;
+	font-size:12px;
+	letter-spacing:4px;
 	cursor: pointer;  
-	padding:0 30px;
 	margin-bottom:5px;
-	margin-left:50px;
-}  
+	margin-left:50px; 
+	border:0 none;      
+}    
 
-input[type="text"],input[type="password"],textarea{
+input,textarea{
+	padding:2px;
 	background:#F6F6F6;
-}   
+	border:1px solid #ccc;  
+}
 
-input[type="text"]:hover,input[type="password"]:hover, input[type="text"]:focus,input[type="password"]:focus,
-textarea:hover,textarea:focus,textarea {
-    background:#fff;
-}  
+.inputFocus {
+	background: #fff;
+}
 
+.text_input{
+	width:240px;
+}
 
 .desc{
 	margin-left:10px;
@@ -360,6 +356,10 @@ textarea:hover,textarea:focus,textarea {
 
 .required{
 	color:#CC004A;
+}    
+
+#spinner{
+	display:none;
 }
 
 /* pagination*/
