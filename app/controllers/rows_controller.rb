@@ -55,9 +55,6 @@ class RowsController < ApplicationController
         params = ["form_id=#{@form.id}", "row_id=#{@row.id}","order_id=#{@row.order_id}"].join("&")
         want.js { render :js => "parent.window.location='#{@form.notify_url}?#{params}'" }
       else
-        @embed = params[:embed]
-        @order_id = @row.order_id
-        want.html {render :template => '/forms/show',:layout => params[:embed].blank? ? 'simple' : 'embed' }
         want.js { 
           render :update do |page|
             page.hide 'spinner'   
@@ -107,4 +104,5 @@ class RowsController < ApplicationController
   def set_form
     @form = Form.find(params[:form_id])
   end
+  
 end

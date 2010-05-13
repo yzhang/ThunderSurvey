@@ -17,9 +17,10 @@
       <%=raw(simple_format(@form.description)) %>
     </div>
 </header>
-<% end -%>   
+<% end -%>                    
+<%=@form.notify_url%>     
 <div id='errors' class='error'></div>        
-  <% form_tag form_rows_path(@form),:class => 'conforge', :remote => true do %>    
+  <% form_tag form_rows_path(@form),:class => 'conforge',:remote => true do %>    
     <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
       <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form} unless (field.inputable == false)%>   
     <% end %>         
