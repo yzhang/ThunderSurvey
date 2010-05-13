@@ -1,10 +1,11 @@
 <% content_for :headers do -%>
   <script type="text/javascript" charset="utf-8"> 
+  document.domain = "51qiangzuo.com"   
+      
   function remote_action(e){
     $('#spinner').show();
     $('.submit').attr('disable','disabled') 
-  }    
-  
+  }     
   </script>
 <% end -%>
 <% unless @form.klass.all(:order_id => params[:order_id].to_i).blank? %>
