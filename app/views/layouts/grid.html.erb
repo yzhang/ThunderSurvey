@@ -4,21 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
-  <meta name="csrf-token" content="<%= form_authenticity_token %>" />
-  <meta name="csrf-param" content="authenticity_token" />
-  
-  <%= stylesheet_link_tag "style",'custom', "jquery-ui", "ui.jqgrid", :cache => 'grid.cache'  %>
-  <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', 
-          'i18n/grid.locale-cn.js', 'jquery.jqgrid.js', :cache => 'grid.cache' %>
-  
+<%=render :partial => "/shared/scirpt_and_styles"%> 
   <script type="text/javascript">
   	$.jgrid.no_legacy_api = true;
   	$.jgrid.useJSON = true;
   </script>
-
-  <%= yield :headers %>                                                   
-  <title>Frontend</title>
 </head>
 
 <body style="background:#FFF;">
