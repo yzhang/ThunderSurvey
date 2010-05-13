@@ -2,14 +2,15 @@
   <script type="text/javascript" charset="utf-8"> 
   function remote_action(e){
     $('#spinner').show();
-    $('.submit').attr('disable','true') 
-  }
+    $('.submit').attr('disable','disabled') 
+  }    
+  
   </script>
 <% end -%>
 <% unless @form.klass.all(:order_id => params[:order_id].to_i).blank? %>
   订单已完成 
 <% else %>
-<% unless params[:embed] -%>
+<% unless params[:embed] -%>  
 <header>
     <h1><%=h @form.title %></h1>   
     <div class='desc'>

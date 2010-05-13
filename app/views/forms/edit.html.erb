@@ -38,9 +38,8 @@
     <div id="new_field" style="display:none;">
       <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
     </div>
-  </section>
-  <!-- 表单尾 -->
+  </section>  
   <section class='form_preview'>
-    <%= link_to '预览表单', form_path(@form), :target => '_blank',:class => 'button' %>
-  </section>
+    <%#= link_to '预览表单', form_path(@form), :target => '_blank',:class => 'button' %>
+  </section>  
 </div>  

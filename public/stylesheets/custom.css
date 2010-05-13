@@ -137,17 +137,24 @@ section.form_list ul li{
 }
 
 /* ---   form -----*/              
-#form{   
+#form{     
+	min-height:400px;
 	position:relative;
 	overflow:auto;
 	margin:0px 20px;
+}               
+
+
+* html #form{
+	height:400px;
 }
 
 #form p,.setting_form p{
 	margin-bottom:10px;
 }   
 
-.form_oprate{ 
+.form_oprate{      
+	background:#fdfdfd;
 	height:30px;
 	padding:5px 10px;
 	margin-bottom:10px;
