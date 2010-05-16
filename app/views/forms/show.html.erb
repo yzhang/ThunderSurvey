@@ -1,10 +1,9 @@
 <% content_for :headers do -%>
   <script type="text/javascript" charset="utf-8"> 
-  document.domain = "51qiangzuo.com"   
+ document.domain = "<%= RAILS_ENV == 'development' ? 'localhost' : '51qiangzuo.com' %>"   
       
   function remote_action(e){
     $('#spinner').show();
-    $('.submit').attr('disable','disabled') 
   }     
   </script>
 <% end -%>

@@ -7,10 +7,8 @@
   <% end %>
 </div>
 <p>
-  <p>
     <input type="checkbox" style="opacity:0.5;"/>
     <%= text_field_tag "option", "", :onfocus => "field_add_option(this, 'radio');", :style => "opacity:0.5;" %>
-  </p>
   <% if false %><%= link_to '增加选项', '#', :onclick => "field_add_option(this, 'radio')", :remote => true %><% end %>
 </p>
 

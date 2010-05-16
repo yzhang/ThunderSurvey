@@ -54,10 +54,10 @@ $(document).ready(function($) {
   });
 
 	//根据窗口大小自动调整表单模块的高度
-	var bottom_margin = $('body').height() - $(".form_preview").position().top;
-	$("#form").height(window.innerHeight - bottom_margin - $("#form").position().top);
+//	var bottom_margin = $('body').height() - $(".form_preview").position().top;
+	$("#form").height(window.innerHeight - $("#form").position().top);
 	$(window).resize(function(){
-		$("#form").height(window.innerHeight - bottom_margin - $("#form").position().top);
+		$("#form").height(window.innerHeight - $("#form").position().top);
 	});
 
 });     
@@ -111,5 +111,4 @@ function form_add_field(e)
   $("#saving").show();
   new_field.find('#field_submit').submit();    
   $('#form').scrollTo('max');
-  $.scrollTo('max')
 } 

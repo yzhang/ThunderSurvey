@@ -64,7 +64,8 @@ class RowsController < ApplicationController
               else
                 page.replace_html field.id.to_s + '_field',''   
               end
-            end
+            end     
+            page.alert '报名表填写有误,请检查!'
           end
            }
       end

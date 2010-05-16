@@ -3,10 +3,10 @@ $(document).ready(function() {
 });
 
 $(document).ready(function(){
-	$("inputp[type='text'],textarea").focus(function() {
+	$("input[type='text'],textarea").focus(function() {
 		$(this).addClass("inputFocus")
 	});
-	$("inputp[type='text'],textarea").blur(function() {
+	$("input[type='text'],textarea").blur(function() {
 		$(this).removeClass("inputFocus")
 	});
 	$("input[type='checkbox']").css({'border':'0 none'})   

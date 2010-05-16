@@ -339,13 +339,14 @@ table tbody tr:hover;{
 	border:0 none;      
 }    
 
-input,textarea{
+
+input[type='text'],textarea{
 	padding:2px;
 	background:#F6F6F6;
 	border:1px solid #ccc;  
 }
 
-.inputFocus {
+input.inputFocus {
 	background: #fff;
 }
 
