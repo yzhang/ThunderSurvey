@@ -97,19 +97,20 @@ function form_add_field(e)
 {
   $("#fields").append($("#new_field").html());  
   var new_field = $("#fields").find('.field').last();
+	$(new_field[0]).attr('id', 'last_field');
   new_field.find('.question').hide();
   new_field.find('.form').show();
   new_field.find('.form #field_name').val('新问题' + (field_count - 100)).css('color','#666');
-  new_field.css('background-color','#FDF2C6')  
+  new_field.css('background-color','#FDF2C6');
   new_field.find('.question label').html('新问题' + (field_count - 100));  
   // initial position
-  new_field.find('.field_position').val(field_count) 
+  new_field.find('.field_position').val(field_count);
   // focus guide
   field_count += 1;
   now = new Date();
   new_field.find('.form #field_uuid').val(now.getTime());
   $("#saving").show();
-  new_field.find('#field_submit').submit();    
+  new_field.find('#field_submit').submit();
   $('#form').scrollTo('max');
-  $.scrollTo('max')
+  $.scrollTo('max');
 } 

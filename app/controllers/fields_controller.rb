@@ -34,6 +34,12 @@ class FieldsController < ApplicationController
         format.js   {
           render :update do |page|
             page << '$("#saving").hide();'
+            if @field.new_record?
+              page.replace('last_field', :partial => 'field', :object => @field, :locals => {:parent => @form})
+              page << "$('##{@field.id} .question').hide();"
+              page << "$('##{@field.id} .form').show();"
+              page << "$('##{@field.id}').css('background-color','#FDF2C6');"
+            end
           end
         }
         format.json {render :json => @field.to_json}
