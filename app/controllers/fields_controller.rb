@@ -35,10 +35,8 @@ class FieldsController < ApplicationController
           render :update do |page|
             page << '$("#saving").hide();'
             if @field.new_record?
-              page.replace('last_field', :partial => 'field', :object => @field, :locals => {:parent => @form})
-              page << "$('##{@field.id} .question').hide();"
-              page << "$('##{@field.id} .form').show();"
-              page << "$('##{@field.id}').css('background-color','#FDF2C6');"
+              page << "$('#last_field .remove').attr('href', '#{form_field_path(@form, @field.id, :edit_key => @form.edit_key)}');"
+              page << "$('#last_field').attr('id', '#{@field.id}');"
             end
           end
         }

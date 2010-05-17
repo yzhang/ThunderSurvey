@@ -7,12 +7,12 @@
                         :update => "flash",
                         :method => "delete",
                         :confirm => "确定要删除此问题吗？",
-                        :remote => true) %>  
+                        :remote => true, :class => 'remove') %>  
     <% else %>
       保留字段
     <% end -%>
   </div>
-  <div class="question" id="question<%= field.id %>" ondblclick="field_start_editing(this);">     
+  <div class="question" ondblclick="field_start_editing(this);">     
     <%= label_tag field.id,field.name, :class => "q_title" %> <%= render_required(field) %>
     <div class="input">
       <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>
