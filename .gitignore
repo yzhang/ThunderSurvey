@@ -11,3 +11,4 @@ public/javascripts/*.cache.js
 public/stylesheets/*.cache.css
 public/system
 tmp/*
+.bundle/*
