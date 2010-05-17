@@ -34,8 +34,8 @@ class User
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   
-  key :login, String, :required => true, :length => {:maximum => 100}
-  key :email, String, :required => true, :unique => true, :length => {:minimum => 6}, :format => Authentication.email_regex
+  key :login, String
+  key :email, String
   key :crypted_password, String
   key :salt, String
   key :updated_at, Time
@@ -54,6 +54,10 @@ class User
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
   before_create :make_activation_code
+  
+  validates :login, :presence => true, :length => {:maximum => 100}
+  validates :email, :presence => true, :length => {:minimum => 6},
+        :format => {:with => Authentication.email_regex}
   
   many :forms
   
