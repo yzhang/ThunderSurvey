@@ -22,10 +22,15 @@ describe 'check_boxes input' do
     it_should_call_find_on_association_class_when_no_collection_is_provided(:check_boxes)
     it_should_use_the_collection_when_provided(:check_boxes, 'input[@type="checkbox"]')
     
-    it 'should generate a legend - classified as a label - containing label text for the input' do
-      output_buffer.should have_tag('form li fieldset legend.label')
-      output_buffer.should have_tag('form li fieldset legend.label', /Posts/)
+    it 'should generate a legend containing a label with text for the input' do
+      output_buffer.should have_tag('form li fieldset legend.label label')
+      output_buffer.should have_tag('form li fieldset legend.label label', /Posts/)
     end
+    
+    it 'should not link the label within the legend to any input' do
+      output_buffer.should_not have_tag('form li fieldset legend label[@for^="author_post_ids_"]')
+    end
+    
 
     it 'should generate an ordered list with a list item for each choice' do
       output_buffer.should have_tag('form li fieldset ol')
@@ -110,8 +115,10 @@ describe 'check_boxes input' do
         before do
           @new_post.stub!(:author_ids).and_return(nil)
 
-          semantic_form_for(@new_post) do |builder|
-            concat(builder.input(:authors, :as => :check_boxes, :selected => nil))
+          with_deprecation_silenced do
+            semantic_form_for(@new_post) do |builder|
+              concat(builder.input(:authors, :as => :check_boxes, :selected => nil))
+            end
           end
         end
 
@@ -124,8 +131,10 @@ describe 'check_boxes input' do
         before do
           @new_post.stub!(:author_ids).and_return(nil)
 
-          semantic_form_for(@new_post) do |builder|
-            concat(builder.input(:authors, :as => :check_boxes, :selected => @fred.id))
+          with_deprecation_silenced do
+            semantic_form_for(@new_post) do |builder|
+              concat(builder.input(:authors, :as => :check_boxes, :selected => @fred.id))
+            end
           end
         end
 
@@ -139,9 +148,11 @@ describe 'check_boxes input' do
       describe "multiple selected items" do
         before do
           @new_post.stub!(:author_ids).and_return(nil)
-
-          semantic_form_for(@new_post) do |builder|
-            concat(builder.input(:authors, :as => :check_boxes, :selected => [@bob.id, @fred.id]))
+          
+          with_deprecation_silenced do
+            semantic_form_for(@new_post) do |builder|
+              concat(builder.input(:authors, :as => :check_boxes, :selected => [@bob.id, @fred.id]))
+            end
           end
         end
 
@@ -155,8 +166,20 @@ describe 'check_boxes input' do
       end
 
     end
+    
+    it 'should warn about :selected deprecation' do
+      with_deprecation_silenced do
+        ::ActiveSupport::Deprecation.should_receive(:warn).any_number_of_times
+        semantic_form_for(@new_post) do |builder|
+          concat(builder.input(:authors, :as => :check_boxes, :selected => @bob.id))
+        end
+      end
+    end
+    
 
   end
+  
+  
 
 end
 

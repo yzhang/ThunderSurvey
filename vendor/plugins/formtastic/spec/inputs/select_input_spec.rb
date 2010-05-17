@@ -47,6 +47,49 @@ describe 'select input' do
     end
   end
 
+  describe 'for boolean columns' do
+    describe 'default formtastic locale' do
+      before do
+        # Note: Works, but something like Formtastic.root.join(...) would probably be "safer".
+        ::I18n.load_path = [File.join(File.dirname(__FILE__), *%w[.. .. lib locale en.yml])]
+        ::I18n.backend.send(:init_translations)
+
+        semantic_form_for(@new_post) do |builder|
+          concat(builder.input(:published, :as => :select))
+        end
+      end
+
+      after do
+        ::I18n.backend.store_translations :en, {}
+      end
+
+      it 'should render a select with at least options: true/false' do
+        output_buffer.should have_tag("form li select option[@value='true']", /^Yes$/)
+        output_buffer.should have_tag("form li select option[@value='false']", /^No$/)
+      end
+    end
+    
+    describe 'custom locale' do
+      before do
+        @boolean_select_labels = {:yes => 'Yep', :no => 'Nope'}
+        ::I18n.backend.store_translations :en, :formtastic => @boolean_select_labels
+
+        semantic_form_for(@new_post) do |builder|
+          concat(builder.input(:published, :as => :select))
+        end
+      end
+
+      after do
+        ::I18n.backend.store_translations :en, {}
+      end
+
+      it 'should render a select with at least options: true/false' do
+        output_buffer.should have_tag("form li select option[@value='true']", /#{@boolean_select_labels[:yes]}/)
+        output_buffer.should have_tag("form li select option[@value='false']", /#{@boolean_select_labels[:no]}/)
+      end
+    end
+  end
+
   describe 'for a belongs_to association' do
     before do
       semantic_form_for(@new_post) do |builder|
@@ -102,6 +145,20 @@ describe 'select input' do
 
       semantic_form_for(@new_post) do |builder|
         concat(builder.input(:author_status, :as => :select))
+      end
+
+      output_buffer.should have_tag('form li select#post_author_status_id')
+    end
+
+    it 'should use the "class_name" option' do
+      @new_post.stub!(:status).and_return(@bob)
+      @new_post.stub!(:author_status_id).and_return(@bob.id)
+   
+      ::Post.stub!(:reflect_on_association).with(:status).and_return(
+        mock('reflection', :options => {:class_name => 'AuthorStatus'}, :klass => ::Author, :macro => :belongs_to))
+
+      semantic_form_for(@new_post) do |builder|
+        concat(builder.input(:status, :as => :select))
       end
 
       output_buffer.should have_tag('form li select#post_author_status_id')
@@ -256,7 +313,7 @@ describe 'select input' do
       output_buffer.should have_tag('form li select option[@selected]', :count => 1)
     end
   end
-
+  
   describe 'when :prompt => "choose something" is set' do
     before do
       @new_post.stub!(:author_id).and_return(nil)
@@ -297,7 +354,7 @@ describe 'select input' do
       end
     end
   end
-
+  
   describe 'when :selected is set' do
     before do
       @output_buffer = ''
@@ -306,11 +363,13 @@ describe 'select input' do
     describe "no selected items" do
       before do
         @new_post.stub!(:author_id).and_return(nil)
-        semantic_form_for(@new_post) do |builder|
-          concat(builder.input(:author, :as => :select, :selected => nil))
+        with_deprecation_silenced do
+          semantic_form_for(@new_post) do |builder|
+            concat(builder.input(:author, :as => :select, :selected => nil))
+          end
         end
       end
-
+      
       it 'should not have any selected item(s)' do
         output_buffer.should_not have_tag("form li select option[@selected='selected']")
       end
@@ -319,8 +378,10 @@ describe 'select input' do
     describe "single selected item" do
       before do
         @new_post.stub!(:author_id).and_return(nil)
-        semantic_form_for(@new_post) do |builder|
-          concat(builder.input(:author, :as => :select, :selected => @bob.id))
+        with_deprecation_silenced do
+          semantic_form_for(@new_post) do |builder|
+            concat(builder.input(:author, :as => :select, :selected => @bob.id))
+          end
         end
       end
 
@@ -337,16 +398,17 @@ describe 'select input' do
         before do
           @new_post.stub!(:author_ids).and_return(nil)
           
-          semantic_form_for(@new_post) do |builder|
-            concat(builder.input(:authors, :as => :select, :selected => [@bob.id, @fred.id], :multiple => false))
+          with_deprecation_silenced do
+            semantic_form_for(@new_post) do |builder|
+              concat(builder.input(:authors, :as => :select, :selected => [@bob.id, @fred.id], :multiple => false))
+            end
           end
         end
 
         it "should only select the first value" do
           output_buffer.should have_tag("form li select option[@selected='selected']", :count => 1)
-          # FIXME: Not supported by Nokogiri.
-          # output_buffer.should have_tag("form li select:not([@multiple]) option[@selected='selected']", /bob/i)
-          # output_buffer.should have_tag("form li select:not([@multiple]) option[@selected='selected'][@value='#{@bob.id}']")
+          output_buffer.should have_tag("form li select:not([@multiple]) option[@selected='selected']", /bob/i)
+          output_buffer.should have_tag("form li select:not([@multiple]) option[@selected='selected'][@value='#{@bob.id}']")
         end
       end
 
@@ -354,8 +416,10 @@ describe 'select input' do
         before do
           @new_post.stub!(:author_ids).and_return(nil)
 
-          semantic_form_for(@new_post) do |builder|
-            concat(builder.input(:authors, :as => :select, :selected => [@bob.id, @fred.id]))
+          with_deprecation_silenced do
+            semantic_form_for(@new_post) do |builder|
+              concat(builder.input(:authors, :as => :select, :selected => [@bob.id, @fred.id]))
+            end
           end
         end
 
@@ -371,89 +435,55 @@ describe 'select input' do
     end
 
   end
-
-  describe 'boolean select' do
-    describe 'default formtastic locale' do
+  
+  describe "enum" do
+    before do
+      @output_buffer = ''
+      @some_meta_descriptions = ["One", "Two", "Three"]
+      @new_post.stub!(:meta_description).any_number_of_times
+    end
+  
+    describe ":as is not set" do
       before do
-        # Note: Works, but something like Formtastic.root.join(...) would probably be "safer".
-        ::I18n.load_path = [File.join(File.dirname(__FILE__), *%w[.. .. lib locale en.yml])]
-        ::I18n.backend.send(:init_translations)
-
         semantic_form_for(@new_post) do |builder|
-          concat(builder.input(:published, :as => :select))
+          concat(builder.input(:meta_description, :collection => @some_meta_descriptions))
+        end
+        semantic_form_for(:project, :url => 'http://test.host') do |builder|
+          concat(builder.input(:meta_description, :collection => @some_meta_descriptions))
         end
       end
-
-      after do
-        ::I18n.backend.store_translations :en, {}
-      end
-
-      it 'should render a select with at least options: true/false' do
-        output_buffer.should have_tag("form li select option[@value='true']", /^Yes$/)
-        output_buffer.should have_tag("form li select option[@value='false']", /^No$/)
+  
+      it "should render a select field" do
+        output_buffer.should have_tag("form li select", :count => 2)
       end
     end
-    
-    describe 'custom locale' do
+  
+    describe ":as is set" do
       before do
-        @boolean_select_labels = {:yes => 'Yep', :no => 'Nope'}
-        ::I18n.backend.store_translations :en, :formtastic => @boolean_select_labels
-
+        # Should not be a case, but just checking :as got highest priority in setting input type.
         semantic_form_for(@new_post) do |builder|
-          concat(builder.input(:published, :as => :select))
+          concat(builder.input(:meta_description, :as => :string, :collection => @some_meta_descriptions))
+        end
+        semantic_form_for(:project, :url => 'http://test.host') do |builder|
+          concat(builder.input(:meta_description, :as => :string, :collection => @some_meta_descriptions))
         end
       end
-
-      after do
-        ::I18n.backend.store_translations :en, {}
-      end
-
-      it 'should render a select with at least options: true/false' do
-        output_buffer.should have_tag("form li select option[@value='true']", /#{@boolean_select_labels[:yes]}/)
-        output_buffer.should have_tag("form li select option[@value='false']", /#{@boolean_select_labels[:no]}/)
+      
+      it "should render a text field" do
+        output_buffer.should have_tag("form li input[@type='text']", :count => 2)
       end
     end
   end
-
-  describe "enums" do
-    describe ":collection is set" do
-      before do
-        @output_buffer = ''
-        @some_meta_descriptions = ["One", "Two", "Three"]
-        @new_post.stub!(:meta_description).any_number_of_times
-      end
-
-      describe ":as is not set" do
-        before do
-          semantic_form_for(@new_post) do |builder|
-            concat(builder.input(:meta_description, :collection => @some_meta_descriptions))
-          end
-          semantic_form_for(:project, :url => 'http://test.host') do |builder|
-            concat(builder.input(:meta_description, :collection => @some_meta_descriptions))
-          end
-        end
-
-        it "should render a select field" do
-          output_buffer.should have_tag("form li select", :count => 2)
-        end
-      end
-
-      describe ":as is set" do
-        before do
-          # Should not be a case, but just checking :as got highest priority in setting input type.
-          semantic_form_for(@new_post) do |builder|
-            concat(builder.input(:meta_description, :as => :string, :collection => @some_meta_descriptions))
-          end
-          semantic_form_for(:project, :url => 'http://test.host') do |builder|
-            concat(builder.input(:meta_description, :as => :string, :collection => @some_meta_descriptions))
-          end
-        end
-        
-        it "should render a text field" do
-          output_buffer.should have_tag("form li input[@type='text']", :count => 2)
-        end
+  
+  it 'should warn about :selected deprecation' do
+    with_deprecation_silenced do
+      ::ActiveSupport::Deprecation.should_receive(:warn).any_number_of_times
+      semantic_form_for(@new_post) do |builder|
+        concat(builder.input(:author_id, :as => :select, :selected => @bob.id))
       end
     end
   end
-
+  
+  
+  
 end

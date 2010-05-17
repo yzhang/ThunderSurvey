@@ -121,9 +121,6 @@ describe 'SemanticFormBuilder#commit_button' do
   end
 
   describe 'label' do
-    before do
-      ::Post.stub!(:human_name).and_return('Post')
-    end
 
     # No object
     describe 'when used without object' do
@@ -240,6 +237,10 @@ describe 'SemanticFormBuilder#commit_button' do
                 }
             ::Formtastic::SemanticFormBuilder.i18n_lookups_by_default = true
           end
+          
+          after do
+            ::I18n.backend.store_translations :en, :formtastic => nil
+          end
 
           it 'should render an input with localized label (I18n)' do
             semantic_form_for(@new_post) do |builder|
@@ -261,6 +262,8 @@ describe 'SemanticFormBuilder#commit_button' do
               concat(builder.commit_button)
             end
             output_buffer.should have_tag(%Q{li.commit input[@value="Custom Create"][@class~="create"]})
+            ::I18n.backend.store_translations :en, :formtastic => nil
+            
           end
 
         end
@@ -334,11 +337,30 @@ describe 'SemanticFormBuilder#commit_button' do
               concat(builder.commit_button)
             end
             output_buffer.should have_tag(%Q{li.commit input[@value="Custom Save"][@class~="update"]})
+            ::I18n.backend.store_translations :en, :formtastic => {}
           end
 
         end
       end
     end
   end
-
+  
+  describe 'when the model is two words' do
+    before do
+      output_buffer = ''
+      class ::UserPost; def id; end; def self.human_name; "Userpost"; end; end # Rails does crappy human_name
+      @new_user_post = ::UserPost.new
+      
+      @new_user_post.stub!(:new_record?).and_return(true)
+      semantic_form_for(@new_user_post, :url => '') do |builder|
+        concat(builder.commit_button())
+      end
+    end
+    
+    it "should render the string as the value of the button" do
+      output_buffer.should have_tag('li input[@value="Create User post"]')
+    end
+    
+  end
+    
 end
