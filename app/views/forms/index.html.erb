@@ -15,7 +15,7 @@
       <div class='left'>
       </div>
       <div class='right'>
-         <%= will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻'  %>
+         <%= raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻')  %>
       </div>
     </div>
   <table border="0" cellspacing="0" cellpadding="0"> 
@@ -53,7 +53,7 @@
     <div class='left'>
     </div>
     <div class='right'>
-        <%= will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻'  %>
+        <%= raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻')  %>
     </div>
   </div>
 </section>
