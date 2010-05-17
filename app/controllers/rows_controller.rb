@@ -46,22 +46,15 @@ class RowsController < ApplicationController
     return destroy if params[:oper] == 'del'
     
     params[:row][:created_at] = Time.now
-
+    
     klass = @form.klass
     @row = klass.new(params[:row])
     
     respond_to do |want|
       if @form.allow_insert? && @row.save
         params = ["form_id=#{@form.id}", "row_id=#{@row.id}","order_id=#{@row.order_id}"].join("&")
-        want.js do
-          render :update do |page|
-            page << "parent.window.location='#{@form.notify_url}?#{params}'"
-          end
-        end
+        want.js { render :js => "parent.window.location='#{@form.notify_url}?#{params}'" }
       else
-        @embed = params[:embed]
-        @order_id = @row.order_id
-        want.html {render :template => '/forms/show',:layout => params[:embed].blank? ? 'simple' : 'embed' }
         want.js { 
           render :update do |page|
             page.hide 'spinner'   
@@ -71,7 +64,8 @@ class RowsController < ApplicationController
               else
                 page.replace_html field.id.to_s + '_field',''   
               end
-            end
+            end     
+            page.alert '报名表填写有误,请检查!'
           end
            }
       end
@@ -111,4 +105,5 @@ class RowsController < ApplicationController
   def set_form
     @form = Form.find(params[:form_id])
   end
+  
 end

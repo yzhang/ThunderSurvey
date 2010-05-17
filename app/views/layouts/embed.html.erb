@@ -1,7 +1,5 @@
 <!doctype html>      
-
 <html lang="zh">
-<head>
 <head>
   <meta name='viewport' content='width=device-width' />
   <meta charset="utf-8" />
@@ -14,12 +12,12 @@
   <![endif]-->
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', 
           'i18n/grid.locale-cn', 'jquery.jqgrid', :cache => 'app.cache' %>
- <script type="text/javascript" charset="utf-8">
-   $(document).ready(function(){     
+ <script type="text/javascript" charset="utf-8">   
+   $(document).ready(function(){  
      $('.button').button();
-     
      $("input[type='text']").addClass("text_input")  
-   })        
+   })            
+   
  </script>
   <%= yield :headers %>                                                   
   <title>在线表单</title>

@@ -71,7 +71,7 @@ function field_start_editing(e)
   field.css('background-color','#FDF2C6')
   field.find(".question").hide();
   field.find(".form").show();
-	clear_initial.question_title = field.find('.form #field_name').val();
+  clear_initial.question_title = field.find('.form #field_name').val();
   field.find('.form #field_name').focus();
 }
 

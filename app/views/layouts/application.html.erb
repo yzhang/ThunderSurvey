@@ -6,13 +6,14 @@
   <meta charset="utf-8" />
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
   <meta name="csrf-param" content="authenticity_token" />
-  
+  <title>抢座网－表单</title>     
   <%= stylesheet_link_tag 'custom', "jquery-ui", "ui.jqgrid", :cache => 'app.cache'  %>
   <!--[if IE]>
    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', 
-          'i18n/grid.locale-cn', 'jquery.jqgrid', :cache => 'app.cache' %>
+  <%= javascript_include_tag 'jquery', 'jquery-ui','rails', 'jrails','application', 
+          'i18n/grid.locale-cn', 'jquery.jqgrid', :cache => 'app.cache' %> 
+   <%= yield :headers %> 
 
   <script type="text/javascript">
   	$.jgrid.no_legacy_api = true;
@@ -24,8 +25,8 @@
       $('.button').button();
      })    
   </script>
-  <%= yield :headers %>                                                   
-  <title>抢座网－表单</title>
+                                                   
+ 
 </head>
 
 <body>   

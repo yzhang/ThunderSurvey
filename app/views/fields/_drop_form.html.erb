@@ -7,8 +7,6 @@
   <% end %>
 </div>
 <p>
-  <p>
     <%= text_field_tag "option", "", :onfocus => "field_add_option(this, 'drop');", :style => "opacity:0.5;" %>
-  </p>
   <% if false %><%= link_to '增加选项', '#', :onclick => "field_add_option(this, 'drop')", :remote => true %><% end %>
 </p>

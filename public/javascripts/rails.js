@@ -4,38 +4,39 @@ jQuery(function ($) {
 
     $.fn.extend({
         /**
-         * Triggers a custom event on an element and returns the event result
-         * this is used to get around not being able to ensure callbacks are placed
-         * at the end of the chain.
-         *
-         * TODO: deprecate with jQuery 1.4.2 release, in favor of subscribing to our
-         *       own events and placing ourselves at the end of the chain.
-         */
+* Triggers a custom event on an element and returns the event result
+* this is used to get around not being able to ensure callbacks are placed
+* at the end of the chain.
+*
+* TODO: deprecate with jQuery 1.4.2 release, in favor of subscribing to our
+* own events and placing ourselves at the end of the chain.
+*/
         triggerAndReturn: function (name, data) {
-            var event = new jQuery.Event(name);
+            var event = new $.Event(name);
             this.trigger(event, data);
 
             return event.result !== false;
         },
 
         /**
-         * Handles execution of remote calls firing overridable events along the way
-         */
+* Handles execution of remote calls firing overridable events along the way
+*/
         callRemote: function () {
-            var el      = this,
-                data    = el.is('form') ? el.serializeArray() : [],
-                method  = el.attr('method') || el.attr('data-method') || 'GET',
-                url     = el.attr('action') || el.attr('href');
+            var el = this,
+                data = el.is('form') ? el.serializeArray() : [],
+                method = el.attr('method') || el.attr('data-method') || 'GET',
+                url = el.attr('action') || el.attr('href');
 
-            // TODO: should let the developer know no url was found
-            if (url !== undefined) {
+            if (url === undefined) {
+              throw "No URL specified for remote call (action or href must be present).";
+            } else {
                 if (el.triggerAndReturn('ajax:before')) {
                     $.ajax({
                         url: url,
                         data: data,
+                        dataType: 'script',
                         type: method.toUpperCase(),
                         beforeSend: function (xhr) {
-                            xhr.setRequestHeader("Accept", "text/javascript");
                             el.trigger('ajax:loading', xhr);
                         },
                         success: function (data, status, xhr) {
@@ -56,8 +57,8 @@ jQuery(function ($) {
     });
 
     /**
-     *  confirmation handler
-     */
+* confirmation handler
+*/
     $('a[data-confirm],input[data-confirm]').live('click', function () {
         var el = $(this);
         if (el.triggerAndReturn('confirm')) {
@@ -69,52 +70,57 @@ jQuery(function ($) {
 
 
     /**
-     * remote handlers
-     */
-    $('form[data-remote="true"]').live('submit', function (e) {
+* remote handlers
+*/
+    $('form[data-remote]').live('submit', function (e) {
         $(this).callRemote();
         e.preventDefault();
     });
 
-    $('a[data-remote="true"],input[data-remote="true"]').live('click', function (e) {
+    $('a[data-remote],input[data-remote]').live('click', function (e) {
         $(this).callRemote();
         e.preventDefault();
     });
 
-    $('a[data-method][data-remote!=true]').live('click',function(e){
+    $('a[data-method]:not([data-remote])').live('click', function (e){
         var link = $(this),
             href = link.attr('href'),
             method = link.attr('data-method'),
-            form = $('<form method="post" action="'+href+'">'),
-            input = $('<input name="_method" value="'+method+'" type="hidden" />'),
-            csrf_input = $('<input name="'+csrf_param+'" value="'+csrf_token+'" type="hidden" />');
+            form = $('<form method="post" action="'+href+'"></form>'),
+            metadata_input = '<input name="_method" value="'+method+'" type="hidden" />';
+
+        if (csrf_param != null && csrf_token != null) {
+          metadata_input += '<input name="'+csrf_param+'" value="'+csrf_token+'" type="hidden" />';
+        }
 
         form.hide()
-            .append(input)
-            .append(csrf_input)
-            .appendTo('body'); // redundant?
+            .append(metadata_input)
+            .appendTo('body');
 
         e.preventDefault();
         form.submit();
     });
 
     /**
-     * disable_with handlers
-     */
-    $('form[data-remote="true"]').live('ajax:before', function () {
-        $(this).children('input[data-disable-with]').each(function () {
+* disable-with handlers
+*/
+    var disable_with_input_selector = 'input[data-disable-with]';
+    var disable_with_form_selector = 'form[data-remote]:has(' + disable_with_input_selector + ')';
+
+    $(disable_with_form_selector).live('ajax:before', function () {
+        $(this).find(disable_with_input_selector).each(function () {
             var input = $(this);
-            input.data('enable_with', input.val())
+            input.data('enable-with', input.val())
                  .attr('value', input.attr('data-disable-with'))
                  .attr('disabled', 'disabled');
         });
     });
 
-    $('form[data-remote="true"]').live('ajax:after', function () {
-        $(this).children('input[data-disable-with]').each(function () {
+    $(disable_with_form_selector).live('ajax:after', function () {
+        $(this).find(disable_with_input_selector).each(function () {
             var input = $(this);
             input.removeAttr('disabled')
-                 .val(input.data('enable_with'));
+                 .val(input.data('enable-with'));
         });
     });
 });

@@ -11,7 +11,7 @@
   <section class='form_oprate'>
     <nav >    
       <div class='new'>
-      <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> </button>
+      <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> 
       </div>
       <div class='setting'>     
       <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
@@ -37,9 +37,6 @@
     <div id="new_field" style="display:none;">
       <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
     </div>
-  </section>
-  <!-- 表单尾 -->
-  <section class='form_preview'>
-    <%= link_to '预览表单', form_path(@form), :target => '_blank',:class => 'button' %>
-  </section>
+  </section>  
+
 </div>  
