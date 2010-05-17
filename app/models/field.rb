@@ -1,4 +1,6 @@
 class Field
+  include ActiveModel::Conversion
+    
   include MongoMapper::EmbeddedDocument
 
   key :name, String, :required => true
@@ -18,6 +20,10 @@ class Field
   
   def id
     self._id.to_s
+  end
+  
+  def persisted?
+    false
   end
   
   def update_options(options)
