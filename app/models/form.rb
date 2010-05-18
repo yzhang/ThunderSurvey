@@ -1,7 +1,6 @@
 require 'digest/sha1'
 require 'net/http'
 require 'uri'
-require 'active_model'
 
 class Form
   include ActiveModel::Validations

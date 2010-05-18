@@ -95,7 +95,7 @@ function set_option_initial(obj){
 
 function form_add_field(e)
 {
-  $("#fields").append($("#new_field").html());  
+  $("#fields").append($("#field_template").html());
   var new_field = $("#fields").find('.field').last();
 	$(new_field[0]).attr('id', 'last_field');
   new_field.find('.question').hide();
