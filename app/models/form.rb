@@ -4,7 +4,7 @@ require 'uri'
 
 class Form
   include ActiveModel::Validations
-
+  
   include MongoMapper::Document
   include Authentication
   
@@ -111,6 +111,10 @@ class Form
         field.save
       end
     end
+  end
+  
+  def persisted?
+    false
   end
   
   def find_field_by_uuid(uuid)
