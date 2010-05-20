@@ -16,6 +16,7 @@ namespace :deploy do
   
   desc "Custom after update code to put production database.yml in place."
   task :copy_configs, :roles => :app do
+    run "cp #{deploy_to}/shared/mongo_mapper.rb #{current_path}/config/initializers/mongo_mapper.rb"
   end
   
   desc "Long deploy will update the code migrate the database and restart the servers"
@@ -63,12 +64,12 @@ namespace :deploy do
     #web.enable
   end
   
-  task :conf do
+  task :staging do
     # put up the maintenance screen
     #     ENV['REASON'] = 'an application upgrade'
     #     ENV['UNTIL']  = Time.now.+(600).strftime("%H:%M %Z")
     #     web.disable
-    set :deploy_to, "/home/yzhang/app/biaodan"
+    set :deploy_to, "/home/yzhang/dev/biaodan"
     set :branch, "conf"
     set :env, "production"
     
