@@ -18,7 +18,7 @@
   </script>
 
   <%= yield :headers %>                                                   
-  <title>Frontend</title>
+  <title>抢座网－<%= @form.nil? ? '表单' : @form.title %></title>
 </head>
 
 <body style="background:#FFF;">
