@@ -1,12 +1,13 @@
 <!doctype html>      
 
 <html lang="en">
-<head>          
+<head>
+  <meta name="description" content="<%= @form.nil? ?  "抢座网是一个在线活动及会议组织网站，为活动及会议组织者提供包括在线报名，与会者管理，活动推广以及门票销售在内的一整套管理工具，抢座网让您的活动和会议组织工作变得前所未有的简单。" : @form.description %>" />
   <meta name='viewport' content='width=device-width' />
   <meta charset="utf-8" />
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
   <meta name="csrf-param" content="authenticity_token" />
-  <title>抢座网－表单</title>     
+  <title>抢座网－<%= @form.nil? ? '表单' : @form.title %></title>    
   <%= stylesheet_link_tag 'custom', "jquery-ui", "ui.jqgrid", :cache => 'app.cache'  %>
   <!--[if IE]>
    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

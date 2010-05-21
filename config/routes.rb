@@ -23,7 +23,8 @@ Confforge::Application.routes.draw do
 
   match '/logout' => 'sessions#destroy', :as => :logout
   match '/login' => 'sessions#new', :as => :login
-
+  match '/sitemap.:format' => 'sitemap#index', :as => :sitemap
+  
   resource :session
   match '/thanks' => 'home#thanks', :as => :thanks
   root :to => 'forms#index'
