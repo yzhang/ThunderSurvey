@@ -31,6 +31,6 @@ Confforge::Application.routes.draw do
   resource :users
   
   match '/thanks' => 'home#thanks', :as => :thanks
-  root :to => 'forms#index'
+  root :to => 'home#index'
   match '/:controller(/:action(/:id))'
 end

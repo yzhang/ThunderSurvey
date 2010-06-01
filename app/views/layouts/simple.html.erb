@@ -14,11 +14,6 @@
           :cache => 'simple.cache' %>
   
   <%= yield :headers %>
-  <style type="text/css" media="screen">
-    body{
-      margin:50px 0px;
-    }
-  </style>  
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){     
       $("input[type='text']").addClass("text_input")
@@ -27,9 +22,19 @@
   <title>抢座网－<%= @form.nil? ? '表单' : @form.title %></title>
 </head>
 
-<body> 
+<body>
+  <%= render :partial => '/shared/header' %>
   <div id="form_container">
-      <%= yield %>           
-  </div>
+    <%= yield %>
+  </div> 
+  <footer>
+    <a href="http://www.51qiangzuo.com">关于我们</a> | 
+    <a href="http://www.51qiangzuo.com">联系我们</a> |
+    <a href="http://www.51qiangzuo.com">抢座网</a>
+    <br /><br />
+
+    &copy; 抢答网 2010  
+     上海沙路网络旗下产品
+  </footer>
 </body>
 </html>

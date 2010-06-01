@@ -36,8 +36,9 @@
   <tbody> 
     <% @forms.each do |form| %> 
     <tr id="<%=form.id%>">        
-      <td class='title'><strong><%= link_to form.title, form,:target => '_blank'%></strong>
+      <td class='title'><strong><%= link_to form.title, form_path(form),:target => '_blank'%></strong>
       <div class='action' style='display:none'>
+        <%= link_to '查看', form_path(form), :target => '_blank' %> |        
         <%= link_to '结果统计', form_rows_path(form, :edit_key => form.edit_key), :target => '_blank' %> |
         <%= link_to '编辑', edit_form_path(form, :edit_key => form.edit_key), :target => '_blank' %> | 
         <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %>
