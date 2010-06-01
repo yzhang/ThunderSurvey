@@ -1,0 +1,10 @@
+<table border="0" cellspacing="0" cellpadding="0" class='grid'>
+<thead>
+  <tr><th>内容</th><th>名称</th><th>email</th><th>操作</th></tr>
+</thead>
+<tbody>     
+  <% @feedbacks.each do |feedback| -%> 
+  <tr><td> <%= feedback.content %></td><td> <%= feedback.name %></td><td> <%= feedback.email %></td><td><%=link_to '删除',admin_feedback_path(feedback),:method => :delete %></td></tr>   
+  <% end -%>
+</tbody>
+</table>

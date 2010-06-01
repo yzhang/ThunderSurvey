@@ -1,0 +1,7 @@
+<h1 class='pagenav'>添加页面</h1>      
+<%= form_for([:admin, @page]) do |f| %> 
+  <%= render :partial => 'form',:locals => {:f => f} %>
+  <div class='prepend-5'>
+       <%= f.submit '创建页面' %>
+  </div>   
+<% end %>

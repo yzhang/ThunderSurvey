@@ -101,8 +101,6 @@ class FormsController < ApplicationController
     end
   end
 
-  # DELETE /forms/1
-  # DELETE /forms/1.xml
   def destroy
     @form = Form.find(params[:id], :conditions => {:user_id => current_user.id.to_s})
     Form.delete(@form._id) if @form

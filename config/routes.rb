@@ -20,6 +20,14 @@ Confforge::Application.routes.draw do
       get :thanks
     end
   end
+  
+  match '/admin' => 'admin/forms#index', :as => :admin
+  namespace :admin do
+    resources :forms 
+    resources :users
+    resources :pages 
+    resources :feedbacks
+  end
 
   match '/logout' => 'sessions#destroy', :as => :logout
   match '/login' => 'sessions#new', :as => :login
@@ -29,8 +37,9 @@ Confforge::Application.routes.draw do
   
   resource :session
   resource :users
+  resource :feedbacks  
   
   match '/thanks' => 'home#thanks', :as => :thanks
   root :to => 'home#index'
-  match '/:controller(/:action(/:id))'
+  match '/*page', :to => 'pages#show'
 end
