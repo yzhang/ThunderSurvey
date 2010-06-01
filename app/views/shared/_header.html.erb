@@ -1,12 +1,13 @@
 <header class='header'>
   <div class="logo">
-    <a href="/">抢座网表单</a>
+    <a href="/">欢迎来到抢答网！</a>
   </div>
   <nav class='login'>
     <% if logged_in? %>	
       你好 <%=current_user.login %> <%= link_to '注销', logout_path, :method => 'delete' %>
     <% else %>
-      <%= link_to '立即登录', login_path %>
+      <%= link_to '立即登录', login_path %> |
+      还没有帐号？ <%= link_to '现在就注册', signup_path %>
     <% end %>
   </nav>
 </header>
