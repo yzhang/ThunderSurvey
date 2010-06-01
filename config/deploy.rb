@@ -26,8 +26,8 @@ namespace :deploy do
     #     ENV['REASON'] = 'an application upgrade'
     #     ENV['UNTIL']  = Time.now.+(600).strftime("%H:%M %Z")
     #     web.disable
-    set :deploy_to, "/home/yzhang/app/biaodan"
-    set :branch, "conf"
+    set :deploy_to, "/home/yzhang/app/qd"
+    set :branch, "master"
     set :env, "production"
     
     transaction do
