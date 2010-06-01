@@ -1,0 +1,30 @@
+<%=raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻') %> 
+<table cellspacing="0" cellpadding="0" class='grid'>  
+  <col align="left" width='30%' />
+  <col align="left" width='30%'/>
+  <col align="right" width='15%'/> 
+  <col align="right" width='10%'/>
+  <col align="center" width='15%' />
+  <thead>   
+    <tr>    
+      <th>标题</th>
+      <th>描述</th>
+      <th>最后更新</th>
+      <th>用户名</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>  
+    <% @forms.each do |form| -%>
+      <tr>
+        <td class='text-left'><%=link_to form.title, form_path(form), :target => '_blank' %></td>
+        <td><%= form.description %></td>
+        <td><%= form.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= truncate(form.user.login,:length => 10) %></td>            
+        <td><%=link_to('删除',admin_form_path(form), :method => :delete) %></td>   
+      </tr>
+    <% end -%>                                              
+  </tbody>
+  </table>   
+<%=raw(will_paginate @forms,:class => 'flickr_pagination', :previous_label => '前翻',:next_label => '后翻') %>  
+

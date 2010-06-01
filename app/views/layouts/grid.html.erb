@@ -8,7 +8,7 @@
   <!--[if IE]>
    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <%= stylesheet_link_tag 'grid',"style","jquery-ui", "ui.jqgrid", :cache => 'grid.cache'  %>
+  <%= stylesheet_link_tag "style","jquery-ui", "ui.jqgrid", :cache => 'grid.cache'  %>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', 
           'i18n/grid.locale-cn.js', 'jquery.jqgrid.js', :cache => 'grid.cache' %>
   
@@ -32,6 +32,7 @@
       
 	<div class="container clearfix">
     <%= yield %>
-  </div>
+  </div>   
+  <%#= render :partial => '/shared/footer' %>
 </body>
 </html>

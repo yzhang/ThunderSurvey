@@ -34,6 +34,10 @@ class Form
     self._id.to_s
   end
   
+  def user
+    User.find(self.user_id)
+  end
+  
   def allow_insert?
    # self.maximum_rows == 0  || self.klass.count < self.maximum_rows
     return true

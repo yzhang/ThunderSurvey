@@ -1,0 +1,8 @@
+<h1>编辑</h1>
+<%= form_for([:admin, @page]) do |f| %> 
+  <%= render :partial => 'form',:locals => {:f => f} %>   
+  <li class='semantic-form-margin'>
+    <%= f.submit '保存' %>  <%= f.submit '预览',:name => 'preview' %> 
+  </li>
+<% end %>
+                                                                   

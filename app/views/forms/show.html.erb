@@ -10,7 +10,8 @@
 <% unless @form.klass.all(:order_id => params[:order_id].to_i).blank? %>
   订单已完成 
 <% else %>
-<% unless params[:embed] -%>  
+<% unless params[:embed] -%>
+  
 <header>
     <h1><%=h @form.title %></h1>   
     <div class='desc'>

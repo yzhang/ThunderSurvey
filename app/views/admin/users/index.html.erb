@@ -1,0 +1,20 @@
+<%=raw(will_paginate @events,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻') %>
+<table cellspacing="0" cellpadding="0" class='grid'>
+<thead>
+  <tr>
+    <th>login</th>  
+    <th>Email</th>
+    <th>操作</th>
+  </tr>
+</thead>
+<tbody> 
+  <% @users.each do |user| -%>  
+  <tr>            
+    <td><%=user.login %></td>
+    <td><%=user.email%></td>  
+    <td><%=link_to '删除',admin_user_path(user),:method => :delete,:confirm => '确定嘛?' %></td>
+  </tr>
+  <% end -%> 
+</tbody>
+</table>    
+<%=raw(will_paginate @events,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻') %>

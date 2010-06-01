@@ -5,8 +5,10 @@
        function(){$(this).find('.action').toggle()})
      })    
   </script>
-<% end -%>         
-<div id="content"> 
+<% end -%>    
+<%= pagenav_area do -%>
+  <span>所有问卷</span>
+<% end -%>     
   <table class='grid' border="0" cellspacing="0" cellpadding="0"> 
     <colgroup span="4" valign="top">
         <col width="60%" />
@@ -23,12 +25,12 @@
   <tbody> 
     <% @forms.each do |form| %> 
     <tr id="<%=form.id%>">        
-      <td class='title'><%= form.title %><span>[<%= form.klass.count %>回应]</span>
+      <td class='title'><%=link_to form.title,form_path(form),:target => '_blank' %><span>[<%= form.klass.count %>回应]</span>
       </td>                                                                                 
       <td><%= form.updated_at.to_date%></td> 
-      <td><%= link_to '结果统计', form_rows_path(form, :edit_key => form.edit_key), :target => '_blank' %> |
-      <%= link_to '编辑', edit_form_path(form, :edit_key => form.edit_key), :target => '_blank' %> | 
-      <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %></td>
+      <td class='opt'> <%= link_to '结果统计', form_rows_path(form, :edit_key => form.edit_key),:class => 'ag' %>  
+        <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='ag' >编辑</a>  
+      <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete',:class => 'ag' %></td>
     <% end %>       
   </tbody>
   </table>
@@ -39,7 +41,3 @@
         <%= raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻')  %>
     </div>
   </div>
-</div>
-<div id="sidebar">
-	<a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>
-</div>

@@ -1,6 +1,7 @@
 <!doctype html>      
 <html lang="en">
 <head>
+  <link rel="shortcut icon" href="/favicon.ico" />
   <meta name="description" content="<%= @form.nil? ?  "抢答网让您可以轻松创建在线表单，调查问卷，收集用户反馈，类似Google Form的操作界面，让表单的创建如行云流水，简洁干净的问卷页面，让用户爱上问答!" : @form.description %>" />
   <meta name='viewport' content='width=device-width' />
   <meta charset="utf-8" />
@@ -24,19 +25,14 @@
 
 <body>   
   <%= render :partial => '/shared/header' %>   
-  <%= render :partial => '/shared/notice' %> 
   <div id="main_container">
-    <%= yield %>
+    <div id="content">  
+    <%= yield %>        
+    </div>
+    <div id="sidebar">
+    	<a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>
+    </div>
   </div>  
-  <br class="clear-both" />
-  <div id='footer'>
-    <a href="http://www.51qiangzuo.com">关于我们</a> | 
-    <a href="http://www.51qiangzuo.com">联系我们</a> |
-    <a href="http://www.51qiangzuo.com">抢座网</a>   <br /> <br />
-    <span>
-    &copy; 抢答网 2010  
-     上海沙路网络旗下产品
-    </span>
-  </div>
+  <%= render :partial => '/shared/footer' %>
 </body>
 </html>

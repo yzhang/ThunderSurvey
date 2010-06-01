@@ -4,7 +4,8 @@
   <%= javascript_include_tag 'jquery.scrollTo' %>
   <script type="text/javascript" charset="utf-8">
     // 100以下的留给保留字段
-    var field_count = <%= @form.fields.length + 101 %>; 
+    var field_count = <%= @form.fields.length + 101 %>;   
+    
   </script>
 <% end -%>   
 <div id="form_wrapper"> 
@@ -38,5 +39,8 @@
       <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field} %>
     </div>
   </section>  
-
+  <!-- 表单尾 -->
+  <section class='form_preview'>
+    <%= link_to '预览表单', form_path(@form), :target => '_blank',:class => 'button' %>
+  </section>
 </div>  

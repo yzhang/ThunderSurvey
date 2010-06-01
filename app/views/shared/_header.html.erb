@@ -2,13 +2,14 @@
   <div class="logo">
     <%=link_to image_tag('logo.png'),'/'%>
   </div>         
-  <div id="saving" style="display:none;">正在保存...</div> 
-  <nav class='login'>
+  <div class='login'>
     <% if logged_in? %>	
       你好 <%=current_user.login %> <%= link_to '注销', logout_path, :method => 'delete' %>
     <% else %>
       <%= link_to '立即登录', login_path %> |
       还没有帐号？ <%= link_to '现在就注册', signup_path %>
     <% end %>
-  </nav>
+  </div>         
+  <div id="saving" style="display:none;">正在保存...</div> 
+  <%= render :partial => '/shared/notice' %>
 </div>

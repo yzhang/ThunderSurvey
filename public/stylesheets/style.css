@@ -50,6 +50,7 @@ body{
 	width:70%; 
 	margin:10px;
 	padding:10px;
+	overflow:auto;
 }
 
 #sidebar{        
@@ -85,6 +86,19 @@ h1,h2,h3,h4{
 	background:#EFEFEF;
 	color:#333;
 	margin-bottom:20px;
+}     
+
+#saving {
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	background-color:#FAD163;
+	color:#000000;
+	font-weight:bold;
+	padding:0.4em 0.8em;
+	position:absolute;
+	right:50%;
+	top:0;
+	z-index:2;
 }
 
 /* ---- href ------*/    
@@ -132,8 +146,21 @@ a.ag:hover {
 /* table */
 table.grid {  
 	width:100%;
+}     
+
+.info_grid{    
+	width:100%;
+	overflow:auto;
 }
 
+div.info_item{  
+	overflow:hidden; 
+	height:15px;
+	width:150px;
+	padding:0;
+	margin:0;
+}
+    
 table.grid thead tr th, table.grid tfoot tr th {
 	background:#EFEFEF;  
 	font-size: 14px;  
@@ -147,14 +174,14 @@ table.grid tbody td {
 	padding: 10px; 
 	vertical-align: top; 
 	border-bottom:1px dotted #CCCCCC;
-}
+}         
 
 .tablenav{  
 	margin:10px;
 	text-align:center;
 } 
 
-table.grid td.title{  
+table.grid td.title a{  
 	color:#333;
 	font-family:'微软雅黑' arial '宋体';   
 	font-size:14px;
@@ -163,6 +190,10 @@ table.grid td.title{
 table.grid td.title span{
 	margin:0 10px; 
 	color:#999999;
+}    
+
+table.grid tbody td.opt a { 
+	margin-right:10px;
 }
 
 /* --- flash -----*/ 
@@ -170,7 +201,7 @@ table.grid td.title span{
 	margin:0px auto 10px;
 	width:400px;
 	position:relative;
-	top:0;
+	top:5px;
 	}       
 
 
@@ -185,7 +216,8 @@ table.grid td.title span{
 	letter-spacing:4px;
 	cursor: pointer;  
 	margin-bottom:5px;
-	border:0 none;      
+	border:0 none; 
+	margin-left:10px;     
 }
 
 input[type='text'],input[type='password'],textarea{
@@ -227,7 +259,7 @@ input.inputFocus {
 
 
 * html #form{
-	height:400px;
+	height:200px;
 }
 
 #form p,.setting_form p{
@@ -243,6 +275,7 @@ input.inputFocus {
 } 
 
 .form_preview{  
+	background:#fdfdfd;
 	padding:5px 10px; 
 	border-top:1px solid #eee;
 	height: 25px;
@@ -280,7 +313,9 @@ div.edit:hover {
 
 .prompt{
 	color:#eee;
-}
+}      
+
+
 
 /* ----  form field setting -----*/
 #form_title{     
@@ -309,3 +344,43 @@ div.edit:hover {
 	float:right;
 }
 
+
+/*  ------ form show cotainer -------- */
+
+#form_container{ 
+	padding:10px;
+	margin:20px auto;
+	width:45em;
+	background:#fff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#spinner{
+	display:none;
+}
+
+/* ---- page nav ----*/
+#page_nav{
+	height:20px;
+   	padding:10px 10px 15px 10px;  
+   *padding:5px 10px 15px 10px;
+	margin:10px 0px;
+	border-bottom:1px solid #ddd;   
+}
+
+#page_nav span{ 
+	font-family:'微软雅黑' arial '宋体';      
+	float:left;
+	color:#333;   
+	font-size:2.1em; 
+	line-height:28px; 
+	font-weight:bold;
+}
+
+
+#page_nav a,#page_nav a:visited{  
+	color:#0099FF;       
+	line-height:28px;
+	font-size:28px;
+}

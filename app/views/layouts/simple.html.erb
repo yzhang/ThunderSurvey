@@ -9,16 +9,11 @@
    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   
-  <%= stylesheet_link_tag 'custom', "formtastic","formtastic_changes",  :cache => 'simple.cache' %>
+  <%= stylesheet_link_tag 'style', "formtastic","formtastic_changes",  :cache => 'simple.cache' %>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', 
           :cache => 'simple.cache' %>
   
   <%= yield :headers %>
-  <style type="text/css" media="screen">
-    body{
-      margin:50px 0px;
-    }
-  </style>  
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){     
       $("input[type='text']").addClass("text_input")
@@ -27,9 +22,11 @@
   <title>抢座网－<%= @form.nil? ? '表单' : @form.title %></title>
 </head>
 
-<body> 
+<body>
+  <%= render :partial => '/shared/header' %>
   <div id="form_container">
-      <%= yield %>           
-  </div>
+    <%= yield %>
+  </div> 
+  <%= render :partial => '/shared/footer' %> 
 </body>
 </html>
