@@ -1,7 +1,8 @@
-<header class='header'>
+<div class='header'>
   <div class="logo">
-    <a href="/">欢迎来到抢答网！</a>
-  </div>
+    <%=link_to image_tag('logo.png'),'/'%>
+  </div>         
+  <div id="saving" style="display:none;">正在保存...</div> 
   <nav class='login'>
     <% if logged_in? %>	
       你好 <%=current_user.login %> <%= link_to '注销', logout_path, :method => 'delete' %>
@@ -10,4 +11,4 @@
       还没有帐号？ <%= link_to '现在就注册', signup_path %>
     <% end %>
   </nav>
-</header>
+</div>

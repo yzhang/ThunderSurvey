@@ -4,8 +4,8 @@ module ApplicationHelper
   end  
   
   def state_type(type)
-    (type == 'error') ? 'error' : 'highlight'
-  end  
+    (type == ('alert' || 'error')) ? 'error' : 'highlight'
+  end 
   
   def pretty_button(text,link,options = {})  
     deftault_options = options.reverse_merge!(:class=>'btn')

@@ -17,7 +17,7 @@
       {name:'id',index:'id', width:120, hidden:true, editable:true},
       {name:'number',index:'number', width:30, align:"right"}, 
       <% @form.fields.each do |field| %>
-        {name:'f<%= field.id.to_s %>',index:'f<%= field.id.to_s %>', width:100, editable:true,align:"right"}, 
+        {name:'f<%= field.id.to_s %>',index:'f<%= field.id.to_s %>', width:150, editable:true,align:"right"}, 
       <% end %>
       {name:'time',index:'time', width:120},
       {name:'option',index:'option', width:120}

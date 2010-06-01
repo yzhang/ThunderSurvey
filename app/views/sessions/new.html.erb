@@ -1,5 +1,9 @@
-<h1>登录</h1>
-
+<div class='grid_16'>
+sdfs  
+</div>
+<div class="grid_8"> 
+  
+<h1>登录</h1>  
 <%= form_tag session_path do -%>
 <p><%= label_tag 'Email or Login' %><br />
 <%= text_field_tag 'email', @email %></p>
@@ -10,5 +14,7 @@
 <p><%= label_tag 'remember_me', '在这台电脑上保存我的登录信息' %>
 <%= check_box_tag 'remember_me', '1', @remember_me %></p>
 
-<p><%= submit_tag '登录' %></p>
-<% end -%>
+<p><%= submit_tag '登录',:class => 'submit' %></p>    
+<% end -%>    
+</div>       
+

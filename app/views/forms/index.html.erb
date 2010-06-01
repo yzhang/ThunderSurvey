@@ -5,47 +5,30 @@
        function(){$(this).find('.action').toggle()})
      })    
   </script>
-<% end -%>
-<section class='form_list'>
-  <header class='pagenav'>
-    <h1>控制面板</h1>      
-  </header>       
-    <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>   
-    <div class='tablenav'>
-      <div class='left'>
-      </div>
-      <div class='right'>
-         <%= raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻')  %>
-      </div>
-    </div>
-  <table border="0" cellspacing="0" cellpadding="0"> 
-    <colgroup span="3" valign="top">
-        <col width="240"></col>
-        <col width="400"></col>
-        <col width="100"></col>
-        <col width="120"></col>
+<% end -%>         
+<div id="content"> 
+  <table class='grid' border="0" cellspacing="0" cellpadding="0"> 
+    <colgroup span="4" valign="top">
+        <col width="60%" />
+        <col width="15%" />
+        <col width="25%" />
     </colgroup>
   <thead>
     <tr> 
       <th>名称</th>
-      <th>描述</th> 
-      <th>回应数</th>
       <th>最后更新</th>
+      <th>操作</th>
     </tr> 
   </thead>
   <tbody> 
     <% @forms.each do |form| %> 
     <tr id="<%=form.id%>">        
-      <td class='title'><strong><%= link_to form.title, form,:target => '_blank'%></strong>
-      <div class='action' style='display:none'>
-        <%= link_to '结果统计', form_rows_path(form, :edit_key => form.edit_key), :target => '_blank' %> |
-        <%= link_to '编辑', edit_form_path(form, :edit_key => form.edit_key), :target => '_blank' %> | 
-        <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %>
-      </div>  
+      <td class='title'><%= form.title %><span>[<%= form.klass.count %>回应]</span>
       </td>                                                                                 
-      <td><%= truncate(form.description,:length => 80) %></th>
-      <td><%= form.klass.count %></td>
-      <td><%= form.updated_at.to_date%></td>
+      <td><%= form.updated_at.to_date%></td> 
+      <td><%= link_to '结果统计', form_rows_path(form, :edit_key => form.edit_key), :target => '_blank' %> |
+      <%= link_to '编辑', edit_form_path(form, :edit_key => form.edit_key), :target => '_blank' %> | 
+      <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %></td>
     <% end %>       
   </tbody>
   </table>
@@ -56,6 +39,7 @@
         <%= raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻')  %>
     </div>
   </div>
-</section>
-
-         
+</div>
+<div id="sidebar">
+	<a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>
+</div>

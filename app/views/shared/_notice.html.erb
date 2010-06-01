@@ -1,11 +1,15 @@
- <% %w(info notice error).each do |type| -%>
+ <% %w(info notice alert).each do |type| -%>
 	   <% if flash[type.to_sym] -%>
 			<div id='flash-message' class='ui-widget'>
-						<div class="ui-state-<%=state_type(type)%>  ui-corner-all"  style="padding:3px;">
-					<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
-			     	<%= h(flash[type.to_sym]) %>
-					<small><a href='#' class='close_btn' onclick="$('#flash-message').hide();return false"><%=image_tag('bg/delete.png')%></a></small>
+				<table style='margin:0px auto;width:auto;'>
+					<tr><td>
+						<div class="ui-state-<%=state_type(type)%>  ui-corner-all"  style="padding:3px">
+					    <span class="ui-icon ui-icon-alert" style="float: left; margin-right:.3em;margin-top:2px;"></span> 
+			     	  <%= h(flash[type.to_sym]) %>
+					    <small><a href='#' class='close_btn' onclick="$('#flash-message').hide();return false"><%=image_tag('bg/delete.png')%></a></small>
 			     </div>
+			</td></tr>
+				</table>
 			</div>
 	<% end -%>
 <% end -%>
