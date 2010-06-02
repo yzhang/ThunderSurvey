@@ -8,3 +8,10 @@
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
 # end
+                                                                             
+
+Time::DATE_FORMATS[:datetime_military] = '%Y-%m-%d %H:%M'
+Time::DATE_FORMATS[:datetime]         = '%Y-%m-%d %H:%M'
+Time::DATE_FORMATS[:time]              = '%I:%M%P'
+Time::DATE_FORMATS[:time_military]     = '%H:%M%P'
+Time::DATE_FORMATS[:datetime_short]    = '%m/%d %I:%M'
