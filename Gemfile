@@ -9,5 +9,6 @@ gem "mongo_mapper-rails3", "0.7.0.1", :require => "mongo_mapper"
 
 gem "ekuseru"
 gem "fastercsv"
+gem 'newrelic_rpm', :require => false
 
 require 'fastercsv'
