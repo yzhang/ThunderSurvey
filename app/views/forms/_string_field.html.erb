@@ -1,1 +1,1 @@
-<%= text_field_tag "row[f#{field.id}]", row.send("f#{field.id}") %>
+<%= text_field_tag "row[f#{field.id}]", field.new_record? ? '' : row.send("f#{field.id}") %>

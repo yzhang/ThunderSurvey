@@ -15,12 +15,12 @@
   <div class="question" ondblclick="field_start_editing(this);">     
     <%= label_tag field.id,field.name, :class => "q_title" %> <%= render_required(field) %>
     <div class="input">
-      <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field} %>
+      <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field, :row => @row} %>
       <br />
       <span class="prompt"><%=h field.prompt %></span>    
     </div>
   </div>
   <div class="form edit" style="display:none;">
-    <%= render :partial => "/fields/form", :locals => {:parent => parent, :field => field} %>
+    <%= render :partial => "/fields/form", :locals => {:parent => parent, :field => field, :row => @row} %>
   </div>
 </div>

@@ -59,6 +59,7 @@ class RowsController < ApplicationController
     
     respond_to do |wants|
       wants.json {render :json => @row.to_json}
+      wants.html
     end
   end
   

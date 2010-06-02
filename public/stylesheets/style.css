@@ -229,6 +229,11 @@ input[type='text'],input[type='password'],textarea{
 	border:1px solid #ccc;  
 }
 
+textarea {
+	width: 480px;
+	height: 100px;
+}
+
 input.inputFocus {
 	background: #fff;
 }

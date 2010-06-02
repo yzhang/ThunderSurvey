@@ -35,9 +35,10 @@ class FormsController < ApplicationController
 
   # GET /forms/new
   # GET /forms/new.xml
-  def new
+  def new    
     @form = current_user.forms.create(:title => "未命名表单", :description => '描述一下你的表单吧')
     @field = Field.new
+    @row = @form.klass.new
     
     respond_to do |format|
       format.html { redirect_to edit_form_path(@form, :edit_key => @form.edit_key)}
@@ -61,6 +62,7 @@ class FormsController < ApplicationController
 
   # GET /forms/1/edit
   def edit
+    @row = @form.klass.new    
     @field = Field.new(:input => 'string')
     @fields = @form.fields#.sort {|f1, f2| f1.position <=> f2.position}
     respond_to do |want|

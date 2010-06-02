@@ -17,7 +17,7 @@
   </p>
   
   <div class="input_options">
-    <%= render :partial => "/fields/#{field.input}_form", :locals => {:form => form, :field => field, :parent => parent} %>
+    <%= render :partial => "/fields/#{field.input}_form", :locals => {:form => form, :field => field, :parent => parent, :row => @row} %>
   </div>
   
   <p>

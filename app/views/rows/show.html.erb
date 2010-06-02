@@ -1,0 +1,28 @@
+<%= content_for :notes do %>
+<div class='notes right'>
+  <%=link_to '编辑此条目', edit_form_row_path(@form, @row, :edit_key => @form.edit_key), :class => 'ag' %>
+ </div> 
+<% end %>
+
+<%= pagenav_area do -%>
+  <span><%=link_to '<< 返回', form_rows_path(@form, :edit_key => @form.edit_key) %> / 查看记录详情  </span>
+<% end -%>
+
+<div class='field'>
+  <table class='grid' id='info_grid' cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>  
+        <th width="20%">问题</th>           
+        <th width="80%">回答</th>
+      </tr>
+    </thead>
+    <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
+      <tr>
+        <td><%= field.name %></td>
+        <td><%= @row.send("f#{field.id}") %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br /><br />
+  <p><%= link_to "编辑此条目", edit_form_row_path(@form, @row), :class => 'button' %></p>
+</div>

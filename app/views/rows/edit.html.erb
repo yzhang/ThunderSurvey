@@ -1,31 +1,17 @@
 <%= content_for :notes do %>
 <div class='notes right'>
-  <%=link_to '查看表单',form_path(@form),:target => '_blank',:class => 'ag' %> |
-  <%=link_to '导出CSV',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> |
-  <%=link_to '导出XLS',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>                                             
+  <%=link_to '查看记录详情', form_row_path(@form, @row, :edit_key => @form.edit_key), :class => 'ag' %>
  </div> 
 <% end %>
 
 <%= pagenav_area do -%>
   <span><%=link_to '<< 返回', form_rows_path(@form, :edit_key => @form.edit_key) %> / 编辑记录  </span>
 <% end -%>
+
 <%= form_for [@form, @row], :url => form_row_path(@form, @row) do |f| %>
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
   <% end %>
-  <% if false %>
-  <% @form.fields.each do |field| %>
-    <div class='field'>
-      <div class='question'>
-      <%= f.label field.id, field.name,:class => 'q_title' %><br />
-      <% if field.input == 'text' %>
-        <%= f.text_area "f#{field.id}" %>
-      <% else %>
-        <%= f.text_field "f#{field.id}" %>
-      <% end %>
-      </div>      
-    </div>
-  <% end %>
-  <% end %>
-  <%= f.submit "更新",:class => 'submit' %>
+  
+  <%= f.submit "更新",:class => 'submit' %> <%=link_to '查看记录详情', form_row_path(@form, @row, :edit_key => @form.edit_key), :class => 'ag' %>
 <% end %>    
