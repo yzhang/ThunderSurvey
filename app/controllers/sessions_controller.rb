@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   include AuthenticatedSystem           
 
   def new
+    @page_title = "用户登录"
   end
 
   def create

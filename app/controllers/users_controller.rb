@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new
+    @page_title = "新用户注册"
   end
  
   def create

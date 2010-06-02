@@ -5,6 +5,7 @@ class FormsController < ApplicationController
   
   def index
     @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '20')
+    @page_title = "所有问卷"
 
     respond_to do |format|
       format.html # index.html.erb

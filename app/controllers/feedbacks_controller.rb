@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
   def new
+    @page_title = "给我们提意见"
     @section = 'feedback' 
     @feedback = Feedback.new  
     
