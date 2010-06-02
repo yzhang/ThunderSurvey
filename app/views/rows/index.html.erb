@@ -1,6 +1,6 @@
 <%= content_for :sidebar do %>
   <p>
-    <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >编辑表单</a>
+    <a href="<%=edit_form_path(@form, :edit_key => @form.edit_key)%>" target="_blank" title="new form" class='button' >编辑表单</a>
   <p>
   <p><%=link_to '查看表单',form_path(@form),:target => '_blank', :class => 'button' %></p>
   <p><%=link_to '导出CSV',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank', :class => 'button' %></p>

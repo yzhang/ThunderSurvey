@@ -30,7 +30,7 @@
       </td>                                                                                 
       <td><%= form.updated_at.to_date%></td> 
       <td class='opt'> 
-        <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='ag' >转到表单</a>  
+        <a href="<%=edit_form_path(form, :edit_key => form.edit_key)%>" target="_blank" title="new form" class='ag' >转到表单</a>  
       <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete',:class => 'ag' %></td>
     <% end %>       
   </tbody>
