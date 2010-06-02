@@ -18,7 +18,6 @@ Confforge::Application.routes.draw do
     
     member do
       get :thanks
-      get :iframe
     end
   end
   

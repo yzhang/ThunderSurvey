@@ -115,12 +115,6 @@ class FormsController < ApplicationController
     respond_to do |want|
       want.html { render :layout => params[:embed] ? 'embed' : 'public' }
     end
-  end   
-  
-  def iframe
-    respond_to do |want|
-      want.html
-    end
   end
   
   private 
