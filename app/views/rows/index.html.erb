@@ -1,6 +1,7 @@
 <%= content_for :notes do %>
 <div class='notes right'>
   <%=link_to '查看表单',form_path(@form),:target => '_blank',:class => 'ag' %> |
+  <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑" class='ag' >编辑表单</a> |
   <%=link_to '导出CSV',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> |
   <%=link_to '导出XLS',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>                                             
  </div> 
@@ -14,7 +15,7 @@
 <table class='grid' id='info_grid' cellspacing="0" cellpadding="0">
   <thead>
     <tr>  
-      <% @form.fields.each do |field| %>                         
+      <% @form.fields[0..1].each do |field| %>                         
       <th><%= field.name %></th>           
       <% end %> 
       <th>时间</th>
@@ -24,12 +25,12 @@
   <tbody>  
   <% @rows.each do |row| -%>
   <tr>           
-    <% @form.fields.each do |field| %>              
+    <% @form.fields[0..1].each do |field| %>              
     <td class="<%='name' if field.name == '姓名' %>"><div class='info_item'><%= row.send('f' + field.id) %></div></td>
     <% end -%>
     <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
     <td class='opt'>
-      <div class='info_item'><%= link_to '编辑', edit_form_row_path(@form, row, :edit_key => @form.edit_key), :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %></div>
+      <div class='info_item'><%= link_to '查看/编辑', edit_form_row_path(@form, row, :edit_key => @form.edit_key), :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %></div>
     </td>
   </tr>      
   <% end -%>

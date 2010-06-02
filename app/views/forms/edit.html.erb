@@ -12,14 +12,14 @@
 <% end -%>   
 <div id="form_wrapper"> 
   <section class='form_oprate'>
-    <nav >    
-      <div class='new'>
-      <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> 
-      </div>
+    <nav>
       <div class='setting'>  
         <%= link_to '邮件通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置"});', :class => 'button' %>
         <%= link_to 'iframe嵌入', '#', :onclick => '$("#iframe").dialog({width:390, height:140, title:"问卷代码嵌入"});', :class => 'button' %>
         <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
+      </div>
+      <div class='new'>
+        <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> 
       </div>
     </nav>
   </section>

@@ -10,6 +10,10 @@
   <span><%=link_to '<< 返回', form_rows_path(@form, :edit_key => @form.edit_key) %> / 编辑记录  </span>
 <% end -%>
 <%= form_for [@form, @row], :url => form_row_path(@form, @row) do |f| %>
+  <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
+    <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
+  <% end %>
+  <% if false %>
   <% @form.fields.each do |field| %>
     <div class='field'>
       <div class='question'>
@@ -21,6 +25,7 @@
       <% end %>
       </div>      
     </div>
+  <% end %>
   <% end %>
   <%= f.submit "更新",:class => 'submit' %>
 <% end %>    

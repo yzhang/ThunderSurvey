@@ -1,1 +1,1 @@
-<%= select_tag "row[f#{field.id}]", options_for_select(field.options.map(&:value)) %>
+<%= select_tag "row[f#{field.id}]", options_for_select(field.options.map(&:value), row.send("f#{field.id}")) %>
