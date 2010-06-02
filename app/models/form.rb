@@ -39,7 +39,6 @@ class Form
   end
   
   def allow_insert?
-   # self.maximum_rows == 0  || self.klass.count < self.maximum_rows
     return true
   end
   
@@ -88,8 +87,8 @@ class Form
     case self.notify_type
     when 'email'
       deliver_email_notification(row)
-    when 'url'
-      url_callback(row)
+    # when 'url'
+    #       url_callback(row)
     end
   end
   
