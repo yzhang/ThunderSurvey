@@ -117,7 +117,11 @@ class FormsController < ApplicationController
     end
   end   
   
- 
+  def iframe
+    respond_to do |want|
+      want.html
+    end
+  end
   
   private 
   def set_form

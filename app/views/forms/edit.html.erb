@@ -44,5 +44,6 @@
   <!-- 表单尾 -->
   <section class='form_preview'>
     <%= link_to '预览表单', form_path(@form), :target => '_blank',:class => 'button' %>
+    <%= link_to 'iframe嵌入', iframe_form_path(@form), :target => '_blank',:class => 'button' %>
   </section>
 </div>  

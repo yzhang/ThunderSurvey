@@ -1,0 +1,7 @@
+<div style="width:700px; margin:auto;">
+  <h2>问卷嵌入代码</h2><br />
+  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 80, :rows => 3 %>
+  <br /><br />
+  <h2>预览</h2><br /><br />
+  <iframe src='<%= form_url(@form) %>' width='600' height='500' frameborder='0' style='overflow:auto'></iframe>
+</div>
