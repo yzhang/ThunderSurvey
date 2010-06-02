@@ -6,7 +6,11 @@
   <% @form.fields.each do |field| %>
     <p>
       <%= f.label field.id, field.name %>
-      <%= f.text_field "f#{field.id}" %>
+      <% if field.input == 'text' %>
+        <%= f.text_area "f#{field.id}" %>
+      <% else %>
+        <%= f.text_field "f#{field.id}" %>
+      <% end %>      
     </p>
   <% end %>
   <%= f.submit "更新" %>

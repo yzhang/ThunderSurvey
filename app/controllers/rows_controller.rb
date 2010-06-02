@@ -83,6 +83,7 @@ class RowsController < ApplicationController
       if @form.allow_insert? && @row.save
         want.html {redirect_to thanks_form_url(@form)}
       else
+        want.html {render '/forms/show', :layout => 'public'}
         want.js { 
           render :update do |page|
             page.hide 'spinner'   
