@@ -8,6 +8,9 @@
 <% end %>
 
 <%= pagenav_area do -%>
+  <span style="font-size: 14px; float:right;"><%=link_to '查看表单',form_path(@form),:target => '_blank' %> |
+  <%=link_to '导出CSV',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank' %> |
+  <%=link_to '导出XLS',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank' %></span>
   <span><%=link_to '所有问卷',forms_path%> / <%=h @form.title %>  </span>
 <% end -%>   
 <div class="info_grid">
@@ -29,7 +32,7 @@
     <% end -%>
     <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
     <td class='opt'>
-      <div class='info_item'><%= link_to '编辑', edit_form_row_path(@form, row, :edit_key => @form.edit_key), :class => 'ag' %> <%= link_to '删除', '#', :class => 'ag' %></div>
+      <div class='info_item'><%= link_to '编辑', edit_form_row_path(@form, row, :edit_key => @form.edit_key), :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :method => 'delete', :class => 'ag' %></div>
     </td>
   </tr>      
   <% end -%>

@@ -121,7 +121,7 @@ class RowsController < ApplicationController
     klass.delete(@row._id) if @row
     
     respond_to do |want|
-      want.html {render :text => "success"}
+      want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key)}
       want.json {render :json => [:ok]}
     end
   end
