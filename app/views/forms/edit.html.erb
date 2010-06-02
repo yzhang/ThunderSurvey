@@ -16,8 +16,10 @@
       <div class='new'>
       <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> 
       </div>
-      <div class='setting'>     
-      <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
+      <div class='setting'>  
+        <%= link_to '邮件通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置"});', :class => 'button' %>
+        <%= link_to 'iframe嵌入', '#', :onclick => '$("#iframe").dialog({width:390, height:140, title:"问卷代码潜入"});', :class => 'button' %>
+        <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
     </nav>
   </section>
@@ -45,4 +47,8 @@
   <section class='form_preview'>
     <%= link_to '预览表单', form_path(@form), :target => '_blank',:class => 'button' %>
   </section>
-</div>  
+</div>
+
+<div id="iframe" style="display:none;">
+  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5 %>
+</div>

@@ -1,5 +1,5 @@
 ActionMailer::Base.smtp_settings = {
-  :address              => "51qiangda.com",
+  :address              => "51qiangzuo.com",
   :port                 => 25,
   :domain               => "51qiangda.com",
   :user_name            => "noreply@51qiangda.com",

@@ -9,27 +9,31 @@
   <div id="field_positions" style="display:none"></div>
 <% end %> 
 
-  <!-- 表单通知设定 -->            
-
+<!-- 表单通知设定 -->            
 <div style="display:none;" id="notify_setting"> 
-  <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key,:mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
-  <p>
-    <%= f.label :notify_type, '通知方式' %>
-    <%= f.radio_button :notify_type, 'email', :onclick => '$("#url_notify").hide(); $("#email_notify").show();' %>邮件通知
-    <%= f.radio_button :notify_type, 'url', :onclick => '$("#url_notify").show(); $("#email_notify").hide();' %>URL回调
+  <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key, :mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
+  <% if false %>
+    <p>
+      <%= f.label :notify_type, '通知方式' %>
+      <%= f.radio_button :notify_type, 'email', :onclick => '$("#url_notify").hide(); $("#email_notify").show();' %>邮件通知
+      <%= f.radio_button :notify_type, 'url', :onclick => '$("#url_notify").show(); $("#email_notify").hide();' %>URL回调
+    </p>
+  <% end %>
+  
+  <p id="email_notify">
+    <%= f.check_box :email_notify %>
+    <%= f.label :notify_email, '有新回答时，发送邮件通知' %>
   </p>
-  <p id="email_notify" style="<%= 'display:none;' if f.object.notify_type == 'url' %>">
-    <%= f.label :notify_email, '发送通知到此信箱' %>
-    <%= f.text_field :notify_email %>
-  </p>
+  <% if false %>  
   <p id="url_notify" style="<%= 'display:none;' if f.object.notify_type == 'email' %>">
     <%= f.label :notify_url, '发送通知到此地址' %>
     <%= f.text_field :notify_url, :size => '40' %>
   </p>
+  <% end %>
   <p>
-    <%= f.label :thanks_message, '提交成功后的感谢信息' %><br />
-    <%= f.text_area :thanks_message %>
+    <%= f.label :thanks_message, '用户提交回答后的感谢信息' %><br />
+    <%= f.text_area :thanks_message, :cols => 42, :rows => 4 %>
   </p>                             
-  <%=f.submit 'submit',:onclick => "$('#saving').show();" %>  
+  <%=f.submit '更新',:onclick => "$('#saving').show();" %>  
   <% end -%>
 </div>

@@ -1,25 +1,12 @@
 class Mailer < ActionMailer::Base
-  default :from => 'admin@juhuiyi'
+  layout 'email'
+  default :from => "抢答网 <noreply@51qiangda.com>", :content_type => "text/html",
+            :charset => "utf-8",:content_transfer_encoding => '8bit'
   
-  def signup_notification(user)
-    @url  = "http://YOURSITE/activate/#{user.activation_code}"
-    
-    mail(:to => user.email,
-         :subject => '[JUHUIYI]Please activate your new account')
-  end
-  
-  def activation(user)
-    @url  = "http://YOURSITE/"
-    @user = user
-    
-    mail(:to => user.email,
-         :subject => '[JUHUIYI]Your account has been activated!')
-  end
-  
-  def registrant_notification(form)
+  def registrant_notification(form, row)
     @form = form
-    
-    mail(:to => form.notify_email,
-          :subject => '[JUHUIYI]您提交的活动有新用户报名')
+    @row = row
+    mail(:to => form.user.email,
+          :subject => '[抢答网]您的表单有新用户报名')
   end
 end
