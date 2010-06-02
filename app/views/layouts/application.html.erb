@@ -9,8 +9,11 @@
 <body>
  <%= render :partial => '/shared/header' %> 
       
-	<div class="container clearfix">
-    <%= yield %>
+	<div class="container clearfix"> 
+	  <%= yield :notes %>
+	  <div id='content'>
+	    <%= yield %> 
+	  </div>
   </div>
   <%= render :partial => '/shared/footer' unless controller.class == FormsController && action_name == 'edit' %>
 </body>

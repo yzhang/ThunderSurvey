@@ -39,16 +39,15 @@ body{
 	background:#fff;
 }   
       
-#main_container{ 
+#main_container{   
+	position:relative;
 	min-width:950px;
 }        
 
 #content{    
-	float:left;
 	background:#fff;     
 	position:relative;
-	width:70%; 
-	margin:10px;
+	margin:0px auto;
 	padding:10px;
 	overflow:auto;
 }
@@ -82,11 +81,14 @@ h1,h2,h3,h4{
 }    
 
 .notes{    
-	padding:5px 10px;
+	padding:10px;
 	background:#EFEFEF;
 	color:#333;
-	margin-bottom:20px;
-}     
+}    
+
+.right{
+	text-align:right;
+} 
 
 #saving {
 	-moz-border-radius-bottomleft:4px;
@@ -149,7 +151,8 @@ table.grid {
 }     
 
 .info_grid{    
-	width:100%;
+	width:96%;  
+	margin:0 auto;
 	overflow:auto;
 }
 
@@ -165,13 +168,13 @@ table.grid thead tr th, table.grid tfoot tr th {
 	background:#EFEFEF;  
 	font-size: 14px;  
 	font-weight:normal;
-	padding: 12px 3px;  
+	padding: 12px 5px;  
 	text-align:left;
 }
 
 table.grid tbody td { 
 	color: #666; 
-	padding: 10px 3px; 
+	padding: 10px 5px; 
 	vertical-align: top; 
 	border-bottom:1px dotted #CCCCCC;
 }         
@@ -363,7 +366,7 @@ div.edit:hover {
 /* ---- page nav ----*/
 #page_nav{
 	height:20px;
-   	padding:10px 10px 15px 10px;  
+   	padding:5px 10px 15px 10px;  
    *padding:5px 10px 15px 10px;
 	margin:10px 0px;
 	border-bottom:1px solid #ddd;   
@@ -384,3 +387,35 @@ div.edit:hover {
 	line-height:28px;
 	font-size:28px;
 }
+
+/* pagination*/
+
+
+.flickr_pagination {   
+  margin:10px;
+  text-align: center;
+  padding: .3em; }
+  .flickr_pagination a, .flickr_pagination span {
+    padding: .2em .5em; }
+  .flickr_pagination span.disabled {
+    color: #AAA; }
+  .flickr_pagination span.current {
+    font-weight: bold;
+    color: #FF0084; }
+  .flickr_pagination a {
+    border: 1px solid #DDDDDD;
+    color: #0063DC;
+    text-decoration: none; }
+    .flickr_pagination a:hover, .flickr_pagination a:focus {
+      border-color: #003366;
+      background: #0063DC;
+      color: white; }
+  .flickr_pagination .page_info {
+    color: #aaa;
+    padding-top: .8em; }
+  .flickr_pagination .prev_page, .flickr_pagination .next_page {
+    border-width: 2px; }
+  .flickr_pagination .prev_page {
+    margin-right: 1em; }
+  .flickr_pagination .next_page {
+    margin-left: 1em; }
