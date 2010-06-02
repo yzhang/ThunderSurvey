@@ -35,7 +35,9 @@
     <% end %>       
   </tbody>
   </table>
-
+  <%=raw will_paginate @forms,:class => 'flickr_pagination' %>
 <%= content_for :notes do %>
-  <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>
+<div class='notes right'>   
+  <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>    
+  </div>
 <% end %>

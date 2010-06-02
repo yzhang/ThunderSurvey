@@ -81,7 +81,8 @@ class RowsController < ApplicationController
     
     respond_to do |want|
       if @form.allow_insert? && @row.save
-        want.html {redirect_to thanks_form_url(@form)}
+        params = ["form_id=#{@form.id}", "row_id=#{@row.id}","order_id=#{@row.order_id}"].join("&")
+        want.js { render :js => "window.location='#{thanks_form_path(@form)}'" }
       else
         want.js { 
           render :update do |page|
