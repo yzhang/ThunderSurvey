@@ -1,6 +1,6 @@
 class RowsController < ApplicationController
   before_filter :set_form
-  before_filter :verify_edit_key, :only => [:index, :show]    
+  before_filter :verify_edit_key, :only => [:index, :show, :edit]    
   skip_before_filter :verify_authenticity_token
 
   def index
@@ -62,6 +62,14 @@ class RowsController < ApplicationController
     end
   end
   
+  def edit
+    @row = @form.klass.find(params[:id])
+    
+    respond_to do |wants|
+      wants.html
+    end
+  end
+  
   def create
     return update if params[:oper] == 'edit'
     return destroy if params[:oper] == 'del'
@@ -94,17 +102,14 @@ class RowsController < ApplicationController
   
   def update
     klass = @form.klass
-    @row = klass.find(params.delete(:id))
-    params.reject! do |k, v|
-      !@row.respond_to?(k)
-    end
+    @row = klass.find(params[:id])
     
     respond_to do |want|
-      if @row.update_attributes(params)
-        want.html {render :text => "success"}
+      if @row.update_attributes(params[:row])
+        want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key)}
         want.json {render :json => @row.to_json}
       else
-        want.html {render :template => '/forms/show',:layout => 'simple'}
+        want.html {render :action => 'edit'}
         want.json {render :json => @row.errors.to_json}
       end
     end

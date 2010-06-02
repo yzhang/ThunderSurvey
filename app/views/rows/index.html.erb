@@ -29,58 +29,10 @@
     <% end -%>
     <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
     <td class='opt'>
-      <div class='info_item'><%= link_to '编辑', '#', :class => 'ag' %> <%= link_to '删除', '#', :class => 'ag' %></div>
+      <div class='info_item'><%= link_to '编辑', edit_form_row_path(@form, row, :edit_key => @form.edit_key), :class => 'ag' %> <%= link_to '删除', '#', :class => 'ag' %></div>
     </td>
   </tr>      
   <% end -%>
   </tbody>
 </table>   
 </div>
-<% if false %>             
- <div class='info_item'><%= link_to '编辑备注', edit_dashboard_event_row_path(@event, row), :class => 'fancybox ag' %>  <%= link_to "删除", dashboard_event_row_path(@event, row), :method => 'delete', :confirm => '确定要删除吗？',:class => 'ag' %></div>       
-<div id="pager"></div> 
-<script type="text/javascript" charset="utf-8">
-  jQuery("#rows").jqGrid({
-    url:'?format=json&edit_key=<%= @form.edit_key %>', 
-    datatype: "json", 
-    colNames:[
-      'INTERN',
-      'ID',
-      <% @form.fields.each do |field| %>
-        '<%= field.name %>',
-      <% end %>
-      '时间',
-      '操作'],
-    colModel:[
-      {name:'id',index:'id', width:120, hidden:true, editable:true},
-      {name:'number',index:'number', width:30, align:"right"}, 
-      <% @form.fields.each do |field| %>
-        {name:'f<%= field.id.to_s %>',index:'f<%= field.id.to_s %>', width:150, editable:true,align:"right"}, 
-      <% end %>
-      {name:'time',index:'time', width:120},
-      {name:'option',index:'option', width:120}
-    ], 
-    rowNum: <%= @rows.size %>, 
-    rowList:[100], 
-    pager: '#pager', 
-    sortname: 'id', 
-    height: 400,
-    viewrecords: true, 
-    sortorder: "desc", 
-    gridComplete: function() { 
-      var options = jQuery("#rows").jqGrid('getDataIDs'); 
-      for(var i=0;i < options.length;i++){ 
-        var cl = options[i]; 
-        be = "<a href='#' onclick=\"jQuery('#rows').jqGrid('editRow', '"+cl+"');\">编辑</a>|"; 
-        se = "<a href='#' onclick=\"jQuery('#rows').jqGrid('saveRow', '"+cl+"');\">保存</a>|"; 
-        ce = "<a href='#' onclick=\"jQuery('#rows').jqGrid('restoreRow', '"+cl+"');\">取消</a>";
-        jQuery("#rows").jqGrid('setRowData',options[i],{option:be+se+ce}); 
-      } 
-    },
-    editurl: "rows",
-    caption:"<%= @form.title %>"
-  }); 
-  
-  jQuery("#rows").jqGrid('navGrid',"#pager",{edit:true,add:false,del:true}); 
-</script>
-<% end %>

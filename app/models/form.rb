@@ -58,11 +58,15 @@ class Form
       def id
         self._id.to_s
       end
+
+      def persisted?
+        !new_record?
+      end
     METHOD
 
     klass.instance_eval <<-NAME
       def name
-        'UserForm'
+        'Row'
       end
     NAME
     
