@@ -5,11 +5,15 @@ class RowsController < ApplicationController
 
   def index
     klass = @form.klass
-    @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
     
-    respond_to do |want|
-      want.html { render :layout => params[:embed] ? 'embed' : 'application' }
-      want.json {
+    respond_to do |wants|
+      wants.html { 
+        @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
+        render :layout => params[:embed] ? 'embed' : 'application' 
+      }
+      wants.json {
+        @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
+
         # 如果grid参数不为0，则为Grid调用，否则为ActiveResource
         if params[:grid] == '0'
           @rows << {:total_entries => @rows.total_entries}
@@ -29,6 +33,23 @@ class RowsController < ApplicationController
           render :json => data.to_json
         end
       }
+      
+      wants.csv do
+        @rows = klass.paginate(:page => 1, :per_page => 1000, :order => 'created_at')
+        csv_string = FasterCSV.generate(:col_sep => ",", :row_sep => "\r\n") do |csv|
+          csv << (@form.fields.map(&:name) + ['创建时间'])
+          first_page = @rows
+          write_csv_rows(csv, first_page)
+          (2..first_page.total_pages).to_a.each do |page|
+            write_csv_rows(csv, klass.paginate(:page => page, :per_page => 1000, :order => 'created_at'))
+          end
+        end
+
+        utf16_string = Iconv.iconv("UTF-16LE", "UTF-8", csv_string).join('')
+        send_data("FFFE".gsub(/\s/,'').to_a.pack("H*") + utf16_string, :type => 'text/csv; charset=utf16; header=present')   
+      end
+      
+      wants.xls {@rows = klass.paginate(:page => 1, :per_page => 1000, :order => 'created_at')}
     end
   end
   
@@ -101,9 +122,19 @@ class RowsController < ApplicationController
     end
   end
   
+  protected
+  def write_csv_rows(csv, rows)
+    rows.each do |row|
+      csv_row = []
+      @form.fields.each do |field| 
+        csv_row << row.send('f' + field.id.to_s)
+      end
+      csv << (csv_row + [row.created_at.to_time.to_formatted_s(:datetime_military)])
+    end
+  end
+  
   private
   def set_form
     @form = Form.find(params[:form_id])
   end
-  
 end

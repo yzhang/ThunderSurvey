@@ -1,0 +1,50 @@
+# set the filename sent to the user with __filename variable
+# this is optional, if you don't set it, the name will be like products.xls
+
+__filename = "#{@form.title}.xls"
+
+# we get 'xls' variable which is a Workbook object
+# then we can create some worksheet to work with, with create_worksheet method
+
+sheet1 = xls.create_worksheet
+
+# fill the [0, 0] cell
+
+sheet1[0, 0] = "#{@form.title}"
+
+# Worksheet#row will return a Row object. We can modify it just like an Array.
+# this code will return the second row and fill the cells.
+
+sheet1.row(1).concat @form.fields.map(&:name)
+sheet1.row(1).concat ['报名时间']
+
+# we can access the instance variable we set in the controller, just like
+# in erb template
+
+@rows.each_with_index do |r, i|
+  args = []
+  @form.fields.each_with_index do |field, c|
+    args << r.send('f' + field.id.to_s)
+  end
+  args << r.created_at.to_date
+  sheet1.update_row(i+2, *args)
+end
+
+(2..@rows.total_pages).to_a.each do |page|
+  @form.klass.paginate(:page => page, :per_page => 1000, :order => 'created_at').each_with_index do |r, i|
+    args = []
+    @form.fields.each_with_index do |field, c|
+      args << r.send('f' + field.id.to_s)
+    end
+    args << r.created_at.to_date
+    sheet1.update_row(i+2 + (page -1) * 1000, *args)
+  end
+end
+
+# we can add some formatting using Spreadsheet::Format object
+
+# title_format = Spreadsheet::Format.new(:color => :blue, :weight => :bold, :size => 18)
+# sheet1.row(0).set_format(0, title_format)
+# 
+# bold = Spreadsheet::Format.new(:weight => :bold)
+# sheet1.row(1).default_format = bold
