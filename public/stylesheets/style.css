@@ -39,16 +39,15 @@ body{
 	background:#fff;
 }   
       
-#main_container{ 
+#main_container{   
+	position:relative;
 	min-width:950px;
 }        
 
 #content{    
-	float:left;
 	background:#fff;     
 	position:relative;
-	width:70%; 
-	margin:10px;
+	margin:10px auto;
 	padding:10px;
 	overflow:auto;
 }
@@ -82,11 +81,14 @@ h1,h2,h3,h4{
 }    
 
 .notes{    
-	padding:5px 10px;
+	padding:10px;
 	background:#EFEFEF;
 	color:#333;
-	margin-bottom:20px;
-}     
+}    
+
+.right{
+	text-align:right;
+} 
 
 #saving {
 	-moz-border-radius-bottomleft:4px;
@@ -149,7 +151,8 @@ table.grid {
 }     
 
 .info_grid{    
-	width:100%;
+	width:96%;  
+	margin:0 auto;
 	overflow:auto;
 }
 
@@ -363,7 +366,7 @@ div.edit:hover {
 /* ---- page nav ----*/
 #page_nav{
 	height:20px;
-   	padding:10px 10px 15px 10px;  
+   	padding:5px 10px 15px 10px;  
    *padding:5px 10px 15px 10px;
 	margin:10px 0px;
 	border-bottom:1px solid #ddd;   

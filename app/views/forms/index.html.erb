@@ -34,9 +34,7 @@
       <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete',:class => 'ag' %></td>
     <% end %>       
   </tbody>
-  </table>
-
-<%= content_for :sidebar do %>
-  <% if false %><a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a><% end %>
+  </table>        
+<% content_for :notes do -%>
   <a href="/forms/new" target="_blank" title="new form" class='button' >新建表单</a>
-<% end %>
+<% end -%>
