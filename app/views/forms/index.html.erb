@@ -30,8 +30,7 @@
       </td>                                                                                 
       <td><%= form.updated_at.to_date%></td> 
       <td class='opt'> 
-        <a href="<%=edit_form_path(form, :edit_key => form.edit_key)%>" target="_blank" title="new form" class='ag' >编辑</a>  
-        <a href="<%=form_path(form)%>" target="_blank" title="new form" class='ag' >预览</a>        
+        <a href="<%=edit_form_path(form, :edit_key => form.edit_key)%>" target="_blank" title="new form" class='ag' >编辑表单</a>  
       <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete',:class => 'ag' %></td>
     <% end %>       
   </tbody>
