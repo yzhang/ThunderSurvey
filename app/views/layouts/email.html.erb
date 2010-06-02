@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>抢答网</title>
+</head>
+<body style="padding:0; margin:0; background:#FDFDFD;font-family: '微软雅黑' arial;">
+	
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FDFDFD">
+	<tr>
+		<td align="center" valign="top">
+			<table width="614" border="0" cellspacing="0" cellpadding="5" bgcolor="#d6edf9">
+				<tr>
+					<td>
+			
+						<table width="614" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+						  <tr>                                          
+						    <td bgcolor='#d6edf9' style='padding:10px;'><%=link_to image_tag('http://www.51qiangzuo.com/images/email_logo.png',:border => '0',:alt => "抢座网"),root_url %></td>
+							</tr>
+							<tr>
+								<td>
+									<table width="590" border="0" cellspacing="17" cellpadding="0">
+										<tr>
+											<td>
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																	<td valign="top">
+																		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td  colspan='2' style="font-size:12px; line-height:19px; text-align:left; color:#666;">
+                                           <%= yield %>
+																				</td>
+																			</tr> 
+																		</table>
+																	</td>
+                                  <%= yield :event %>
+																</tr>
+																 <tr>
+																   <td colspan='2' style="border-top:1px solid #EEEEEE;padding-top:10px;font-size:10px; line-height:20px;text-align:left; color:#ccc;">
+																    此邮件是抢座网的系统通知，请勿直接回复!<br />
+																    Copyright 抢答网 All Rights Reserved
+																   </td>
+																 </tr>
+															</table>
+														</td>
+													</tr>
+													
+												</table>
+											</td>
+										</tr>
+										
+									</table>
+								</td>
+							</tr>
+							
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+	
+</body>
+</html>

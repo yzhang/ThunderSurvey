@@ -12,10 +12,10 @@ class Form
   key :description, String
   key :user_id, String
   key :edit_key, String
-  key :notify_email, String
+  key :email_notify, Boolean, :default => true
   key :notify_url, String
   key :notify_type, String, :default => 'email'
-  key :thanks_message, String  # 新用户注册成功后跳转的URL
+  key :thanks_message, String, :default => "您的信息已成功提交！"
   key :maximum_rows, Integer
   key :height,Integer
   
@@ -97,7 +97,7 @@ class Form
   end
   
   def deliver_email_notification(row)
-    Mailer.registrant_notification(self).deliver unless self.notify_email.blank?
+    Mailer.registrant_notification(self, row).deliver
   end
   
   # 改为报名成功直接返回会议网站
