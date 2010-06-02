@@ -15,6 +15,6 @@ class Page
   validates :body, :presence => true
   
   def persisted?
-    false
+    !new_record?
   end
 end

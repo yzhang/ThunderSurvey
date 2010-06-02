@@ -23,7 +23,7 @@ class Field
   end
   
   def persisted?
-    false
+    !new_record?
   end
   
   def update_options(options)
