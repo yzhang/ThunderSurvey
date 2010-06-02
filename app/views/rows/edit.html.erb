@@ -4,10 +4,10 @@
 
 <%= form_for [@form, @row], :url => form_row_path(@form, @row) do |f| %>
   <% @form.fields.each do |field| %>
-    <p>
+    <div class='fields'>
       <%= f.label field.id, field.name %>
       <%= f.text_field "f#{field.id}" %>
-    </p>
+    </div>
   <% end %>
   <%= f.submit "更新" %>
 <% end %>

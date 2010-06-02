@@ -168,13 +168,13 @@ table.grid thead tr th, table.grid tfoot tr th {
 	background:#EFEFEF;  
 	font-size: 14px;  
 	font-weight:normal;
-	padding: 12px 3px;  
+	padding: 12px 5px;  
 	text-align:left;
 }
 
 table.grid tbody td { 
 	color: #666; 
-	padding: 10px 3px; 
+	padding: 10px 5px; 
 	vertical-align: top; 
 	border-bottom:1px dotted #CCCCCC;
 }         

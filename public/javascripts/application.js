@@ -1,6 +1,6 @@
-//$(document).ready(function() { 
-//	setTimeout(function () { $('#flash-message').fadeOut(); }, 2000); 
-//});
+$(document).ready(function() { 
+	setTimeout(function () { $('#flash-message').fadeOut(); }, 6000); 
+});
 
 $(document).ready(function(){
 	$("input[type='text'],textarea,input[type='password']").focus(function() {

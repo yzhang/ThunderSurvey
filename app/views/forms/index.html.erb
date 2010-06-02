@@ -12,9 +12,9 @@
 
   <table class='grid' border="0" cellspacing="0" cellpadding="0"> 
     <colgroup span="4" valign="top">
-        <col width="60%" />
+        <col width="70%" />
         <col width="15%" />
-        <col width="25%" />
+        <col width="15%" />
     </colgroup>
   <thead>
     <tr> 
@@ -30,11 +30,12 @@
       </td>                                                                                 
       <td><%= form.updated_at.to_date%></td> 
       <td class='opt'> 
-        <a href="<%=edit_form_path(form, :edit_key => form.edit_key)%>" target="_blank" title="new form" class='ag' >编辑表单</a>  
-      <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete',:class => 'ag' %></td>
+        <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='ag' >编辑表单</a> 
+      <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => '你确定删除此问卷嘛?', :method => 'delete',:class => 'ag' %></td>
     <% end %>       
   </tbody>
-  </table>        
-<% content_for :notes do -%>
-  <a href="/forms/new" target="_blank" title="new form" class='button' >新建表单</a>
-<% end -%>
+  </table>
+
+<%= content_for :notes do %>
+  <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>
+<% end %>
