@@ -22,7 +22,7 @@ class FormsController < ApplicationController
     
     respond_to do |format|
       if @form.allow_insert?
-        format.html {  render :layout => params[:embed] ? 'embed' : 'simple' }# show.html.erb
+        format.html {  render :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
       else
         format.html { render :text => '对不起，此表单不允许插入新记录'}
       end
@@ -112,7 +112,7 @@ class FormsController < ApplicationController
   
   def thanks
     respond_to do |want|
-      want.html { render :layout => params[:embed] ? 'embed' : 'simple' }
+      want.html { render :layout => params[:embed] ? 'embed' : 'public' }
     end
   end   
   

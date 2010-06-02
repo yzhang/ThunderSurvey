@@ -6,12 +6,16 @@
   <%= render :partial => '/shared/head' %>
 </head>
 
-<body>
- <%= render :partial => '/shared/header' %> 
-      
-	<div class="container clearfix">
-    <%= yield %>
-  </div>   
+<body>   
+  <%= render :partial => '/shared/header' %>   
+  <div id="main_container">
+    <div id="content">  
+    <%= yield %>        
+    </div>
+    <div id="sidebar">
+    	<%= yield :sidebar %>
+    </div>
+  </div>  
   <%= render :partial => '/shared/footer' %>
 </body>
 </html>
