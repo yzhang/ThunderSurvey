@@ -122,7 +122,7 @@ class RowsController < ApplicationController
     klass.delete(@row._id) if @row
     
     respond_to do |want|
-      want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key)}
+      want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => '记录已删除!'}
       want.json {render :json => [:ok]}
     end
   end

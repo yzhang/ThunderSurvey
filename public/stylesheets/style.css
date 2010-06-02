@@ -21,7 +21,8 @@ body{
 .header{   
 	height:40px;
 	width:100%;     
-	background:#fff;
+	background:#fff; 
+	margin-bottom:20px;
 	} 
 	
 .logo{   
@@ -35,7 +36,6 @@ body{
 
 .container{ 
 	padding:10px;   
-	margin:20px auto;
 	background:#fff;
 }   
       
