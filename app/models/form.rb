@@ -117,7 +117,7 @@ class Form
   end
   
   def persisted?
-    false
+    !new_record?
   end
   
   def find_field_by_uuid(uuid)
