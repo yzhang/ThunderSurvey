@@ -22,7 +22,7 @@
   
   <p id="email_notify">
     <%= f.check_box :email_notify %>
-    <%= f.label :notify_email, '有新回答时，发送邮件通知' %>
+    <%= f.label :email_notify, '有新回答时，发送邮件通知' %>
   </p>
   <% if false %>  
   <p id="url_notify" style="<%= 'display:none;' if f.object.notify_type == 'email' %>">

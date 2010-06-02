@@ -25,7 +25,7 @@ class Form
   many :fields, :default => 0
   
   validates :title, :presence => true
-  validates :notify_email, :format => {:with => Authentication.email_regex}, :allow_blank => true
+  #validates :email_notify, :format => {:with => Authentication.email_regex}, :allow_blank => true
   
   before_create :make_edit_key
   before_save   :update_timestamps
