@@ -1,7 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>      
+<html lang="en">
 <head>
   <link rel="shortcut icon" href="/favicon.ico" />
   <meta name="description" content="<%= @form.nil? ?  "抢答网让您可以轻松创建在线表单，调查问卷，收集用户反馈，类似Google Form的操作界面，让表单的创建如行云流水，简洁干净的问卷页面，让用户爱上问答!" : @form.description %>" />
@@ -10,7 +8,7 @@
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
   <meta name="csrf-param" content="authenticity_token" />
   <title>抢答网－<%= @form.nil? ? '新一代调查系统，让您的问卷与众不同' : @form.title %></title>    
-  <%= stylesheet_link_tag 'custom', "jquery-ui", "ui.jqgrid", :cache => 'app.cache'  %>
+  <%= stylesheet_link_tag 'style',"jquery-ui", "ui.jqgrid", :cache => 'app.cache'  %>
   <!--[if IE]>
    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -18,39 +16,23 @@
           'i18n/grid.locale-cn', 'jquery.jqgrid', :cache => 'app.cache' %> 
    <%= yield :headers %> 
 
-  <script type="text/javascript">
-  	$.jgrid.no_legacy_api = true;
-  	$.jgrid.useJSON = true;
-  </script>
-
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){     
       $('.button').button();
      })    
   </script>
-                                                   
- 
 </head>
 
 <body>   
-  <%= render :partial => '/shared/header' %>
+  <%= render :partial => '/shared/header' %>   
   <div id="main_container">
-    <section class="content">
-        <%= render :partial => '/shared/notice' %> 
-        <div id="saving" style="display:none;">正在保存...</div>
-        <%= yield %>
-    </section>
-  </div> 
-  <footer>
-    <a href="/intro">介绍</a> |
-    <a href="/about">关于我们</a> | 
-    <a href="/contact">联系我们</a> |
-    <a href="/feedbacks/new">意见/建议</a> |
-    <a href="http://www.51qiangzuo.com">抢座网</a>
-    <br /><br />
-
-    &copy; 抢答网 2010  
-     上海沙路网络旗下产品
-  </footer>
+    <div id="content">  
+    <%= yield %>        
+    </div>
+    <div id="sidebar">
+    	<a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>
+    </div>
+  </div>  
+  <%= render :partial => '/shared/footer' %>
 </body>
 </html>

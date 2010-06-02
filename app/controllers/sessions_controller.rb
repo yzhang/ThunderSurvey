@@ -1,7 +1,8 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  include AuthenticatedSystem           
+  layout 'grid'
 
   def new
   end
@@ -17,7 +18,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       #new_cookie_flag = (params[:remember_me] == "1")
       #handle_remember_cookie! new_cookie_flag
-      redirect_back_or_default('/')
+      redirect_back_or_default('/forms')
       flash[:notice] = "您已成功登录"
     else
       note_failed_signin
@@ -36,7 +37,7 @@ class SessionsController < ApplicationController
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash[:error] = "Couldn't log you in as '#{params[:login]}'"
+    flash[:alert] = "用户名或密码错误"
     logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.zone.now}"
   end
 end

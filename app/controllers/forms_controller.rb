@@ -63,7 +63,7 @@ class FormsController < ApplicationController
     @field = Field.new(:input => 'string')
     @fields = @form.fields#.sort {|f1, f2| f1.position <=> f2.position}
     respond_to do |want|
-      want.html { render :layout => params[:embed].blank? ? 'application' : "embed"}
+      want.html { render :layout => params[:embed].blank? ? 'grid' : "embed"}
     end
   end
 

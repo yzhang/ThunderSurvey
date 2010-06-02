@@ -1,13 +1,15 @@
-<header class='header'>
+<div class='header'>
   <div class="logo">
-    <a href="/">欢迎来到抢答网！</a>
-  </div>
-  <nav class='login'>
+    <%=link_to image_tag('logo.png'),'/'%>
+  </div>         
+  <div class='login'>
     <% if logged_in? %>	
       你好 <%=current_user.login %> <%= link_to '注销', logout_path, :method => 'delete' %>
     <% else %>
       <%= link_to '立即登录', login_path %> |
       还没有帐号？ <%= link_to '现在就注册', signup_path %>
     <% end %>
-  </nav>
-</header>
+  </div>         
+  <div id="saving" style="display:none;">正在保存...</div> 
+  <%= render :partial => '/shared/notice' %>
+</div>

@@ -1,6 +1,35 @@
-<table id="rows"></table>
+<%= pagenav_area do -%>
+  <span><%=link_to '所有问卷',forms_path%> / <%=h @form.title %>  </span>
+<% end -%>   
+<div class="info_grid">
+<table class='grid' id='info_grid' cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>  
+      <% @form.fields.each do |field| %>                         
+      <th><%= field.name %></th>           
+      <% end %> 
+      <th>时间</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>  
+  <% @rows.each do |row| -%>
+  <tr>           
+    <% @form.fields.each do |field| %>              
+    <td class="<%='name' if field.name == '姓名' %>"><div class='info_item'><%= row.send('f' + field.id) %></div></td>
+    <% end -%>
+    <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
+    <td class='opt'>
+      <div class='info_item'><%= link_to '编辑', '#', :class => 'ag' %> <%= link_to '删除', '#', :class => 'ag' %></div>
+    </td>
+  </tr>      
+  <% end -%>
+  </tbody>
+</table>   
+</div>
+<% if false %>             
+ <div class='info_item'><%= link_to '编辑备注', edit_dashboard_event_row_path(@event, row), :class => 'fancybox ag' %>  <%= link_to "删除", dashboard_event_row_path(@event, row), :method => 'delete', :confirm => '确定要删除吗？',:class => 'ag' %></div>       
 <div id="pager"></div> 
-
 <script type="text/javascript" charset="utf-8">
   jQuery("#rows").jqGrid({
     url:'?format=json&edit_key=<%= @form.edit_key %>', 
@@ -17,7 +46,7 @@
       {name:'id',index:'id', width:120, hidden:true, editable:true},
       {name:'number',index:'number', width:30, align:"right"}, 
       <% @form.fields.each do |field| %>
-        {name:'f<%= field.id.to_s %>',index:'f<%= field.id.to_s %>', width:100, editable:true,align:"right"}, 
+        {name:'f<%= field.id.to_s %>',index:'f<%= field.id.to_s %>', width:150, editable:true,align:"right"}, 
       <% end %>
       {name:'time',index:'time', width:120},
       {name:'option',index:'option', width:120}
@@ -45,3 +74,4 @@
   
   jQuery("#rows").jqGrid('navGrid',"#pager",{edit:true,add:false,del:true}); 
 </script>
+<% end %>

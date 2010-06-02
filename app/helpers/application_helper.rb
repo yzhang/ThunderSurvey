@@ -4,8 +4,8 @@ module ApplicationHelper
   end  
   
   def state_type(type)
-    (type == 'error') ? 'error' : 'highlight'
-  end  
+    (type == ('alert' || 'error')) ? 'error' : 'highlight'
+  end 
   
   def pretty_button(text,link,options = {})  
     deftault_options = options.reverse_merge!(:class=>'btn')
@@ -22,5 +22,10 @@ module ApplicationHelper
     classes = [options.delete(:class)]
     classes << 'highlight' if options[:tab] && (options.delete(:tab).to_a.include?(@tab))
     content_tag(:li,link_to(name, options.delete(:url),:class => options.delete(:href_class)),:class => classes.join(' '))
+  end   
+  
+  def pagenav_area(&block)
+    content_tag(:section, :id => "page_nav", &block)
   end
+  
 end

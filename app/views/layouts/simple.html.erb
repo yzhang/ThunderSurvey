@@ -9,7 +9,7 @@
    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   
-  <%= stylesheet_link_tag 'custom', "formtastic","formtastic_changes",  :cache => 'simple.cache' %>
+  <%= stylesheet_link_tag 'style', "formtastic","formtastic_changes",  :cache => 'simple.cache' %>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', 
           :cache => 'simple.cache' %>
   
@@ -27,14 +27,6 @@
   <div id="form_container">
     <%= yield %>
   </div> 
-  <footer>
-    <a href="http://www.51qiangzuo.com">关于我们</a> | 
-    <a href="http://www.51qiangzuo.com">联系我们</a> |
-    <a href="http://www.51qiangzuo.com">抢座网</a>
-    <br /><br />
-
-    &copy; 抢答网 2010  
-     上海沙路网络旗下产品
-  </footer>
+  <%= render :partial => '/shared/footer' %> 
 </body>
 </html>
