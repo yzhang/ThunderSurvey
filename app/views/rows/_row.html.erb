@@ -1,9 +1,3 @@
-<%= content_for :pagenav do %>
-<div id="page_nav">
-  <span><%=link_to @form.title, form_rows_path(@form, :edit_key => @form.edit_key) %> / 查看记录详情  </span> 
-</div> 
-<% end -%>
-
 <div class='field'>
   <table class='grid' id='info_grid' cellspacing="0" cellpadding="0">
     <thead>
@@ -15,10 +9,8 @@
     <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
       <tr>
         <td><%= field.name %></td>
-        <td><%= @row.send("f#{field.id}") %></td>
+        <td><%= row.send("f#{field.id}") %></td>
       </tr>
     <% end %>
   </table>
-  <br /><br />
-  <p><%= link_to "编辑此条目",edit_form_row_path(@form, @row, :edit_key => @form.edit_key), :class => 'button' %></p>
 </div>

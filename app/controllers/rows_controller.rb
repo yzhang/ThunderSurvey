@@ -58,8 +58,8 @@ class RowsController < ApplicationController
     @row = klass.find(params[:id])
     
     respond_to do |wants|
+      wants.html {render :partial => 'row', :object => @row, :layout => false}
       wants.json {render :json => @row.to_json}
-      wants.html
     end
   end
   
@@ -67,7 +67,7 @@ class RowsController < ApplicationController
     @row = @form.klass.find(params[:id])
     
     respond_to do |wants|
-      wants.html
+      wants.html {render :layout => false}
     end
   end
   

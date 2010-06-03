@@ -1,17 +1,10 @@
-<%= content_for :notes do %>
-
-<% end %>
-
-<%= content_for :pagenav do -%> 
-<div id="page_nav">
-   <span><%=link_to '<< 返回', form_rows_path(@form, :edit_key => @form.edit_key) %> / 编辑记录  </span>  
-</div>
-<% end -%>
-
+<style type="text/css" media="screen">
+  textarea {width: 300px;}
+</style>
 <%= form_for [@form, @row], :url => form_row_path(@form, @row) do |f| %>
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
   <% end %>
   
-  <%= f.submit "更新",:class => 'submit' %> <%=link_to '查看记录详情', form_row_path(@form, @row, :edit_key => @form.edit_key), :class => 'ag' %>
+  <%= f.submit "更新",:class => 'submit' %> <%=link_to '查看记录详情', '#', :onclick => "fetch_row('#{@form.id}', '#{@row.id}', '#{@form.edit_key}')", :class => 'ag' %>
 <% end %>    

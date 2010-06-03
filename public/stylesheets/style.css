@@ -180,9 +180,19 @@ table.grid {
 }     
 
 .info_grid{    
-	width:96%;  
+	width:500px;  
 	margin:0 auto;
 	overflow:auto;
+}
+
+.row {
+	height:400px; 
+	background:#DDD; 
+	width:400px; 
+	float:right; 
+	overflow:auto; 
+	margin-left: 18px; 
+	margin-bottom: 20px;
 }
 
 div.info_item{  
