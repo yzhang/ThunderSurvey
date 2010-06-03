@@ -10,9 +10,9 @@
  <%= render :partial => '/shared/header' %> 
       
 	<div class="container clearfix"> 
-	  <%= yield :notes %>
+      <%=yield :pagenav %>
 	  <div id='content'>
-	    <%= yield %> 
+	     <%= yield %>
 	  </div>
   </div>
   <%= render :partial => '/shared/footer' unless controller.class == FormsController && action_name == 'edit' %>

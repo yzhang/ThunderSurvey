@@ -15,14 +15,15 @@ body{
 	font-family:Arial, sans-serif;
 	font-size:12px;     
 	color:#666;
-	background:#DDDDDD;
+	background:#F3F3F3;
 }                  
 
 .header{   
 	height:40px;
 	width:100%;     
 	background:#fff; 
-	margin-bottom:20px;
+	margin-bottom:10px;
+	border-bottom:1px solid #ccc;
 	} 
 	
 .logo{   
@@ -34,21 +35,16 @@ body{
 	float:right;
 } 
 
-.container{ 
-	padding:10px;   
+.container{   
+	padding:10px;
 	background:#fff;
 }   
-      
-#main_container{   
-	position:relative;
-	min-width:950px;
-}        
-
-#content{    
+          
+#content{       
+	padding:20px;
 	background:#fff;     
 	position:relative;
 	margin:0px auto;
-	padding:10px;
 	overflow:auto;
 }
 
@@ -80,7 +76,8 @@ h1,h2,h3,h4{
 	font-family:'微软雅黑' arial '宋体'; 
 }    
 
-.notes{    
+.notes{       
+	margin-bottom:10px;
 	padding:10px;
 	background:#EFEFEF;
 	color:#333;
@@ -148,6 +145,7 @@ a.ag:hover {
 /* table */
 table.grid {  
 	width:100%;
+	margin-bottom:10px;
 }     
 
 .info_grid{    
@@ -242,7 +240,11 @@ input.inputFocus {
 	width:240px;
 }       
 
-/* ---  edit form -----*/ 
+/* ---  edit form -----*/    
+#form_wrapper{
+	background:#F3F3F3;
+}
+
 #form_title{     
 	height:30px;
 	font-size:18px;
@@ -258,11 +260,13 @@ input.inputFocus {
 } 
 
              
-#form{     
+#form{       
+ 	background:#fff;    
 	min-height:400px;
 	position:relative;
-	overflow:auto;
-	margin:0px 20px;
+	overflow:auto; 
+	padding:20px;
+	margin:0px 10px;
 }               
 
 
@@ -274,19 +278,20 @@ input.inputFocus {
 	margin-bottom:10px;
 }   
 
-.form_oprate{      
-	background:#fdfdfd;
+.form_oprate{  
+	position:relative;     
+	background:#74A7DE;
 	height:30px;
 	padding:5px 10px;
-	margin-bottom:10px;
 	border-bottom:1px solid #eee;
 } 
 
-.form_preview{  
-	background:#fdfdfd;
+.form_preview{ 
+	position:relative; 
+	background:#74A7DE;
 	padding:5px 10px; 
 	border-top:1px solid #eee;
-	height: 25px;
+	height: 30px;
 }
 
 
@@ -373,7 +378,7 @@ div.edit:hover {
 	height:20px;
    	padding:5px 10px 15px 10px;  
    *padding:5px 10px 15px 10px;
-	margin:10px 0px;
+	margin:10px 0px 5px;
 	border-bottom:1px solid #ddd;   
 }
 
@@ -393,34 +398,39 @@ div.edit:hover {
 	font-size:28px;
 }
 
-/* pagination*/
+/* ---- pagination ----*/
 
-
-.flickr_pagination {   
-  margin:10px;
+.flickr_pagination {
   text-align: center;
   padding: .3em; }
   .flickr_pagination a, .flickr_pagination span {
-    padding: .2em .5em; }
+	height:14px;
+ 	background:url(/images/bg/pagination.jpg) repeat-x;}
   .flickr_pagination span.disabled {
+	background:none;
     color: #AAA; }
   .flickr_pagination span.current {
+	
     font-weight: bold;
     color: #FF0084; }
   .flickr_pagination a {
-    border: 1px solid #DDDDDD;
-    color: #0063DC;
+	padding:0px 5px;
+    border: 1px solid #646464;
+    color: #000;
     text-decoration: none; }
     .flickr_pagination a:hover, .flickr_pagination a:focus {
       border-color: #003366;
-      background: #0063DC;
+      background: #0395FC;
       color: white; }
   .flickr_pagination .page_info {
     color: #aaa;
     padding-top: .8em; }
-  .flickr_pagination .prev_page, .flickr_pagination .next_page {
-    border-width: 2px; }
+  .flickr_pagination .prev_page, .flickr_pagination .next_page { }
   .flickr_pagination .prev_page {
     margin-right: 1em; }
   .flickr_pagination .next_page {
     margin-left: 1em; }
+
+.flickr_pagination  em{
+	font-style:normal;
+}

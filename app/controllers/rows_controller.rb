@@ -109,7 +109,7 @@ class RowsController < ApplicationController
     
     respond_to do |want|
       if @row.update_attributes(params[:row])
-        want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key)}
+        want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => '记录已更新!'}
         want.json {render :json => @row.to_json}
       else
         want.html {render :action => 'edit'}

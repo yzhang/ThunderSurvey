@@ -24,8 +24,5 @@ module ApplicationHelper
     content_tag(:li,link_to(name, options.delete(:url),:class => options.delete(:href_class)),:class => classes.join(' '))
   end   
   
-  def pagenav_area(&block)
-    content_tag(:section, :id => "page_nav", &block)
-  end
   
 end

@@ -5,20 +5,9 @@
        function(){$(this).find('.action').toggle()})
      })    
   </script>
-  <style type="text/css" media="screen">
-    .container {width:800px;}
-  </style>
-<% end -%>    
-<%= pagenav_area do -%>
-  <span>所有问卷</span>
-<% end -%>                    
+<% end -%>     
 
   <table class='grid' border="0" cellspacing="0" cellpadding="0"> 
-    <colgroup span="4" valign="top">
-        <col width="70%" />
-        <col width="15%" />
-        <col width="15%" />
-    </colgroup>
   <thead>
     <tr> 
       <th>名称</th>
@@ -38,9 +27,14 @@
     <% end %>       
   </tbody>
   </table>
-  <%=raw will_paginate @forms,:class => 'flickr_pagination' %>
-<%= content_for :notes do %>
-<div class='notes right'>   
-  <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>    
+  <%=raw will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>  
+  
+<%= content_for :pagenav do -%>  
+<div id="page_nav">
+   <span>所有问卷</span> 
+</div>
+  
+  <div class='notes right'>
+      <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>  
   </div>
 <% end %>

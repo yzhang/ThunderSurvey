@@ -7,15 +7,16 @@
     var field_count = <%= @form.fields.length + 101 %>;   
   </script>
   <style type="text/css" media="screen">
-    .container {width: 680px; margin: 10px auto;}
+    .container {width: 680px; margin:0px auto;padding:0px;}
+    #content{padding:0px;}
   </style>
 <% end -%>   
 <div id="form_wrapper"> 
   <section class='form_oprate'>
     <nav>
       <div class='setting'>  
-        <%= link_to '邮件通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置"});', :class => 'button' %>
-        <%= link_to 'iframe嵌入', '#', :onclick => '$("#iframe").dialog({width:390, height:140, title:"问卷代码嵌入"});', :class => 'button' %>
+        <%= link_to '回应通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置"});', :class => 'button' %>
+        <%= link_to '表单嵌入', '#', :onclick => '$("#iframe").dialog({width:390, height:140, title:"问卷代码嵌入"});', :class => 'button' %>
         <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
       <div class='new'>
@@ -44,7 +45,7 @@
     </div>
   </section>  
   <!-- 表单尾 -->
-  <section class='form_preview'>
+  <section class='form_preview right'>
     <%= link_to '预览表单', form_path(@form), :target => '_blank',:class => 'button' %>
   </section>
 </div>

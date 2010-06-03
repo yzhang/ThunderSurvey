@@ -1,11 +1,7 @@
-<%= content_for :notes do %>
-<div class='notes right'>
-  <%=link_to '编辑此条目', edit_form_row_path(@form, @row, :edit_key => @form.edit_key), :class => 'ag' %>
- </div> 
-<% end %>
-
-<%= pagenav_area do -%>
-  <span><%=link_to '<< 返回', form_rows_path(@form, :edit_key => @form.edit_key) %> / 查看记录详情  </span>
+<%= content_for :pagenav do %>
+<div id="page_nav">
+  <span><%=link_to @form.title, form_rows_path(@form, :edit_key => @form.edit_key) %> / 查看记录详情  </span> 
+</div> 
 <% end -%>
 
 <div class='field'>
@@ -24,5 +20,5 @@
     <% end %>
   </table>
   <br /><br />
-  <p><%= link_to "编辑此条目", edit_form_row_path(@form, @row), :class => 'button' %></p>
+  <p><%= link_to "编辑此条目",edit_form_row_path(@form, @row, :edit_key => @form.edit_key), :class => 'button' %></p>
 </div>
