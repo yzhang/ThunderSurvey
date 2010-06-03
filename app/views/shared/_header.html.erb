@@ -9,7 +9,16 @@
       <%= link_to '立即登录', login_path %> |
       还没有帐号？ <%= link_to '现在就注册', signup_path %>
     <% end %>
-  </div>         
+  </div>  
+  <div class='nav'> 
+    <ul>                             
+      <%=topnav_tab('首页',:url => '#',:section => 'home' )%>
+      <%=topnav_tab('我的活动',:url => '#',:section => 'mine' )%>  
+      <%=topnav_tab('发起活动',:url => '#',:section => 'new' )%>
+      <%=topnav_tab('更多介绍',:url => '/intro',:section => 'intro' )%>
+      <%=topnav_tab('反馈',:url => '#',:section => 'feedback' )%>
+    </ul>
+  </div>
   <div id="saving" style="display:none;">正在保存...</div> 
   <%= render :partial => '/shared/notice' %>
 </div>

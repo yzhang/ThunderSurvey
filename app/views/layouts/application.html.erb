@@ -5,11 +5,9 @@
 <head>
   <%= render :partial => '/shared/head' %>
 </head>
-
 <body>
- <%= render :partial => '/shared/header' %> 
-      
-	<div class="container clearfix"> 
+	<div class="container clearfix">   
+	   <%= render :partial => '/shared/header' %>
       <%=yield :pagenav %>
 	  <div id='content'>
 	     <%= yield %>
