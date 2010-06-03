@@ -9,10 +9,11 @@
      <%=link_to '导出CSV',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'button' %>
     <%=link_to '导出XLS',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'button' %>
   </div>
-
-
 <% end %>
 
+<div id="row" style="height:300px; scroll:auto; background:#DDD; width:96%; overflow:auto; margin-left: 18px; margin-bottom: 20px;">
+  <%= render :partial => 'row', :object => @rows[0] %>
+</div>
 
 <div class="info_grid">
 <table class='grid' id='info_grid' cellspacing="0" cellpadding="0">
@@ -27,18 +28,22 @@
   </thead>
   <tbody>  
   <% @rows.each do |row| -%>
-  <tr>           
+  <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>');">           
     <% @form.fields[0..1].each do |field| %>              
     <td class="<%='name' if field.name == '姓名' %>"><div class='info_item'><%= row.send('f' + field.id) %></div></td>
     <% end -%>
     <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
     <td class='opt'>
-        <%= link_to '>>记录详情', form_row_path(@form, row, :edit_key => @form.edit_key), :class => 'ag' %>
-        <%= link_to '编辑', edit_form_row_path(@form, row, :edit_key => @form.edit_key), :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
+        <%= link_to '>>记录详情', '#', :onclick => "fetch_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %>
+        <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
     </td>
   </tr>      
   <% end -%>
   </tbody>
 </table> 
 <%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>   
+</div>
+
+<div id="spinner" style="display:none;">
+  <%= image_tag(image_path('ajax-loader.gif')) %>
 </div>
