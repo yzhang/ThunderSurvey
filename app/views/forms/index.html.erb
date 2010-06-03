@@ -6,8 +6,8 @@
      })    
   </script>
 <% end -%>     
-
-  <table class='grid' border="0" cellspacing="0" cellpadding="0"> 
+ <div class='grid_18'>
+ <table class='grid' border="0" cellspacing="0" cellpadding="0"> 
   <thead>
     <tr> 
       <th>名称</th>
@@ -27,14 +27,14 @@
     <% end %>       
   </tbody>
   </table>
-  <%=raw will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>  
+  <%=raw will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>        
+ </div>     
+  <div class='grid_6'>
+        <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>  
+  </div>
   
 <%= content_for :pagenav do -%>  
 <div id="page_nav">
    <span>所有问卷</span> 
 </div>
-  
-  <div class='notes right'>
-      <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>  
-  </div>
 <% end %>

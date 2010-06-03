@@ -1,7 +1,8 @@
 class FormsController < ApplicationController
   before_filter :login_required, :only => [:new, :create, :index, :destroy]
   before_filter :set_form, :only => [:edit, :update, :thanks]
-  before_filter :verify_edit_key, :only => [:edit, :update]
+  before_filter :verify_edit_key, :only => [:edit, :update] 
+  before_filter { |c| c.set_section('forms') }
   
   def index
     @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '20')

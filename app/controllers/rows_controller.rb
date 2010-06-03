@@ -1,7 +1,8 @@
 class RowsController < ApplicationController
   before_filter :set_form
   before_filter :verify_edit_key, :only => [:index, :show, :edit]    
-  skip_before_filter :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token  
+  before_filter { |c| c.set_section('forms') }  
 
   def index
     klass = @form.klass

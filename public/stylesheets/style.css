@@ -14,14 +14,13 @@ header,section,footer{
 body{       
 	font-family:Arial, sans-serif;
 	font-size:12px;     
-	background:#FFF;
-	color:#000; 
+	color:#000;  
+	background:url(/images/bg/header.jpg) top repeat-x #FDFDFD;
 }                  
 
 .header{   
-	height:40px;
+	height:60px;
 	width:100%;     
-	background:#fff; 
 	margin-bottom:10px;
 	} 
 	
@@ -36,12 +35,10 @@ body{
 
 .container{   
 	padding:10px;
-	background:#fff;
 }   
           
 #content{       
 	padding:20px;
-	background:#fff;     
 	position:relative;
 	margin:0px auto;
 	overflow:auto;
@@ -108,10 +105,8 @@ h1,h2,h3,h4{
 
 /* ---- href ------*/ 
 
-a{color:#0099FF;text-decoration:underline;}
+a{color:#0099FF;text-decoration:none;}
 a:visited {color:#669;}
-a:hover{color:#FFF;text-decoration:none;background:#0099FF;}
-a:active{color:#FFF;text-decoration:none;background:#F93;}
 
 .ag:link {
 	color: #0099FF;
@@ -146,9 +141,9 @@ a.ag:hover {
 
 .nav ul li a{  
 	text-decoration:none;
-	margin-left:1px;
 	display:block;
 	padding:5px 20px;
+	border-left:1px solid #ccc;
 } 
 
 .nav ul li a:hover{  
@@ -159,7 +154,11 @@ a.ag:hover {
 .nav ul li.current a{ 
 	background:#0099FF;
 	color:#fff;
-}   
+}  
+
+.nav ul li.first a{
+	border-left:none;
+} 
 
 /* ---- homepage ----- */   
 
@@ -189,10 +188,20 @@ table.grid {
 	height:400px; 
 	background:#DDD; 
 	width:400px; 
-	float:right; 
 	overflow:auto; 
 	margin-left: 18px; 
 	margin-bottom: 20px;
+}                
+
+#row{           
+	text-align:center;
+	
+}                         
+
+table#detail{  
+   border-left:1px solid #ccc; 
+   background:#efefef;
+   margin:10px 0;
 }
 
 div.info_item{  
@@ -204,16 +213,17 @@ div.info_item{
 }
     
 table.grid thead tr th, table.grid tfoot tr th {
-	background:#EFEFEF;  
+	background:#999;   
+	color:#fff;
 	font-size: 14px;  
 	font-weight:normal;
-	padding: 12px 5px;  
+	padding: 5px;  
 	text-align:left;
 }
 
 table.grid tbody td { 
 	color: #666; 
-	padding: 10px 5px; 
+	padding:10px; 
 	vertical-align: top; 
 	border-bottom:1px dotted #CCCCCC;
 }         
@@ -236,6 +246,11 @@ table.grid td.title span{
 
 table.grid tbody td.opt a { 
 	margin-right:10px;
+}
+
+#results td{     
+	padding:5px;
+	cursor:pointer;
 }
 
 /* --- flash -----*/ 
@@ -433,12 +448,6 @@ div.edit:hover {
 }
 
 
-#page_nav a,#page_nav a:visited{  
-	color:#0099FF;       
-	line-height:28px;
-	font-size:28px;
-}
-
 /* ---- pagination ----*/
 
 .flickr_pagination {
@@ -474,4 +483,9 @@ div.edit:hover {
 
 .flickr_pagination  em{
 	font-style:normal;
+}      
+
+/*  sprite  */
+.less{
+	background:url(/images/icons/);
 }

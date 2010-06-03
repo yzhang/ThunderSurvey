@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
+  def set_section(section)
+    @section = section
+  end
+  
   protected
   def verify_edit_key
     @edit_key = params[:edit_key]

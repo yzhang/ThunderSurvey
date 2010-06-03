@@ -3,7 +3,7 @@
 <div id="page_nav">
     <span><%=link_to '所有问卷',forms_path%> / <%= @form.title %>  </span>  
 </div>
-  <div class='notes right'>
+  <div class='right'>
     <%=link_to '查看表单',form_path(@form),:target => '_blank',:class => 'button' %>
     <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑" class='button' >编辑表单</a>
      <%=link_to '导出CSV',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'button' %>
@@ -11,36 +11,39 @@
   </div>
 <% end %>
 
-<div id="row" class="row">
-  <%= render :partial => 'row', :object => @rows[0] %>
-</div>
-
-<div class="info_grid">
-<table class='grid' id='info_grid' cellspacing="0" cellpadding="0">
+<div class="grid_12">
+<table class='grid' id='results' cellspacing="0" cellpadding="0">
   <thead>
-    <tr>  
+    <tr> 
+      <th></th> 
       <% if @form.fields[0] %>                         
       <th><%= @form.fields[0].name %></th>
       <% end %>
       <th>时间</th>
-      <th>操作</th>
     </tr>
   </thead>
   <tbody>  
   <% @rows.each do |row| -%>
-  <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>');">           
+  <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>','<%= @form.edit_key %>',this);" class='row_con'>
+    <td>s</td>           
     <% if @form.fields[0] %>              
-    <td class="<%='name' if @form.fields[0].name == '姓名' %>"><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
+    <td class="<%='name' if @form.fields[0].name == '姓名' %>"><%= row.send('f' + @form.fields[0].id) %></td>
     <% end -%>
-    <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
+    <td><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></td>
+    <% if false %> 
     <td class='opt'>
         <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
-    </td>
+    </td>       
+    <% end %>
   </tr>      
   <% end -%>
   </tbody>
 </table> 
 <%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>   
+</div> 
+
+<div id="row" class="grid_12">
+  <%= render :partial => 'row', :object => @rows[0] %>
 </div>
 
 <div id="spinner" style="display:none;">

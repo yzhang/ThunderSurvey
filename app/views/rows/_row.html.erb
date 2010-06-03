@@ -1,11 +1,5 @@
-<div class='field'>
-  <table class='grid' id='info_grid' cellspacing="0" cellpadding="0">
-    <thead>
-      <tr>  
-        <th width="20%">问题</th>           
-        <th width="80%">回答</th>
-      </tr>
-    </thead>
+   <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'button' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'button' %>
+  <table class='grid' id='detail' cellspacing="0" cellpadding="0">
     <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
       <tr>
         <td><%= field.name %></td>
@@ -13,4 +7,4 @@
       </tr>
     <% end %>
   </table>
-</div>
+
