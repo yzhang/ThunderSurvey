@@ -51,5 +51,5 @@
 </div>
 
 <div id="iframe" style="display:none;">
-  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px;" %>
+  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px;", :onfocus => '$(this).focus();$(this).select();', :readonly => true %>
 </div>

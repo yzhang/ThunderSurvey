@@ -1,5 +1,16 @@
+<<<<<<< HEAD:app/views/rows/_row.html.erb
    <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'button' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'button' %>
   <table class='grid' id='detail' cellspacing="0" cellpadding="0">
+=======
+<div class='field'>
+  <table class='grid' id='info_grid' cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>  
+        <th width="30%">问题</th>           
+        <th width="70%">回答</th>
+      </tr>
+    </thead>
+>>>>>>> b0fc075c538c43d50c133db2fd0f3e6ff4371c0e:app/views/rows/_row.html.erb
     <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
       <tr>
         <td><%= field.name %></td>

@@ -1,10 +1,10 @@
 <style type="text/css" media="screen">
   textarea {width: 300px;}
 </style>
-<%= form_for [@form, @row], :url => form_row_path(@form, @row) do |f| %>
+<%= form_for [@form, @row], :url => form_row_path(@form, @row), :remote => true do |f| %>
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
   <% end %>
   
-  <%= f.submit "更新",:class => 'submit' %> <%=link_to '查看记录详情', '#', :onclick => "fetch_row('#{@form.id}', '#{@row.id}', '#{@form.edit_key}')", :class => 'ag' %>
+  <%= f.submit "更新",:class => 'submit' %>
 <% end %>    

@@ -112,6 +112,11 @@ class RowsController < ApplicationController
       if @row.update_attributes(params[:row])
         want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => '记录已更新!'}
         want.json {render :json => @row.to_json}
+        want.js   {
+          render :update do |page|
+            page['row'].replace_html(:partial => 'row', :object => @row)
+          end
+        }
       else
         want.html {render :action => 'edit'}
         want.json {render :json => @row.errors.to_json}

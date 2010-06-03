@@ -1,4 +1,3 @@
-
 <%= content_for :pagenav do -%> 
 <div id="page_nav">
     <span><%=link_to '所有问卷',forms_path%> / <%= @form.title %>  </span>  
@@ -24,6 +23,7 @@
   </thead>
   <tbody>  
   <% @rows.each do |row| -%>
+<<<<<<< HEAD:app/views/rows/index.html.erb
   <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>','<%= @form.edit_key %>',this);" class='row_con'>
     <td>s</td>           
     <% if @form.fields[0] %>              
@@ -31,6 +31,13 @@
     <% end -%>
     <td><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></td>
     <% if false %> 
+=======
+  <tr>           
+    <% if @form.fields[0] %>              
+    <td class="<%='name' if @form.fields[0].name == '姓名' %>" onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>');"><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
+    <% end -%>
+    <td onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>');"><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
+>>>>>>> b0fc075c538c43d50c133db2fd0f3e6ff4371c0e:app/views/rows/index.html.erb
     <td class='opt'>
         <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
     </td>       
