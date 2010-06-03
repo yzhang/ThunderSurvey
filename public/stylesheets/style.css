@@ -155,7 +155,6 @@ table.grid {
 }
 
 .row {
-	height:400px; 
 	background:#DDD; 
 	width:400px; 
 	float:right; 
@@ -276,7 +275,7 @@ input.inputFocus {
 	position:relative;
 	overflow:auto; 
 	padding:20px;
-	margin:0px 10px;
+	margin:0px;
 }               
 
 
