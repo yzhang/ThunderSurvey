@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-<div id="row" style="height:300px; scroll:auto; background:#DDD; width:96%; overflow:auto; margin-left: 18px; margin-bottom: 20px;">
+<div id="row" class="row">
   <%= render :partial => 'row', :object => @rows[0] %>
 </div>
 
@@ -19,9 +19,9 @@
 <table class='grid' id='info_grid' cellspacing="0" cellpadding="0">
   <thead>
     <tr>  
-      <% @form.fields[0..1].each do |field| %>                         
-      <th><%= field.name %></th>           
-      <% end %> 
+      <% if @form.fields[0] %>                         
+      <th><%= @form.fields[0].name %></th>
+      <% end %>
       <th>时间</th>
       <th>操作</th>
     </tr>
@@ -29,12 +29,11 @@
   <tbody>  
   <% @rows.each do |row| -%>
   <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>');">           
-    <% @form.fields[0..1].each do |field| %>              
-    <td class="<%='name' if field.name == '姓名' %>"><div class='info_item'><%= row.send('f' + field.id) %></div></td>
+    <% if @form.fields[0] %>              
+    <td class="<%='name' if @form.fields[0].name == '姓名' %>"><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
     <% end -%>
     <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
     <td class='opt'>
-        <%= link_to '>>记录详情', '#', :onclick => "fetch_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %>
         <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
     </td>
   </tr>      
