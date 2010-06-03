@@ -10,8 +10,7 @@ class User
   define_model_callbacks :create, :update, :save, :destroy
 
   include MongoMapper::Document
-  include Paperclip
-  
+
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
@@ -32,9 +31,7 @@ class User
   key :website, String
   key :activation_code, String
   key :activated_at, Time
-  
-  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  
+
   before_create :make_activation_code
   
   validates :login, :presence => true, :length => {:maximum => 100}
