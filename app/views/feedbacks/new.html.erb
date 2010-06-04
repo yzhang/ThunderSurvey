@@ -10,19 +10,20 @@
   }
 </style>                
 
-<%= form_for @feedback, :url => feedbacks_path,:html => {:class => 'prepend-4'} do |f| -%>
+<%= semantic_form_for @feedback, :url => feedbacks_path,:html => {:class => 'prepend-4'} do |f| -%>   
+<p style='color:red;'><%= @feedback.errors.full_messages %>  </p>
   <p>
     <%= f.label :content, "意见/建议" %><br />
     <%= f.text_area :content, :rows => 8, :cols => 35 %>
   </p>
 
   <p>
-    <%= f.label :email, "Email" %>
+    <%= f.label :email, "Email" %><br />
     <%= f.text_field :email %>
   </p>
 
   <p>
-    <%= f.label :name, "姓名" %>
+    <%= f.label :name, "姓名" %><br />
     <%= f.text_field :name %>
   </p>
 

@@ -5,7 +5,11 @@
 
 img{
 	border:0;
-}   
+}    
+
+p{
+	margin:10px 0;
+}
 
 header,section,footer{
 	display:block;
@@ -15,11 +19,10 @@ body{
 	font-family:Arial, sans-serif;
 	font-size:12px;     
 	color:#000;  
-	background:url(/images/bg/header.jpg) top repeat-x #FDFDFD;
 }                  
 
 .header{   
-	height:60px;
+	height:40px;
 	width:100%;     
 	margin-bottom:10px;
 	} 
@@ -38,7 +41,7 @@ body{
 }   
           
 #content{       
-	padding:20px;
+	padding:10px 0;
 	position:relative;
 	margin:0px auto;
 	overflow:auto;
@@ -57,8 +60,10 @@ body{
 	height:0px;
 }  
 
-#footer{ 
-	margin:20px;            
+#footer{    
+	border-top:1px solid #F3F3F3;
+	margin:10px;            
+	padding:10px;
 	text-align:center;
 }  
 
@@ -67,7 +72,8 @@ body{
 	color:#999999;
 }
 
-h1,h2,h3,h4{ 
+h1,h2,h3,h4{  
+	margin:10px 0;
 	color:#333;
 	font-family:'微软雅黑' arial '宋体'; 
 }    
@@ -81,7 +87,15 @@ h1,h2,h3,h4{
 
 .right{
 	text-align:right;
-} 
+}   
+
+h3{
+	font-size:17px;
+	padding:5px 0px; 
+	border-bottom:1px solid #ccc;
+}
+
+
 
 #saving {
 	-moz-border-radius-bottomleft:4px;
@@ -96,17 +110,17 @@ h1,h2,h3,h4{
 	z-index:2;
 } 
 
-.btn{
-	background:#8D8D8D;
-	padding:7px 20px;
-	color:#fff;
+.view_form{      
+	padding-left:16px;   
+	padding-top:3px;
+	background:url(/images/icons/doc_lines_stright.png) no-repeat;
+	color:#ccc;
 }           
 
 
 /* ---- href ------*/ 
 
 a{color:#0099FF;text-decoration:none;}
-a:visited {color:#669;}
 
 .ag:link {
 	color: #0099FF;
@@ -128,13 +142,18 @@ a.ag:hover {
 }      
 
 /* --- nav ----*/
-.nav{
-	float:right;   
-	clear:right;
+.nav{       
+	height:30px;
+	clear:both; 
+	border-bottom:1px solid #ccc;
+}
+
+.nav ul{
+	margin:0px auto;
+	width:600px;
 } 
 
-.nav ul li{ 
-	margin-top:10px; 
+.nav ul li{   
 	list-style:none;
 	float:left;
 }           
@@ -142,7 +161,8 @@ a.ag:hover {
 .nav ul li a{  
 	text-decoration:none;
 	display:block;
-	padding:5px 20px;
+	font-size:14px;
+	padding:7px 30px;
 	border-left:1px solid #ccc;
 } 
 
@@ -156,9 +176,7 @@ a.ag:hover {
 	color:#fff;
 }  
 
-.nav ul li.first a{
-	border-left:none;
-} 
+
 
 /* ---- homepage ----- */   
 
@@ -191,13 +209,16 @@ table.grid {
 	margin-left: 18px; 
 	margin-bottom: 20px;
 }                
+           
+#row{   
+   padding:10px; 
+}     
 
-#row{           
-	text-align:center;
-	
-}                         
+.edit_row{
+	background:#F0F1EE;
+}
 
-table#detail{  
+table#detail{    
    border-left:1px solid #ccc; 
    background:#efefef;
    margin:10px 0;
@@ -211,9 +232,10 @@ div.info_item{
 	margin:0;
 }
     
-table.grid thead tr th, table.grid tfoot tr th {
-	background:#999;   
-	color:#fff;
+table.grid thead tr th, table.grid tfoot tr th {  
+	background:#EFEFEF;
+	border-bottom:1px solid #E3E3E3;
+	color:#333;
 	font-size: 14px;  
 	font-weight:normal;
 	padding: 5px;  
@@ -245,12 +267,18 @@ table.grid td.title span{
 
 table.grid tbody td.opt a { 
 	margin-right:10px;
-}
+} 
 
 #results td{     
-	padding:5px;
+	padding:5px;   
 	cursor:pointer;
+}   
+
+#result td{     
+	background:#F0F1EE;  
+	padding:5px;
 }
+
 
 /* --- flash -----*/ 
 #flash-message{    
@@ -431,19 +459,25 @@ div.edit:hover {
 /* ---- page nav ----*/
 #page_nav{
 	height:20px;
-   	padding:5px 10px 15px 10px;  
-   *padding:5px 10px 15px 10px;
-	margin:10px 0px 5px;
-	border-bottom:1px solid #ddd;   
+   	padding:5px 10px 15px 0px;  
+   *padding:5px 10px 15px 0px;
+	margin:10px 0px 5px;   
 }
 
 #page_nav span{ 
 	font-family:'微软雅黑' arial '宋体';      
 	float:left;
 	color:#333;   
-	font-size:2.1em; 
+	font-size:1.9em; 
 	line-height:28px; 
 	font-weight:bold;
+	padding-bottom:10px;
+}   
+
+.page_guide{ 
+	height:12px;     
+	padding:10px;
+	border-bottom:1px solid #F3F3F3;
 }
 
 
@@ -485,6 +519,25 @@ div.edit:hover {
 }      
 
 /*  sprite  */
-.less{
-	background:url(/images/icons/);
+.tablescroll
+{ font: 12px normal  Arial, sans-serif; background-color:#fff; }
+ 
+
+ 
+.tablescroll td
+{ padding:3px 5px; }
+ 
+.tablescroll_wrapper
+{ border-left:0; }
+ 
+.tablescroll_head
+{
+	background:#EFEFEF;
+	border-bottom:1px solid #E3E3E3;
+	color:#333;
+	font-size: 14px;  
+	font-weight:normal;
+	padding: 5px;  
+	text-align:left;
 }
+ 

@@ -10,14 +10,14 @@
       还没有帐号？ <%= link_to '现在就注册', signup_path %>
     <% end %>
   </div>  
-  <div class='nav'> 
-    <ul>                             
-      <%=topnav_tab('首页',:url => root_path,:section => 'home',:class => 'first' )%>
-      <%=topnav_tab('我的问卷',:url => forms_path,:section => 'forms' )%>  
-      <%=topnav_tab('更多介绍',:url => '/intro',:section => 'intro' )%>
-      <%=topnav_tab('反馈',:url => new_feedbacks_path,:section => 'feedback' )%>
-    </ul>
-  </div>
   <div id="saving" style="display:none;">正在保存...</div> 
   <%= render :partial => '/shared/notice' %>
+</div>    
+<div class='nav'> 
+  <ul>                             
+    <%=topnav_tab('首页',:url => root_path,:section => 'home' )%>
+    <%=topnav_tab('我的问卷',:url => forms_path,:section => 'forms' )%>  
+    <%=topnav_tab('更多介绍',:url => '/intro',:section => 'intro' )%>
+    <%=topnav_tab('反馈',:url => new_feedbacks_path,:section => 'feedback',:class => 'last' )%>
+  </ul>
 </div>

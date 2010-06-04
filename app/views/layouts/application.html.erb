@@ -11,8 +11,8 @@
       <%=yield :pagenav %>
 	  <div id='content'>
 	     <%= yield %>
-	  </div>
+	  </div> 
+	    <%= render :partial => '/shared/footer' unless controller.class == FormsController && action_name == 'edit' %>  
   </div>
-  <%= render :partial => '/shared/footer' unless controller.class == FormsController && action_name == 'edit' %>
 </body>
 </html>

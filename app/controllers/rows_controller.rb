@@ -7,11 +7,17 @@ class RowsController < ApplicationController
   def index
     klass = @form.klass
     
-    respond_to do |wants|
+    respond_to do |wants| 
+      unless klass.count == 0
       wants.html { 
         @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
         render :layout => params[:embed] ? 'embed' : 'application' 
-      }
+      }                   
+      else
+      wants.html {
+        redirect_to forms_path,:alert => '此问卷暂无回应'
+      }                                        
+     end
       wants.json {
         @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
 
@@ -59,7 +65,7 @@ class RowsController < ApplicationController
     @row = klass.find(params[:id])
     
     respond_to do |wants|
-      wants.html {render :partial => 'row', :object => @row, :layout => false}
+      wants.html {render :partial => 'row', :locals => {:row => @row,:form => @form}, :layout => false}
       wants.json {render :json => @row.to_json}
     end
   end
@@ -114,12 +120,25 @@ class RowsController < ApplicationController
         want.json {render :json => @row.to_json}
         want.js   {
           render :update do |page|
-            page['row'].replace_html(:partial => 'row', :object => @row)
+            page['row'].replace_html(:partial => 'row', :locals => {:row => @row,:form => @form})
           end
         }
       else
         want.html {render :action => 'edit'}
-        want.json {render :json => @row.errors.to_json}
+        want.json {render :json => @row.errors.to_json} 
+        want.js {   
+          render :update do |page| 
+            page.hide 'spinner'   
+            @form.fields.each do |field|  
+              if @row.errors["f#{field.id}"].any?
+                page.replace_html field.id.to_s + '_field',@row.errors["f#{field.id}"]
+              else
+                page.replace_html field.id.to_s + '_field',''   
+              end
+            end
+            page << "alert('内容有误,请检查!')" 
+          end
+        }
       end
     end
   end

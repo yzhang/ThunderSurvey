@@ -12,9 +12,9 @@ class Feedback
   key :created_at, Time
   key :updated_at, Time
   
-  validates :email, :presence => true
-  validates :name, :presence => true
-  validates :content, :presence => true
+  validates_presence_of :email, :presence => true,:message => '不能为空'
+  validates_presence_of :name, :presence => true,:message => '不能为空'  
+  validates_presence_of :content, :presence => true,:message => '不能为空'  
   
   def persisted?
     false

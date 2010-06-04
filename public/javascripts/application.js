@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 function fetch_row(form_id,row_id,key,obj){
    $('#results td').css('background','none') 
-   $(obj).find("td").css('background','#EFEFEF')
+   $(obj).find("td").css('background','#F0F1EE')
    $("#row").html($("#spinner").html());
    $.get('/forms/'+form_id+'/rows/'+row_id, {edit_key : key}, function(data){
    	$("#row").html(data);
@@ -27,4 +27,8 @@ function edit_row(form_id,row_id,key)
   $.get('/forms/'+form_id+'/rows/'+row_id+'/edit', {edit_key : key}, function(data){
     $("#row").html(data);
   });
+}
+
+function remote_action(e){
+  $('#spinner').show();
 }
