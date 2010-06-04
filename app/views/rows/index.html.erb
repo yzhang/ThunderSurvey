@@ -50,20 +50,15 @@
   <tbody>  
   <% @rows.each do |row| -%>
   <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>',this); return false;" id="row<%= row.id %>">           
-    <% if @form.fields[0] %>              
-    <td class="<%='name' if @form.fields[0].name == '姓名' %>"><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
+    <% if @form.fields[0] %>             
+      <td><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
     <% end -%>
     <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td>   
-    <% if false %>
-    <td class='opt'>
-        <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}',this); return false;", :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
-    </td>       
-    <% end %>
   </tr>      
   <% end -%>
   </tbody>
 </table>  
-  <%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>    
+<%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>    
 </div>     
 
 

@@ -1,0 +1,30 @@
+<h2>帐户设定</h2>
+<%= form_for :user do |f| %> 
+  <p>
+    <%= f.label "用户名" %>
+    <%= f.text_field :login %>
+  </p>
+  
+  <p>
+    <%=f.label :email %><%= @user.email || f.text_field(:email) %>
+  </p>
+
+  <% unless @user.oauth_user? %>
+    <p>
+      <%= f.label :current_password, '当前密码' %>
+      <%= password_field_tag :current_password %>
+    </p>
+    <p>
+      <%= f.label "新密码" %>
+      <%= f.text_field :password, :size => 20 %>
+    </p>
+    <p>
+      <%= f.label "新密码确认" %>
+      <%= f.text_field :password_confirmation, :size => 20 %>
+    </p>
+  <% end %>
+  
+  <div class='prepend-5 prepend-top'>
+    <%= submit_tag '保存',:class=> 'submit' %>
+  </div>      
+<% end %>

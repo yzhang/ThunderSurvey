@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="zh">
+<head>
+  <%= render :partial => '/shared/head' %>
+</head>
+
+<body>   
+  <div class='header'>
+    <div class="logo">
+      <%=link_to image_tag('logo.png'),'/'%>
+    </div>         
+    <div class='login'>
+      <% if logged_in? %>	
+        你好 <%=current_user.login %> <%= link_to '注销', logout_path, :method => 'delete' %>
+      <% else %>
+        <%= link_to '立即登录', login_path %> |
+        还没有帐号？ <%= link_to '现在就注册', signup_path %>
+      <% end %>
+    </div>  
+    <div id="saving" style="display:none;">正在保存...</div> 
+    <%= render :partial => '/shared/notice' %>
+  </div>
+  
+  <div id="main_container">
+    <div id="content">  
+    <%= yield %>        
+    </div>
+  </div>  
+</body>
+</html>

@@ -34,10 +34,18 @@ Confforge::Application.routes.draw do
   match '/signup' => 'users#new', :as => :signup
   match '/register' => 'users#create', :as => :register
   match '/sitemap.:format' => 'sitemap#index', :as => :sitemap
-  
+  match '/forget_password' => 'users#forget_password', :as => :forget_password 
+  match '/reset_password' => 'users#reset_password', :as => :reset_password
+  match '/account'   => 'users#setting', :as => :account 
+
   resource :session
   resource :users
-  resource :feedbacks  
+  resource :feedbacks
+  
+  scope '/oauth' do
+    match '/login/:name'    => 'oauth#new',      :as => :oauth_login
+    match '/callback/:name' => 'oauth#callback', :as => :oauth_callback
+  end
   
   match '/thanks' => 'home#thanks', :as => :thanks
   root :to => 'home#index'

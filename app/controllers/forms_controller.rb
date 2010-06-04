@@ -9,7 +9,7 @@ class FormsController < ApplicationController
     @page_title = "所有问卷"
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.xml  { render :xml => @forms }
     end
   end
@@ -65,7 +65,7 @@ class FormsController < ApplicationController
   def edit
     @row = @form.klass.new    
     @field = Field.new(:input => 'string')
-    @fields = @form.fields#.sort {|f1, f2| f1.position <=> f2.position}
+    @fields = @form.fields
     respond_to do |want|
       want.html { render :layout => params[:embed].blank? ? 'simple' : "embed"}
     end

@@ -101,7 +101,7 @@
       two_words_connector: " 和 "
       last_word_connector: ", 和 "
   
-  activerecord:
+  activemodel:
     errors:
       template:
         header: 

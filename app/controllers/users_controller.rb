@@ -22,25 +22,63 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
-
-  def activate
-    logout_keeping_session!
-    user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
-    case
-    when (!params[:activation_code].blank?) && user && !user.active?
-      user.activate!
-      flash[:notice] = "Signup complete! Please sign in to continue."
-      redirect_to '/login'
-    when params[:activation_code].blank?
-      flash[:error] = "The activation code was missing.  Please follow the URL from your email."
-      redirect_back_or_default('/')
-    else 
-      flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
-      redirect_back_or_default('/')
+  
+  
+  def update
+    @user = current_user 
+    
+    if !@user.oauth_user? && !params[:current_password].blank? && 
+        !params[:user][:password].blank? && !params[:user][:password_confirmation].blank?
+      if User.authenticate(current_user.email, params[:current_password])
+        @user.password = params[:user].delete(:password)
+        @user.password_confirmation = params[:user].delete(:password_confirmation)
+      else
+        notice = '对不起，密码输入错误' if !params[:current_password].blank?
+      end
+    end
+    
+    @user.login = params[:user].delete(:login)
+    
+    # 只有用户没有设置Email地址时，才允许更新Email，主要针对豆瓣用户
+    @user.email = params[:user][:email] if @user.email.blank? && !params[:user][:email].blank?
+    
+    respond_to do |wants|
+      if @user.save
+        notice ||= '修改成功'
+        wants.html { redirect_to account_url, :notice => notice }
+      else
+        wants.html{ render :action => "setting" }
+      end
     end
   end
   
-  def show
-    @bids = current_user.bids.paginate(:page => params[:page], :per_page => 10)
+  def setting 
+    @tab = 'account'
+    @user = current_user
+  end 
+  
+  def forget_password
+    respond_to do |wants|
+      wants.html { }
+    end
   end
+  
+  def reset_password
+    @user = User.find_by_email(params[:email])
+    if @user
+      new_password = User.generate_new_password
+      @user.password = new_password
+      @user.password_confirmation = new_password
+      @user.save(:validate => false)
+      Notifications.forget_password(@user, new_password).deliver
+      cookies.delete :auth_token
+      reset_session
+      flash[:notice] = "新密码已发送到#{@user.email}"
+      redirect_to root_url
+    else
+      flash.now[:error] = '找不到此email'
+      render :action => "forget_password"
+    end
+  end 
+
 end
