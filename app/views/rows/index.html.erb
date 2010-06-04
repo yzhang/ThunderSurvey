@@ -10,6 +10,14 @@
   </div>
 <% end %>
 
+<script type="text/javascript" charset="utf-8">
+  var curr_row = '#row<%= @rows[0].id %>';
+  
+  $(function(){
+    $('#row<%= @rows[0].id %>').css('background', '#DDD');
+  });
+</script>
+
 <div id="row" class="row">
   <%= render :partial => 'row', :object => @rows[0] %>
 </div>
@@ -27,13 +35,13 @@
   </thead>
   <tbody>  
   <% @rows.each do |row| -%>
-  <tr>           
+  <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>'); return false;" id="row<%= row.id %>">           
     <% if @form.fields[0] %>              
-    <td class="<%='name' if @form.fields[0].name == '姓名' %>" onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>');"><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
+    <td class="<%='name' if @form.fields[0].name == '姓名' %>"><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
     <% end -%>
-    <td onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>');"><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
+    <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td> 
     <td class='opt'>
-        <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
+        <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}'); return false;", :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
     </td>
   </tr>      
   <% end -%>

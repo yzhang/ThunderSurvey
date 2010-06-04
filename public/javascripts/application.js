@@ -15,6 +15,10 @@ $(document).ready(function(){
 function fetch_row(form_id, row_id,key)
 {
 	$("#row").html($("#spinner").html());
+	$(curr_row).css('background', '#FFF');
+	curr_row = '#row' + row_id;
+	$(curr_row).css('background', '#DDD');
+
   $.get('/forms/'+form_id+'/rows/'+row_id, {edit_key : key}, function(data){
     $("#row").html(data);
   });
@@ -23,6 +27,10 @@ function fetch_row(form_id, row_id,key)
 function edit_row(form_id,row_id,key)
 {
 	$("#row").html($("#spinner").html());
+	$(curr_row).css('background', '#FFF');
+	curr_row = '#row' + row_id;	
+	$(curr_row).css('background', '#DDD');
+	
   $.get('/forms/'+form_id+'/rows/'+row_id+'/edit', {edit_key : key}, function(data){
     $("#row").html(data);
   });
