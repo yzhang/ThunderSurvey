@@ -36,7 +36,6 @@
     <%= render :partial => 'row' %>
   </div>
 </div>
-
 <div id="results" class='grid_12'>     
   <h3>所有回应</h3>
 <table class='grid' id='rows' cellspacing="0" cellpadding="0">
@@ -46,20 +45,18 @@
       <th><%= @form.fields[0].name %></th>
       <% end %>
       <th>时间</th>
-      <th></th>   
     </tr>
   </thead>
   <tbody>  
   <% @rows.each do |row| -%>
-  <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>',this);">                 
+  <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>',this); return false;" id="row<%= row.id %>">           
     <% if @form.fields[0] %>              
-    <td class="<%='name' if @form.fields[0].name == '姓名' %>" ><%= row.send('f' + @form.fields[0].id) %></td>
+    <td class="<%='name' if @form.fields[0].name == '姓名' %>"><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
     <% end -%>
-    <td onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>');"><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></td> 
-     <td class='zoom-in'></td>  
+    <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td>   
     <% if false %>
     <td class='opt'>
-        <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
+        <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}',this); return false;", :class => 'ag' %> <%= link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>
     </td>       
     <% end %>
   </tr>      
