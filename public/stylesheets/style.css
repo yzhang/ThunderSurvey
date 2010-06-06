@@ -332,9 +332,10 @@ a.ag:hover {
 }
 
 .guide{   
-   text-align:center;
-   background:#E3E3E3; 
+   text-align:left;
+   background:#F8F8F8; 
    padding:10px;
+	margin-bottom: 20px;
 }
 
 /* table */
