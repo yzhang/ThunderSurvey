@@ -191,7 +191,8 @@ a.signin.menu-open span {
 	padding:10px 0;
 	position:relative;
 	margin:0px auto;
-	overflow:auto;
+	width: 100%;
+	float:left;
 }
 
 #sidebar{        
@@ -329,12 +330,13 @@ a.ag:hover {
 
 .intro{
 	line-height:150%;
+	float:left;
 }
 
 .guide{   
-   text-align:left;
-   background:#F8F8F8; 
-   padding:10px;
+  text-align:left;
+  background:#F8F8F8; 
+  padding:10px;
 	margin-bottom: 20px;
 }
 

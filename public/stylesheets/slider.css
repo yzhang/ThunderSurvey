@@ -30,11 +30,11 @@ blockquote									{ padding: 0 20px; margin-left: 20px; border-left: 20px solid
 .stripViewer .panelContainer .panel			{ float: left; height: 100%; position: relative; width: 510px; }
 .stripNavL, .stripNavR, .stripNav			{ display: none; }
 .nav-thumb 									{ border: 1px solid black; margin-right: 5px; }
-#movers-row									{ margin: -50px 0 0 62px; }
-#movers-row div								{ width: 25%; float: left; }
+#movers-row									{ margin: 0px 0 0 62px; }
+#movers-row div								{ width: 100px; float: left; }
 #movers-row div a.cross-link 				{ float: right; }
 .photo-meta-data							{ background: url(/images/slider/transpBlack.png); padding: 10px; height: 40px; margin: 5px; 
-											  margin-top: -60px; position: relative; z-index: 9999; color: white; }
+											  margin-top: -70px; position: relative; z-index: 9999; color: white; }
 .photo-meta-data span 						{ font-size: 13px; }
 .cross-link									{ display: block; width: 72px; margin-top: -15px; 
 											  position: relative; padding-top: 15px; z-index: 9999; }
