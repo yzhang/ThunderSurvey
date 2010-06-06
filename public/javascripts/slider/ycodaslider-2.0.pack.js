@@ -1,0 +1,19 @@
+/*
+ * 
+ * YCodaSlider plugin 2.0
+ * $Date:2008-05-11 23:22:34 +0200 (dom, 11 mag 2008) $
+ * @requires jQuery v1.2.3
+ * @optional Easing v1.3
+ * @optional Easing v1.3
+ * 
+ * Copyright (c) 2008 Massimiliano Balestrieri
+ * Examples and docs at: http://maxb.net/blog/
+ * Licensed GPL licenses:
+ * http://www.gnu.org/licenses/gpl.html
+ * 
+ * Based on http://www.ndoherty.com/coda-slider of Niall Doherty 
+ * Inspired by the clever folks at http://www.panic.com/coda
+ * Many thanks to Gian Carlo Mingati. Coda-Slider is a heavily modified version of his slideViewer, which can be found at  http://www.gcmingati.net/wordpress/wp-content/lab/jquery/imagestrip/imageslide-plugin.html
+ * 
+ */
+eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('4(9(){4("7.5-C").1m(\'<p q="18"><1E /><1x /></p>\')});h(!1l.f)j f={};f.k={A:0,F:9(a){h(f.k.A==0)4(\'1D\').R(\'<1w 1v="1s/F" E="\'+a+\'" 1k="1h" 1f="1e" />\')},1d:9(c){c=4.1O({1K:Z},c);X g.J(9(a){f.k.A++;f.k.17(g,c);j b=4(g).8().8().8().1F(0);b.3={};b.3.w=c||{};h(g.y)b.3.y=g.y;f.k.14(b);f.k.13(b);f.k.6(b);f.k.l(b);f.k.15(b);f.k.16(b)})},17:9(a,b){4(a).t("5-C").o("5-B");4(a).G(\'<7 q="5-1i" 1g="5-\'+f.k.A+\'">\');4(a).G(\'<7 q="5-G">\');4(a).G(\'<7 q="5-C">\');j c=4(".5-12",a);h(c.11()>0)c.G(\'<7 q="5-H">\')},13:9(a){j b=4("7.5-B",a);a.3.v=b.i("7.5-H").N();a.3.m=b.i("7.5-H").11();a.3.1c=a.3.v*a.3.m;a.3.M=a.3.m*2;b.F("N",a.3.1c)},14:9(a){4("p.18",a).1M();4("7.5-C",a).t("5-C").o("5-1a")},6:9(a){h(s.r&&Y(s.r.L(1))<=a.3.m){a.3.6=Y(s.r.L(1));a.3.A=-(a.3.v*(a.3.6-1));4(a).i("7.5-B").F({"K":a.3.A})}u{a.3.6=1}},l:9(b){j c=4("7.5-1a",b);c.19(\'<7 q="5-W"><a E="#">1J</a></7>\');c.1I(\'<7 q="5-V"><a E="#">1G</a></7>\');c.19(\'<7 q="5-l"><U><\\/U></7>\');j d=4("7.5-l U",b);j e=4("7.5-H",b);e.J(9(n){j a=4("7.5-12",g).1C("1B");h(a)d.R(\'<x><a E="#\'+(n+1)+\'">\'+a+\'</a></x>\');u d.R(\'<x><a E="#\'+(n+1)+\'">\'+(n+1)+\'</a></x>\')});d.i("x").J(9(a){b.3.M+=4(g).N()});d.8().F("N",b.3.M)},15:9(b){4("7.5-l a",b).J(9(z){b.3.M+=1A;4(g).1z("D",9(){4(g).o("6").8().8().i("a").1y(4(g)).t("6");j a=-(b.3.v*z);b.3.6=z+1;h(b.3.y)f.Q.10(b,(b.3.6-1),b.3.m);4("7.5-B",b).P({K:a},b.3.w.T,b.3.w.O)})});4("7.5-W a",b).D(9(){h(b.3.6==1){j a=-(b.3.v*(b.3.m-1));b.3.6=b.3.m;4(g).8().8().i("7.5-l a.6").t("6").8().8().i("x:1u a").o("6")}u{b.3.6-=1;j a=-(b.3.v*(b.3.6-1));4(g).8().8().i("7.5-l a.6").t("6").8().1t().i("a").o("6")};h(b.3.y)f.Q.10(b,(b.3.6-1),b.3.m);4(g).8().8().i("7.5-B").P({K:a},b.3.w.T,b.3.w.O);s.r=b.3.6;X Z});4("7.5-V a",b).D(9(){h(b.3.6==b.3.m){j a=0;b.3.6=1;4(g).8().8().i("7.5-l a.6").t("6").8().8().i("a:S(0)").o("6")}u{j a=-(b.3.v*b.3.6);b.3.6+=1;4(g).8().8().i("7.5-l a.6").t("6").8().1r().i("a").o("6")};h(b.3.y)f.Q.10(b,(b.3.6-1),b.3.m);4(g).8().8().i("7.5-B").P({K:a},b.3.w.T,b.3.w.O);s.r=b.3.6;X Z});4(1q).1p(9(e){h(e==1H){I=1o.1n}u{I=e.1L}h(I==1j){4("7.5-W a",b).1b("D",b)}u h(I==1N){4("7.5-V a",b).1b("D",b)}})},16:9(a){h(s.r&&Y(s.r.L(1))<=a.3.m){4("7.5-l a:S("+(s.r.L(1)-1)+")",a).o("6")}u{4("7.5-l a:S(0)",a).o("6")}}};4.1P.3=f.k.1d;',62,114,'|||ycodaslider|jQuery|yslider|current|div|parent|function||||||YCodaSlider|this|if|find|var|Base|nav|pc||addClass||class|hash|location|removeClass|else|pw|options|li|lazy||cnt|container|toggle|click|href|css|wrap|panel|keycode|each|left|slice|nw|width|easeFunc|animate|Lazy|append|eq|easeTime|ul|navr|navl|return|parseInt|false|lazyload|size|panelwrapper|count|init|bindings|defaults|gui|loading|before|viewer|trigger|vw|build|screen|media|id|stylesheet|body|190|rel|window|prepend|keyCode|event|keydown|document|next|text|prev|last|type|link|span|not|bind|80|title|attr|head|br|get|Right|null|after|Left|height|which|remove|188|extend|fn'.split('|'),0,{}))
