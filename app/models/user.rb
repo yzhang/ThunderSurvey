@@ -31,15 +31,23 @@ class User
   key :website, String
   key :activation_code, String
   key :activated_at, Time
+  key :oauth_type
+  key :oauth_id
 
   before_create :make_activation_code
   
   validates :login, :presence => true, :length => {:maximum => 100}
   validates :email, :presence => true, :length => {:minimum => 6},
         :format => {:with => Authentication.email_regex}
+        
+  validate :make_email_unique
   
   many :forms
   many :roles
+  
+  def make_email_unique
+    self.errors.add(:email, "已被占用") unless User.first(:conditions => {:email => self.email}).nil?
+  end
   
   # Activates the user in the database.
   def activate!
@@ -68,12 +76,41 @@ class User
   def self.authenticate(email, password)
     return nil if email.blank? || password.blank?
     u = first(:conditions => {:email => email, :activation_code => nil}) # need to get the salt
-    u ||= first(:conditions => {:login => email, :activation_code => nil}) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
+  end
+  
+  def self.find_or_create_by_oauth(provider)
+    user = self.first(:conditions => {:oauth_type => provider.name, :oauth_id => provider.user_id})
+    user ||= self.first(:conditions => {:email => provider.user_email}) if !provider.user_email.blank?
+
+    if user.nil?
+      user = User.new(:oauth_type => provider.name, :oauth_id => provider.user_id, 
+                :login => provider.user_name, :email => provider.user_email)
+      user.save(:validate => false)
+      user.activate!
+    elsif user.email
+      user.oauth_id = provider.user_id 
+      user.save(:validate => false)
+    end
+    
+    user
+  end
+  
+  def oauth_user?
+    self.oauth_type || self.oauth_id
+  end
+  
+  def self.generate_new_password(length=6)
+    charactars = ("a".."z").to_a + ("A".."Z").to_a + ("1".."9").to_a
+    (0..length).inject([]) { |password, i| password << charactars[rand(charactars.size-1)] }.join
+  end
+  
+  def persisted?
+    !new_record?
   end
 
   protected
