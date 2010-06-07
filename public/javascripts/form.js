@@ -50,7 +50,7 @@ $(document).ready(function($) {
     });
     $("#field_positions").html(data.join(''));
 		$("#saving").show();
-    $(".edit_form #form_submit").submit();
+    $("#edit_form #form_submit").submit();
   });
 
 	//根据窗口大小自动调整表单模块的高度
