@@ -51,7 +51,7 @@ class User
   key :activation_code, String
   key :activated_at, Time
   
-  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+#  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
   before_create :make_activation_code
   

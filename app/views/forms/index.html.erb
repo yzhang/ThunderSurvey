@@ -15,7 +15,7 @@
       <div class='left'>
       </div>
       <div class='right'>
-         <%= raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻')  %>
+         <%= raw(will_paginate(@forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻'))  %>
       </div>
     </div>
   <table border="0" cellspacing="0" cellpadding="0"> 
@@ -38,9 +38,9 @@
     <tr id="<%=form.id%>">        
       <td class='title'><strong><%= link_to form.title, form,:target => '_blank'%></strong>
       <div class='action' style='display:none'>
-        <%= link_to '结果统计', form_rows_path(form, :edit_key => form.edit_key), :target => '_blank' %> |
-        <%= link_to '编辑', edit_form_path(form, :edit_key => form.edit_key), :target => '_blank' %> | 
-        <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %>
+        <%= link_to '结果统计', form_rows_path(form.id, :edit_key => form.edit_key), :target => '_blank' %> |
+        <%= link_to '编辑', edit_form_path(form.id, :edit_key => form.edit_key), :target => '_blank' %> | 
+        <%= link_to '删除', form_path(form.id, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %>
       </div>  
       </td>                                                                                 
       <td><%= truncate(form.description,:length => 80) %></th>
@@ -58,4 +58,3 @@
   </div>
 </section>
 
-         
