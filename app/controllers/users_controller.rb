@@ -70,7 +70,7 @@ class UsersController < ApplicationController
       @user.password = new_password
       @user.password_confirmation = new_password
       @user.save(:validate => false)
-      Notifications.forget_password(@user, new_password).deliver
+      Mailer.forget_password(@user, new_password).deliver
       cookies.delete :auth_token
       reset_session
       flash[:notice] = "新密码已发送到#{@user.email}"
