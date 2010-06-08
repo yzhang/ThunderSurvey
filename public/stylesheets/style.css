@@ -9,22 +9,32 @@ img{
 
 p{
 	margin:10px 0;
+}   
+
+h1,h2,h3,h4{ 
+	color:#333;
+	font-family:'微软雅黑' arial '宋体'; 
 }
 
 header,section,footer{
 	display:block;
+}   
+
+ul li{       
+	list-style:none;
 }
 
 body{       
 	font-family:Arial, sans-serif;
 	font-size:12px;     
-	color:#000;  
+	color:#333;  
+	background:url(/images/bg/header.jpg) top repeat-x #FDFDFD; 
 }                  
 
 .header{   
 	height:40px;
 	width:100%;     
-	margin-bottom:10px;
+	margin-bottom:50px;
 	} 
 	
 .logo{   
@@ -36,7 +46,7 @@ body{
   font-size:12px;
   line-height:23px;
   text-align:right;
-	color:#333;
+  color:#333;
 } 
 
 .login a{
@@ -74,8 +84,8 @@ a.signin {
 a.signin span {  
 	background-image:url("/images/icons/toggle_down_light.png");
  	background-repeat:no-repeat;
-  background-position:100% 50%;
-  padding:4px 16px 6px 0;   
+  	background-position:100% 50%;
+  	padding:4px 16px 6px 0;   
 	*padding:4px 16px 0px 0;
 }                     
 
@@ -91,28 +101,28 @@ a.signin.menu-open span {
 }    
 
 #signin_menu {  
-  -moz-border-radius-topleft:5px;
-  -moz-border-radius-bottomleft:5px;
-  -moz-border-radius-bottomright:5px;
-  -webkit-border-top-left-radius:5px;
-  -webkit-border-bottom-left-radius:5px;
-  -webkit-border-bottom-right-radius:5px;
-  display:none;
-  background-color:#CCCCCC;
-  position:absolute;
-  width:210px;
-  z-index:100;
-  border:1px transparent;
-  text-align:left;
-  padding:5px;
-  top: 24.5px; 
-  right: 220px !important; 
+    -moz-border-radius-topleft:5px;
+    -moz-border-radius-bottomleft:5px;
+    -moz-border-radius-bottomright:5px;
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-bottom-left-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
+    display:none;
+    background-color:#CCCCCC;
+    position:absolute;
+    width:210px;
+    z-index:100;
+    border:1px transparent;
+    text-align:left;
+    padding:5px;
+    top: 24.5px; 
+    right: 10px !important; 
 	*right: 37px; 
-  margin-top:5px;
-  margin-right: 0px;
-  *margin-right: -1px;
-  color:#789;
-  font-size:11px;
+    margin-top:5px;
+    margin-right: 0px;
+    *margin-right: -1px;
+    color:#789;
+    font-size:11px;
 }
 
 #signin_menu input[type=text], #signin_menu input[type=password] {
@@ -173,6 +183,16 @@ a.signin.menu-open span {
 	font-size:12px;
 	padding:5px 0;
 	border-bottom:1px solid #ccc;
+} 
+
+form.login_form{
+	background:#fff; 
+	padding:10px;
+} 
+
+.words,.words h1,.words p{
+	text-align:center;
+	line-height:150%;
 }
 
 .google{
@@ -183,17 +203,11 @@ a.signin.menu-open span {
 	background:url(/images/icons/douban.jpg) no-repeat;
 }
 
-.container{   
+.container{  
+	position:relative;  
 	padding:10px;
 }   
           
-#content{       
-	padding:10px 0;
-	position:relative;
-	margin:0px auto;
-	width: 100%;
-	float:left;
-}
 
 #sidebar{        
 	position:relative;
@@ -244,19 +258,6 @@ h3{
 }
 
 
-
-#saving {
-	-moz-border-radius-bottomleft:4px;
-	-moz-border-radius-bottomright:4px;
-	background-color:#FAD163;
-	color:#000000;
-	font-weight:bold;
-	padding:0.4em 0.8em;
-	position:absolute;
-	right:50%;
-	top:0;
-	z-index:2;
-} 
 
 .view_form{      
 	padding-left:16px;   
@@ -334,10 +335,9 @@ a.ag:hover {
 }
 
 .guide{   
-  text-align:left;
-  background:#F8F8F8; 
+  background:#E3E3E3; 
   padding:10px;
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* table */
@@ -436,160 +436,8 @@ table.grid tbody td.opt a {
 	width:400px;
 	position:absolute;
 	top:5px;
-	left: 400px;
+	left: 220px;
 }       
-
-
-/* input setting*/ 
-.submit{
-	font-family:'微软雅黑' arial '宋体';   
-	background: url(/images/bg/btn-short.png);     
-	height:26px;
-	width:100px;
-	color: #fff;
-	font-size:12px;
-	letter-spacing:4px;
-	cursor: pointer;  
-	margin-bottom:5px;
-	border:0 none; 
-	margin-left:10px;     
-}
-
-input[type='text'],input[type='password'],textarea{
-	padding:2px;
-	background:#F6F6F6;
-	border:1px solid #ccc;  
-}
-
-textarea {
-	width: 480px;
-	height: 100px;
-}
-
-input.inputFocus {
-	background: #fff;
-}
-
-.text_input{
-	width:240px;
-}       
-
-/* ---  edit form -----*/    
-#form_wrapper{
-	background:#F3F3F3;
-}
-
-#form_title{     
-	height:30px;
-	font-size:18px;
-	font-weight:bold;
-}
-
-#form_description{
-	background:#F6F6F6;
-	font-size:12px;  
-	width: 580px;
-  	height: 46px;
-  	padding: 2px 5px;
-} 
-
-             
-#form{       
- 	background:#fff;    
-	min-height:400px;
-	position:relative;
-	overflow:auto; 
-	padding:20px;
-	margin:0px;
-}               
-
-
-* html #form{
-	height:200px;
-}
-
-#form p,.setting_form p{
-	margin-bottom:10px;
-}   
-
-.form_oprate{  
-	position:relative;     
-	background:#74A7DE;
-	height:30px;
-	padding:5px 10px;
-	border-bottom:1px solid #eee;
-} 
-
-.form_preview{ 
-	position:relative; 
-	background:#74A7DE;
-	padding:5px 10px; 
-	border-top:1px solid #eee;
-	height: 30px;
-}
-
-
-.field_form { padding: 10px; margin-top: 10px;}
-
-div.field {
-  margin: 10px 0;
-  padding: 10px;
-}
-
-div.edit:hover {
-  background-color: #FDF2C6;
-}
-
-.edit{
-	cursor: move;
-}        
-
-.opration{
-	float:right;
-}   
-
-.placeholder{
-	background:#eee;  
-	height:60px;
-}          
-
-.q_title{     
-	margin:0px; 
-	padding:0px;
-}   
-
-.prompt{
-	color:#eee;
-}      
-
-
-
-/* ----  form field setting -----*/
-#form_title{     
-	height:30px;
-	font-size:18px;
-	font-weight:bold;
-}
-
-#form_description{
-	background:#F6F6F6;
-	font-size:12px;  
-	width: 580px;
-  	height: 46px;
-  	padding: 2px 5px;
-} 
-
-#form_description:hover,#form_description:focus{
-	background:#fff;
-}  
-
-.new{
-	float:left;
-}
-
-.setting{
-	float:right;
-}
 
 
 /*  ------ form show cotainer -------- */
@@ -692,4 +540,32 @@ div.edit:hover {
 	text-align:left;
 }
  
+.open_login li a{ 
+	display:block;
+	padding:10px;
+	margin:10px;
+	text-align:center;
+	width:60px;
+	border:1px solid #ccc;
+}   
 
+.open_login li a:hover{ 
+	background:#FFFDD0;
+}
+
+
+.submit{          
+	font-family:'微软雅黑' arial '宋体';   
+	background: url(/images/bg/btn-bg.gif);
+	text-align:center;
+	height:26px;
+	width:100px;
+	color: #fff;
+	font-size:14px;      
+	font-weight:bold;
+	border:0 none;
+	position: relative;
+	cursor: pointer;  
+	margin-bottom:5px; 
+	*margin-top:5px;
+}

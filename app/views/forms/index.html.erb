@@ -6,7 +6,7 @@
      })    
   </script>
 <% end -%>     
- <div class='grid_18'>
+ <div class='span-18'>
  <table class='grid' border="0" cellspacing="0" cellpadding="0"> 
   <thead>
     <tr> 
@@ -29,8 +29,8 @@
   </table>
   <%=raw will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>        
  </div>     
-  <div class='grid_6'>
-        <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>  
+  <div class='span-6 last sidebar'>
+        <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form"  ><%=image_tag('create.gif')%></a>  
   </div>
   
 <%= content_for :pagenav do -%>  

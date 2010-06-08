@@ -16,7 +16,7 @@
     <nav>
       <div class='setting'>  
         <%= link_to '回应通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置"});', :class => 'button' %>
-        <%= link_to '表单嵌入', '#', :onclick => '$("#iframe").dialog({width:390, height:140, title:"问卷代码嵌入"});', :class => 'button' %>
+        <%= link_to '问卷嵌入', '#', :onclick => '$("#iframe").dialog({width:390, height:140, title:"问卷代码嵌入"});', :class => 'button' %>
         <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
       <div class='new'>
@@ -46,7 +46,7 @@
   </section>  
   <!-- 表单尾 -->
   <section class='form_preview right'>
-    <%= link_to '预览表单', form_path(@form), :target => '_blank',:class => 'button' %>
+    预览表单 <%= link_to "#{form_url(@form)}", form_path(@form), :target => '_blank' %>
   </section>
 </div>
 

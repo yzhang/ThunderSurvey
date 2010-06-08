@@ -21,8 +21,7 @@
   <% end %>
   
   <p id="email_notify">
-    <%= f.check_box :email_notify %>
-    <%= f.label :email_notify, '有新回答时，发送邮件通知' %>
+    <%= f.check_box :email_notify %> 有新回答时，发送邮件通知
   </p>
   <% if false %>  
   <p id="url_notify" style="<%= 'display:none;' if f.object.notify_type == 'email' %>">
@@ -31,7 +30,7 @@
   </p>
   <% end %>
   <p>
-    <%= f.label :thanks_message, '用户提交回答后的感谢信息' %><br />
+    <%= f.label :thanks_message, '用户提交回答后的感谢信息' %>
     <%= f.text_area :thanks_message, :cols => 42, :rows => 4, :style => "width:350px; height:80px;" %>
   </p>                             
   <%=f.submit '更新',:onclick => "$('#saving').show();" %>  

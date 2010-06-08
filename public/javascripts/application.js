@@ -32,3 +32,23 @@ function edit_row(form_id,row_id,key)
 function remote_action(e){
   $('#spinner').show();
 }
+
+$(document).ready(function(){    
+  $(".signin").click(function(e) {
+    e.preventDefault();
+    $("#signin_menu").toggle();
+    $("#email").focus();
+    $(".signin").toggleClass("menu-open");
+  });
+
+  $("#signin_menu").mouseup(function() {
+    return false;
+  });     
+
+  $(document).mouseup(function(e) {
+    if($(e.target).parent("a.signin").length==0) {
+      $(".signin").removeClass("menu-open");
+      $("#signin_menu").hide();
+    }
+  });
+})

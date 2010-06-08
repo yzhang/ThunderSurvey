@@ -5,14 +5,17 @@
   
   <div class='login'>    
     <% if logged_in? %>
-      你好 <%=current_user.login%>
+      <%=link_to '首页',root_path %>  
+      <%=link_to('我的问卷', forms_path)%>
+      <%=link_to('更多介绍', '/intro' )%>
       <%=link_to '帐号设置',account_path %>
       <%= link_to '注销', logout_path %>
     <% else %>
+      
       <%= link_to '注册新用户', signup_path %>
       已经注册了？<a href='/login' class='signin'><span>立即登录</span></a>
          <div id="signin_menu">
-            <%= form_tag session_path do %>  
+            <%= form_tag session_path,:class => 'login_form' do %>  
             <p>
               <label for="username">Email</label>
               <%= text_field_tag 'email', @email %>
@@ -29,31 +32,10 @@
             <% end %>
         </div>  
     <% end %>  
-    
-    <script type="text/javascript" charset="utf-8">
-      $(document).ready(function(){    
-        $(".signin").click(function(e) {
-          e.preventDefault();
-          $("#signin_menu").toggle();
-          $("#email").focus();
-          $(".signin").toggleClass("menu-open");
-        });
-
-        $("#signin_menu").mouseup(function() {
-          return false;
-        });     
-
-        $(document).mouseup(function(e) {
-          if($(e.target).parent("a.signin").length==0) {
-            $(".signin").removeClass("menu-open");
-            $("#signin_menu").hide();
-          }
-        });
-      })
-    </script>
     <%= render :partial => '/shared/notice' %>
   </div>  
-</div>    
+</div>       
+<% if false %>
 <div class='nav'> 
   <ul>                             
     <%=topnav_tab('首页',:url => root_path,:section => 'home' )%>
@@ -61,4 +43,5 @@
     <%=topnav_tab('更多介绍',:url => '/intro',:section => 'intro' )%>
     <%=topnav_tab('反馈',:url => new_feedbacks_path,:section => 'feedback',:class => 'last' )%>
   </ul>
-</div>
+</div>    
+<% end %>

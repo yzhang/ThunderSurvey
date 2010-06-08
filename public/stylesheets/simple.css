@@ -1,0 +1,214 @@
+body{             
+	background:url(/images/bg/mini_bar_bg.jpg) repeat-x top #FDFDFD;
+	color:#333;
+	font-family:arial;
+	line-height:150%;
+	font-size:12px;
+}       
+
+h1,h2,h3,h4{ 
+	color:#333;
+	font-family:'微软雅黑' arial '宋体'; 
+}       
+
+h3{
+	font-size:17px;
+	padding:5px 0px; 
+	border-bottom:1px solid #ccc;
+}
+
+.logo{
+	float:left;
+}             
+
+.login{     
+	padding:5px 20px;
+	float:right;
+}    
+
+.header{    
+	height:30px;
+	margin-bottom:25px;
+}
+
+#content{
+	margin:0 auto
+}
+
+/* input setting*/ 
+.submit{
+	font-family:'微软雅黑' arial '宋体';   
+	background: url(/images/bg/btn-short.png);     
+	height:26px;
+	width:100px;
+	color: #fff;
+	font-size:12px;
+	letter-spacing:4px;
+	cursor: pointer;  
+	margin-bottom:5px;
+	border:0 none; 
+	margin-left:10px;     
+}
+
+input[type='text'],input[type='password'],textarea{
+	padding:2px;
+	background:#F6F6F6;
+	border:1px solid #ccc;  
+}
+
+textarea {
+	width: 480px;
+	height: 100px;
+}
+
+input.inputFocus {
+	background: #fff;
+}
+
+.text_input{
+	width:240px;
+}       
+
+/* ---  edit form -----*/    
+#form_wrapper{
+}
+
+#form_title{     
+	height:30px;
+	font-size:18px;
+	font-weight:bold;
+}
+
+#form_description{
+	background:#F6F6F6;
+	font-size:12px;  
+	width: 580px;
+  	height: 46px;
+  	padding: 2px 5px;
+} 
+
+             
+#form{   
+	border-left:1px solid #ccc;  
+	border-right:1px solid #ccc;  
+ 	background:#fff;    
+	min-height:400px;
+	position:relative;
+	overflow:auto; 
+	padding:20px;
+	margin:0 20px;
+}               
+
+
+* html #form{
+	height:200px;
+}
+
+#form p,.setting_form p{
+	margin-bottom:5px;
+}                    
+
+#setting_form label{
+	font-size:12px;
+}
+
+.form_oprate{  
+	position:relative;     
+	background:#56ACF2;
+	height:30px;
+	padding:5px 10px;
+	border-bottom:1px solid #eee;
+} 
+
+.form_preview{ 
+	width:100%; 
+	color:#fff;
+	position:relative; 
+	background:#1F1F1F;
+	padding:5px; 
+	border-top:1px solid #eee;
+	height: 20px;  
+	text-align:center;
+}  
+
+.form_preview a{
+	color:#0099FF;
+}
+
+
+.field_form { padding: 10px; margin-top: 10px;}
+
+div.field {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+div.edit:hover {
+  background-color: #FDF2C6;
+}
+
+.edit{
+	cursor: move;
+}        
+
+.opration{
+	float:right;
+}   
+
+.placeholder{
+	background:#eee;  
+	height:60px;
+}          
+
+.q_title{     
+	margin:0px; 
+	padding:0px;
+}   
+
+.prompt{
+	color:#eee;
+}
+
+/* ----  form field setting -----*/
+#form_title{     
+	height:30px;
+	font-size:18px;
+	font-weight:bold;
+}
+
+#form_description{
+	background:#F6F6F6;
+	font-size:12px;  
+	width: 580px;
+  	height: 46px;
+  	padding: 2px 5px;
+} 
+
+#form_description:hover,#form_description:focus{
+	background:#fff;
+}  
+
+.new{
+	float:left;
+}
+
+.setting{
+	float:right;
+}
+
+form label{
+	font-size:12px;
+}
+
+#saving {
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	background-color:#FAD163;
+	color:#000000;
+	font-weight:bold;
+	padding:0.4em 0.8em;
+	position:absolute;
+	right:50%;
+	top:0;
+	z-index:2;
+}
