@@ -17,7 +17,7 @@
   <tbody>  
     <% @forms.each do |form| -%>
       <tr>
-        <td class='text-left'><%=link_to form.title, form_path(form), :target => '_blank' %></td>
+        <td class='text-left'><%=link_to form.title, form_path(form), :target => '_blank' %>(<%= form.klass.count %>)</td>
         <td><%= form.description %></td>
         <td><%= form.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
         <td><%= truncate(form.user.login,:length => 10) %></td>            
