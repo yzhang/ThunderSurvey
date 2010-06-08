@@ -440,20 +440,7 @@ table.grid tbody td.opt a {
 }       
 
 
-/*  ------ form show cotainer -------- */
 
-#form_container{ 
-	padding:10px;
-	margin:20px auto;
-	width:45em;
-	background:#fff;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
-
-#spinner{
-	display:none;
-}
 
 /* ---- page nav ----*/
 #page_nav{
@@ -529,14 +516,14 @@ table.grid tbody td.opt a {
 .tablescroll_wrapper
 { border-left:0; }
  
-.tablescroll_head
+.tablescroll_head th
 {
 	background:#EFEFEF;
 	border-bottom:1px solid #E3E3E3;
-	color:#333;
+	color:#333; 
 	font-size: 14px;  
 	font-weight:normal;
-	padding: 5px;  
+	padding:5px;  
 	text-align:left;
 }
  

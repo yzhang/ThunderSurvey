@@ -1,0 +1,42 @@
+#spinner{
+	display:none;
+} 
+
+header,section,footer{
+	display:block;
+}
+
+h1,h2,h3,h4{ 
+	color:#333;
+	font-family:'微软雅黑' arial '宋体'; 
+} 
+
+h1{
+	font-size:1.8em;
+}      
+
+div.field {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.submit{
+	font-family:'微软雅黑' arial '宋体';   
+	background: url(/images/bg/btn-short.png);     
+	height:26px;
+	width:100px;
+	color: #fff;
+	font-size:12px;
+	letter-spacing:4px;
+	cursor: pointer;  
+	margin-bottom:5px;
+	border:0 none; 
+	margin-left:10px;     
+}
+
+abbr{ color:#cc0000;padding-top:.2em;}
+
+form label{
+	font-size:12px;
+	display:inline;
+}

@@ -20,23 +20,23 @@
     </div>     
 </div>
 <div class='page_guide'>  
-  <div class='grid_12'>
+  <div class='span-12'>
     <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑" class='ag' >编辑表单</a>    
   </div>
-  <div class='grid_12 right'>
+  <div class='span-11 right last'>
      <%=link_to '导出CSV',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> /
     <%=link_to '导出XLS',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>    
   </div>
 
 </div>  
 <% end %>                        
-<div class="detail grid_11">
+<div class="detail span-11">
   <h3>回应详细</h3>
   <div id="row" >   
     <%= render :partial => 'row' %>
   </div>
 </div>
-<div id="results" class='grid_12'>     
+<div id="results" class='span-12'>     
   <h3>所有回应</h3>
 <table class='grid' id='rows' cellspacing="0" cellpadding="0">
   <thead>

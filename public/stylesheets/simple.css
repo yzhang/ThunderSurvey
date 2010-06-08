@@ -135,7 +135,6 @@ input.inputFocus {
 	color:#0099FF;
 }
 
-
 .field_form { padding: 10px; margin-top: 10px;}
 
 div.field {
@@ -166,7 +165,7 @@ div.edit:hover {
 }   
 
 .prompt{
-	color:#eee;
+	color:#ccc;
 }
 
 /* ----  form field setting -----*/

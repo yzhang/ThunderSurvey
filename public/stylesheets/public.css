@@ -1,0 +1,19 @@
+body{
+	font-family:arial;
+	font-size:12px;     
+	color:#333;
+  	background:#efefef;
+}
+
+/*  ------ form show cotainer -------- */
+
+#form_container{ 
+	padding:10px;
+	margin:20px auto;
+	width:45em;
+	background:#fff;
+	border:1px solid #ccc;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+

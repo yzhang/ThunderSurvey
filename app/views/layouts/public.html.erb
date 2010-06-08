@@ -3,7 +3,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="zh">
 <head>
-  <%= render :partial => '/shared/head' %>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <meta name="description" content="<%= @form.nil? ?  "抢答网让您可以轻松创建在线表单，调查问卷，收集用户反馈，类似Google Form的操作界面，让表单的创建如行云流水，简洁干净的问卷页面，让用户爱上问答!" : @form.description %>" />
+  <meta name='viewport' content='width=device-width' />
+  <meta charset="utf-8" />
+  <meta name="csrf-token" content="<%= form_authenticity_token %>" />
+  <meta name="csrf-param" content="authenticity_token" />
+  <!--[if IE]>
+   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->                   
+  <%= stylesheet_link_tag "public",'common'%>
+  <%= yield :headers %>                                                   
+  <title>抢答网－<%= @form.nil? ? (@page_title||'新一代问卷系统，让您的表单与众不同') : @form.title %></title>
   
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){     
