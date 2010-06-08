@@ -23,7 +23,7 @@
       <td><%= form.updated_at.to_date%></td> 
       <td class='opt'> 
         <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', '<%= form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form" class='ag' >编辑表单</a> 
-        <%= link_to '预览', form_path(form), :class => 'ag' %>
+        <%= link_to '预览', form_path(form), :class => 'ag', :target => '_blank' %>
         <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => '你确定删除此问卷嘛?', :method => 'delete',:class => 'ag' %>
       </td>
     <% end %>       

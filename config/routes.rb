@@ -41,7 +41,7 @@ Confforge::Application.routes.draw do
 
   resource :session
   resource :users
-  resource :feedbacks
+  #resource :feedbacks
   
   scope '/oauth' do
     match '/login/:name'    => 'oauth#new',      :as => :oauth_login
