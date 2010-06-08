@@ -1,5 +1,5 @@
 body{             
-	background:url(/images/bg/mini_bar_bg.jpg) repeat-x top #FDFDFD;
+	background:url(/images/bg/mini_bar_bg.jpg) repeat-x  #efefef;
 	color:#333;
 	font-family:arial;
 	line-height:150%;
@@ -100,8 +100,8 @@ input.inputFocus {
 }               
 
 
-* html #form{
-	height:200px;
+*html #form{
+	height:400px;
 }
 
 #form p,.setting_form p{

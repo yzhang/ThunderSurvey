@@ -5,9 +5,8 @@
   
   <div class='login'>    
     <% if logged_in? %>
-      <%=link_to '首页',root_path %>  
       <%=link_to('我的问卷', forms_path)%>
-      <%=link_to('更多介绍', '/intro' )%>
+      <%=link_to('使用指南', '/intro' )%>
       <%=link_to '帐号设置',account_path %>
       <%= link_to '注销', logout_path %>
     <% else %>

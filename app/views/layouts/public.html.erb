@@ -8,10 +8,7 @@
   <meta name='viewport' content='width=device-width' />
   <meta charset="utf-8" />
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
-  <meta name="csrf-param" content="authenticity_token" />
-  <!--[if IE]>
-   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->                   
+  <meta name="csrf-param" content="authenticity_token" />               
   <%= stylesheet_link_tag "public",'common'%>
   <%= yield :headers %>                                                   
   <title>抢答网－<%= @form.nil? ? (@page_title||'新一代问卷系统，让您的表单与众不同') : @form.title %></title>
