@@ -16,7 +16,7 @@
     <nav>
       <div class='setting'>  
         <%= link_to '回应通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置"});', :class => 'button' %>
-        <%= link_to '问卷嵌入', '#', :onclick => '$("#iframe").dialog({width:390, height:140, title:"问卷代码嵌入"});', :class => 'button' %>
+        <%= link_to '问卷嵌入', '#', :onclick => '$("#iframe").dialog({width:390, height:140, title:"问卷嵌入代码"});', :class => 'button' %>
         <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
       <div class='new'>
@@ -51,5 +51,11 @@
 </div>
 
 <div id="iframe" style="display:none;">
-  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px;", :onfocus => '$(this).focus();$(this).select();', :readonly => true %>
+  <p>
+    <%= radio_button_tag 'embed', '1', true, :onclick => '$("#embed").show();$("#simple").hide();' %> <%= link_to '超简风格，无边框', preview_form_path(@form, :embed => true), :target => '_blank', :style => 'color:blue;' %>
+    <%= radio_button_tag 'embed', '1', false, :onclick => '$("#embed").hide();$("#simple").show();' %> <%= link_to '庄重风格，有边框，深色背景', preview_form_path(@form), :target => '_blank', :style => 'color:blue;' %>
+  </p>
+  
+  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form, :embed => true)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px;", :onfocus => '$(this).focus();$(this).select();', :readonly => true, :id => 'embed' %>
+  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px; display:none;", :onfocus => '$(this).focus();$(this).select();', :readonly => true, :id => 'simple' %>
 </div>

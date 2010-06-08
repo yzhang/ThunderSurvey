@@ -46,7 +46,7 @@ class User
   many :roles
   
   def make_email_unique
-    self.errors.add(:email, "已被占用") unless User.first(:conditions => {:email => self.email}).nil?
+    self.errors.add(:email, "已被占用") if self.new_record? && !User.first(:conditions => {:email => self.email}).nil?
   end
   
   # Activates the user in the database.
@@ -75,7 +75,7 @@ class User
   #
   def self.authenticate(email, password)
     return nil if email.blank? || password.blank?
-    u = first(:conditions => {:email => email, :activation_code => nil}) # need to get the salt
+    u = first(:conditions => {:email => email}) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
