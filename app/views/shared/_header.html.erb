@@ -1,16 +1,17 @@
 <div class='header'>
-  <div class="logo">
+  <div class="logo span-17">
     <%=link_to image_tag('logo.png'),'/'%>
   </div>
   
-  <div class='login'>    
+  <div class='login span-7 last'>   
     <% if logged_in? %>
-      <%=link_to('我的问卷', forms_path)%>
-      <%=link_to('使用指南', '/intro' )%>
-      <%=link_to '帐号设置',account_path %>
-      <%= link_to '注销', logout_path %>
+     <ul> 
+      <li><%=link_to('我的问卷', forms_path)%></li>
+      <li><%=link_to('使用指南', '/intro' )%></li>
+      <li><%=link_to '帐号设置',account_path %></li>
+      <li><%= link_to '注销', logout_path %></li>
+     </ul>
     <% else %>
-      
       <%= link_to '注册新用户', signup_path %>
       已经注册了？<a href='/login' class='signin'><span>立即登录</span></a>
          <div id="signin_menu">

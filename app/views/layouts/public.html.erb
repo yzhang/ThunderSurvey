@@ -10,6 +10,7 @@
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
   <meta name="csrf-param" content="authenticity_token" />               
   <%= stylesheet_link_tag "public",'common'%>
+  <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', :cache => 'app.cache' %>   
   <%= yield :headers %>                                                   
   <title>抢答网－<%= @form.nil? ? (@page_title||'新一代问卷系统，让您的表单与众不同') : @form.title %></title>
   

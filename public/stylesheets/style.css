@@ -40,24 +40,25 @@ body{
 .logo{   
 	float:left;
 }     
-
-.login{
-  padding:0px 0px 12px;
+      
+/* --- login ---*/
+.login{ 
   font-size:12px;
-  line-height:23px;
   text-align:right;
   color:#333;
 } 
 
-.login a{
-	text-decoration: underline;
+.login ul li{  
+	background:#fff; 
+	float:left;
+}  
+
+.login ul li a{ 
+	display:block;
+	padding:5px 10px;
 }
 
-.login a:hover{
-	text-decoration: none;
-}
-
-.login li{float:left;} 
+/* -- */ 
 
 .login a.signin {    
   padding:4px 6px 6px;

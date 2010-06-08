@@ -17,3 +17,15 @@ body{
 	-webkit-border-radius: 5px;
 }
 
+.desc{
+	padding:10px;  
+	line-height:150%;
+}
+
+.error{
+   color:red;
+}      
+
+form label{
+	font-weight:bold;
+}
