@@ -1,4 +1,5 @@
-<h2>帐户设定</h2>
+<div class="span-9 prepend-3"> 
+<h3>帐户设定</h3>
 <%= form_for :user do |f| %> 
   <p>
     <%= f.label "用户名" %>
@@ -6,7 +7,7 @@
   </p>
   
   <p>
-    <%=f.label :email %><%= @user.email || f.text_field(:email) %>
+    Email: <%= @user.email || f.text_field(:email) %>
   </p>
 
   <% unless @user.oauth_user? %>
@@ -28,3 +29,4 @@
     <%= submit_tag '保存',:class=> 'submit' %>
   </div>      
 <% end %>
+</div>

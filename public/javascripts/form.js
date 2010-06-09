@@ -54,10 +54,10 @@ $(document).ready(function($) {
   });
 
 	//根据窗口大小自动调整表单模块的高度
-	var bottom_margin = $('body').height() - $(".form_preview").position().top + 40;
-	$("#form").height(window.innerHeight - bottom_margin - $("#form").position().top);
+	var bottom_margin = document.body.clientHeight - $(".form_preview").position().top + 40;
+	$("#form").height(document.documentElement.clientHeight - bottom_margin - $("#form").position().top);
 	$(window).resize(function(){
-	  $("#form").height(window.innerHeight - bottom_margin - $("#form").position().top);
+	  $("#form").height(document.documentElement.clientHeight - bottom_margin - $("#form").position().top);
 	});
 
 });     

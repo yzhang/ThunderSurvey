@@ -32,7 +32,7 @@
   <%=raw will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>        
  </div>     
   <div class='span-6 last sidebar'>
-        <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form"  ><%=image_tag('create.gif')%></a>  
+    <a href="#" style="float:right;" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form"  ><%=image_tag('create.gif')%></a>
   </div>
   
 <%= content_for :pagenav do -%>  

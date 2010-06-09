@@ -39,10 +39,11 @@ body{
 	
 .logo{   
 	float:left;
+	margin-left: -20px;
 }     
 
 .login{
-  padding:0px 0px 12px;
+  padding:0px 10px 12px 0;
   font-size:12px;
   line-height:23px;
   text-align:right;
@@ -288,7 +289,22 @@ a.ag:hover {
 .ag:visited {
 	text-decoration: none;
 	color: #0099FF;
-}      
+}
+
+.my {
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #0099FF;
+	padding: 5px 10px;
+	-moz-border-radius-topleft:5px;
+  -moz-border-radius-bottomleft:5px;
+  -moz-border-radius-bottomright:5px;
+  -moz-border-radius-topright:5px;
+  -webkit-border-top-left-radius:5px;
+  -webkit-border-bottom-left-radius:5px;
+  -webkit-border-bottom-right-radius:5px;
+  -webkit-border-top-right-radius:5px;
+}
 
 /* --- nav ----*/
 .nav{       
@@ -462,7 +478,7 @@ table.grid tbody td.opt a {
 
 .page_guide{ 
 	height:12px;     
-	padding:10px;
+	padding:10px 0;
 	border-bottom:1px solid #F3F3F3;
 }
 
