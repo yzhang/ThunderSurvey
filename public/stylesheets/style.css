@@ -240,7 +240,7 @@ form.login_form{
 }  
 
 #footer{    
-	border-top:1px solid #F3F3F3;
+	border-top:1px solid #ccc;
 	margin:10px;            
 	padding:10px;
 	text-align:center;
@@ -271,7 +271,6 @@ h1,h2,h3,h4{
 h3{
 	font-size:17px;
 	padding:5px 0px; 
-	border-bottom:1px solid #ccc;
 }
 
 
@@ -470,33 +469,6 @@ table.grid tbody td.opt a {
 	top:5px;
 	left: 220px;
 }       
-
-
-
-
-/* ---- page nav ----*/
-#page_nav{
-	height:20px;
-   	padding:5px 10px 15px 0px;  
-   *padding:5px 10px 15px 0px;
-	margin:10px 0px 5px;   
-}
-
-#page_nav span{ 
-	font-family:'微软雅黑' arial '宋体';      
-	float:left;
-	color:#333;   
-	font-size:1.9em; 
-	line-height:28px; 
-	font-weight:bold;
-	padding-bottom:10px;
-}   
-
-.page_guide{ 
-	height:12px;     
-	padding:10px 0;
-	border-bottom:1px solid #F3F3F3;
-}
 
 
 /* ---- pagination ----*/

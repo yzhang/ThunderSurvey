@@ -15,8 +15,9 @@
   <section class='form_oprate'>
     <nav>
       <div class='setting'>  
-        <%= link_to '回应通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置"});', :class => 'button' %>
-        <%= link_to '问卷嵌入', '#', :onclick => '$("#iframe").dialog({width:390, height:240, title:"问卷嵌入代码"});', :class => 'button' %>
+        <%= link_to '回应通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置",modal: true});', :class => 'button' %>
+        <%= link_to '问卷嵌入', '#', :onclick => '$("#iframe").dialog({width:490, height:90, title:"问卷嵌入代码",modal: true,
+        open: function(){$("#iframe").focus()}});', :class => 'button' %>
         <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
       <div class='new'>
@@ -46,16 +47,19 @@
   </section>  
   <!-- 表单尾 -->
   <section class='form_preview right'>
-    预览表单 <%= link_to "#{form_url(@form)}", form_path(@form), :target => '_blank' %>
+    查看实时效果 <%= link_to "#{form_url(@form)}", form_path(@form), :target => '_blank' %>
   </section>
 </div>
 
-<div id="iframe" style="display:none;">
+<div id="iframe" style="display:none;"> 
+  <% if false %>
   <p>
     <%= radio_button_tag 'embed', '1', true, :onclick => '$("#embed").show();$("#simple").hide();' %> <%= link_to '超简风格，无边框', preview_form_path(@form, :embed => true), :target => '_blank', :style => 'color:blue;' %>
     <%= radio_button_tag 'embed', '1', false, :onclick => '$("#embed").hide();$("#simple").show();' %> <%= link_to '庄重风格，有边框，深色背景', preview_form_path(@form), :target => '_blank', :style => 'color:blue;' %>
   </p>
   
-  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form, :embed => true)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px;", :onfocus => '$(this).focus();$(this).select();', :readonly => true, :id => 'embed' %>
-  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px; display:none;", :onfocus => '$(this).focus();$(this).select();', :readonly => true, :id => 'simple' %>
+  <%= text_area_tag :iframe, "<iframe src='#{form_url(@form, :embed => true)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px;", :onfocus => '$(this).focus();$(this).select();', :readonly => true, :id => 'embed' %>  
+  <% end %>    
+  将此内容粘贴到您的网页中:<br />
+  <%= text_field_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :style => "width:450px;", :readonly => true, :id => 'simple' %>
 </div>

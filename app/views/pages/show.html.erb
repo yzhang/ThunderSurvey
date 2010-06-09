@@ -2,18 +2,16 @@
   <%= stylesheet_link_tag 'page' %>  
 <% end %>                            
 
+<%= content_for :pagenav do -%>  
 <% if params[:preview]%>  
 <div id="preview">
-  <%=link_to '返回编辑',edit_admin_page_path(@page),:class => 'ag'%>     
+  <%=link_to '<< 返回编辑',edit_admin_page_path(@page),:class => 'ag'%>     
 </div>                  
-<script type="text/javascript" charset="utf-8">
-$(document).ready(function(){
-    $('#preview').css({'width':$(window).width()})      
-})
-</script>
-<% end %>    
-
-<h1><%=@page.title%></h1>
+<% end %>
+<div id="page_nav">
+   <span><%=@page.title%></span> 
+</div>
+<% end %>
 
 <div id='page'>
   <%= raw(@page.body) %>    
