@@ -54,10 +54,9 @@ $(document).ready(function($) {
   });
 
 	//根据窗口大小自动调整表单模块的高度
-//	var bottom_margin = $('body').height() - $(".form_preview").position().top;
-	$("#form").height(window.innerHeight - $("#form").position().top);
+	$("#form").height(document.documentElement.clientHeight - $("#form").position().top);
 	$(window).resize(function(){
-		$("#form").height(window.innerHeight - $("#form").position().top);
+		$("#form").height(document.documentElement.clientHeight - $("#form").position().top);
 	});
 
 });     
