@@ -426,7 +426,7 @@ table.grid thead tr th, table.grid tfoot tr th {
 
 table.grid tbody td { 
 	color: #666; 
-	padding:10px; 
+	padding: 10px 10px 10px 5px; 
 	vertical-align: top; 
 	border-bottom:1px dotted #CCCCCC;
 }         
