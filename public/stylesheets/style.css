@@ -49,7 +49,7 @@ body{
   color:#333;
 }
 
-.login ul {
+.login ul.panel {
 	width: 260px;
 	height: 25px;
 	padding: 5px 5px;
