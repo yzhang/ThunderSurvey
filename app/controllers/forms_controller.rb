@@ -4,7 +4,7 @@ class FormsController < ApplicationController
   before_filter :verify_edit_key, :only => [:edit, :update] 
   before_filter { |c| c.set_section('forms') }
   
-  def index
+  def index   
     @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '20')
     @page_title = "所有问卷"
 

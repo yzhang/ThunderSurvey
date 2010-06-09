@@ -1,7 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="zh">
+<!doctype html>      
+<html lang="zh">
 <head>
   <link rel="shortcut icon" href="/favicon.ico" />
   <meta name="description" content="<%= @form.nil? ?  "抢答网让您可以轻松创建在线表单，调查问卷，收集用户反馈，类似Google Form的操作界面，让表单的创建如行云流水，简洁干净的问卷页面，让用户爱上问答!" : @form.description %>" />
@@ -10,7 +8,7 @@
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
   <meta name="csrf-param" content="authenticity_token" />
   <!--[if IE]>
-   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+   <script src="/javascripts/html5.js"></script>
   <![endif]-->                   
   <%= stylesheet_link_tag 'framework/reset','framework/general','framework/grid', :cache => 'app.framework.cache'  %>  
   <%= stylesheet_link_tag "simple",'common',"jquery-ui", 'slider', :cache => 'app.cache'  %>
@@ -30,7 +28,7 @@
 <body>   
   <div class='header'>
     <div class="logo">
-      <%=link_to image_tag('email_logo.png'),'/'%>
+      <%=image_tag('mini_logo.png') %>
     </div>         
     <div class='login'>
       <% if logged_in? %>	
