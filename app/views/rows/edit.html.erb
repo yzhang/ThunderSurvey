@@ -5,10 +5,7 @@
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
   <% end %>
-  
-  <%= f.submit "更新",:class => 'submit' %>
+
+  <%= f.submit "更新",:class => 'submit', :onclick => "remote_action(this);" %> <%= image_tag('ajax-loader.gif',:id => 'spinner') %> 
 <% end %>    
 
-<div id="spinner" style="display:none;">
-  <%= image_tag(image_path('ajax-loader.gif')) %>
-</div>

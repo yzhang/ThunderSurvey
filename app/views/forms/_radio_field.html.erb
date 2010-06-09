@@ -1,6 +1,6 @@
 <%  field.options.each do |option| %>
   <p>
   <%= radio_button_tag "row[f#{field.id}]", option.value, row.send("f#{field.id}") == option.value %> 
-  <%= label_tag option.value %>
+  <%= option.value  %>
   </p>
 <% end %>

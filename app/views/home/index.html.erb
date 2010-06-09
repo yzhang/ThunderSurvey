@@ -1,5 +1,7 @@
+
 <%= content_for :headers do  %>
   <%= javascript_include_tag 'slider/jquery-easing-1.3.pack', 'slider/jquery-easing-compatibility.1.2.pack', 'slider/coda-slider.1.1.1.pack', :cache => 'slider.cache' %>  
+
   
   <script type="text/javascript">
 		var theInt = null;
@@ -43,9 +45,9 @@
 			
 			theInterval();
 		});
-	</script>
+	</script> 
 <% end %>
-<div class='intro span-14 prepend-1'>
+<div class='intro span-14'>
   <div class="slider-wrap">
     <div id="main-photo-slider" class="csw">
     	<div class="panelContainer">
@@ -82,13 +84,14 @@
 
   </div>
 </div>
-<div class='guide span-8 words last'>
-    <h1>问卷调查?就用抢答!</h1>
+
+<div class='guide span-9 last'>
+  <div class='words'>
+     <h1>问卷调查?就用抢答!</h1>
     <p>抢答网让您可以轻松创建在线表单，调查问卷，收集用户反馈。操作界面类似Google表单，让表单的创建如行云流水，简洁干净的问卷页面，让用户爱上问答!</p>
     <p><a href='/signup'><%= image_tag(image_path('register.png'), :title => '免费注册') %></a></p>
     <p>已经有帐号了？<%= link_to "立即登录", login_path %></p>
-  </center>
+  </div>
 </div>
-
 
 <div style="clear:both;"></div>

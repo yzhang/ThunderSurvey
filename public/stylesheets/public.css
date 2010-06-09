@@ -27,5 +27,13 @@ body{
 }      
 
 form label{
+	color:#000;
 	font-weight:bold;
+}
+
+.support{ 
+	display:block;
+	padding:20px; 
+	color:#bbb;
+	 text-decoration: none;   
 }
