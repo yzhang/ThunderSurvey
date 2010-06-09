@@ -12,7 +12,7 @@
   <!--[if IE]>
    <script src="/javascripts/html5.js"></script>
   <![endif]-->                   
-  <%= stylesheet_link_tag "public",'common'%>
+  <%= stylesheet_link_tag "public",'common', :cache => 'embed.cache' %>
   <%= yield :headers %>                                                   
   <title>抢答网－<%= @form.nil? ? (@page_title||'新一代问卷系统，让您的表单与众不同') : @form.title %></title>
 </head>
