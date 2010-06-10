@@ -33,11 +33,9 @@
 <body>   
   <%= render :partial => '/shared/header' %>
   <div id="main_container">
-    <section class="content">
         <%= render :partial => '/shared/notice' %> 
         <div id="saving" style="display:none;">正在保存...</div>
         <%= yield %>
-    </section>
   </div> 
   <footer>
        &copy; 抢座网 2010

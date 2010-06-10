@@ -137,11 +137,14 @@ section.form_list ul li{
 }
 
 /* ---   form -----*/              
-#form{     
+#form{       
+	background:#FDFDFD;
 	min-height:400px;
 	position:relative;
 	overflow:auto;
 	margin:0px 20px;
+	padding:10px 20px;
+	border:1px solid #eee;     
 }               
 
 
@@ -151,14 +154,15 @@ section.form_list ul li{
 
 #form p,.setting_form p{
 	margin-bottom:10px;
+}
+
+#form_wrapper{  
 }   
 
 .form_oprate{      
-	background:#fdfdfd;
+	background:#69ACEC;
 	height:30px;
 	padding:5px 10px;
-	margin-bottom:10px;
-	border-bottom:1px solid #eee;
 } 
 
 .form_preview{  
@@ -255,10 +259,6 @@ div.edit:hover {
 label{
   color:#4C4C4C;  
 }
-textarea{
-	width:400px;
-	height:100px;
-} 
 
 .input_options input[type=text]{
 	margin:0 5px;
@@ -350,8 +350,20 @@ input.inputFocus {
 	background: #fff;
 }
 
-.text_input{
-	width:240px;
+.q_title{
+	font-weight:bold;
+} 
+
+.red{
+	color:red;
+}  
+
+.input{
+	margin:10px 0;
+}   
+
+div.input p{
+	margin-bottom:0px;
 }
 
 .desc{
