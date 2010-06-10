@@ -381,23 +381,12 @@ table.grid {
 	width:500px;  
 	margin:0 auto;
 	overflow:auto;
-}
-
-.row {
-	background:#DDD; 
-	width:400px; 
-	overflow:auto; 
-	margin-left: 18px; 
-	margin-bottom: 20px;
-}                
+}             
            
-#row{   
+#row{  
    padding:10px; 
 }     
 
-.edit_row{
-	background:#F0F1EE;
-}
 
 table#detail{    
    border-left:1px solid #ccc; 
@@ -455,11 +444,6 @@ table.grid tbody td.opt a {
 	cursor:pointer;
 }   
 
-#result td{     
-	background:#F0F1EE;  
-	padding:5px;
-}
-
 
 /* --- flash -----*/ 
 #flash-message{    
@@ -510,7 +494,7 @@ table.grid tbody td.opt a {
 
 /*  sprite  */
 .tablescroll
-{ font: 12px normal  Arial, sans-serif; background-color:#fff; }
+{ font: 12px normal  Arial, sans-serif; }
  
 
  
@@ -559,4 +543,41 @@ table.grid tbody td.opt a {
 	cursor: pointer;  
 	margin-bottom:5px; 
 	*margin-top:5px;
+}
+
+
+/* result */
+.border{      
+	margin-top:10px; 
+	padding:5px;
+	background:#EFEFEF;
+}    
+
+#rows{
+	width:235px;
+}
+
+#rows td{    
+	padding-left:20px;
+	font-weight:bold; 
+	border-bottom:1px dotted #ccc; 
+	border-right:1px solid #ccc;
+}
+
+#result{    
+	padding:20px;
+	 background:#F6F6F6; 
+}
+
+#result td{
+	padding:5px;
+	border:none;
+}
+
+.row_item{
+	color:#D3D3D3;
+}
+
+.tip{
+	color:#999;
 }

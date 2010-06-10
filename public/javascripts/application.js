@@ -13,8 +13,8 @@ $(document).ready(function(){
 });
 
 function fetch_row(form_id,row_id,key,obj){
-   $('#results td').css('background','none') 
-   $(obj).find("td").css('background','#F0F1EE')
+   $('#results td').css({'background':'#FDFDFD','color':'#333'}) 
+   $(obj).find("td").css({'background':'#0099FF','color':'#fff'})
    $("#row").html($("#spinner").html());
    $.get('/forms/'+form_id+'/rows/'+row_id, {edit_key : key}, function(data){
    	$("#row").html(data);

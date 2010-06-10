@@ -18,51 +18,35 @@
     <div class='right'>
     </div>     
 </div>
-<div class='page_guide'>  
-  <div class='span-12'>
-    <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑" class='ag' >编辑表单</a> / 
-    <%=link_to '查看表单',form_path(@form),:target => '_blank',:class => 'ag'%>
-  </div>
-  <div class='span-11 right last'>
-     <%=link_to '导出为文本文件',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> /
+<div class='span-24'>  
+  <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑" class='button' >编辑表单</a>  
+  <%=link_to '查看表单',form_path(@form),:target => '_blank',:class => 'button'%>
+</div> 
+  <div class='span-24 border'>    
+    <b><%=@form.klass.count %>条回应</b> |  
+     <%=link_to '导出为文本文件',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
     <%=link_to '导出为Excel文件',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>    
   </div>
-
-</div>  
-<% end %>                        
-<div class="detail span-11">
-  <h3>回应详细</h3>
-  <div id="row" >   
-    <%= render :partial => 'row' %>
-  </div>
-</div>
-<div id="results" class='span-12'>     
-  <h3>所有回应</h3>
-<table class='grid' id='rows' cellspacing="0" cellpadding="0">
-  <thead>
-    <tr> 
-      <% if @form.fields[0] %>                         
-      <th><%= @form.fields[0].name %></th>
-      <% end %>
-      <th>时间</th>
-    </tr>
-  </thead>
+<% end %>
+<div class='span-6' id='results'>     
+<table id='rows' cellspacing="0" cellpadding="0">
   <tbody>  
   <% @rows.each do |row| -%>
   <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>',this); return false;" id="row<%= row.id %>">           
     <% if @form.fields[0] %>             
       <td><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
     <% end -%>
-    <td><div class='info_item'><%= row.created_at.to_time.to_formatted_s(:datetime_military) %></div></td>   
   </tr>      
   <% end -%>
   </tbody>
 </table>  
-<%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>    
-</div>     
-
-
-
+<%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %> 
+</div>                      
+<div class="span-18 last">
+  <div id="row" >   
+    <%= render :partial => 'row' %>
+  </div>
+</div>    
 <div id="spinner" style="display:none;">
   <%= image_tag(image_path('ajax-loader.gif')) %>
 </div>

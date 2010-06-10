@@ -9,7 +9,7 @@
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
   <meta name="csrf-param" content="authenticity_token" />
   <%= stylesheet_link_tag 'framework/reset','framework/general','framework/grid', :cache => 'app.framework.cache'  %> 
-  <%= stylesheet_link_tag "custom",'admin',"jquery-ui", "formtastic_changes", :cache => 'admin.cache'  %>
+  <%= stylesheet_link_tag 'admin',"jquery-ui", "formtastic_changes", :cache => 'admin.cache'  %>
   <%= javascript_include_tag "jquery", "jquery-ui", "jrails", "application", "rails", :cache => 'admin.cache' %>
   <!--[if IE]>
    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> 
@@ -19,7 +19,8 @@
 
 </head>
 
-<body>
+<body>  
+  <% if false %>
   <div id="main_container">
     <header id='system'>   
         <nav class='login'>
@@ -33,14 +34,7 @@
         <div class="logo">
           <a href="/">返回前台</a>
         </div>  
-        <nav class='nav'>
-          <ul>
-            <%=topnav_tab "表单管理",:url => admin_forms_path,:section => 'forms' %>
-            <%=topnav_tab "用户管理",:url => admin_users_path, :section => 'users' %>
-            <%=topnav_tab "CMS", :url => admin_pages_path, :section => 'pages' %>
-            <%=topnav_tab "用户反馈", :url => admin_feedbacks_path, :section => 'feedbacks' %> 
-          </ul>  
-        </nav> 
+
        <%= render :partial => '/shared/notice' %> 
     </header>
     <section class="container"> 
@@ -55,6 +49,27 @@
       Footer
     </footer>
   </div>
-
+  <% end %>
+  <div class='container'>
+    <div class='header span-24'>
+       <h1>抢答控制台</h1>
+      <nav class='nav'>
+        <ul>
+          <%=topnav_tab "表单管理",:url => admin_forms_path,:section => 'forms' %>
+          <%=topnav_tab "用户管理",:url => admin_users_path, :section => 'users' %>
+          <%=topnav_tab "CMS", :url => admin_pages_path, :section => 'pages' %>
+          <%=topnav_tab "用户反馈", :url => admin_feedbacks_path, :section => 'feedbacks' %> 
+        </ul>  
+      </nav>
+    </div>
+    <div class='main_content span-24'>
+      <div class='content span-18'>
+        <%= yield %>  
+      </div>
+      <div class='sidebar span-6 '>
+        <%=yield :sidebar %>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

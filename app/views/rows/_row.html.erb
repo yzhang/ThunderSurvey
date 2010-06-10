@@ -1,16 +1,28 @@
-<% unless form.nil? %>
-  <table class='grid' id='result' cellspacing="0" cellpadding="0">
-    <% form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
-      <tr>
-        <td><%= field.name %></td>
-        <td><%= row.send("f#{field.id}") %></td>
-      </tr>
-    <% end %>
-  </table>  
-  <div style='text-align:center;'>
-       <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %> | <%= link_to '删除', form_row_path(form, row, :edit_key => form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>    
-  </div>
-   
+<% unless form.nil? %>       
+<div style='text-align:right;'>
+      <%= link_to '编辑', '#', :onclick => "edit_row('#{@form.id}', '#{row.id}', '#{@form.edit_key}')", :class => 'ag' %> |  <%= link_to '删除', form_row_path(form, row, :edit_key => form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete', :class => 'ag' %>    
+ </div>  
+ <div id="result" >
+   <div class='span-10'>
+      <table class='grid ' cellspacing="0" cellpadding="0"> 
+       <col width='15%' />
+       <col width='85%' />
+       <tbody>
+       <% form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
+         <tr>
+           <td><b><%= field.name %></b></td>
+           <td class='row_item'><%= row.send("f#{field.id}") %></td>
+         </tr>
+       <% end %>
+       </tbody>
+     </table>
+   </div>      
+   <div class='span-6 last tip'>
+     提交于<%= row.created_at.to_s(:db) %>
+   </div>
+
+   <div style='clear:both;'></div>
+ </div>
 <% else %>
 请选择一个回应
 <% end %>
