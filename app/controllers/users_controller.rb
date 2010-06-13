@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :only => ['show']
+  before_filter :login_required, :only => ['show', 'update', 'setting']
   
   # render new.rhtml
   def new
@@ -45,8 +45,10 @@ class UsersController < ApplicationController
     respond_to do |wants|
       if @user.save
         notice ||= '修改成功'
-        wants.html { redirect_to account_url, :notice => notice }
+        flash[:notice] = notice       
+        wants.html { redirect_to account_url }
       else
+        flash[:notice] = notice
         wants.html{ render :action => "setting" }
       end
     end
@@ -79,6 +81,5 @@ class UsersController < ApplicationController
       flash.now[:error] = '找不到此email'
       render :action => "forget_password"
     end
-  end 
-
+  end
 end

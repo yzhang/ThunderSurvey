@@ -37,11 +37,11 @@ Confforge::Application.routes.draw do
   match '/sitemap.:format' => 'sitemap#index', :as => :sitemap
   match '/forget_password' => 'users#forget_password', :as => :forget_password 
   match '/reset_password' => 'users#reset_password', :as => :reset_password
-  match '/account'   => 'users#setting', :as => :account 
+  match '/account'   => 'users#setting', :as => :account
+  put   '/update'    => 'users#update'
 
   resource :session
   resource :users
-  #resource :feedbacks
   
   scope '/oauth' do
     match '/login/:name'    => 'oauth#new',      :as => :oauth_login
