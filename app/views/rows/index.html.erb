@@ -13,7 +13,8 @@
      <%=link_to '导出为文本文件',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
     <%=link_to '导出为Excel文件',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>    
   </div>
-<% end %>
+<% end %>     
+操作提示:双击回应条目可展开
 <div class='span-24' id='results'>     
 <table id='rows' cellspacing="0" cellpadding="0" class='grid'>  
   <thead>
