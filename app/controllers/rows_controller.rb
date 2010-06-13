@@ -6,7 +6,7 @@ class RowsController < ApplicationController
 
   def index
     klass = @form.klass
-    
+    @rows = klass
     respond_to do |wants| 
       unless klass.count == 0
       wants.html { 
@@ -74,7 +74,7 @@ class RowsController < ApplicationController
     @row = @form.klass.find(params[:id])
     
     respond_to do |wants|
-      wants.html {render :layout => false}
+      wants.html {}
     end
   end
   
@@ -120,7 +120,9 @@ class RowsController < ApplicationController
         want.json {render :json => @row.to_json}
         want.js   {
           render :update do |page|
-            page['row'].replace_html(:partial => 'row', :locals => {:row => @row,:form => @form})
+           # page['row'].replace_html(:partial => 'row', :locals => {:row => @row,:form => @form})
+           flash[:notice] = '记录已更新'
+           page.redirect_to(form_rows_path(@form, :edit_key => @form.edit_key))
           end
         }
       else

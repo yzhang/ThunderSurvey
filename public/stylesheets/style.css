@@ -40,7 +40,12 @@ body{
 .logo{   
 	float:left;
 	margin-left: -20px;
-}     
+}  
+
+form label{
+	color:#333;
+	font-weight:bold;
+}   
 
 /* --- login ---*/
 .login{
@@ -413,11 +418,17 @@ table.grid thead tr th, table.grid tfoot tr th {
 }
 
 table.grid tbody td { 
-	color: #666; 
-	padding: 10px 10px 10px 5px; 
+	color: #666;  
 	vertical-align: top; 
 	border-bottom:1px dotted #CCCCCC;
-}         
+} 
+
+table.big tbody td { 
+	color: #666;     
+	padding:5px;
+	vertical-align: top; 
+	border-bottom:1px dotted #CCCCCC;
+}        
 
 .tablenav{  
 	margin:10px;
@@ -437,13 +448,7 @@ table.grid td.title span{
 
 table.grid tbody td.opt a { 
 	margin-right:10px;
-} 
-
-#results td{     
-	padding:5px;   
-	cursor:pointer;
-}   
-
+}  
 
 /* --- flash -----*/ 
 #flash-message{    
@@ -548,30 +553,31 @@ table.grid tbody td.opt a {
 
 /* result */
 .border{      
-	margin-top:10px; 
+	margin:10px 0; 
 	padding:5px;
 	background:#EFEFEF;
 }    
 
-#rows{
-	width:235px;
-}
 
-#rows td{    
-	padding-left:20px;
-	font-weight:bold; 
+#rows td{  
+	cursor:pointer;  
 	border-bottom:1px dotted #ccc; 
 	border-right:1px solid #ccc;
-}
+} 
 
-#result{    
-	padding:20px;
-	 background:#F6F6F6; 
-}
-
-#result td{
+div.info_item{
 	padding:5px;
-	border:none;
+}   
+
+div.time{   
+	color:#999;
+	width:60px;
+	font-size:80%;
+}
+
+#results{           
+	width:100%;
+	overflow:auto;
 }
 
 .row_item{
@@ -580,4 +586,21 @@ table.grid tbody td.opt a {
 
 .tip{
 	color:#999;
+}
+
+table.grid tr.highlighted td div.info_item{
+	background:#FFFDD0;
+}
+
+.grid td.name{
+	font-family:'微软雅黑' arial '宋体';   
+	font-size:12px;
+	padding-left:20px;
+	color:#414141; 
+	font-weight:bold;
+}
+
+.row_content{
+	height:400px;
+	overflow:auto;
 }

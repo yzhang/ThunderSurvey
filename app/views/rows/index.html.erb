@@ -1,17 +1,3 @@
-<%= content_for :headers do %>
-  <%= javascript_include_tag 'jquery.tablescroll' %>
-  <script>
-  /*<![CDATA[*/
-
-  jQuery(document).ready(function($)
-  {
-  	$('#rows').tableScroll({height:350});
-  });
-
-  /*]]>*/
-  </script>
-<% end %>
-
 <%= content_for :pagenav do -%> 
 <div id="page_nav">
     <span><%=link_to '所有问卷',forms_path%> / <%= @form.title %></span>    
@@ -28,25 +14,52 @@
     <%=link_to '导出为Excel文件',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>    
   </div>
 <% end %>
-<div class='span-6' id='results'>     
-<table id='rows' cellspacing="0" cellpadding="0">
+<div class='span-24' id='results'>     
+<table id='rows' cellspacing="0" cellpadding="0" class='grid'>  
+  <thead>
+    <tr>      
+      <th>时间</th>
+      <% @form.fields.each do |field| %>
+      <th><%=field.name%></th> 
+      <% end %>
+    </tr>
+  </thead>
   <tbody>  
-  <% @rows.each do |row| -%>
-  <tr onclick="fetch_row('<%= @form.id %>', '<%= row.id %>', '<%= @form.edit_key %>',this); return false;" id="row<%= row.id %>">           
-    <% if @form.fields[0] %>             
-      <td><div class='info_item'><%= row.send('f' + @form.fields[0].id) %></div></td>
+ <% @rows.each do |row| %>
+  <tr id="<%=row.id%>">     
+    <td><div class='info_item time'><%=row.created_at.to_time.to_formatted_s(:datetime_short)%></div></td>          
+    <% @form.fields.each do |field| %>         
+      <td><div class='info_item'><%=row.send("f#{field.id}") %></div></td>
     <% end -%>
   </tr>      
   <% end -%>
   </tbody>
 </table>  
-<%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %> 
-</div>                      
-<div class="span-18 last">
-  <div id="row" >   
-    <%= render :partial => 'row' %>
-  </div>
-</div>    
-<div id="spinner" style="display:none;">
-  <%= image_tag(image_path('ajax-loader.gif')) %>
+</div>             
+<div style='clear:both'></div>
+<div style='margin:10px;'>
+  <%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>   
 </div>
+   
+<% @rows.each do |row| %>                    
+<div id="row_<%=row.id%>"  style="display:none;">
+  <h3>回应详细</h3>           
+  <div class='row_content'>
+  <table class='grid big' cellspacing="0" cellpadding="0"> 
+    <col width='30%'>
+    <col width='70%'>
+    <tbody>
+      <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
+        <tr>
+          <td class='name'><%= field.name %></td>
+          <td><%= row.send('f' + field.id)%></td>
+        </tr>
+      <% end %>
+     </tbody>
+    </table> 
+     </div>     
+    <div style='text-align:center;'>
+      <%=link_to '编辑',edit_form_row_path(@form,row, :edit_key => @form.edit_key),:class => 'button'%>  <%=link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete',:class => 'button'%>
+    </div>
+</div>    
+<% end %>

@@ -51,4 +51,25 @@ $(document).ready(function(){
       $("#signin_menu").hide();
     }
   });
+})     
+
+$(document).ready(function(){   
+	$('#rows td').hover(
+		function(){$(this).closest('tr').addClass('highlighted')},
+		function(){$(this).closest('tr').removeClass('highlighted')}
+		) 
+		
+   $('#rows td').dblclick(function(){ 
+	  row_id = $(this).closest('tr').attr('id')
+	  $.fancybox(
+		$("#row_" + row_id).html(),
+		{
+        	'autoDimensions'	: false,
+			'width'         	: 450,
+			'height'        	: 'auto',
+			'transitionIn'		: 'none',
+			'transitionOut'		: 'none'
+		})	
+ 	});
 })
+
