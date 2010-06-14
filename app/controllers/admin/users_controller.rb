@@ -15,8 +15,8 @@ class Admin::UsersController < Admin::BaseController
   
   def show
     @user = User.find(params[:id])
-    @form_count = Form.all(:user_id => current_user.id.to_s).count
-    @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '20')
+    @form_count = Form.all(:user_id => @user.id.to_s).count
+    @forms = Form.all(:user_id => @user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '20')
     
     respond_to do |wants|
       wants.html {  }

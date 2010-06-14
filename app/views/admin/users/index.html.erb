@@ -11,7 +11,7 @@
 <tbody> 
   <% @users.each do |user| -%>  
   <tr>            
-    <td><%=user.login %></td>
+    <td><%=link_to user.login,admin_user_path(user) %></td>
     <td><%=user.email%></td>  
     <td><%=user.created_at%></td>
     <td><%=link_to '删除',admin_user_path(user),:method => :delete,:confirm => '确定嘛?' %></td>
