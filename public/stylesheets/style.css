@@ -377,10 +377,7 @@ a.ag:hover {
 }
 
 /* table */
-table.grid {  
-	width:100%;
-	margin-bottom:10px;
-}     
+    
 
 .info_grid{    
 	width:500px;  
@@ -404,7 +401,8 @@ div.info_item{
 	height:15px;
 	width:120px;
 	padding:0;
-	margin:0;
+	margin:0;    
+	border:none;    
 }
     
 table.grid thead tr th, table.grid tfoot tr th {  
@@ -418,7 +416,7 @@ table.grid thead tr th, table.grid tfoot tr th {
 }
 
 table.grid tbody td { 
-	color: #666;  
+	color: #666; 
 	vertical-align: top; 
 	border-bottom:1px dotted #CCCCCC;
 } 
@@ -562,7 +560,6 @@ table.grid tbody td.opt a {
 #rows td{  
 	cursor:pointer;  
 	border-bottom:1px dotted #ccc; 
-	border-right:1px solid #ccc;
 } 
 
 div.info_item{
