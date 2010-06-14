@@ -39,7 +39,7 @@ class FormsController < ApplicationController
   # GET /forms/new
   # GET /forms/new.xml
   def new    
-    @form = current_user.forms.create(:title => "未命名表单", :description => '描述一下你的表单吧')
+    @form = current_user.forms.create(:title => "未命名问卷", :description => '描述一下你的问卷吧')
 
     @form.fields << Field.new(:name => '姓名', :required => true, :input => 'string', 
               :uuid => Time.now.to_i,:position => 1)

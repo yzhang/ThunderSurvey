@@ -96,7 +96,7 @@ function field_add_option(e, type)
     option += '<input type="checkbox" />';
   }
   
-  option += '<input type="text" name="options[]" value="选项' + count + '" style="color:#666;" onfocus="clear_option_initial(this);" onblur="set_option_initial(this)" />';
+  option += '<input type="text" name="options[]" value="选项' + count + '" style="color:#666;margin-left:5px;" onfocus="clear_option_initial(this);" onblur="set_option_initial(this)" />';
   option += '<a href="#" onclick="field_remove_option(this);">删除</a>';
   option += '</p>';
   
