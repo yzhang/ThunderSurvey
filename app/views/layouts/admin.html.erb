@@ -32,7 +32,8 @@
             <h1>抢答-管理</h1>
         </div>   
         <nav class='nav'>
-          <ul>            
+          <ul>                                               
+            <%=topnav_tab "总览",:url => admin_path,:section => 'dash' %>
             <%=topnav_tab "表单管理",:url => admin_forms_path,:section => 'forms' %>
             <%=topnav_tab "用户管理",:url => admin_users_path, :section => 'users' %>
             <%=topnav_tab "CMS", :url => admin_pages_path, :section => 'pages' %>

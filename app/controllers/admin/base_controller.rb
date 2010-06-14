@@ -3,7 +3,9 @@ class Admin::BaseController < ApplicationController
   access_control :DEFAULT => '(superuser)'
   layout 'admin'  
   
-  def index
-  #  @today_forms = Form.all(:conditions => "created_at < #{Date.today}")
+  def index                                       
+    @section = 'dash'
+    @recent_forms = Form.all(:limit => 10, :order => "created_at DESC")
+    @recent_users = User.all(:limit => 10, :order => "created_at DESC")
   end
 end

@@ -35,6 +35,7 @@ class User
   key :oauth_id
 
   before_create :make_activation_code
+  before_save   :update_timestamps  
   
   validates :login, :presence => true, :length => {:maximum => 100}
   validates :email, :presence => true, :length => {:minimum => 6},
@@ -116,5 +117,10 @@ class User
   protected
     def make_activation_code
         self.activation_code = self.class.make_token
+    end
+    
+    def update_timestamps
+      self.created_at ||= Time.now
+      self.updated_at = Time.now
     end
 end

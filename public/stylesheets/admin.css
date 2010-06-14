@@ -12,8 +12,8 @@ body{
 } 
 
 a{cursor:pointer}
-a:link { color: #5F9FE6; text-decoration: none; }
-a:visited { color: #666699; text-decoration: none; }
+a:link { color: #2F76CF; text-decoration: none; }
+a:visited { color: #2F76CF; text-decoration: none; }
 a:hover { color: #FFFFFF; text-decoration: none; background: #5F9FE6; }
 a:active { color: #FFFFFF; text-decoration: none; background: #FF9933; }
 
@@ -104,11 +104,11 @@ h3{
      
 /*-- table --*/  
 
-table{     
+table{        
+	width:100%;
 	border:1px solid #DEDEDE;
 	border-bottom:none;
 	background:#fff;
-	width:100%;
 }   
 
 table.grid tr td{
@@ -136,9 +136,14 @@ table.grid thead tr .header {
 	height:10px;
 }        
 
-table.grid tbody td {
-	color: #3D3D3D;
+table.grid tbody td { 
+	text-align:center;
+	color: #666;
 	vertical-align: top;
+}  
+
+table.grid tbody td.text-left { 
+	text-align:left;
 }
 
 table.grid thead tr .headerSortUp {
@@ -200,8 +205,21 @@ a.btn{
 /*-- globle ---*/
 .text-left{
 	text-align:left;
-}
+}  
 
+.section{    
+	clear:both;
+	margin:10px 0;
+}
+      
+.center{
+	text-align:center;
+} 
+
+.gray{
+	color:#666;
+	font-size:80%;
+}
 /* --- flash -----*/ 
 #flash-message{    
 	margin:0 auto;
@@ -225,3 +243,4 @@ tr:nth-child(even)		{ background-color:#F2F5F9; }
 	margin:5px;
 	background:#E6E6E6;
 }
+

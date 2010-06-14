@@ -1,0 +1,32 @@
+<div class='section' > 
+<h3><%=@user.login%> </h3>               
+注册于<%=@user.created_at%><br /><%=@user.email%><br />总计<%= @form_count %>个表单
+</div>
+<div class='section' >   
+<table cellspacing="0" cellpadding="0" class='grid'>  
+  <col align="left" width='75%' />
+  <col width='5%' />
+  <col width='12%'/> 
+  <col width='13%'/>
+  <col width='5%' />
+  <thead>   
+    <tr>    
+      <th>标题</th>
+      <th>回应</th>
+      <th>最后更新</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>  
+    <% @forms.each do |form| -%>
+      <tr>
+        <td class='text-left'><%=link_to form.title, form_path(form), :target => '_blank' %><br /><span class='gray'><%= form.description %></span></td>  
+        <td><%= form.klass.count %></td>
+        <td> <%= form.updated_at.strftime("%m/%d %H:%M") %></td>            
+        <td><%=link_to('删除',admin_form_path(form), :method => :delete) %></td>   
+      </tr>
+    <% end -%>                                              
+  </tbody>
+  </table>
+  <%=raw will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>
+</div>      

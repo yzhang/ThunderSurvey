@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       #@user.roles << Role.find_or_create_by_title('superuser') if User.count == 1
       @user.activate!
       redirect_to(login_url)
-      flash[:notice] = "非常感谢您的注册，请登录"
+      flash[:notice] = "非常感谢您的注册，您现在可直接登录"
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
