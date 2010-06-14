@@ -3,6 +3,8 @@
     <% if field.intern.blank? -%>  
       <%= link_to("编辑", "#", :onclick => "field_start_editing(this);", :remote => true)
                             %> | 
+      <%= link_to("复制", "#", :onclick => "form_dup_field(this);", :remote => true)
+                            %> |
       <%= link_to("删除", form_field_path(parent, field.id, :edit_key => parent.edit_key),
                         :update => "flash",
                         :method => "delete",

@@ -11,7 +11,7 @@
 
 <!-- 表单通知设定 -->            
 <div style="display:none;" id="notify_setting"> 
-  <% form_for(@form, :url => form_path(@form, :edit_key => @edit_key, :mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
+  <%= form_for(@form, :url => form_path(@form, :edit_key => @edit_key, :mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
   <% if false %>
     <p>
       <%= f.label :notify_type, '通知方式' %>
