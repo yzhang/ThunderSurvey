@@ -7,7 +7,7 @@ class Mailer < ActionMailer::Base
     @form = form
     @row = row
     mail(:to => form.user.email,
-          :subject => '[抢答网]您的表单有新用户报名')
+          :subject => '您的问卷收到新用户反馈')
   end
   
   def forget_password(user,password)

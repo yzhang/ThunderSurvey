@@ -5,7 +5,7 @@
 <% end %>
 
 <div class = 'prepend-6 span-12'>      
-<%= form_for :user,:html => {:class => 'prepend-2'} do |f| %> 
+<%= form_for @user, :url => '/update', :method => 'put', :html => {:class => 'prepend-2'} do |f| %> 
   <p>
     <%= f.label "用户名" %> <br />
     <%= f.text_field :login %>
@@ -22,11 +22,13 @@
     </p>
     <p>
       <%= f.label "新密码" %><br /> 
-      <%= f.text_field :password, :size => 20 %>
+      <%= f.password_field :password, :size => 20 %>
+      <span style="color:red"><%= @user.errors.on(:password) %></span>
     </p>
     <p>
       <%= f.label "新密码确认" %><br /> 
-      <%= f.text_field :password_confirmation, :size => 20 %>
+      <%= f.password_field :password_confirmation, :size => 20 %>
+      <span style="color:red"><%= @user.errors.on(:password_confirmation) %></span>
     </p>
   <% end %>
   

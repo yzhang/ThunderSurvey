@@ -598,6 +598,6 @@ table.grid tr.highlighted td div.info_item{
 }
 
 .row_content{
-	height:400px;
+	height:380px;
 	overflow:auto;
 }

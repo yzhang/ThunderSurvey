@@ -17,17 +17,19 @@ class FormsController < ApplicationController
   # GET /forms/1
   # GET /forms/1.xml
   def show
-    @form = Form.find(params[:id])
-    @row = @form.klass.new
-    @embed = params[:embed]
-    @order_id = params[:order_id]
+    @form = Form.find(params[:id]) rescue nil
     
     respond_to do |format|
-      if @form.allow_insert?
+      if @form && @form.allow_insert?
+        @row = @form.klass.new
+        @embed = params[:embed]
+        @order_id = params[:order_id]
         format.html {  render :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
       else
-        format.html { render :text => '对不起，此表单不允许插入新记录'}
+        flash[:notice] = "对不起，您访问的表单不存在"
+        format.html { redirect_to root_path}
       end
+      
       format.json  do
         render :json => @form.to_json
       end
