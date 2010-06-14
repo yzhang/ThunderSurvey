@@ -23,7 +23,7 @@ function field_done_editing(e)
       input += "<label>" + $(this).val(); + "</label></p>";
     });
   } else if(field_input == 'string') {
-    input += '<input type="text" />';
+    input += '<input type="text" size=30 />';
   } else if(field_input == 'check') {
     field_div.find('.form .options input[type=text]').each(function(){
       input += '<p><input type="checkbox" style="margin-right:5px;"/>';
@@ -113,6 +113,7 @@ function field_remove_option(e)
 
 function toggle_opration(e){
 	$(e).find('.opration').toggle();
-}
+}    
+
 
 

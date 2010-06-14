@@ -22,7 +22,7 @@ Confforge::Application.routes.draw do
     end
   end
   
-  match '/admin' => 'admin/forms#index', :as => :admin
+  match '/admin' => 'admin/base#index', :as => :admin
   namespace :admin do
     resources :forms 
     resources :users

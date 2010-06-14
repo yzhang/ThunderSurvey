@@ -45,7 +45,11 @@ body{
 form label{
 	color:#333;
 	font-weight:bold;
-}   
+}    
+
+.btn{
+	display:block;
+}
 
 /* --- login ---*/
 .login{
@@ -421,7 +425,11 @@ table.grid tbody td {
 	border-bottom:1px dotted #CCCCCC;
 } 
 
-table.big tbody td { 
+table.big{
+	width:100%;
+}
+
+table.big tbody td {  
 	color: #666;     
 	padding:5px;
 	vertical-align: top; 
@@ -440,7 +448,8 @@ table.grid td.title a{
 } 
 
 table.grid td.title span{
-	margin:0 10px; 
+	margin-left:10px;
+	padding:0; 
 	color:#999999;
 }    
 
@@ -600,4 +609,45 @@ table.grid tr.highlighted td div.info_item{
 .row_content{
 	height:380px;
 	overflow:auto;
+}
+
+/* --- box ----*/
+.box{              
+	margin:10px 3px;
+	background:#EFEFEF;
+	color:#666;
+}  
+
+h4.tip{  
+	padding-left:18px;
+	font-size:14px;
+	margin:0;
+	margin-bottom:5px;
+	background:url(/images/icons/idea.png) no-repeat left; 
+	color:#666;
+}
+
+/* ---  share --- */  
+.sprite{
+   background: url(/images/bg/shareto.gif) no-repeat top left;
+}     
+
+.sprite-163 { background-position: 0 0; width: 16px; height: 16px; } 
+.sprite-douban { background-position: 0 -66px; width: 16px; height: 16px; } 
+.sprite-google { background-position: 0 -132px; width: 16px; height: 16px; } 
+.sprite-kaixing001 { background-position: 0 -198px; width: 16px; height: 16px; } 
+.sprite-qq { background-position: 0 -264px; width: 16px; height: 16px; } 
+.sprite-renren { background-position: 0 -330px; width: 16px; height: 16px; } 
+.sprite-sina { background-position: 0 -396px; width: 16px; height: 16px; } 
+.sprite-sohu { background-position: 0 -462px; width: 16px; height: 16px; } 
+      
+
+
+.share li.first{
+	margin:0;
+} 
+
+.share a{       
+	padding:0px 0 0 18px;          
+	margin:0 0 0 2px; 
 }

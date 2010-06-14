@@ -4,6 +4,7 @@
   <tr>
     <th>login</th>  
     <th>Email</th>
+    <th>时间</th>
     <th>操作</th>
   </tr>
 </thead>
@@ -12,6 +13,7 @@
   <tr>            
     <td><%=user.login %></td>
     <td><%=user.email%></td>  
+    <td><%=user.created_at%></td>
     <td><%=link_to '删除',admin_user_path(user),:method => :delete,:confirm => '确定嘛?' %></td>
   </tr>
   <% end -%> 

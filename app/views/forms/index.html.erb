@@ -8,17 +8,10 @@
 <% end -%>     
  <div class='span-18'>
  <table class='grid big' border="0" cellspacing="0" cellpadding="0"> 
-  <thead>
-    <tr> 
-      <th>名称</th>
-      <th>最后更新</th>
-      <th>操作</th>
-    </tr> 
-  </thead>
   <tbody> 
     <% @forms.each do |form| %> 
     <tr id="<%=form.id%>">        
-      <td class='title'><%=link_to form.title,form_rows_path(form, :edit_key => form.edit_key) %><span>[<%= form.klass.count %>回应]</span>
+      <td class='title'><%=link_to form.title,form_rows_path(form, :edit_key => form.edit_key) %><span><%= form.klass.count %>回应 <%= '>>' unless form.klass.count == 0%></span>
       </td>                                                                                 
       <td><%= form.updated_at.to_date%></td> 
       <td class='opt'> 
@@ -32,7 +25,24 @@
   <%=raw will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>        
  </div>     
   <div class='span-6 last sidebar'>
-    <a href="#"  onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form"  ><%=image_tag('create.gif')%></a> 
+    <a class='btn' href="#"  onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form"  ><%=image_tag('create.gif')%></a>
+    <div class='box'>
+      <h4 class='tip'>操作提示</h4>
+      <p>操作问卷后请刷新后此页.<br />
+         有任何意见或建议,请在<%=link_to '这里填写','http://www.51qiangda.com/forms/4c0608cab3e57c5758000001'%>
+       </p>
+    </div>
+    <div class='box'>
+      抢答所有的服务都是免费的,如果您觉的抢答对您有所帮助,请告诉你的朋友,帮助推广抢答!
+      <ul class='share'>  
+         <li><a href="http://v.t.sina.com.cn/share/share.php?c=spr_web_bd_youku_weibo&url=http://www.51qiangda.com&title=抢答网-问卷调查,就用抢答!&source=抢答网&sourceUrl=http://51qiangda.com&content=抢答网,一款简单好用的问卷调查工具,我用过,觉得很好，推荐下!" class='sprite-sina sprite' target ='_blank'>新浪微博</a></li> 
+         <li><a href="http://share.renren.com/share/buttonshare.do?link=http://www.51qiangda.com&title=抢答网,一款简单好用的问卷调查工具,我用过,觉得很好，推荐下!" class='sprite-renren sprite' target ='_blank'>人人网</a></li>
+         <li><a href="http://www.douban.com/recommend/?url=http://www.51qiangda.com&title=抢答网,一款简单好用的问卷调查工具,我用过,觉得很好，推荐下!" class='sprite-douban sprite' target ='_blank'>豆瓣网</a></li>
+         <li><a href="http://www.kaixin001.com/repaste/share.php?rurl=http://www.51qiangda.com&rcontent=抢答网,一款简单好用的问卷调查工具,我用过,觉得很好，推荐下!&rtitle=抢答网,一款简单好用的问卷调查工具" class='sprite-kaixing001 sprite' target ='_blank'>开心网</a></li>
+         <li><a href="http://t.sohu.com/third/post.jsp?url=http://www.51qiangda.com&title=<%= CGI.escape(Iconv.iconv('gbk', 'utf-8','http://www.51qiangda.com').join) %>" class='sprite-sohu sprite'>搜狐微博</a></li>
+         <li><a href="http://t.163.com/article/user/checkLogin.do?link=http://www.51qiangda.com&source=抢座网&info=http://www.51qiangda.com" class='sprite-163 sprite'>网易微博</a></li>
+       </ul>
+    </div> 
   </div>
   
 <%= content_for :pagenav do -%>  
