@@ -12,8 +12,8 @@ body{
 } 
 
 a{cursor:pointer}
-a:link { color: #2F76CF; text-decoration: none; }
-a:visited { color: #2F76CF; text-decoration: none; }
+a:link { color: #5F9FE6; text-decoration: none; }
+a:visited { color: #666699; text-decoration: none; }
 a:hover { color: #FFFFFF; text-decoration: none; background: #5F9FE6; }
 a:active { color: #FFFFFF; text-decoration: none; background: #FF9933; }
 
