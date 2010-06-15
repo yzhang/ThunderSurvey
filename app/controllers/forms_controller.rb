@@ -26,8 +26,11 @@ class FormsController < ApplicationController
       else
         format.html { render :text => '对不起，此表单不允许插入新记录'}
       end
-      format.json  do
-        render :json => @form.to_json
+      
+      if logged_in?
+        format.json { render :json => @form.to_json }
+      else
+        format.json { render :json => 'Unauthorized' }
       end
     end
   end
