@@ -49,6 +49,7 @@ class FieldsController < ApplicationController
   
   def update
     @field = @form.fields.find(params[:id])
+    params[:field][:include_other] ||= false # 如果用户没有勾选，则设为false
 
     respond_to do |format|
       if @field && @field.update_attributes(params[:field])

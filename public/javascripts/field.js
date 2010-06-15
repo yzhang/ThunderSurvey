@@ -22,6 +22,10 @@ function field_done_editing(e)
       input += "<p><input type='radio' style='margin-right:5px;'/>";
       input += "<label>" + $(this).val(); + "</label></p>";
     });
+		if(field_div.find('.form #field_include_other').attr('checked')) {
+			input += "<p><input type='radio' style='margin-right:5px;'/>";
+			input += "其它 <input type='text' size='30' /></p>";
+		}
   } else if(field_input == 'string') {
     input += '<input type="text" size=35 />';
   } else if(field_input == 'check') {
@@ -29,6 +33,10 @@ function field_done_editing(e)
       input += '<p><input type="checkbox" style="margin-right:5px;"/>';
       input += '<label>' + $(this).val(); + '</label></p>';
     });
+		if(field_div.find('.form #field_include_other').attr('checked')) {
+			input += "<p><input type='checkbox' style='margin-right:5px;'/>";
+			input += "其它 <input type='text' size='30' /></p>";
+		}
   } else if(field_input == 'drop') {
     input += "<select>";
     field_div.find('.form .options input[type=text]').each(function(){
@@ -114,4 +122,8 @@ function field_remove_option(e)
 
 function toggle_opration(e){
 	$(e).find('.opration').toggle();
+}
+
+function toggle_other(e) {
+	$(e).closest('.field').find('.form_other').toggle();	
 }

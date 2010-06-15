@@ -1,6 +1,7 @@
 <%  field.options.each do |option| %>
-  <p style='margin-bottom:3px;'>
-  <%= radio_button_tag "row[f#{field.id}]", option.value %> 
-  <%= label_tag option.value %>
+  <p>
+  <%= radio_button_tag "row[f#{field.id}][]", option.value, row.send("f#{field.id}") == option.value %> 
+  <%= option.value %>
   </p>
 <% end %>
+<p style="<%= 'display:none;' if !field.include_other %>" class="question_other"><input name="<%= "row[f#{field.id}][]" %>" value="_other" type="radio"/> 其它 <%= text_field_tag "row[f#{field.id}][][other]", '' %></p>

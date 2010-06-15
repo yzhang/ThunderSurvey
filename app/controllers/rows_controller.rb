@@ -42,9 +42,6 @@ class RowsController < ApplicationController
   end
   
   def create
-    return update if params[:oper] == 'edit'
-    return destroy if params[:oper] == 'del'
-    
     params[:row][:created_at] = Time.now
     
     klass = @form.klass

@@ -10,7 +10,8 @@ class Field
   key :uuid,  String
   key :position, Integer  # 排序用
   key :intern, String     # 类保留字段型,如email字段,paypal字段等
-  key :inputable,Boolean, :default => true 
+  key :inputable,Boolean, :default => true
+  key :include_other, Boolean, :default => false
   
   many :options
   
