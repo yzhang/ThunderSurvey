@@ -62,6 +62,8 @@ class FormsController < ApplicationController
   def edit
     @field = Field.new(:input => 'string')
     @fields = @form.fields#.sort {|f1, f2| f1.position <=> f2.position}
+    @row = @form.klass.new
+    
     respond_to do |want|
       want.html { render :layout => params[:embed].blank? ? 'application' : "embed"}
     end
