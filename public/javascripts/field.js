@@ -77,7 +77,7 @@ function field_start_editing(e)
   }
   var field = $(e).closest('.field'); 
   field.css('background-color','#FDF2C6');
-  field.removeClass('edit');
+  //field.removeClass('edit');
   field.find(".question").hide();
   field.find(".form").show();
   clear_initial.question_title = field.find('.form #field_name').val();

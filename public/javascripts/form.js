@@ -57,16 +57,7 @@ $(document).ready(function($) {
 	$("#form").height(document.documentElement.clientHeight - $("#form").position().top -30);
 	$(window).resize(function(){
 		$("#form").height(document.documentElement.clientHeight - $("#form").position().top - 30);
-	}); 
-	
-	$('.edit').hover(
-	  function () {
-	    $(this).css('background','#FDF2C6'); 
-	  }, 
-	  function () {
-	    $(this).css('background','#fdfdfd');
-	  }
-	)
+	});
 });     
 
 
