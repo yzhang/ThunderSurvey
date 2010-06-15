@@ -13,8 +13,7 @@ $(document).ready(function($) {
           this.value = "";
     	  this.style.color = "#000";
       }
-  }).
-      blur(function() {
+  }).blur(function() {
       if (this.value == "") { 
     		  this.style.color = "#666";
           this.value = "未命名表单";
@@ -27,8 +26,7 @@ $(document).ready(function($) {
           this.value = "";
     		  this.style.color = "#000"
       }
-  }).
-      blur(function() {
+  }).blur(function() {
       if (this.value == "") { 
     	  this.style.color = "#666";
           this.value = "描述一下你的表单吧";
