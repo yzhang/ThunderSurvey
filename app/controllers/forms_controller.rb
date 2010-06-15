@@ -30,9 +30,9 @@ class FormsController < ApplicationController
         format.html { redirect_to root_path}
       end
       
-      format.json  do
-        render :json => @form.to_json
-      end
+      # format.json  do
+      #   render :json => @form.to_json
+      # end
     end
   end
 
