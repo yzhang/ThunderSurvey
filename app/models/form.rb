@@ -143,6 +143,10 @@ class Form
     self.fields.detect{|f| f.uuid == uuid}
   end
   
+  def max_position
+    self.fields.map {|f| f.position > 65530 ? 0 : f.position}.max
+  end
+  
   private
   def make_edit_key
     self.edit_key = self.class.make_token

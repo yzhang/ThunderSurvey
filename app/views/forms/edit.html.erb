@@ -7,7 +7,8 @@
       $('#form_submit').submit();$('#saving').show();
     });
     // 100以下的留给保留字段
-    var field_count = <%= @form.fields.length + 101 %>;   
+    var field_count = <%= @form.max_position + 1 %>;   
+    if(field_count < 100) { field_count = 101; }
   </script>
   <style type="text/css" media="screen">
     .container {width: 680px; margin:0px auto;padding:0px;}

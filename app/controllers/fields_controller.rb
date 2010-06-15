@@ -22,6 +22,7 @@ class FieldsController < ApplicationController
     @field = @form.find_field_by_uuid(params[:field][:uuid]) || Field.new(params[:field])
     
     if @field.new_record?
+      @new_record = true
       @form.fields << @field
       result = @form.save
     else
@@ -34,7 +35,7 @@ class FieldsController < ApplicationController
         format.js   {
           render :update do |page|
             page << '$("#saving").hide();'
-            if @field.new_record?
+            if @new_record
               page << "$('#last_field .remove').attr('href', '#{form_field_path(@form, @field.id, :edit_key => @form.edit_key)}');"
               page << "$('#last_field').attr('id', '#{@field.id}');"
             end
@@ -42,7 +43,10 @@ class FieldsController < ApplicationController
         }
         format.json {render :json => @field.to_json}
       else
-        format.html {render 'edit'}
+        format.js   {
+          render :update do |page|
+          end
+        }
       end
     end
   end
