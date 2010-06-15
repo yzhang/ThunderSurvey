@@ -4,7 +4,8 @@
   <%= javascript_include_tag 'jquery.scrollTo' %>
   <script type="text/javascript" charset="utf-8">
     // 100以下的留给保留字段
-    var field_count = <%= @form.fields.length + 101 %>; 
+    var field_count = <%= @form.max_position + 1 %>;   
+    if(field_count < 100) { field_count = 101; }
   </script>
 <% end -%>   
 <div id="form_wrapper"> 
