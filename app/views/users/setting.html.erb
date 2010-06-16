@@ -12,7 +12,7 @@
   </p>
   
   <p>
-    <%=f.label :email %> <%= @user.email || ('<br />' + f.text_field(:email)) %>
+    <%=f.label :email %> <%= @user.email || raw('<br />' + f.text_field(:email)) %>
   </p>
 
   <% unless @user.oauth_user? %>
