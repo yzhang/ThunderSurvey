@@ -74,9 +74,9 @@ input.inputFocus {
 }
 
 #form_title{     
-	height:30px;
+	width:98%;
 	font-size:18px;
-	font-weight:bold;
+	color:#333; 
 }
 
 #form_description{
