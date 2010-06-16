@@ -78,11 +78,23 @@ class Form
       klass.validates_presence_of "f#{field.id}".to_sym, :message => "#{field.name} 不能为空" if field.required
       klass.validates_format_of "f#{field.id}".to_sym, :message => ' 必须为email格式',:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i if field.intern == 'email'
       
-      if field.input == 'check'
+      if field.input == 'check' || field.input == 'radio'
         klass.class_eval <<-METHOD
           alias_method :old_f#{field.id}=, :f#{field.id}=
           def f#{field.id}=(choices)
-            self.old_f#{field.id}= choices.is_a?(Array) ? choices.join(',') : choices
+            if !choices.is_a?(Array)
+              self.old_f#{field.id}= choices
+              return
+            end
+            
+            if choices.include?('_other')
+              choices.delete('_other')
+              other_options = choices.detect {|c| c.is_a?(Hash)}
+              choices << other_options['other']
+            end
+            
+            choices.reject! {|c| c.is_a?(Hash) || c.blank?}
+            self.old_f#{field.id}= choices.join("\n")
           end
         METHOD
       end
@@ -129,6 +141,10 @@ class Form
   
   def find_field_by_uuid(uuid)
     self.fields.detect{|f| f.uuid == uuid}
+  end
+  
+  def max_position
+    self.fields.map {|f| f.position > 65530 ? 0 : f.position}.max
   end
   
   private

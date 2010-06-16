@@ -113,6 +113,10 @@ class User
   def persisted?
     !new_record?
   end
+  
+  def temp?
+    /^临时用户/.match self.login
+  end
 
   protected
     def make_activation_code

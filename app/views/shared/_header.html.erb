@@ -10,7 +10,7 @@
       <li><%=link_to('使用指南', '/intro' )%></li>
       <li><%=link_to '帐号设置',account_path %></li>
       <li><%= link_to '注销', logout_path %></li>
-   </ul>
+     </ul>
     <% else %>
       <%= link_to '注册新用户', signup_path %>
       已经注册了？<a href='/login' class='signin'><span>立即登录</span></a>
@@ -34,14 +34,9 @@
     <% end %>  
     <%= render :partial => '/shared/notice' %>
   </div>  
-</div>       
-<% if false %>
-<div class='nav'> 
-  <ul>                             
-    <%=topnav_tab('首页',:url => root_path,:section => 'home' )%>
-    <%=topnav_tab('我的问卷',:url => forms_path,:section => 'forms' )%>  
-    <%=topnav_tab('更多介绍',:url => '/intro',:section => 'intro' )%>
-    <%=topnav_tab('反馈',:url => '/feedback', :section => 'feedback',:class => 'last' )%>
-  </ul>
-</div>    
+</div>
+<% if logged_in? && current_user.temp? %>
+<div style="padding:10px 10px;background:#FF8888;color:#FFF;font-size:14px;">
+  您当前使用的是临时帐号，此帐号只能使用抢答网的部分功能，如需体验全部功能，您可以<%= link_to '免费注册一个正式帐号', signup_path %>！
+</div>
 <% end %>
