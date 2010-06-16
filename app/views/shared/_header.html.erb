@@ -36,5 +36,7 @@
   </div>  
 </div>
 <% if logged_in? && current_user.temp? %>
-<div>您当前使用的是临时帐号，您可以使用此帐号体验抢答网的功能，如需正式使用，请<%= link_to '注册一个正式帐号', signup_path %>！</div>
+<div style="padding:10px 10px;background:#FF8888;color:#FFF;font-size:14px;">
+  您当前使用的是临时帐号，此帐号只能使用抢答网的部分功能，如需体验全部功能，您可以<%= link_to '免费注册一个正式帐号', signup_path %>！
+</div>
 <% end %>

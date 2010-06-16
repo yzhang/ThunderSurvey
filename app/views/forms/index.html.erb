@@ -7,11 +7,10 @@
   </script>
 <% end -%>
 
-<% if @forms.empty? %>
-  您还没有创建任何问卷，现在就<%= link_to '创建你的第一个问卷', '#', :onclick => "window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" %>吧！
-<% end %>
-
 <div class='span-18'> 
+  <% if @forms.empty? %>
+    <p style="font-size:14px;">您还没有创建任何问卷，现在就<%= link_to '创建您的第一个问卷', '#', :onclick => "window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" %>吧！</p>
+  <% end %>
   <table class='grid big' border="0" cellspacing="0" cellpadding="0"> 
     <col width='60%'>
     <col width='15%'>
