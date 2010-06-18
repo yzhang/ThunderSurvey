@@ -30,6 +30,7 @@
   </thead>
   <tbody>  
     <% @recent_forms.each do |form| -%>
+      <% next if form.user.nil? %>
       <tr>
         <td class='text-left'><%=link_to form.title, form_path(form), :target => '_blank' %><br /><span class='gray'><%= form.description %></span></td>  
         <td><%= form.klass.count %></td>
