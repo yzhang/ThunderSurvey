@@ -7,6 +7,11 @@ class Admin::UsersController < Admin::BaseController
   
   def destroy
     @user = User.find(params[:id])
+
+    @user.forms.each do |f|
+      f.destroy
+    end
+    
     @user.destroy
     respond_to do |wants|
       wants.html { redirect_to admin_users_url,:notice => '删除成功' }
