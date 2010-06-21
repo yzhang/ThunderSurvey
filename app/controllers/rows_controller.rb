@@ -70,6 +70,7 @@ class RowsController < ApplicationController
     end
   end
   
+<<<<<<< HEAD:app/controllers/rows_controller.rb
   def edit
     @row = @form.klass.find(params[:id])
     
@@ -78,6 +79,8 @@ class RowsController < ApplicationController
     end
   end
   
+=======
+>>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:app/controllers/rows_controller.rb
   def create
     params[:row][:created_at] = Time.now
     

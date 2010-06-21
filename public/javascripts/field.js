@@ -16,7 +16,7 @@ function field_done_editing(e)
   var input = '';
   
   if(field_input == 'text') {
-    input += "<textarea></textarea>";
+    input += "<textarea rows='8' cols='60'></textarea>";
   } else if(field_input == 'radio') {
     field_div.find('.form .options input[type=text]').each(function(){
       input += "<p><input type='radio' style='margin-right:5px;'/>";
@@ -27,7 +27,11 @@ function field_done_editing(e)
 			input += "其它 <input type='text' size='30' /></p>";
 		}
   } else if(field_input == 'string') {
+<<<<<<< HEAD:public/javascripts/field.js
     input += '<input type="text" size="30"/>';
+=======
+    input += '<input type="text" size=35 />';
+>>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:public/javascripts/field.js
   } else if(field_input == 'check') {
     field_div.find('.form .options input[type=text]').each(function(){
       input += '<p><input type="checkbox" style="margin-right:5px;"/>';
@@ -75,8 +79,9 @@ function field_start_editing(e)
     field_cancel_editing(field_start_editing.current_editing_field)
     field_start_editing.current_editing_field = e;
   }
-  var field = $(e).closest('.field') 
-  field.css('background-color','#FDF2C6')
+  var field = $(e).closest('.field'); 
+  field.css('background-color','#FDF2C6');
+  //field.removeClass('edit');
   field.find(".question").hide();
   field.find(".form").show();
   clear_initial.question_title = field.find('.form #field_name').val();
@@ -126,5 +131,4 @@ function toggle_opration(e){
 function toggle_other(e) {
 	$(e).closest('.field').find('.form_other').toggle();	
 }
-
 

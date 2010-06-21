@@ -15,7 +15,7 @@ $(document).ready(function($) {
       }
   }).blur(function() {
       if (this.value == "") { 
-    		  this.style.color = "#666";
+    	  this.style.color = "#666";
           this.value = "未命名表单";
       }
   }); 
@@ -52,12 +52,17 @@ $(document).ready(function($) {
   });
 
 	//根据窗口大小自动调整表单模块的高度
+<<<<<<< HEAD:public/javascripts/form.js
 	var bottom_margin = document.body.clientHeight - $(".form_preview").position().top + 40;
 	$("#form").height(document.documentElement.clientHeight - bottom_margin - $("#form").position().top);
 	$(window).resize(function(){
 	  $("#form").height(document.documentElement.clientHeight - bottom_margin - $("#form").position().top);
+=======
+	$("#form").height(document.documentElement.clientHeight - $("#form").position().top -30);
+	$(window).resize(function(){
+		$("#form").height(document.documentElement.clientHeight - $("#form").position().top - 30);
+>>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:public/javascripts/form.js
 	});
-
 });     
 
 

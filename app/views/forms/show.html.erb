@@ -6,6 +6,7 @@
 </header>
 
 <div id='errors' class='error'></div>        
+<<<<<<< HEAD:app/views/forms/show.html.erb
 <%= form_tag form_rows_path(@form),:class => 'conforge', :remote => true do %>    
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
@@ -17,3 +18,14 @@
 
 <p><a href="http://www.51qiangda.com" class='support' target='_blank'>抢答网技术支持</a></p>
 <div style="clear:both;"></div>
+=======
+  <%= form_tag form_rows_path(@form),:class => 'conforge',:remote => true do %>    
+    <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
+      <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
+    <% end %>         
+    <%= hidden_field_tag :embed, @embed %>
+    <%= hidden_field_tag 'row[order_id]', @order_id%>
+    <p><%= submit_tag '提交',:class => 'submit',:onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
+   <% end %>
+<% end %> 
+>>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:app/views/forms/show.html.erb

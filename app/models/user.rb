@@ -31,9 +31,15 @@ class User
   key :website, String
   key :activation_code, String
   key :activated_at, Time
+<<<<<<< HEAD:app/models/user.rb
   key :oauth_type
   key :oauth_id
 
+=======
+  
+#  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  
+>>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:app/models/user.rb
   before_create :make_activation_code
   before_save   :update_timestamps  
   

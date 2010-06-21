@@ -6,6 +6,7 @@
      })    
   </script>
 <% end -%>
+<<<<<<< HEAD:app/views/forms/index.html.erb
 
 <div class='span-18'> 
   <% if @forms.empty? %>
@@ -29,6 +30,50 @@
       </tr>
       <% end %>       
     </tbody>
+=======
+<section class='form_list'>
+  <header class='pagenav'>
+    <h1>控制面板</h1>      
+  </header>       
+    <a href="#" onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=680,height=700,left=0,top=0');" title="new form" class='button' >新建表单</a>   
+    <div class='tablenav'>
+      <div class='left'>
+      </div>
+      <div class='right'>
+         <%= raw(will_paginate(@forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻'))  %>
+      </div>
+    </div>
+  <table border="0" cellspacing="0" cellpadding="0"> 
+    <colgroup span="3" valign="top">
+        <col width="240"></col>
+        <col width="400"></col>
+        <col width="100"></col>
+        <col width="120"></col>
+    </colgroup>
+  <thead>
+    <tr> 
+      <th>名称</th>
+      <th>描述</th> 
+      <th>回应数</th>
+      <th>最后更新</th>
+    </tr> 
+  </thead>
+  <tbody> 
+    <% @forms.each do |form| %> 
+    <tr id="<%=form.id%>">        
+      <td class='title'><strong><%= link_to form.title, form,:target => '_blank'%></strong>
+      <div class='action' style='display:none'>
+        <%= link_to '结果统计', form_rows_path(form.id, :edit_key => form.edit_key), :target => '_blank' %> |
+        <%= link_to '编辑', edit_form_path(form.id, :edit_key => form.edit_key), :target => '_blank' %> | 
+        <%= link_to '删除', form_path(form.id, :edit_key => form.edit_key), :confirm => 'Are you sure?', :method => 'delete' %>
+      </div>  
+      </td>                                                                                 
+      <td><%= truncate(form.description,:length => 80) %></th>
+      <td><%= form.klass.count %></td>
+      <td><%= form.updated_at.to_date%></td>
+    <% end %>       
+  </tbody>
+>>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:app/views/forms/index.html.erb
   </table>
   <%=raw will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %> 
   &nbsp;       
@@ -42,6 +87,7 @@
        有任何意见或建议,请在<%=link_to '这里填写','http://www.51qiangda.com/forms/4c0608cab3e57c5758000001'%>
     </p>
   </div>
+<<<<<<< HEAD:app/views/forms/index.html.erb
   <div class='box'>
     抢答所有的服务都是免费的,如果您觉的抢答对您有所帮助,请告诉你的朋友,帮助推广抢答!
     <ul class='share'>  
@@ -60,3 +106,7 @@
    <span>所有问卷</span> 
 </div>
 <% end %>
+=======
+</section>
+
+>>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:app/views/forms/index.html.erb

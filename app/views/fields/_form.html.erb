@@ -20,7 +20,7 @@
     <%= render :partial => "/fields/#{field.input}_form", :locals => {:form => form, :field => field, :parent => parent, :row => @row} %>
   </div>
   
-  <p>
+  <p style='margin-top:10px;'>
     <%= form.submit '保存', :onclick => 'field_done_editing(this);return false;',:class => 'commit' %>
     <%= form.check_box :required %>    
     <%= form.label :required, '设为必填项' %>
