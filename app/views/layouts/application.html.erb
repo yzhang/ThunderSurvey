@@ -5,7 +5,6 @@
 <head>
   <%= render :partial => '/shared/head' %>
 </head>
-<<<<<<< HEAD:app/views/layouts/application.html.erb
 <body>
 	<div class="container clearfix">   
 	   <%= render :partial => '/shared/header' %>
@@ -13,18 +12,5 @@
 	    <%= yield %>
 	    <%= render :partial => '/shared/footer' unless controller.class == FormsController && action_name == 'edit' %>  
   </div>
-=======
-
-<body>   
-  <%= render :partial => '/shared/header' %>
-  <div id="main_container">
-        <%= render :partial => '/shared/notice' %> 
-        <div id="saving" style="display:none;">正在保存...</div>
-        <%= yield %>
-  </div> 
-  <footer>
-       &copy; 抢座网 2010
-  </footer>
->>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:app/views/layouts/application.html.erb
 </body>
 </html>

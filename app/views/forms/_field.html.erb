@@ -1,12 +1,8 @@
 <div class='field' id="<%= field.id %>">
   <div class="question" id="question<%= field.id %>">
-<<<<<<< HEAD:app/views/forms/_field.html.erb
     <div class='qustion_label'>
        <%= label_tag field.id,field.name, :class => 'q_title'%><%=content_tag(:abbr,'*',:class=> 'required') if field.required %>
     </div>
-=======
-    <%= label_tag field.id,field.name, :class => 'q_title'%><%=content_tag(:abbr,'*',:class=> 'required') if field.required %><br />
->>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:app/views/forms/_field.html.erb
     <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field, :row => row} %>
     <span id="<%=field.id%>_field" class='error'></span>
   </div>

@@ -26,18 +26,8 @@ class FormsController < ApplicationController
         @order_id = params[:order_id]
         format.html {  render :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
       else
-<<<<<<< HEAD:app/controllers/forms_controller.rb
         flash[:notice] = "对不起，您访问的表单不存在"
         format.html { redirect_to root_path}
-=======
-        format.html { render :text => '对不起，此表单不允许插入新记录'}
-      end
-      
-      if logged_in?
-        format.json { render :json => @form.to_json }
-      else
-        format.json { render :json => 'Unauthorized' }
->>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:app/controllers/forms_controller.rb
       end
       
       # format.json  do
@@ -84,13 +74,9 @@ class FormsController < ApplicationController
   def edit
     @row = @form.klass.new    
     @field = Field.new(:input => 'string')
-<<<<<<< HEAD:app/controllers/forms_controller.rb
+
     @fields = @form.fields
-=======
-    @fields = @form.fields#.sort {|f1, f2| f1.position <=> f2.position}
-    @row = @form.klass.new
     
->>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:app/controllers/forms_controller.rb
     respond_to do |want|
       want.html { render :layout => params[:embed].blank? ? 'simple' : "embed"}
     end

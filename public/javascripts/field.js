@@ -27,11 +27,7 @@ function field_done_editing(e)
 			input += "其它 <input type='text' size='30' /></p>";
 		}
   } else if(field_input == 'string') {
-<<<<<<< HEAD:public/javascripts/field.js
-    input += '<input type="text" size="30"/>';
-=======
     input += '<input type="text" size=35 />';
->>>>>>> 062f31537df42b380bd28d79b312212fbdc25001:public/javascripts/field.js
   } else if(field_input == 'check') {
     field_div.find('.form .options input[type=text]').each(function(){
       input += '<p><input type="checkbox" style="margin-right:5px;"/>';
