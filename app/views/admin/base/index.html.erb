@@ -13,34 +13,7 @@
 </div>
 <div class='section' >
 <h3>最新10个表单</h3>      
-<table cellspacing="0" cellpadding="0" class='grid'>  
-  <col width='60%' />
-  <col width='5%' />
-  <col width='12%'/> 
-  <col width='13%'/>
-  <col width='10%' />
-  <thead>   
-    <tr>    
-      <th>标题</th>
-      <th>回应</th>
-      <th>最后更新</th>
-      <th>用户名</th>
-      <th>操作</th>
-    </tr>
-  </thead>
-  <tbody>  
-    <% @recent_forms.each do |form| -%>
-      <% next if form.user.nil? %>
-      <tr>
-        <td class='text-left'><%=link_to form.title, form_path(form), :target => '_blank' %><br /><span class='gray'><%= form.description %></span></td>  
-        <td><%= form.klass.count %></td>
-        <td> <%= form.updated_at.strftime("%m/%d %H:%M") %></td>
-        <td><%=link_to truncate(form.user.login,:length => 10),admin_user_path(form.user) %></td>            
-        <td><%=link_to('删除',admin_form_path(form), :method => :delete) %></td>   
-      </tr>
-    <% end -%>                                              
-  </tbody>
-  </table>
+<%= render :partial => '/admin/forms/forms',:locals => {:forms => @recent_forms} %>    
 </div>   
 <div class='section' >
 <h3>最新10个用户</h3>

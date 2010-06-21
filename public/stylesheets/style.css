@@ -215,7 +215,8 @@ form.login_form{
 	background:#fff; 
 	padding:10px;
 } 
-
+    
+.words{margin-top:60px;}
 .words,.words h1,.words p{
 	text-align:center;
 	line-height:150%;
@@ -375,7 +376,6 @@ a.ag:hover {
 }
 
 .guide{   
-  background:#E3E3E3; 
   padding:10px;
   margin-bottom: 20px;
 }
@@ -650,4 +650,28 @@ h4.tip{
 .share a{       
 	padding:0px 0 0 18px;          
 	margin:0 0 0 2px; 
+}
+
+/*  -- home -- */
+.intro{
+	width:700px;
+	margin-left:100px;
+	border-bottom:1px solid #ccc;
+}
+
+#logos{
+	text-align:center;
+}            
+
+#logos img{
+	border:2px solid #ccc;
+	margin:0 10px; 
+}
+
+#recommanded_forms ul li{
+	margin-left:20px;
+}
+
+.haibao{
+	border:2px solid #efefef;
 }

@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index             
-    @section = 'home'
+    @section = 'home' 
+    @recommanded_forms = Form.all(:recommanded => true)
     redirect_to forms_url if logged_in?
   end
   

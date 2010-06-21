@@ -24,7 +24,11 @@ Confforge::Application.routes.draw do
   
   match '/admin' => 'admin/base#index', :as => :admin
   namespace :admin do
-    resources :forms 
+    resources :forms do
+      member do
+        put :recommand
+      end
+    end 
     resources :users
     resources :pages 
     resources :feedbacks

@@ -3,6 +3,21 @@ class Admin::FormsController < Admin::BaseController
   
   def index
     @forms = Form.paginate(:per_page => 25, :page => params[:page], :order => "updated_at DESC")
+  end   
+  
+  def recommand
+     @form = Form.find(params[:id])
+     @form.recommanded = params[:mark] 
+     
+     respond_to do |wants|
+       if @form.save
+         flash[:notice] = '操作成功'
+       else
+         flash[:alert] = 'Something Wrong'  
+       end                                                                    
+       wants.html { redirect_to admin_forms_url }     
+     end
+       
   end
   
   def destroy

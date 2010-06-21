@@ -17,7 +17,8 @@ class Form
   key :notify_type, String, :default => 'email'
   key :thanks_message, String, :default => "您的信息已成功提交！"
   key :maximum_rows, Integer
-  key :height,Integer
+  key :height,Integer  
+  key :recommanded,Boolean, :default => false 
   
   key :created_at, Time, :default => Time.now
   key :updated_at, Time, :default => Time.now

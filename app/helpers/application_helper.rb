@@ -22,7 +22,11 @@ module ApplicationHelper
     classes = [options.delete(:class)]
     classes << 'highlight' if options[:tab] && (options.delete(:tab).to_a.include?(@tab))
     content_tag(:li,link_to(name, options.delete(:url),:class => options.delete(:href_class)),:class => classes.join(' '))
-  end   
+  end  
+  
+  def recommand_link(form)
+    form.recommanded ? link_to('取消推荐',recommand_admin_form_path(form,:mark => 0),:method => :put) : link_to('推荐',recommand_admin_form_path(form,:mark => 1),:method => :put)
+  end 
   
   
 end
