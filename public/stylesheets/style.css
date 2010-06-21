@@ -254,6 +254,7 @@ form.login_form{
 	margin:10px;            
 	padding:10px;
 	text-align:center;
+	margin-top:60px;
 }  
 
 #footer span{
@@ -654,7 +655,7 @@ h4.tip{
 
 /*  -- home -- */
 .intro{
-	width:700px;
+	width:650px; 
 	margin-left:100px;
 	border-bottom:1px solid #ccc;
 }
