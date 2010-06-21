@@ -1,9 +1,9 @@
 <table cellspacing="0" cellpadding="0" class='grid'>  
-  <col width='60%' />
+  <col width='50%' />
   <col width='5%' />
   <col width='12%'/> 
   <col width='13%'/>
-  <col width='10%' />
+  <col width='20%' />
   <thead>   
     <tr>    
       <th>标题</th>
@@ -17,11 +17,11 @@
     <% forms.each do |form| -%>
       <% next if form.user.nil? %>
       <tr>
-        <td class='text-left'><%=link_to form.title, form_path(form), :target => '_blank' %><br /><span class='gray'><%= form.description %></span></td>
+        <td class='text-left'><%=link_to form.title, admin_form_path(form)%> <br /><span class='gray'><%= form.description %></span></td>
         <td><%= form.klass.count %></td>
         <td><%= form.updated_at.strftime("%m/%d %H:%M") %></td>
         <td><%=link_to truncate(form.user.login,:length => 10),admin_user_path(form.user) %></td>            
-        <td><%= recommand_link(form) %> | <%=link_to('删除',admin_form_path(form), :method => :delete) %></td>   
+        <td><%=link_to '查看', form_path(form), :target => '_blank' %> | <%= recommand_link(form) %> | <%=link_to('删除',admin_form_path(form), :method => :delete) %></td>   
       </tr>
     <% end -%>                                              
   </tbody>

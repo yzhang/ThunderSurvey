@@ -1,4 +1,7 @@
 class Admin::FormsController < Admin::BaseController
+  before_filter :login_required
+  access_control :DEFAULT => '(superuser)'
+  layout 'admin'
   before_filter Proc.new{ @section = 'forms' }
   
   def index
@@ -17,7 +20,24 @@ class Admin::FormsController < Admin::BaseController
        end                                                                    
        wants.html { redirect_to admin_forms_url }     
      end
-       
+  end   
+  
+  def show
+    @form = Form.find(params[:id])  
+    klass = @form.klass
+    @rows = klass
+    
+    respond_to do |wants| 
+      unless klass.count == 0
+      wants.html { 
+        @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
+      }                   
+      else
+      wants.html {
+        redirect_to admin_forms_path,:alert => '此问卷暂无回应'
+      }
+      end
+    end
   end
   
   def destroy

@@ -243,4 +243,152 @@ tr:nth-child(even)		{ background-color:#F2F5F9; }
 	margin:5px;
 	background:#E6E6E6;
 }
+/* result */      
 
+.info_grid{    
+	width:500px;  
+	margin:0 auto;
+	overflow:auto;
+}             
+           
+#row{  
+   padding:10px; 
+}     
+
+.border{      
+	margin:10px 0; 
+	padding:5px;
+	background:#EFEFEF;
+}    
+
+
+#rows td{  
+	cursor:pointer;  
+	border-bottom:1px dotted #ccc; 
+} 
+
+div.info_item{
+	padding:5px;
+}   
+
+div.time{   
+	color:#999;
+	width:60px;
+	font-size:80%;
+}
+
+#results{           
+	width:100%;
+	overflow:auto;
+}
+
+.row_item{
+	color:#D3D3D3;
+}
+
+.tip{
+	color:#999;
+}
+
+table.grid tr.highlighted td div.info_item{
+	background:#FFFDD0;
+}
+
+.grid td.name{
+	font-family:'微软雅黑' arial '宋体';   
+	font-size:12px;
+	padding-left:20px;
+	color:#414141; 
+	font-weight:bold;
+}
+
+.row_content{
+	height:380px;
+	overflow:auto;
+}
+
+/* table */
+    
+
+.info_grid{    
+	width:500px;  
+	margin:0 auto;
+	overflow:auto;
+}             
+           
+#row{  
+   padding:10px; 
+}     
+
+
+table#detail{    
+   border-left:1px solid #ccc; 
+   background:#efefef;
+   margin:10px 0;
+}
+
+div.info_item{  
+	overflow:hidden; 
+	height:15px;
+	width:120px;
+	padding:0;
+	margin:0;    
+	border:none;    
+}
+    
+table.grid thead tr th, table.grid tfoot tr th {  
+	background:#EFEFEF;
+	border-bottom:1px solid #E3E3E3;
+	color:#333;
+	font-size: 14px;  
+	font-weight:normal;
+	padding: 5px;  
+	text-align:left;
+}
+
+table.grid tbody td { 
+	color: #666; 
+	vertical-align: top; 
+	border-bottom:1px dotted #CCCCCC;
+} 
+
+table.big{
+	width:100%;
+}
+
+table.big tbody td {  
+	color: #666;     
+	padding:5px;
+	vertical-align: top; 
+	border-bottom:1px dotted #CCCCCC;
+}        
+
+.tablenav{  
+	margin:10px;
+	text-align:center;
+} 
+
+table.grid td.title a{  
+	color:#0099FF;
+	font-family:'微软雅黑' arial '宋体';   
+	font-size:14px;
+} 
+
+table.grid td.title span{
+	margin-left:10px;
+	padding:0; 
+	color:#999999;
+}    
+
+table.grid tbody td.opt a { 
+	margin-right:10px;
+}  
+
+/* --- flash -----*/ 
+#flash-message{    
+	margin:0px auto 10px;
+	width:400px;
+	position:absolute;
+	top:5px;
+	left: 220px;
+}       
