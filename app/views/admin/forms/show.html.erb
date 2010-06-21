@@ -1,0 +1,23 @@
+<h1><%=@form.title%></h1>
+<div class='span-24' id='results'>     
+<table id='rows' cellspacing="0" cellpadding="0" class='grid'>  
+  <thead>
+    <tr>      
+      <th>时间</th>
+      <% @form.fields.each do |field| %>
+      <th><%=field.name%></th> 
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>  
+ <% @rows.each do |row| %>
+  <tr id="<%=row.id%>">     
+    <td><div class='info_item time'><%=row.created_at.to_time.to_formatted_s(:datetime_short)%></div></td>          
+    <% @form.fields.each do |field| %>         
+      <td><div class='info_item'><%=row.send("f#{field.id}") %></div></td>
+    <% end -%>
+  </tr>      
+  <% end -%>
+  </tbody>
+</table>  
+</div>
