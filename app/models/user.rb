@@ -118,6 +118,15 @@ class User
   def temp?
     /^临时用户/.match self.login
   end
+  
+  def self.clean_temp_users
+    User.all({:login => /^临时用户/}).each do |u|
+      u.forms.each do |f|
+        Form.delete(f._id) if @f
+      end
+      u.destroy
+    end
+  end
 
   protected
     def make_activation_code
