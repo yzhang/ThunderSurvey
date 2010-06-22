@@ -122,7 +122,7 @@ class User
   def self.clean_temp_users
     User.all({:login => /^临时用户/}).each do |u|
       u.forms.each do |f|
-        Form.delete(f._id) if @f
+        Form.delete(f._id) if f
       end
       u.destroy
     end
