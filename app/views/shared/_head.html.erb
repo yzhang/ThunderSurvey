@@ -1,5 +1,5 @@
 <link rel="shortcut icon" href="/favicon.ico" />
-<meta name="description" content="<%= @form.nil? ?  "抢答网让您可以轻松创建在线表单，调查问卷，收集用户反馈，类似Google Form的操作界面，让表单的创建如行云流水，简洁干净的问卷页面，让用户爱上问答!" : @form.description %>" />
+<meta name="description" content="<%= @form.nil? ?  "ThunderSurvey is the simplest free online survey solution, if you perfer to clean and simple survey design, then thundersurvey should be your first choice." : @form.description %>" />
 <meta name='viewport' content='width=device-width' />
 <meta charset="utf-8" />
 <meta name="csrf-token" content="<%= form_authenticity_token %>" />
@@ -20,4 +20,4 @@
 </script>
 
 <%= yield :headers %>                                                   
-<title>抢答网－<%= @form.nil? ? (@page_title||'免费在线问卷调查，让您的表单与众不同') : @form.title %></title>
+<title>Thunder Survey－<%= @form.nil? ? (@page_title||'Free online survey solution.') : @form.title %></title>

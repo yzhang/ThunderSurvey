@@ -38,13 +38,14 @@ class UsersController < ApplicationController
     end
     
     @user.login = params[:user].delete(:login)
+    @user.time_zone = params[:user].delete(:time_zone)
     
     # 只有用户没有设置Email地址时，才允许更新Email，主要针对豆瓣用户
     @user.email = params[:user][:email] if @user.email.blank? && !params[:user][:email].blank?
     
     respond_to do |wants|
       if @user.save
-        notice ||= '修改成功'
+        notice ||= t(:update_success)
         flash[:notice] = notice       
         wants.html { redirect_to account_url }
       else

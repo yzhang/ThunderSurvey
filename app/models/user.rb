@@ -33,6 +33,7 @@ class User
   key :activated_at, Time
   key :oauth_type
   key :oauth_id
+  key :time_zone, String, :default => 'UTC'
 
 
   before_create :make_activation_code

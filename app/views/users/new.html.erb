@@ -1,6 +1,6 @@
 <%= content_for :pagenav do -%>  
 <div id="page_nav">
-   <span>新用户注册</span> 
+   <span><%= t(:signup) %></span> 
 </div>
 <% end %>
 
@@ -10,7 +10,7 @@
 <%= error_messages_for @user %>
 <% form_for :user, :url => users_path, :html => {:multipart => true,:class => 'prepend-1'} do |f| -%>
   <p>
-    <%= label_tag '用户名' %> <br />
+    <%= label_tag t(:name) %> <br />
     <%= f.text_field :login %><span style="color:red"><%= @user.errors.on(:login) %></span>
   </p>
 
@@ -20,15 +20,15 @@
   </p>
   
   <p>
-    <%= label_tag 'password', '密码' %><br />
+    <%= label_tag 'password', t(:password) %><br />
     <%= f.password_field :password %><span style="color:red"><%= @user.errors.on(:password) %></span>
   </p>
 
   <p>
-    <%= label_tag 'password_confirmation', '密码确认' %> <br />
+    <%= label_tag 'password_confirmation', t(:password_confirmation) %> <br />
     <%= f.password_field :password_confirmation %><span style="color:red"><%= @user.errors.on(:password_confirmation) %></span>
   </p>
 
-  <p><%= submit_tag '注册',:class => 'submit' %></p>
+  <p><%= submit_tag t(:submit),:class => 'submit' %></p>
 <% end -%>
 </div>

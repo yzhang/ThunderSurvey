@@ -1,37 +1,23 @@
-<div class='intro'>
-  <div class='guide span-6'>
+<div class='intro span-12'>
+  <div class='guide span-8'>
     <div class='words'>
-       <h1>最简洁的问卷调查工具</h1>
-      <p>抢答网让您可以轻松创建在线调查问卷.简洁干净的问卷页面,让用户爱上问答!</p>
+       <h2><%= t(:simplest_online_survey) %></h2>
+      <p><%= t(:give_a_try_now) %></p>
       <p><a href='/demo'><%= image_tag(image_path('demo.gif'), :title => '免费注册') %></a></p>
-      <p>已经有帐号了？<%= link_to "立即登录", login_path %></p>
+      <p><%= t(:have_an_account) %><%= link_to t(:login), login_path %></p>
     </div>
   </div>
 
-  <div class='span-2 prepend-3 last'>
+  <div class='span-5 prepend-1 last'>
     <%=image_tag 'form.jpg',:class=>'haibao'%>
   </div>
 </div> 
 <div class='span-12'>
-<h3>谁在使用抢答？</h3>
+<h3><%= t(:clients) %></h3>
 <div id='logos'>
   <a href="http://www.bloggerinsight.com"><%=image_tag('icons/bloggerinsight.jpg')%></a>
-  <a href="http://www.dongxi.net"><%=image_tag('icons/dx_logo.jpg')%></a>
-  <a href="http://www.lunsha.com/"><%=image_tag('icons/xx_logo.gif')%></a>
   <a href="http://www.mmclock.cn"><%=image_tag('icons/mm.jpg')%></a>
 </div>
 
 </div> 
-
-<div class='span-12 last'>
-<h3>特色问卷</h3>
-<div id='recommanded_forms'>
-  <ul>  
-    <% @recommanded_forms.each do |form| %>
-    <li><%=link_to form.title,form,:target => '_blank' %></li>                                   
-    <% end %>         
-    </ul>
-</div>
-
-</div>
 

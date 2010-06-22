@@ -6,11 +6,17 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
+  before_filter :set_time_zone
+    
+  protected
   def set_section(section)
     @section = section
   end
   
-  protected
+  def set_time_zone
+    Time.zone = current_user.time_zone if logged_in?
+  end
+  
   def verify_edit_key
     @edit_key = params[:edit_key]
     
