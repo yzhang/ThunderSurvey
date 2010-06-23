@@ -6,7 +6,7 @@ class FormsController < ApplicationController
   
   def index   
     @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '20')
-    @page_title = "所有问卷"
+    @page_title = t(:my_surveys)
 
     respond_to do |format|
       format.html
@@ -29,19 +29,15 @@ class FormsController < ApplicationController
         flash[:notice] = "对不起，您访问的表单不存在"
         format.html { redirect_to root_path}
       end
-      
-      # format.json  do
-      #   render :json => @form.to_json
-      # end
     end
   end
 
   # GET /forms/new
   # GET /forms/new.xml
   def new    
-    @form = current_user.forms.create(:title => "未命名问卷", :description => '描述一下你的问卷吧')
+    @form = current_user.forms.create(:title => t(:untitled_form), :description => t(:describe_your_form))
 
-    @form.fields << Field.new(:name => '姓名', :required => true, :input => 'string', 
+    @form.fields << Field.new(:name => t(:name), :required => true, :input => 'string', 
               :uuid => Time.now.to_i,:position => 1)
     @form.fields << Field.new(:name => 'Email', :required => true, :input => 'string', 
               :uuid => Time.now.to_i + 5,:position => 2)

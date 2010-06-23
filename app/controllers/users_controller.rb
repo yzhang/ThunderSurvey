@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new
-    @page_title = "新用户注册"
+    @page_title = t(:signup)
   end
  
   def create
@@ -16,9 +16,9 @@ class UsersController < ApplicationController
       #@user.roles << Role.find_or_create_by_title('superuser') if User.count == 1
       @user.activate!
       redirect_to(login_url)
-      flash[:notice] = "非常感谢您的注册，您现在可直接登录"
+      flash[:notice] = t(:create_success)
     else
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash[:error]  = t(:create_failed)
       render :action => 'new'
     end
   end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         @user.password = params[:user].delete(:password)
         @user.password_confirmation = params[:user].delete(:password_confirmation)
       else
-        notice = '对不起，密码输入错误' if !params[:current_password].blank?
+        notice = t(:wrong_password) if !params[:current_password].blank?
       end
     end
     
@@ -76,10 +76,10 @@ class UsersController < ApplicationController
       Mailer.forget_password(@user, new_password).deliver
       cookies.delete :auth_token
       reset_session
-      flash[:notice] = "新密码已发送到#{@user.email}"
+      flash[:notice] = "#{t(:new_password_sent_to)} #{@user.email}"
       redirect_to root_url
     else
-      flash.now[:error] = '找不到此email'
+      flash.now[:error] = t(:cant_find_email)
       render :action => "forget_password"
     end
   end

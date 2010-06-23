@@ -19,13 +19,13 @@
   <section class='form_oprate'>
     <nav>
       <div class='setting'>  
-        <%= link_to '回应通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置",modal: true});', :class => 'button' %>
-        <%= link_to '问卷嵌入', '#', :onclick => '$("#iframe").dialog({width:490, height:90, title:"问卷嵌入代码",modal: true,
+        <%= link_to t(:notify_setting), '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置",modal: true});', :class => 'button' %>
+        <%= link_to t(:embed), '#', :onclick => '$("#iframe").dialog({width:490, height:90, title:"问卷嵌入代码",modal: true,
         open: function(){$("#iframe").focus()}});', :class => 'button' %>
-        <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
+        <%= link_to(t(:save),   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
       <div class='new'>
-        <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> 
+        <%=link_to(t(:add_question), '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> 
       </div>
     </nav>
   </section>
@@ -51,7 +51,7 @@
   </section>  
   <!-- 表单尾 -->
   <section class='form_preview right'>
-    查看实时效果 <%= link_to "#{form_url(@form)}", form_path(@form), :target => '_blank' %>
+    <%= t(:preview) %>: <%= link_to "#{form_url(@form)}", form_path(@form), :target => '_blank' %>
   </section>
 </div>
 

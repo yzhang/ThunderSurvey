@@ -22,7 +22,7 @@
               </p>
               <p><%= label_tag 'password', t(:password) %>
               <%= password_field_tag 'password', nil %> 
-              <p><%= submit_tag t(:login),:class => 'submit' %> <%=link_to t(:forgot_password),forget_password_path%></p> 
+              <p><%= submit_tag t(:login),:class => 'submit' %> <br /><%=link_to t(:forgot_password),forget_password_path%></p> 
               <h4><%= t(:login_with_others) %></h4>
               <ul>
                 <li><a href="/oauth/login/google" class='google' >Google</a></li> 
