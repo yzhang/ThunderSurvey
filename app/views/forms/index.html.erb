@@ -19,7 +19,7 @@
     <tbody> 
       <% @forms.each do |form| %> 
       <tr id="<%=form.id%>">        
-        <td class='title'><%=link_to form.title,form_rows_path(form, :edit_key => form.edit_key) %><span><%= form.klass.count %>回应 <%= '>>' unless form.klass.count == 0%></span>
+        <td class='title'><%=link_to form.title,form_rows_path(form, :edit_key => form.edit_key) %><span><%= form.klass.count %> <%= t(:answers) %> <%= '>>' unless form.klass.count == 0%></span>
         </td>                                                                                 
         <td><%= form.updated_at.to_date%></td> 
         <td class='opt'> 

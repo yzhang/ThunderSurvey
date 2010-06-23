@@ -21,18 +21,13 @@
   <% end %>
   
   <p id="email_notify">
-    <%= f.check_box :email_notify %> 有新回答时，发送邮件通知
+    <%= f.check_box :email_notify %> <%= t(:send_email_when_receive_new_answer) %>
   </p>
-  <% if false %>  
-  <p id="url_notify" style="<%= 'display:none;' if f.object.notify_type == 'email' %>">
-    <%= f.label :notify_url, '发送通知到此地址' %>
-    <%= f.text_field :notify_url, :size => '40' %>
-  </p>
-  <% end %>
+
   <p>
     <%= f.label :thanks_message, '用户提交回答后的感谢信息' %>
     <%= f.text_area :thanks_message, :cols => 42, :rows => 4, :style => "width:350px; height:80px;" %>
   </p>                             
-  <%=f.submit '更新',:onclick => "$('#saving').show();" %>  
+  <%=f.submit t(:update),:onclick => "$('#saving').show();" %>  
   <% end -%>
 </div>

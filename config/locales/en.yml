@@ -56,3 +56,7 @@ en:
   describe_your_form: "Describe your form."
   edit: "Edit"
   delete: "Delete"
+  other: "Other"
+  send_email_when_receive_new_answer: "Send me Email when receive new answer."
+  embed_form_in_your_site: "Embed survey form in your website"
+  answers: "Answers"
