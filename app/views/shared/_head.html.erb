@@ -4,9 +4,7 @@
 <meta charset="utf-8" />
 <meta name="csrf-token" content="<%= form_authenticity_token %>" />
 <meta name="csrf-param" content="authenticity_token" />
-<!--[if IE]>
- <script src="/javascripts/html5.js"></script>
-<![endif]-->     
+    
 <%= stylesheet_link_tag 'framework/reset','framework/general','framework/grid','fancybox', :cache => 'app.framework.cache'  %>  
 <%= stylesheet_link_tag "style",'common',"jquery-ui", 'slider','formtastic', :cache => 'app.cache'  %>
 <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', :cache => 'app.cache' %>              
