@@ -216,7 +216,7 @@ form.login_form{
 	padding:10px;
 } 
     
-.words{margin-top:60px;}
+.words{margin-top:60px;padding-left:80px;}
 .words,.words h1,.words p{
 	text-align:center;
 	line-height:150%;
@@ -370,12 +370,6 @@ a.ag:hover {
 
 
 /* ---- homepage ----- */   
-
-.intro{
-	line-height:150%;
-	float:left;
-}
-
 .guide{   
   padding:10px;
   margin-bottom: 20px;
@@ -655,8 +649,8 @@ h4.tip{
 
 /*  -- home -- */
 .intro{
-	width:650px; 
-	margin-left:100px;
+	line-height: 150%;
+	padding-bottom: 20px;
 	border-bottom:1px solid #ccc;
 }
 
