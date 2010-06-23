@@ -11,13 +11,5 @@
 <%= stylesheet_link_tag "style",'common',"jquery-ui", 'slider','formtastic', :cache => 'app.cache'  %>
 <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', :cache => 'app.cache' %>              
 
-
-             
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){     
-    $('.button').button();
-   })    
-</script>
-
 <%= yield :headers %>                                                   
 <title>抢答网－<%= @form.nil? ? (@page_title||'免费在线问卷调查，让您的表单与众不同') : @form.title %></title>
