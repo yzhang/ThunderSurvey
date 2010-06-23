@@ -1,23 +1,22 @@
-<div class='intro span-12'>
-  <div class='guide span-8'>
-    <div class='words'>
-       <h2><%= t(:simplest_online_survey) %></h2>
+<div class='intro span-24 last'>
+  <div class='guide span-12'>
+    <div class='words span-8'>
+      <h2><%= t(:simplest_online_survey) %></h2>
       <p><%= t(:give_a_try_now) %></p>
       <p><a href='/demo'><%= image_tag(image_path('demo.gif'), :title => '免费注册') %></a></p>
       <p><%= t(:have_an_account) %><%= link_to t(:login), login_path %></p>
     </div>
   </div>
 
-  <div class='span-5 prepend-1 last'>
+  <div class='span-10 last'>
     <%=image_tag 'form.jpg',:class=>'haibao'%>
   </div>
 </div> 
-<div class='span-12'>
-<h3><%= t(:clients) %></h3>
-<div id='logos'>
-  <a href="http://www.bloggerinsight.com"><%=image_tag('icons/bloggerinsight.jpg')%></a>
-  <a href="http://www.mmclock.cn"><%=image_tag('icons/mm.jpg')%></a>
+<div class='span-13'>
+  <h3><%= t(:clients) %></h3>
+
+  <div id='logos'>
+    <a href="http://www.bloggerinsight.com"><%=image_tag('icons/bloggerinsight.jpg')%></a>
+    <a href="http://www.mmclock.cn"><%=image_tag('icons/mm.jpg')%></a>
+  </div>
 </div>
-
-</div> 
-

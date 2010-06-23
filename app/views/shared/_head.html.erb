@@ -8,16 +8,8 @@
  <script src="/javascripts/html5.js"></script>
 <![endif]-->     
 <%= stylesheet_link_tag 'framework/reset','framework/general','framework/grid','fancybox', :cache => 'app.framework.cache'  %>  
-<%= stylesheet_link_tag "style",'common',"jquery-ui", 'slider','formtastic', :cache => 'app.cache'  %>
-<%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', "fancybox/jquery.fancybox-1.3.1.pack",'application', :cache => 'app.cache' %>              
-
-
-             
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){     
-    $('.button').button();
-   })    
-</script>
+<%= stylesheet_link_tag "style",'common',"jquery-ui", 'formtastic', :cache => 'app.cache'  %>
+<%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', :cache => 'app.cache' %>              
 
 <%= yield :headers %>                                                   
 <title>Thunder Survey－<%= @form.nil? ? (@page_title||'Free online survey solution.') : @form.title %></title>
