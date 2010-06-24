@@ -39,7 +39,6 @@ body{
 	
 .logo{   
 	float:left;
-	margin-left: -20px;
 }  
 
 form label{
@@ -249,24 +248,6 @@ form.login_form{
 	height:0px;
 }  
 
-#footer{    
-	border-top:1px solid #ccc;
-	margin:10px;            
-	padding:10px;
-	text-align:center;
-	margin-top:10px;
-}  
-
-#footer span{
-	font-size:10px;
-	color:#999999;
-}
-
-h1,h2,h3,h4{  
-	margin:10px 0;
-	color:#333;
-	font-family:'微软雅黑' arial '宋体'; 
-}    
 
 .notes{       
 	margin-bottom:10px;

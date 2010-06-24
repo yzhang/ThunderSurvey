@@ -60,7 +60,7 @@ div.question p{
 #page_nav{
 	height:20px;
    	padding:5px 10px 15px 0px;  
-   *padding:5px 10px 15px 0px;
+   *padding:5px 10px 0px 0px;
 	margin:10px 0px 15px;   
 	border-bottom:1px solid #ccc;    
 }
@@ -89,4 +89,16 @@ div.question p{
 	padding:10px;     
 	border:1px solid #FFCC00;
 	background:#FFFF99;
+}
+
+#footer{              
+	border-top:1px solid #ccc;
+	margin:10px 0;            
+	padding:10px 0;
+	text-align:center;
+}  
+
+#footer span{
+	font-size:10px;
+	color:#999999;
 }
