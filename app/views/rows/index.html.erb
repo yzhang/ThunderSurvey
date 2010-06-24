@@ -23,14 +23,14 @@
     <%=link_to '导出为Excel文件',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>    
   </div>
 <% end %>     
-操作提示:双击回应条目可展开
+<span style='color:#999;'>操作提示:双击回应条目可展开</span>
 <div class='span-24' id='results'>     
 <table id='rows' cellspacing="0" cellpadding="0" class='grid'>  
   <thead>
     <tr>      
       <th>时间</th>
       <% @form.fields.each do |field| %>
-      <th><div class='info_item'><%=field.name%></div></th> 
+      <th><%=truncate field.name,:length => 18%></th> 
       <% end %>
     </tr>
   </thead>

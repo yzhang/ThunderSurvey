@@ -557,7 +557,9 @@ div.time{
 	font-size:80%;
 }
 
-#results{           
+#results{  
+	margin:10px 0;   
+	text-align:center;      
 	width:100%;
 	overflow:auto;
 }
@@ -568,7 +570,12 @@ div.time{
 
 .tip{
 	color:#999;
+}   
+
+table.grid{
+	margin:auto;
 }
+
 
 table.grid tr.highlighted td div.info_item{
 	background:#FFFDD0;
@@ -689,4 +696,8 @@ input.btn, button.btn {
 
 .create{
   margin-left:20px;
+}
+
+.prompt{
+	color:#333;
 }
