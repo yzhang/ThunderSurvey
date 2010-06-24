@@ -685,7 +685,12 @@ h4.tip{
    -webkit-border-radius: 5px;
    -khtml-border-radius: 5px;
    border-radius: 5px;
-}
+}  
+
+a.btn{
+  	text-decoration: none;    
+}   
+
 input.btn, button.btn {
    border: 0px none;
 }
