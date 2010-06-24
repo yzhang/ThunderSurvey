@@ -143,9 +143,9 @@ a.signin.menu-open span {
     padding:5px;
     top: 24.5px; 
     right: 10px !important; 
-	*right: 11px; 
+	*right: 31px; 
     margin-top:5px;
-    margin-right: 0px;
+    margin-right: 20px;
     *margin-right: -1px;
     color:#789;
     font-size:11px;
@@ -648,8 +648,8 @@ h4.tip{
 }
 
 /*  -- home -- */
-.intro{
-	line-height: 150%;
+.intro{            
+	line-height:0px;
 	border-bottom:1px solid #ccc;
 }
 
@@ -668,4 +668,39 @@ h4.tip{
 
 .haibao{
 	border:2px solid #efefef;
+}
+
+/* --- btn ---*/
+.btn {   
+   display: inline-block;
+   line-height: 1;
+   padding: 9px 60px;
+   text-decoration: none;
+   font-weight: bold; 
+   font-size:18px;
+   	font-family:'微软雅黑' arial '宋体';       
+   color: #fff;
+   background-color: #0099FF;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -khtml-border-radius: 5px;
+   border-radius: 5px;
+}
+input.btn, button.btn {
+   border: 0px none;
+}
+.buttonwrap {
+   display: inline-block;
+   position: relative;
+   zoom: 1;
+   *display: inline;
+}
+.corner {
+   position: absolute;
+   width: 5px;
+   height: 5px;
+}       
+
+.create{
+  margin-left:20px;
 }

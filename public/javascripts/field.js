@@ -127,4 +127,3 @@ function toggle_opration(e){
 function toggle_other(e) {
 	$(e).closest('.field').find('.form_other').toggle();	
 }
-

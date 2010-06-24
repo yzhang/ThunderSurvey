@@ -17,10 +17,10 @@
          <div id="signin_menu">
             <%= form_tag session_path,:class => 'login_form' do %>  
             <p>
-              <label for="username">Email</label>
+              <label for="username">Email</label><br />
               <%= text_field_tag 'email', @email %>
               </p>
-              <p><%= label_tag 'password', '密码' %>
+              <p><%= label_tag 'password', '密码' %> <br />
               <%= password_field_tag 'password', nil %> 
               <p><%= submit_tag '登录',:class => 'submit' %> <%=link_to '找回密码',forget_password_path%></p> 
               <h4>使用第三方帐号登录</h4>

@@ -1,9 +1,16 @@
+<% content_for :headers do %>
+  <style type="text/css" media="screen">
+    .btn span{
+      font-size:12px;
+    }
+  </style>
+<% end %>
 <div class='intro span-24 last'>
   <div class='guide span-12'>
     <div class='words span-7'>
        <h1>最简洁的问卷调查工具</h1>
       <p>抢答网让您可以轻松创建在线调查问卷.简洁干净的问卷页面,让用户爱上问答!</p>
-      <p><a href='/demo'><%= image_tag(image_path('demo.gif'), :title => '免费注册') %></a></p>
+      <p><a href='/demo' class='btn'>试用一下<span>(无需注册)</span></a></p>
       <p>已经有帐号了？<%= link_to "立即登录", login_path %></p>
     </div>
   </div>
