@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>抢答网</title>
+	<title>ThunderSurvey</title>
 </head>
-<body style="padding:0; margin:0; background:#FDFDFD;font-family: '微软雅黑' arial;">
+<body>
 	
 <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FDFDFD">
 	<tr>
@@ -15,7 +15,7 @@
 			
 						<table width="614" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
 						  <tr>                                          
-						    <td bgcolor='#d6edf9' style='padding:10px;'><%=link_to image_tag('http://www.51qiangda.com/images/email_logo.png',:border => '0',:alt => "抢答网"),root_url %></td>
+						    <td bgcolor='#d6edf9' style='padding:10px;'><%=link_to "ThunderSurvey", root_url %></td>
 							</tr>
 							<tr>
 								<td>
@@ -40,8 +40,8 @@
 																</tr>
 																 <tr>
 																   <td colspan='2' style="border-top:1px solid #EEEEEE;padding-top:10px;font-size:10px; line-height:20px;text-align:left; color:#ccc;">
-																    此邮件是抢答网的系统通知，请勿直接回复!<br />
-																    Copyright 抢答网 All Rights Reserved
+																    <%= t(:generated_automatically) %>, <%= t(:dont_reply) %>!<br />
+																    &copy; ThunderSurvey <%= t(:rights) %>
 																   </td>
 																 </tr>
 															</table>

@@ -15,7 +15,7 @@ class RowsController < ApplicationController
       }                   
       else
       wants.html {
-        redirect_to forms_path,:alert => '此问卷暂无回应'
+        redirect_to forms_path,:alert => t(:no_answers)
       }                                        
      end
       wants.json {
@@ -44,7 +44,7 @@ class RowsController < ApplicationController
       wants.csv do
         @rows = klass.paginate(:page => 1, :per_page => 1000, :order => 'created_at')
         csv_string = FasterCSV.generate(:col_sep => ",", :row_sep => "\r\n") do |csv|
-          csv << (@form.fields.map(&:name) + ['创建时间'])
+          csv << (@form.fields.map(&:name) + [t(:timestamps)])
           first_page = @rows
           write_csv_rows(csv, first_page)
           (2..first_page.total_pages).to_a.each do |page|
@@ -101,7 +101,7 @@ class RowsController < ApplicationController
                 page.replace_html field.id.to_s + '_field',''   
               end
             end     
-            page.alert '报名表填写有误,请检查!'
+            page.alert t(:something_goes_wrong)
           end
            }
       end
@@ -114,12 +114,12 @@ class RowsController < ApplicationController
     
     respond_to do |want|
       if @row.update_attributes(params[:row])
-        want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => '记录已更新!'}
+        want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => t(:update_success)}
         want.json {render :json => @row.to_json}
         want.js   {
           render :update do |page|
            # page['row'].replace_html(:partial => 'row', :locals => {:row => @row,:form => @form})
-           flash[:notice] = '记录已更新'
+           flash[:notice] = t(:update_success)
            page.redirect_to(form_rows_path(@form, :edit_key => @form.edit_key))
           end
         }
@@ -136,7 +136,7 @@ class RowsController < ApplicationController
                 page.replace_html field.id.to_s + '_field',''   
               end
             end
-            page << "alert('内容有误,请检查!')" 
+            page << "alert('#{t(:something_goes_wrong)}')" 
           end
         }
       end
@@ -149,7 +149,7 @@ class RowsController < ApplicationController
     klass.delete(@row._id) if @row
     
     respond_to do |want|
-      want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => '记录已删除!'}
+      want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => t(:update_success)}
       want.json {render :json => [:ok]}
     end
   end

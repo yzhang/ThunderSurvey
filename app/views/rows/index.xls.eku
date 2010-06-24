@@ -16,7 +16,7 @@ sheet1[0, 0] = "#{@form.title}"
 # this code will return the second row and fill the cells.
 
 sheet1.row(1).concat @form.fields.map(&:name)
-sheet1.row(1).concat ['报名时间']
+sheet1.row(1).concat [t(:timestamps)]
 
 # we can access the instance variable we set in the controller, just like
 # in erb template

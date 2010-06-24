@@ -1,9 +1,0 @@
-<h2>你好 <%=@form.user.login %>:</h2>     
-<p>你在抢答网的问卷'<%=@form.title%>'收到一个新回应.</p>
-<% content_for :event do %>          
-  <tr>
-	  <td colspan='2' style="font-size:12px; line-height:20px;text-align:left; color:#666;"> 
-	    <p>马上进入<%=link_to '控制面板',forms_url,:style => 'color:#0099FF;font-size:12px;margin:0 5px;'%>查看此回应信息。</p>
-	  </td>
-	</tr>
-<% end -%>

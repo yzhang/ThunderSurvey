@@ -1,0 +1,9 @@
+<h2><%= t(:hello) %> <%=@form.user.login %>:</h2>     
+<p><%= t(:your_survey) %> '<%=@form.title%>' <%= t(:got_a_new_answer) %>.</p>
+<% content_for :event do %>          
+  <tr>
+	  <td colspan='2' style="font-size:12px; line-height:20px;text-align:left; color:#666;"> 
+	    <p><%= t(:visit) %> <%=link_to t(:dashboard),forms_url,:style => 'color:#0099FF;font-size:12px;margin:0 5px;'%> <%= t(:view_all_answers) %>。</p>
+	  </td>
+	</tr>
+<% end -%>

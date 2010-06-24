@@ -26,7 +26,7 @@ class FormsController < ApplicationController
         @order_id = params[:order_id]
         format.html {  render :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
       else
-        flash[:notice] = "对不起，您访问的表单不存在"
+        flash[:notice] = t(:form_no_exist)
         format.html { redirect_to root_path}
       end
     end
@@ -86,7 +86,7 @@ class FormsController < ApplicationController
         @form.sort_fields(params[:uuids])
         
         format.html { 
-          flash[:notice] = 'Form was successfully updated.'
+          flash[:notice] = t(:update_success)
           redirect_to(@form) 
         }
         format.js {
@@ -116,7 +116,7 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id], :conditions => {:user_id => current_user.id.to_s})
     Form.delete(@form._id) if @form
     respond_to do |format|
-      format.html { redirect_to(forms_url,:notice => '已删除') }
+      format.html { redirect_to(forms_url,:notice => t(:removed)) }
       format.json  { render :json => {:result => 'ok'}.to_json }
     end
   end

@@ -27,13 +27,13 @@ class OauthController < ApplicationController
     respond_to do |wants|
       if session[:oauth_provider]
         if current_user.email.blank?
-          flash[:notice] = "为保证您能顺利接收到我们的邮件，请您先设置您的Email"
+          flash[:notice] = t(:please_set_email)
           wants.html { redirect_to account_url }
         else
-          wants.html {redirect_to(forms_url,:notice => '登录成功!')}
+          wants.html {redirect_to(forms_url,:notice => t(:login_success))}
         end
       else
-        flash[:notice] = "获取授权失败，请重新登录"
+        flash[:notice] = t(:oauth_failed)
         wants.html { redirect_to login_url}
       end
     end

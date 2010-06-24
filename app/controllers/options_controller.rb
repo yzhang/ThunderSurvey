@@ -4,7 +4,7 @@ class OptionsController < ApplicationController
   
   def new
     @input = ['check', 'radio', 'drop'].include?(params[:input]) ? params[:input] : 'radio'
-    @option = Option.new(:value => "选项#{@field.options.length + 1}")
+    @option = Option.new(:value => "#{t(:option)}#{@field.options.length + 1}")
     @field.options << @option
     @field.save
     
