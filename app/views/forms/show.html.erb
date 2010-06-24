@@ -12,8 +12,8 @@
   <% end %>         
   <%= hidden_field_tag :embed, @embed %>
   <%= hidden_field_tag 'row[order_id]', @order_id%>
-  <p><%= submit_tag '提交',:class => 'submit', :onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
+  <p><%= submit_tag t(:submit),:class => 'submit', :onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
 <% end %>
 
-<p><a href="http://www.51qiangda.com" class='support' target='_blank'>抢答网技术支持</a></p>
+<p><a href="http://www.thundersurvey.com" class='support' target='_blank'><%= t(:powered_by_ts) %></a></p>
 <div style="clear:both;"></div>

@@ -4,26 +4,26 @@
 
 <%= content_for :pagenav do -%> 
 <div id="page_nav">
-    <span><%=link_to '所有问卷',forms_path%> / <%= @form.title %></span>    
+    <span><%=link_to t(:my_surveys),forms_path%> / <%= @form.title %></span>    
     <div class='right'>
     </div>     
 </div>
 <div class='span-24'>  
-  <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑" class='button' >编辑表单</a>  
-  <%=link_to '查看表单',form_path(@form),:target => '_blank',:class => 'button'%>
+  <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="<%= t(:edit) %>" class='button' ><%= t(:edit) %></a> | 
+  <%=link_to t(:preview),form_path(@form),:target => '_blank',:class => 'button'%>
 </div> 
   <div class='span-24 border'>    
-    <b><%=@form.klass.count %>条回应</b> |  
-     <%=link_to '导出为文本文件',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
-    <%=link_to '导出为Excel文件',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>    
+    <b><%=@form.klass.count %> <%= t(:answers) %></b> |  
+     <%=link_to t(:export_to_csv),form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> | 
+    <%=link_to t(:export_to_xls),form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>    
   </div>
 <% end %>     
-操作提示:双击回应条目可展开
+<%= t(:tips) %>: <%= t(:dblclick_to_expand) %>
 <div class='span-24' id='results'>     
 <table id='rows' cellspacing="0" cellpadding="0" class='grid'>  
   <thead>
     <tr>      
-      <th>时间</th>
+      <th><%= t(:timestamps) %></th>
       <% @form.fields.each do |field| %>
       <th><div class='info_item'><%=field.name%></div></th> 
       <% end %>
@@ -48,7 +48,7 @@
    
 <% @rows.each do |row| %>                    
 <div id="row_<%=row.id%>"  style="display:none;">
-  <h3>回应详细</h3>           
+  <h3><%= t(:detail_answer) %></h3>           
   <div class='row_content'>
   <table class='grid big' cellspacing="0" cellpadding="0"> 
     <col width='30%'>
@@ -64,7 +64,7 @@
     </table> 
      </div>     
     <div style='text-align:center;'>
-      <%=link_to '编辑',edit_form_row_path(@form,row, :edit_key => @form.edit_key),:class => 'button'%>  <%=link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete',:class => 'button'%>
+      <%=link_to t(:edit),edit_form_row_path(@form,row, :edit_key => @form.edit_key),:class => 'button'%> | <%=link_to t(:delete), form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => t(:are_you_sure), :method => 'delete',:class => 'button'%>
     </div>
 </div>    
 <% end %>
