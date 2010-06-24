@@ -25,10 +25,10 @@
   <title>Thunder Survey－<%= @form.nil? ? (@page_title||'Free online survey solution.') : @form.title %></title>
 </head>
 
-<body>   
+<body>     
   <div class='header'>
-    <div class="logo">
-      <%=image_tag('mini_logo.png') %>
+    <div class="logo" style='margin:6px 10px'>
+      <%=image_tag('mini-en.png')%>
     </div>         
     <div id="saving" style="display:none;"><%= t(:saving) %></div> 
     <%= render :partial => '/shared/notice' %>

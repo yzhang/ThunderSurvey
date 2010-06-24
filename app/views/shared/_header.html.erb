@@ -1,9 +1,9 @@
 <div class='header'>
-  <div class="logo span-17">
-    <%=link_to image_tag('logo.png'),'/'%>
+  <div class="logo span-16" >
+     <%=link_to image_tag('en-logo.png'),root_path%>
   </div>
   
-  <div class='login span-7 last'>   
+  <div class='login span-8 last'>   
     <% if logged_in? %>
      <ul class="panel"> 
       <li><%=link_to(t(:my_surveys), forms_path)%></li>

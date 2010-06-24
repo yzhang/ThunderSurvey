@@ -13,7 +13,6 @@ p{
 
 h1,h2,h3,h4{ 
 	color:#333;
-	font-family:'微软雅黑' arial '宋体'; 
 }
 
 header,section,footer{
@@ -25,7 +24,7 @@ ul li{
 }
 
 body{       
-	font-family:Arial, sans-serif;
+	font-family: helvetica, arial, freesans, clean, sans-serif;   
 	font-size:12px;     
 	color:#333;  
 	background:url(/images/bg/header.jpg) top repeat-x #FDFDFD; 
@@ -39,7 +38,7 @@ body{
 	
 .logo{   
 	float:left;
-	margin-left: -20px;
+
 }  
 
 form label{
@@ -59,7 +58,6 @@ form label{
 }
 
 .login ul.panel {
-	width: 270px;
 	height: 25px;
 	padding: 5px 5px;
 	margin-left: 15px;
@@ -438,7 +436,6 @@ table.big tbody td {
 
 table.grid td.title a{  
 	color:#0099FF;
-	font-family:'微软雅黑' arial '宋体';   
 	font-size:14px;
 } 
 
@@ -668,4 +665,43 @@ h4.tip{
 
 .haibao{
 	border:2px solid #efefef;
+}
+
+/* --- btn ---*/
+.btn {   
+   display: inline-block;
+   line-height: 1;
+   padding: 9px 60px;
+   text-decoration: none;
+   font-weight: bold; 
+   font-size:18px;  
+   color: #fff;
+   background-color: #0099FF;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -khtml-border-radius: 5px;
+   border-radius: 5px;
+}  
+
+a.btn{
+  	text-decoration: none;    
+}   
+
+input.btn, button.btn {
+   border: 0px none;
+}
+.buttonwrap {
+   display: inline-block;
+   position: relative;
+   zoom: 1;
+   *display: inline;
+}
+.corner {
+   position: absolute;
+   width: 5px;
+   height: 5px;
+}       
+
+.create{
+  margin-left:20px;
 }

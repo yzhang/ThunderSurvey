@@ -13,7 +13,6 @@ header,section,footer{
 
 h1,h2,h3,h4{ 
 	color:#333;
-	font-family:'微软雅黑' arial '宋体'; 
 } 
 
 h1{
@@ -26,7 +25,6 @@ div.field {
 }
 
 .submit{
-	font-family:'微软雅黑' arial '宋体';   
 	background: url(/images/bg/btn-short.png);     
 	height:26px;
 	width:100px;
@@ -60,19 +58,17 @@ div.question p{
 #page_nav{
 	height:20px;
    	padding:5px 10px 15px 0px;  
-   *padding:5px 10px 15px 0px;
+   *padding:5px 10px 5px 0px;
 	margin:10px 0px 15px;   
 	border-bottom:1px solid #ccc;    
 }
 
-#page_nav span{ 
-	font-family:'微软雅黑' arial '宋体';      
+#page_nav span{       
 	float:left;
 	color:#333;   
 	font-size:1.9em; 
 	line-height:28px; 
 	font-weight:bold;
-	padding-bottom:10px;
 }   
 
 .page_guide{ 
