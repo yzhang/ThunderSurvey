@@ -25,7 +25,7 @@
   </p>
 
   <p>
-    <%= f.label :thanks_message, '用户提交回答后的感谢信息' %>
+    <%= f.label :thanks_message, t(:thanks_message) %>
     <%= f.text_area :thanks_message, :cols => 42, :rows => 4, :style => "width:350px; height:80px;" %>
   </p>                             
   <%=f.submit t(:update),:onclick => "$('#saving').show();" %>  

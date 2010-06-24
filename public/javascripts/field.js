@@ -24,7 +24,7 @@ function field_done_editing(e)
     });
 		if(field_div.find('.form #field_include_other').attr('checked')) {
 			input += "<p><input type='radio' style='margin-right:5px;'/>";
-			input += "其它 <input type='text' size='30' /></p>";
+			input += other_text + " <input type='text' size='30' /></p>";
 		}
   } else if(field_input == 'string') {
     input += '<input type="text" size=35 />';
@@ -35,7 +35,7 @@ function field_done_editing(e)
     });
 		if(field_div.find('.form #field_include_other').attr('checked')) {
 			input += "<p><input type='checkbox' style='margin-right:5px;'/>";
-			input += "其它 <input type='text' size='30' /></p>";
+			input += other_text + " <input type='text' size='30' /></p>";
 		}
   } else if(field_input == 'drop') {
     input += "<select>";
@@ -105,8 +105,8 @@ function field_add_option(e, type)
     option += '<input type="checkbox" />';
   }
   
-  option += '<input type="text" name="options[]" value="选项' + count + '" style="color:#666;margin-left:5px;" onfocus="clear_option_initial(this);" onblur="set_option_initial(this)" />';
-  option += '<a href="#" onclick="field_remove_option(this);">删除</a>';
+  option += '<input type="text" name="options[]" value="' + new_option_name + count + '" style="color:#666;margin-left:5px;" onfocus="clear_option_initial(this);" onblur="set_option_initial(this)" />';
+  option += '<a href="#" onclick="field_remove_option(this);">' + delele_link_text + '</a>';
   option += '</p>';
   
   options.append(option);

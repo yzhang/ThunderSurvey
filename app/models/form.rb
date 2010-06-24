@@ -15,7 +15,7 @@ class Form
   key :email_notify, Boolean, :default => true
   key :notify_url, String
   key :notify_type, String, :default => 'email'
-  key :thanks_message, String, :default => "您的信息已成功提交！"
+  key :thanks_message, String, :default => "Your answer has been submited."
   key :maximum_rows, Integer
   key :height,Integer  
   key :recommanded,Boolean, :default => false 

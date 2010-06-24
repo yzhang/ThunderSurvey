@@ -1,35 +1,35 @@
 $(document).ready(function($) { 
-  if ($('#form_title').val() == "未命名表单") {
+  if ($('#form_title').val() == dft_form_title) {
 	   $('#form_title').css('color','#666')
 	}      
 	
-	if ($('#form_description').val() == "描述一下你的表单吧") {
+	if ($('#form_description').val() == dft_form_desc) {
 	   $('#form_description').css('color','#666')
 	}
 
   $('#form_title').  
       focus(function() {   
-      if (this.value == "未命名表单") {
+      if (this.value == dft_form_title) {
           this.value = "";
     	  this.style.color = "#000";
       }
   }).blur(function() {
       if (this.value == "") { 
     	  this.style.color = "#666";
-          this.value = "未命名表单";
+          this.value = dft_form_title;
       }
   }); 
   
   $('#form_description').  
       focus(function() {   
-      if (this.value == "描述一下你的表单吧") {
+      if (this.value == dft_form_desc) {
           this.value = "";
     		  this.style.color = "#000"
       }
   }).blur(function() {
       if (this.value == "") { 
     	  this.style.color = "#666";
-          this.value = "描述一下你的表单吧";
+          this.value = dft_form_desc;
       }
   });      
 
@@ -60,7 +60,7 @@ $(document).ready(function($) {
 
 
 function clear_initial(obj){
-   if(/新问题\d/.test(obj.value)){
+   if(new_question_regex.test(obj.value)){
 			clear_initial.question_title = obj.value;
 	    obj.value = ''; 
 		obj.style.color = "#000";
@@ -75,7 +75,7 @@ function set_initial(obj){
 }
 
 function clear_option_initial(obj){
-   if(/选项\d/.test(obj.value)){
+   if(new_option_regex.test(obj.value)){
 			clear_option_initial.option_title = obj.value;
 	    obj.value = ''; 
 		obj.style.color = "#000";
@@ -96,9 +96,9 @@ function form_add_field(e)
 	$(new_field[0]).attr('id', 'last_field');
   new_field.find('.question').hide();
   new_field.find('.form').show();
-  new_field.find('.form #field_name').val('新问题' + (field_count - 100)).css('color','#666');
+  new_field.find('.form #field_name').val(new_question_title + (field_count - 100)).css('color','#666');
   new_field.css('background-color','#FDF2C6');
-  new_field.find('.question label').html('新问题' + (field_count - 100));  
+  new_field.find('.question label').html(new_question_title + (field_count - 100));  
   // initial position
   field_count += 1;
   new_field.find('.field_position').val(field_count);

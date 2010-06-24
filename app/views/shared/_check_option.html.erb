@@ -1,5 +1,5 @@
 <p>
   <%= check_box_tag 'check', false %>
   <%= text_field_tag "options[]", value, :onfocus => "clear_option_initial(this);",:onblur => "set_option_initial(this)", :style => 'color:#666;' %>
-  <%= link_to '删除', '#', :onclick => 'field_remove_option(this);' %>
+  <%= link_to t(:delete), '#', :onclick => 'field_remove_option(this);' %>
 </p>
