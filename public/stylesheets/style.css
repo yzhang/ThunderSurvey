@@ -247,14 +247,13 @@ form.login_form{
 	height:0px;
 }  
 
-#footer{    
-	border-top:1px solid #ccc;
-	margin:10px;            
-	padding:10px;
+#footer{ 
+	border-top:1px solid #ccc;           
+	padding:10px 0;
 	text-align:center;
 	margin-top:10px;
-}  
-
+}               
+              
 #footer span{
 	font-size:10px;
 	color:#999999;
@@ -704,4 +703,17 @@ input.btn, button.btn {
 
 .create{
   margin-left:20px;
+}  
+   
+/*  --- sprite ---  */ 
+.sprite{ 
+	background: url(/images/icons/icons.png) no-repeat top left;
+	padding-left:18px;
 }
+
+.sprite-download { background-position: 0 0; width: 16px; height: 16px; } 
+.sprite-idea { background-position: 0 -66px; width: 18px; height: 18px; } 
+.sprite-open-in-new-window { background-position: 0 -134px; width: 16px; height: 16px; } 
+.sprite-remove { background-position: 0 -200px; width: 16px; height: 16px; } 
+.sprite-trash { background-position: 0 -266px; width: 16px; height: 16px; } 
+.sprite-wrench { background-position: 0 -332px; width: 16px; height: 16px; } 
