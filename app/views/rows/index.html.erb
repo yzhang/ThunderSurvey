@@ -2,7 +2,7 @@
   <%= javascript_include_tag "fancybox/jquery.fancybox-1.3.1.pack" %>
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){     
-      $('.button').button();
+      $('#opt .button').button();
      })    
   </script>
 <% end %>
@@ -13,7 +13,7 @@
     <div class='right'>
     </div>     
 </div>
-<div class='span-24'>  
+<div class='span-24' id='opt'>  
   <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑" class='button' >编辑表单</a>  
   <%=link_to '查看表单',form_path(@form),:target => '_blank',:class => 'button'%>
 </div> 
