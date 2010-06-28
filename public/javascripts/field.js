@@ -13,6 +13,7 @@ function field_done_editing(e)
   
   var field_input = $(field_div).find("#field_input").val();
   var field_uuid  = $(field_div).find("#field_uuid").val();
+  var field_prompt  = $(field_div).find("#field_prompt").val();
   var input = '';
   
   if(field_input == 'text') {
@@ -47,6 +48,7 @@ function field_done_editing(e)
   } else if(field_input == 'date') {
     input += '<input type="text" id="' + field_uuid + '"/>';
   }
+  input += '<br /><span class="prompt">' + field_prompt + '</span>'
 
   field_div.find('.question .input').html(input);
   field_div.css('background-color','') 

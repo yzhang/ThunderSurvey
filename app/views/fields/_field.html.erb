@@ -1,15 +1,13 @@
 <div class="field edit" onmouseover="toggle_opration(this);" onmouseout="toggle_opration(this);" id="<%= field.id %>">
   <div class="opration" style="display:none;">
     <% if field.intern.blank? -%>  
-      <%= link_to("编辑", "#", :onclick => "field_start_editing(this);return false;")
-                            %> | 
-      <%= link_to("复制", "#", :onclick => "form_dup_field(this);return false;")
-                            %> |
+      <%= link_to("编辑", "#", :onclick => "field_start_editing(this);return false;", :class => 'ag') %> | 
+      <%= link_to("复制", "#", :onclick => "form_dup_field(this);return false;", :class => 'ag') %> |
       <%= link_to("删除", form_field_path(parent, field.id, :edit_key => parent.edit_key),
                         :update => "flash",
                         :method => "delete",
                         :confirm => "确定要删除此问题吗？",
-                        :remote => true, :class => 'remove') %>  
+                        :remote => true, :class => 'remove ag') %>  
     <% else %>
       保留字段
     <% end -%>

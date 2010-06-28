@@ -122,12 +122,19 @@ function form_dup_field(e)
 	new_field.find('.field_form').attr('action', $("#field_template .field_form").attr('action'));
 	$(new_field.find('.field_form').children()[0]).html($($("#field_template .field_form").children()[0]).html());
 	
+	parent.find('.question').show();
+	parent.find('.operation').hide();
+	parent.find('.form').hide();
+	parent.css('background-color','#FFFFFF');
+	
 	new_field.find('.question').hide();
 	new_field.find('.opration').hide();
   new_field.find('.form').show();
 	new_field.find('.form #field_name').focus();
   new_field.css('background-color','#FDF2C6');
-
+	
+	field_start_editing.current_editing_field = new_field.find('.question');
+	
 	// initial position
 	field_count += 1;
 	new_field.find('.field_position').val(field_count);
