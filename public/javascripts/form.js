@@ -125,7 +125,6 @@ function form_dup_field(e)
 	parent.find('.question').show();
 	parent.find('.operation').hide();
 	parent.find('.form').hide();
-	parent.css('background-color','#FFFFFF');
 	
 	new_field.find('.question').hide();
 	new_field.find('.opration').hide();

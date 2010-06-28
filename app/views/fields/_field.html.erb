@@ -1,4 +1,4 @@
-<div class="field edit" onmouseover="toggle_opration(this);" onmouseout="toggle_opration(this);" id="<%= field.id %>">
+<div class="field edit" onmouseover="toggle_opration(this, true);" onmouseout="toggle_opration(this, false);" id="<%= field.id %>">
   <div class="opration" style="display:none;">
     <% if field.intern.blank? -%>  
       <%= link_to("编辑", "#", :onclick => "field_start_editing(this);return false;", :class => 'ag') %> | 

@@ -10,6 +10,12 @@ function field_done_editing(e)
   // 更新问题名称
   var field_name = $(field_div).find("#field_name").val();
   field_div.find('.question label').html(field_name)
+
+	if(field_div.find('.form #field_required').attr('checked') == true) {
+  	field_div.find('.question .required').html('*');
+	} else {
+		field_div.find('.question .required').html('');
+	}
   
   var field_input = $(field_div).find("#field_input").val();
   var field_uuid  = $(field_div).find("#field_uuid").val();
@@ -122,8 +128,12 @@ function field_remove_option(e)
   $('#form_height').val($('#fields').innerHeight());
 }   
 
-function toggle_opration(e){
-	$(e).find('.opration').toggle();
+function toggle_opration(e, show){
+	if(show == true) {
+		$(e).find('.opration').show();
+	} else {
+		$(e).find('.opration').hide();
+	}
 }    
 
 function toggle_other(e) {
