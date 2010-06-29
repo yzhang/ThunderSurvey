@@ -700,4 +700,34 @@ input.btn, button.btn {
 
 .prompt{
 	color:#333;
+}     
+
+/* -- page ---*/
+#page p{ 
+	line-height:25px; 
+	color:#666;     
+	font-size:13px;
+}
+
+#page h3,h4,h2{
+	font-family:'微软雅黑' arial '宋体';      
+	clear:both;
+	color:#666;
+	padding: 0 10px; 
+} 
+
+#page h3{ 
+	padding:10px;
+	font-size:18px;
+	border-bottom:1px solid #ccc;
+}
+
+#page .haibao{   
+	border:0;
+	text-align:center;
+}   
+
+#page .haibao img{
+	background:#ccc;
+	padding:5px;
 }
