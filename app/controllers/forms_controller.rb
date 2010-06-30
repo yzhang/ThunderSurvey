@@ -78,7 +78,12 @@ class FormsController < ApplicationController
     @fields = @form.fields
     
     respond_to do |want|
-      want.html { render :layout => params[:embed].blank? ? 'simple' : "embed"}
+      if @form
+        want.html { render :layout => params[:embed].blank? ? 'simple' : "embed"}
+      else
+        flash[:notice] = "对不起，您访问的表单不存在"
+        format.html { redirect_to root_path}
+      end
     end
   end
 
