@@ -36,7 +36,7 @@
   </div>  
 </div>
 <% if logged_in? && current_user.temp? %>
-<div style="padding:10px 10px;background:#FF8888;color:#FFF;font-size:14px;">
-  您当前使用的是临时帐号，此帐号只能使用抢答网的部分功能，如需体验全部功能，您可以<%= link_to '免费注册一个正式帐号', signup_path %>！
+<div style="padding:10px 10px;background:#FF8888;color:#333;font-size:14px;">
+  您当前使用的是临时帐号,仅供体验之用,此帐号可体验全部功能,但数据不保存,会隔天清空一次.建议免费<%= link_to '注册一个正式帐号', signup_path,:class => 'ag' %>
 </div>
 <% end %>
