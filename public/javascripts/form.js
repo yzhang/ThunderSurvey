@@ -1,35 +1,35 @@
 $(document).ready(function($) { 
-  if ($('#form_title').val() == "未命名表单") {
-	   $('#form_title').css('color','#666')
+  if ($('#form_title').val() == "未命名问卷") {
+	   $('#form_title').css('color','#999')
 	}      
 	
-	if ($('#form_description').val() == "描述一下你的表单吧") {
-	   $('#form_description').css('color','#666')
+	if ($('#form_description').val() == "描述一下你的问卷吧") {
+	   $('#form_description').css('color','#999')
 	}
 
   $('#form_title').  
       focus(function() {   
-      if (this.value == "未命名表单") {
+      if (this.value == "未命名问卷") {
           this.value = "";
-    	  this.style.color = "#000";
+    	  this.style.color = "#333";
       }
   }).blur(function() {
       if (this.value == "") { 
-    	  this.style.color = "#666";
-          this.value = "未命名表单";
+    	  this.style.color = "#999";
+          this.value = "未命名问卷";
       }
   }); 
   
   $('#form_description').  
       focus(function() {   
-      if (this.value == "描述一下你的表单吧") {
+      if (this.value == "描述一下你的问卷吧") {
           this.value = "";
-    		  this.style.color = "#000"
+    		  this.style.color = "#333"
       }
   }).blur(function() {
       if (this.value == "") { 
-    	  this.style.color = "#666";
-          this.value = "描述一下你的表单吧";
+    	  this.style.color = "#999";
+          this.value = "描述一下你的问卷吧";
       }
   });      
 

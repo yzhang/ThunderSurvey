@@ -85,7 +85,8 @@ class FormsController < ApplicationController
         format.html { redirect_to root_path}
       end
     end
-  end
+  end   
+  
 
   # PUT /forms/1
   # PUT /forms/1.xml
@@ -132,7 +133,7 @@ class FormsController < ApplicationController
   
   def thanks
     respond_to do |want|
-      want.html { render :layout => params[:embed] ? 'embed' : 'public' }
+      want.html { render :layout => 'public' }
     end
   end
   

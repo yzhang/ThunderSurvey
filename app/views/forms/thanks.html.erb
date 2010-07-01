@@ -1,6 +1,6 @@
-<h1>非常感谢！</h1>
-<div class='desc'>
-  <p><%= @form.thanks_message %></p> 
+<div class='desc'>                 
+  <p>非常感谢!<br /><%= @form.thanks_message %></p>
+  <p style='text-align:center;'><%=link_to '返回问卷',form_path(@form),:class => 'ag'%> | <%=link_to '创建我的问卷',forms_path,:class => 'ag'%></p> 
 </div>
 
 <p><a href="http://www.51qiangda.com" style="color: #bbb; padding-left: 12px; font-size: 12px;">抢答网技术支持</a></p>

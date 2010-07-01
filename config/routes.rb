@@ -1,5 +1,8 @@
 Confforge::Application.routes.draw do
-  resources :forms do
+  resources :forms do 
+    member do
+      put :theme_setting
+    end
     resources :fields do
       resources :options
     end

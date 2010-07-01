@@ -599,6 +599,7 @@ table.grid tr.highlighted td div.info_item{
 	margin:10px 3px;
 	background:#EFEFEF;
 	color:#666;
+	line-height:21px;
 }  
 
 h4.tip{  

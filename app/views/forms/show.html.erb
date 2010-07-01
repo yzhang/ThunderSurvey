@@ -1,7 +1,7 @@
 <header>
     <h1><%=h @form.title %></h1>   
     <div class='desc'>
-      <%=@form.description%>
+      <%=raw(simple_format(@form.description))%>
     </div>
 </header>
 
