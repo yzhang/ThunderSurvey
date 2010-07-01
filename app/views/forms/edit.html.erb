@@ -25,7 +25,8 @@
         <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
       <div class='new'>
-        <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> 
+        <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %>
+        <%#=link_to('主题',theme_setting_form_path(@form),:class => 'button',:id => 'add_question') %> 
       </div>
     </nav>
   </section>
@@ -64,6 +65,6 @@
   
   <%= text_area_tag :iframe, "<iframe src='#{form_url(@form, :embed => true)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px;", :onfocus => '$(this).focus();$(this).select();', :readonly => true, :id => 'embed' %>  
   <% end %>    
-  将此内容粘贴到您的网页中:<br />
+  将以下代码粘贴到您的网页中:<br />
   <%= text_field_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :style => "width:450px;", :readonly => true, :id => 'simple' %>
 </div>

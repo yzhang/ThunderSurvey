@@ -85,7 +85,8 @@ class FormsController < ApplicationController
         format.html { redirect_to root_path}
       end
     end
-  end
+  end   
+  
 
   # PUT /forms/1
   # PUT /forms/1.xml
