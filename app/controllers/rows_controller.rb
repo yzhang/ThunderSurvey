@@ -81,7 +81,7 @@ class RowsController < ApplicationController
 
   def create
     params[:row][:created_at] = Time.now
-    
+    @embed = params[:embed]
     klass = @form.klass
     @row = klass.new(params[:row])
     

@@ -22,6 +22,11 @@ body{
 	line-height:150%;
 }
 
+.desc p{
+	padding:10px 0;  
+	line-height:150%;
+}
+
 .error{
    color:red;
 }      

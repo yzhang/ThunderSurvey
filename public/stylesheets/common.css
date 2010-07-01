@@ -101,4 +101,26 @@ div.question p{
 #footer span{
 	font-size:10px;
 	color:#999999;
+}    
+
+
+a{color:#0099FF;text-decoration:none;}
+
+.ag:link {
+	color: #0099FF;
+	text-decoration: none;
+}
+a.ag:hover {
+	text-decoration: none;
+	color: #fff;  
+	background:#0099FF;
+}
+.ag:active {
+	text-decoration: none;   
+	color: #fff;  
+	background:#0099FF;
+}
+.ag:visited {
+	text-decoration: none;
+	color: #0099FF;
 }

@@ -133,7 +133,7 @@ class FormsController < ApplicationController
   
   def thanks
     respond_to do |want|
-      want.html { render :layout => params[:embed] ? 'embed' : 'public' }
+      want.html { render :layout => 'public' }
     end
   end
   
