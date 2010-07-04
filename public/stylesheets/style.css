@@ -215,10 +215,10 @@ form.login_form{
 	padding:10px;
 } 
     
-.words{margin-top:60px;padding-left:80px;}
+.words{padding-left:110px;}
 .words,.words h1,.words p{
 	text-align:center;
-	line-height:150%;
+	line-height:200%;
 }
 
 .google{
@@ -352,6 +352,7 @@ a.ag:hover {
 
 /* ---- homepage ----- */   
 .guide{   
+	text-align:center;
   padding:10px;
   margin-bottom: 20px;
 }
@@ -663,11 +664,11 @@ h4.tip{
 .btn {   
    display: inline-block;
    line-height: 1;
-   padding: 9px 60px;
+   padding: 9px 20px;
    text-decoration: none;
    font-weight: bold; 
    font-size:18px;
-   	font-family:'微软雅黑' arial '宋体';       
+   font-family:'微软雅黑' arial '宋体';       
    color: #fff;
    background-color: #0099FF;
    -moz-border-radius: 5px;
@@ -731,4 +732,11 @@ input.btn, button.btn {
 #page .haibao img{
 	background:#ccc;
 	padding:5px;
+}
+
+.feature ul li{
+	margin:30px 10px; 
+	font-size:16px;   
+	font-weight:bold;
+	font-family:'微软雅黑' arial '宋体'; 
 }
