@@ -1,8 +1,5 @@
 Confforge::Application.routes.draw do
-  resources :forms do 
-    member do
-      put :theme_setting
-    end
+  resources :forms do
     resources :fields do
       resources :options
     end
@@ -22,6 +19,7 @@ Confforge::Application.routes.draw do
     member do
       get :thanks
       get :preview
+      post :password
     end
   end
   
