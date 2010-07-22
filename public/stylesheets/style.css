@@ -219,6 +219,12 @@ form.login_form{
 .words,.words h1,.words p{
 	text-align:center;
 	line-height:200%;
+}     
+
+.words ul li{
+	text-align:left;
+	list-style:disc;
+	margin-left:70px;
 }
 
 .google{

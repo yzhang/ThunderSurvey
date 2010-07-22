@@ -154,7 +154,7 @@ div.field {
   padding: 10px;
 }
 
-div.edit:hover {
+.highlight_hover {
   background-color: #FDF2C6;
 }
 

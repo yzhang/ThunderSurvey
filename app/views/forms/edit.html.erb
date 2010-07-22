@@ -35,7 +35,7 @@
     </nav>
   </section>
    
-  <section id="form" >
+  <div id="form" >
     <%= render :partial => 'setting' %>  
     <!-- 表单项 --> 
     <div id="fields">   
@@ -53,7 +53,7 @@
     <div id="field_template" style="display:none;">
       <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field, :row => @row} %>
     </div>
-  </section>  
+  </div>  
   <!-- 表单尾 -->
   <section class='form_preview right'>
     查看实时效果 <%= link_to "#{form_url(@form)}", form_path(@form), :target => '_blank' %>

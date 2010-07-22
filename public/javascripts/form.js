@@ -5,7 +5,16 @@ $(document).ready(function($) {
 	
 	if ($('#form_description').val() == "描述一下你的问卷吧") {
 	   $('#form_description').css('color','#999')
-	}
+	} 
+	
+ // $('.field').hover(
+ //     function () {
+ //       $(this).css("background-color","#FDF2C6");
+ //     }, 
+ //     function () {
+ //       $(this).css("background-color","#fff");
+ //     }
+ //   )
 
   $('#form_title').  
       focus(function() {   

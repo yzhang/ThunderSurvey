@@ -42,7 +42,7 @@ function field_done_editing(e)
     });
 		if(field_div.find('.form #field_include_other').attr('checked')) {
 			input += "<p><input type='checkbox' style='margin-right:5px;'/>";
-			input += "其它 <input type='text' size='30' /></p>";
+			input += "其它 <input type='text' size='35' /></p>";
 		}
   } else if(field_input == 'drop') {
     input += "<select>";
@@ -130,9 +130,11 @@ function field_remove_option(e)
 
 function toggle_opration(e, show){
 	if(show == true) {
-		$(e).find('.opration').show();
+		$(e).find('.opration').show(); 
+	   	$(e).addClass('highlight_hover')
 	} else {
-		$(e).find('.opration').hide();
+		$(e).find('.opration').hide(); 
+	 	$(e).removeClass('highlight_hover')
 	}
 }    
 
