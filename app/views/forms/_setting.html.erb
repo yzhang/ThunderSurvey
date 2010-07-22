@@ -9,30 +9,36 @@
   <div id="field_positions" style="display:none"></div>
 <% end %> 
 
-<!-- 表单通知设定 -->            
+<!-- 表单通知设定 -->
 <div style="display:none;" id="notify_setting"> 
   <%= form_for(@form, :url => form_path(@form, :edit_key => @edit_key, :mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
-  <% if false %>
-    <p>
-      <%= f.label :notify_type, '通知方式' %>
-      <%= f.radio_button :notify_type, 'email', :onclick => '$("#url_notify").hide(); $("#email_notify").show();' %>邮件通知
-      <%= f.radio_button :notify_type, 'url', :onclick => '$("#url_notify").show(); $("#email_notify").hide();' %>URL回调
-    </p>
-  <% end %>
   
   <p id="email_notify">
     <%= f.check_box :email_notify %> 有新回答时，发送邮件通知
   </p>
-  <% if false %>  
-  <p id="url_notify" style="<%= 'display:none;' if f.object.notify_type == 'email' %>">
-    <%= f.label :notify_url, '发送通知到此地址' %>
-    <%= f.text_field :notify_url, :size => '40' %>
-  </p>
-  <% end %>
+  
   <p>
     <%= f.label :thanks_message, '用户提交回答后的感谢信息' %>
     <%= f.text_area :thanks_message, :cols => 42, :rows => 4, :style => "width:350px; height:80px;" %>
   </p>                             
   <%=f.submit '更新',:onclick => "$('#saving').show();" %>  
+  <% end -%>
+</div>
+
+<!-- 表单密码设定 -->
+<div style="display:none;" id="password_setting"> 
+  <%= form_for(@form, :url => form_path(@form, :edit_key => @edit_key, :mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
+  
+  <p>
+    <%= f.label :password, '访问密码' %>(留空则任何人可访问)<br />
+    <%= f.password_field :password, :size => 40 %>
+  </p>
+  
+  <p>
+    <%= f.label :end_at, '报名截止日期' %>（可不填）<br />
+    <%= f.text_field :end_at, :size => 20 %>
+  </p>
+  
+  <%=f.submit '保存',:onclick => "$('#saving').show();" %>
   <% end -%>
 </div>

@@ -16,23 +16,23 @@ class Form
   key :notify_url, String
   key :notify_type, String, :default => 'email'
   key :thanks_message, String, :default => "您的信息已成功提交！"
+  key :password, String, :default => ''
+  key :end_at, Date, :default => nil
+  
+  key :rows_count, Integer, :default => 0
   key :maximum_rows, Integer
   key :height,Integer  
-  key :recommanded,Boolean, :default => false 
+  key :recommanded,Boolean, :default => false
   
   key :created_at, Time, :default => Time.now
   key :updated_at, Time, :default => Time.now
   
   many :fields, :default => 0 
   
-
-  
   validates :title, :presence => true
-  #validates :email_notify, :format => {:with => Authentication.email_regex}, :allow_blank => true
   
   before_create :make_edit_key
   before_save   :update_timestamps  
- 
   
   def id
     self._id.to_s

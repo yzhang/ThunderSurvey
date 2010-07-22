@@ -6,6 +6,10 @@
     $(window).unload(function() {
       $('#form_submit').submit();$('#saving').show();
     });
+    
+    $(function(){
+      $("#form_end_at").datepicker();
+    })
     // 100以下的留给保留字段
     var field_count = <%= @form.max_position + 1 %>;   
     if(field_count < 100) { field_count = 101; }
@@ -18,7 +22,8 @@
 <div id="form_wrapper"> 
   <section class='form_oprate'>
     <nav>
-      <div class='setting'>  
+      <div class='setting'>
+        <%= link_to '密码保护', '#', :onclick => '$("#password_setting").dialog({width:390, height:150, title:"访问设置",modal: true});', :class => 'button' %>
         <%= link_to '回应通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置",modal: true});', :class => 'button' %>
         <%= link_to '问卷嵌入', '#', :onclick => '$("#iframe").dialog({width:490, height:90, title:"问卷嵌入代码",modal: true,
         open: function(){$("#iframe").focus()}});', :class => 'button' %>
@@ -26,7 +31,6 @@
       </div>
       <div class='new'>
         <%=link_to('新问题', '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %>
-        <%#=link_to('主题',theme_setting_form_path(@form),:class => 'button',:id => 'add_question') %> 
       </div>
     </nav>
   </section>

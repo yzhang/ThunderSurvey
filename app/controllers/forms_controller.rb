@@ -20,20 +20,31 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id]) rescue nil
     
     respond_to do |format|
-      if @form && @form.allow_insert?
+      if @form && !@form.password.blank? && session[@form.id] != @form.password
+        format.html { render 'password', :layout => params[:embed] ? 'embed' : 'public'}
+      elsif @form && @form.allow_insert?
         @row = @form.klass.new
         @embed = params[:embed]
-        @order_id = params[:order_id]
-        format.html {  render :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
+        format.html {  render 'show', :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
       else
         flash[:notice] = "对不起，您访问的表单不存在"
         format.html { redirect_to root_path}
       end
-      
-      # format.json  do
-      #   render :json => @form.to_json
-      # end
     end
+  end
+  
+  def password
+    @form = Form.find(params[:id]) rescue nil
+    
+    respond_to do |format|
+      if @form
+        session[@form.id] = params[:password] if params[:password]
+        format.html {redirect_to form_path(@form)}
+      else
+        flash[:notice] = "对不起，您访问的表单不存在"
+        format.html { redirect_to root_path}
+      end
+    end 
   end
 
   # GET /forms/new
@@ -103,6 +114,7 @@ class FormsController < ApplicationController
           render :update do |page|  
             if params[:mod] == 'dialog' 
               page << "$('#notify_setting').dialog('close')"
+              page << "$('#password_setting').dialog('close')"
             end                                             
             page << '$("#saving").hide();'
           end

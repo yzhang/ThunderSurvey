@@ -87,6 +87,9 @@ class RowsController < ApplicationController
     
     respond_to do |want|
       if @form.allow_insert? && @row.save
+        @form.rows_count += 1
+        @form.save(:validate => false)
+
         @form.deliver_notification(@row)
         params = ["form_id=#{@form.id}", "row_id=#{@row.id}","order_id=#{@row.order_id}"].join("&")
         want.js { render :js => "window.location='#{thanks_form_path(@form)}'" }
@@ -146,7 +149,12 @@ class RowsController < ApplicationController
   def destroy
     klass = @form.klass
     @row = klass.find(params[:id])
-    klass.delete(@row._id) if @row
+    
+    if @row
+      klass.delete(@row._id) 
+      @form.rows_count -= 1
+      @form.save(:validate => false)
+    end
     
     respond_to do |want|
       want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => '记录已删除!'}
