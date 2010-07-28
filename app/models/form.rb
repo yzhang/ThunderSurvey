@@ -158,4 +158,11 @@ class Form
     self.updated_at = Time.now
   end                 
   
+  
+  def self.sum(field)
+    m = "function () {emit('sum', this.#{field.to_s})}"
+    r = "function(k, vals) { var sum = 0; for(var i in vals){sum += vals[i];}; return sum;}"
+    res = self.collection.map_reduce(m, r)
+    return res.find().next_document['value'].to_i
+  end    
 end
