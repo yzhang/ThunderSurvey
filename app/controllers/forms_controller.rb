@@ -1,6 +1,6 @@
 class FormsController < ApplicationController
-  before_filter :login_required, :only => [:new, :create, :index, :destroy]
-  before_filter :set_form, :only => [:edit, :update, :thanks]
+  before_filter :login_required, :only => [:new, :create, :index, :destroy, :chart]
+  before_filter :set_form, :only => [:edit, :update, :thanks, :chart]
   before_filter :verify_edit_key, :only => [:edit, :update] 
   before_filter { |c| c.set_section('forms') }
   
@@ -30,6 +30,12 @@ class FormsController < ApplicationController
         flash[:notice] = "对不起，您访问的表单不存在"
         format.html { redirect_to root_path}
       end
+    end
+  end
+  
+  def chart
+    respond_to do |format|
+      format.html
     end
   end
   

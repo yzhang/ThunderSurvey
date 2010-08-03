@@ -116,14 +116,6 @@ class Form
     Mailer.registrant_notification(self, row).deliver
   end
   
-  # 改为报名成功直接返回会议网站
-  # def url_callback(row)
-  #   return if self.notify_url.blank?
-  #   url = URI.parse(self.notify_url)
-  #   res = Net::HTTP.post_form(url, {'form_id'=> self.id, 'row_id'=>row.id,'order_id' => row.order_id }) 
-  #   return  res.body
-  # end
-  
   def sort_fields(positions)
     return if positions.nil? || !positions.is_a?(Hash) || positions.empty?
     
@@ -146,6 +138,10 @@ class Form
   
   def max_position
     self.fields.map {|f| f.position > 65530 ? 0 : f.position}.max
+  end
+  
+  def rows_count
+    @rows_count ||= self.klass.count
   end
   
   private

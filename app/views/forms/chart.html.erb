@@ -1,0 +1,21 @@
+<% @form.fields.each do |field| %>
+  <% next unless field.multi? %>
+  <h3><%= field.name %></h3>
+  <table width="100%">
+    <thead>
+      <tr>
+        <th width="60%">选项</th>
+        <th width="20%">百分比</th>
+        <th width="20%">数量</th>
+      </tr>
+      <% field.options.each do |option| %>
+      <% option_count = @form.klass.count({"f#{field.id}" => Regexp.new(option.value)}) %>
+      <tr>
+        <th width="60%"><%= option.value %></th>
+        <th width="20%"><%= option_count * 100 / @form.rows_count %>%</th>
+        <th width="20%"><%= option_count %></th>
+      </tr>
+      <% end %>
+    </thead>
+  </table>
+<% end %>
