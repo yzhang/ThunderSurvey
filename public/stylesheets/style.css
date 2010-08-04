@@ -749,3 +749,15 @@ input.btn, button.btn {
 #huizong td{
 	text-align:center;
 }
+
+#huizong .percentage {
+	display:block; 
+	float:left;
+	background:green;
+	margin-right: 5px;
+}
+
+.chart {
+	background: url(/images/icons/stats.png) no-repeat top left ;
+	padding-left: 16px;
+}
