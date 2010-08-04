@@ -15,6 +15,7 @@
 <div class='span-24' id='opt'>  
   <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑" class='button' >编辑表单</a>  
   <%=link_to '查看表单',form_path(@form),:target => '_blank',:class => 'button'%>
+  <%=link_to '统计汇总',chart_form_path(@form),:class => 'button'%>
 </div> 
   <div class='span-24 border'>    
     <b><%=@form.klass.count %>条回应</b> |  
@@ -29,7 +30,7 @@
     <tr>      
       <th>时间</th>
       <% @form.fields.each do |field| %>
-      <th><%=truncate field.name,:length => 18%></th> 
+      <th><%=truncate field.name,:length => 12%></th> 
       <% end %>
     </tr>
   </thead>

@@ -1,21 +1,47 @@
+<%= content_for :headers do %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){     
+      $('#opt .button').button();
+     })    
+  </script>
+<% end %>
+
+<div id="page_nav">
+    <span><%=link_to '所有问卷',forms_path%> / <%= @form.title %></span>    
+    <div class='right'>
+    </div>     
+</div>       
+
+<div class='span-24' id='opt'>  
+  <%=link_to '返回结果页',form_rows_path(@form, :edit_key => @form.edit_key),:class => 'button'%>
+</div>         
+
+<div class='span-24' >   
 <% @form.fields.each do |field| %>
   <% next unless field.multi? %>
   <h3><%= field.name %></h3>
-  <table width="100%">
+  <table class='grid' id='huizong' cellspacing="0" cellpadding="0"> 
+    <col width='60%'>
+    <col width='20%'>
+    <col width='20%'>
     <thead>
       <tr>
-        <th width="60%">选项</th>
-        <th width="20%">百分比</th>
-        <th width="20%">数量</th>
-      </tr>
+        <th>选项</th>
+        <th>数量</th> 
+        <th>百分比</th>
+      </tr>                     
+    </thead>
+    <tbody>
       <% field.options.each do |option| %>
       <% option_count = @form.klass.count({"f#{field.id}" => Regexp.new(option.value)}) %>
       <tr>
-        <th width="60%"><%= option.value %></th>
-        <th width="20%"><%= option_count * 100 / @form.rows_count %>%</th>
-        <th width="20%"><%= option_count %></th>
+        <td><%= option.value %></td>                          
+        <td><%= option_count %></td>
+        <td><%= option_count * 100 / @form.rows_count %>%</td>
       </tr>
       <% end %>
-    </thead>
+    <tbody>
   </table>
 <% end %>
+
+</div>

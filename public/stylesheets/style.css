@@ -16,6 +16,13 @@ h1,h2,h3,h4{
 	font-family:'微软雅黑' arial '宋体'; 
 }
 
+h3{
+	 padding:5px 0px;   
+	font-size:14px;
+	border-bottom:1px solid #ccc;
+	margin:20px 10px;
+}
+
 header,section,footer{
 	display:block;
 }   
@@ -266,11 +273,6 @@ form.login_form{
 	text-align:right;
 }   
 
-h3{
-	font-size:17px;
-	padding:5px 0px; 
-}
-
 
 
 .view_form{      
@@ -396,10 +398,10 @@ table.grid thead tr th, table.grid tfoot tr th {
 	background:#EFEFEF;
 	border-bottom:1px solid #E3E3E3;
 	color:#333;
-	font-size: 14px;  
-	font-weight:normal;
+	font-size: 12px;  
+	font-weight:bold;
 	padding: 5px;  
-	text-align:left;
+	text-align:center;
 }
 
 table.grid tbody td { 
@@ -738,4 +740,12 @@ input.btn, button.btn {
 #page .haibao img{
 	background:#ccc;
 	padding:5px;
+}
+
+#huizong{
+	width:80%;
+}             
+
+#huizong td{
+	text-align:center;
 }
