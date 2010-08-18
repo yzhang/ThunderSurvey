@@ -107,13 +107,11 @@ class Form
     case self.notify_type
     when 'email'
       deliver_email_notification(row)
-    # when 'url'
-    #       url_callback(row)
     end
   end
   
   def deliver_email_notification(row)
-    Mailer.registrant_notification(self, row).deliver
+    Mailer.registrant_notification(self, row).deliver if self.user && self.user.email
   end
   
   def sort_fields(positions)

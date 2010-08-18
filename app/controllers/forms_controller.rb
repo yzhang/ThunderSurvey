@@ -35,7 +35,11 @@ class FormsController < ApplicationController
   
   def chart
     respond_to do |format|
-      format.html
+      if @form.klass.count.zero?
+        format.html {redirect_to forms_path,:alert => '此问卷暂无回应'}
+      else
+        format.html
+      end
     end
   end
   

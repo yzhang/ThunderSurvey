@@ -33,11 +33,15 @@
     </thead>
     <tbody>
       <% field.options.each do |option| %>
-      <% option_count = @form.klass.count({"f#{field.id}" => Regexp.new(option.value)}) %>
+      <% option_count = @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + option.value + '(\s|$)')}) %>
+      <% percentage = option_count * 100 / @form.rows_count %>    
       <tr>
         <td><%= option.value %></td>                          
         <td><%= option_count %></td>
-        <td><%= option_count * 100 / @form.rows_count %>%</td>
+        <td style="text-align:left;">
+          <span class="percentage" style="width:<%= percentage %>px;">&nbsp;</span>
+          <%= percentage %>%
+        </td>
       </tr>
       <% end %>
     <tbody>
