@@ -1,10 +1,9 @@
-<header>
-    <h1><%=h @form.title %></h1>   
-    <div class='desc'>
-      <%=raw(simple_format(@form.description))%>
-    </div>
-</header>
-
+<div id='form_header'>
+  <h1><%=h @form.title %></h1>   
+  <div class='desc'>
+    <%=raw(simple_format(@form.description))%>
+  </div>
+</div>
 <% if @form.end_at.blank? || @form.end_at > Date.today %>
   <div id='errors' class='error'></div>        
   <%= form_tag form_rows_path(@form),:class => 'conforge', :remote => true do %>    
@@ -19,5 +18,5 @@
   此问卷已结束，非常感谢您的参与！
 <% end %>
 
-<p><a href="http://www.51qiangda.com" class='support' target='_blank'>抢答网技术支持</a></p>
+<p class='support'>由<a href="http://www.51qiangda.com"  target='_blank'>抢答网</a>提供技术支持</p>
 <div style="clear:both;"></div>

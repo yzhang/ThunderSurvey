@@ -12,10 +12,11 @@ class Form
   key :description, String
   key :user_id, String
   key :edit_key, String
-  key :email_notify, Boolean, :default => true
+  key :email_notify, Boolean, :default => true 
   key :notify_url, String
   key :notify_type, String, :default => 'email'
   key :thanks_message, String, :default => "您的信息已成功提交！"
+  key :publish_response, Boolean, :default => false 
   key :password, String, :default => ''
   key :end_at, Date, :default => nil
   

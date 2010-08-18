@@ -13,6 +13,7 @@
     // 100以下的留给保留字段
     var field_count = <%= @form.max_position + 1 %>;   
     if(field_count < 100) { field_count = 101; }
+    
   </script>
   <style type="text/css" media="screen">
     .container {width: 680px; margin:0px auto;padding:0px;}
@@ -23,8 +24,8 @@
   <section class='form_oprate'>
     <nav>
       <div class='setting'>
-        <%= link_to '密码保护', '#', :onclick => '$("#password_setting").dialog({width:390, height:150, title:"访问设置",modal: true});', :class => 'button' %>
-        <%= link_to '回应通知', '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置",modal: true});', :class => 'button' %>
+        <%= link_to '权限设置', '#', :onclick => '$("#password_setting").dialog({width:390, height:200, title:"访问设置",modal: true});', :class => 'button' %>
+        <%= link_to '新回应确认', '#', :onclick => '$("#notify_setting").dialog({width:390, height:280, title:"邮件通知设置",modal: true});', :class => 'button' %>
         <%= link_to '问卷嵌入', '#', :onclick => '$("#iframe").dialog({width:490, height:90, title:"问卷嵌入代码",modal: true,
         open: function(){$("#iframe").focus()}});', :class => 'button' %>
         <%= link_to('保存',   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
@@ -60,7 +61,7 @@
   </section>
 </div>
 
-<div id="iframe" style="display:none;"> 
+<div id="iframe" style="display:none;" class='dialog'> 
   <% if false %>
   <p>
     <%= radio_button_tag 'embed', '1', true, :onclick => '$("#embed").show();$("#simple").hide();' %> <%= link_to '超简风格，无边框', preview_form_path(@form, :embed => true), :target => '_blank', :style => 'color:blue;' %>
@@ -68,7 +69,9 @@
   </p>
   
   <%= text_area_tag :iframe, "<iframe src='#{form_url(@form, :embed => true)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :cols => 42, :rows => 5, :style => "width:350px; height:100px;", :onfocus => '$(this).focus();$(this).select();', :readonly => true, :id => 'embed' %>  
-  <% end %>    
-  将以下代码粘贴到您的网页中:<br />
+  <% end %>   
+  <p> 
+  <b>将以下代码粘贴到您的网页中:</b><br />
   <%= text_field_tag :iframe, "<iframe src='#{form_url(@form)}?embed=true' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :style => "width:450px;", :readonly => true, :id => 'simple' %>
+  </p>
 </div>

@@ -11,33 +11,39 @@
 <% end %> 
 
 <!-- 表单通知设定 -->
-<div style="display:none;" id="notify_setting"> 
+<div style="display:none;" id="notify_setting" class='dialog'> 
   <%= form_for(@form, :url => form_path(@form, :edit_key => @edit_key, :mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
   
   <p id="email_notify">
-    <%= f.check_box :email_notify %> 有新回答时，发送邮件通知
+    <%= f.check_box :email_notify %> <b>有新回应时，发邮件通知我</b>
   </p>
   
   <p>
     <%= f.label :thanks_message, '用户提交回答后的感谢信息' %>
     <%= f.text_area :thanks_message, :cols => 42, :rows => 4, :style => "width:350px; height:80px;" %>
-  </p>                             
+  </p>  
+  <p>
+    <%= f.check_box :publish_response,:value => false %> <b>公开投票结果</b><br />
+    <span class="prompt">用户提交成功后可查看结果</span>
+  </p>                           
   <%=f.submit '更新',:onclick => "$('#saving').show();" %>  
   <% end -%>
 </div>
 
 <!-- 表单密码设定 -->
-<div style="display:none;" id="password_setting"> 
+<div style="display:none;" id="password_setting" class='dialog'> 
   <%= form_for(@form, :url => form_path(@form, :edit_key => @edit_key, :mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
   
   <p>
-    <%= f.label :password, '访问密码' %>(留空则任何人可访问)<br />
-    <%= f.password_field :password, :size => 40 %>
+    <%= f.label :password, '访问密码' %><br />
+    <%= f.password_field :password, :size => 40 %><br />
+    <span class="prompt">留空则任何人可访问</span>
   </p>
   
   <p>
-    <%= f.label :end_at, '报名截止日期' %>（可不填）<br />
-    <%= f.text_field :end_at, :size => 20 %>
+    <%= f.label :end_at, '报名截止日期' %><br />
+    <%= f.text_field :end_at, :size => 20 %><br />
+    <span class="prompt">可不填</span>
   </p>
   
   <%=f.submit '保存',:onclick => "$('#saving').show();" %>

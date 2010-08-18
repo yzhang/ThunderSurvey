@@ -104,7 +104,7 @@ input.inputFocus {
 	height:400px;
 }
 
-#form p,.setting_form p{
+#form p{
 	margin-bottom:5px;
 }                    
 
@@ -115,7 +115,7 @@ input.inputFocus {
 .form_oprate{  
 	position:relative;     
 	background:#56ACF2;
-	height:30px;
+	height:24px;
 	padding:5px 10px;
 	border-bottom:1px solid #eee;
 	-moz-border-radius-topleft:5px;
@@ -171,7 +171,8 @@ div.field {
 	height:60px;
 }          
 
-.q_title{     
+.q_title{ 
+	font-weight:bold;
 	margin:0px; 
 	padding:0px;
 }   
@@ -199,9 +200,6 @@ div.field {
 	float:right;
 }
 
-form label{
-	font-size:12px;
-}
 
 #saving {
 	-moz-border-radius-bottomleft:4px;
@@ -214,4 +212,17 @@ form label{
 	right:50%;
 	top:0;
 	z-index:2;
+}
+
+.dialog{
+	font-size:12px;
+}
+
+.dialog p{
+	margin-bottom:15px;
+}      
+
+.dialog label{
+	font-size:12px;
+	font-weight:bold;
 }
