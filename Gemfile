@@ -14,9 +14,10 @@ gem "rails", "3.0.0.beta3"
 
 gem "oauth"
 gem "json"
-gem "nokogiri"
+gem "nokogiri"            
 
 gem "ekuseru"
 gem "fastercsv"
 
-gem 'newrelic_rpm', :require => false
+gem 'newrelic_rpm', :require => false 
+

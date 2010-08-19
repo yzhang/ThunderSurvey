@@ -1,8 +1,8 @@
 require 'digest/sha1'
 require 'net/http'
 require 'uri'
-
-class Form
+    
+class Form           
   include ActiveModel::Validations
   
   include MongoMapper::Document
@@ -19,6 +19,7 @@ class Form
   key :publish_response, Boolean, :default => false 
   key :password, String, :default => ''
   key :end_at, Date, :default => nil
+  key :logo,String
   
   key :rows_count, Integer, :default => 0
   key :maximum_rows, Integer
@@ -34,7 +35,7 @@ class Form
   
   before_create :make_edit_key
   before_save   :update_timestamps  
-  
+    
   def id
     self._id.to_s
   end

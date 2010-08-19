@@ -1,6 +1,6 @@
 class FormsController < ApplicationController
   before_filter :login_required, :only => [:new, :create, :index, :destroy, :chart]
-  before_filter :set_form, :only => [:edit, :update, :thanks, :chart]
+  before_filter :set_form, :only => [:edit, :update, :thanks, :chart,:design]
   before_filter :verify_edit_key, :only => [:edit, :update] 
   before_filter { |c| c.set_section('forms') }
   
@@ -31,6 +31,15 @@ class FormsController < ApplicationController
         format.html { redirect_to root_path}
       end
     end
+  end    
+  
+  def design     
+          
+    respond_to do |wants|
+      wants.html { render :layout => "simple" }
+    end
+   
+    
   end
   
   def chart

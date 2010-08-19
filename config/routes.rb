@@ -17,6 +17,7 @@ Confforge::Application.routes.draw do
     end
     
     member do
+      get :design
       get :thanks
       get :preview
       get :chart

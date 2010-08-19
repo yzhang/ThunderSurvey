@@ -12,7 +12,8 @@ body{
 	margin:20px auto;
 	width:45em;
 	background:#fff;
-	border:1px solid #ccc;
+	border:1px solid #ccc; 
+	border-color:#CCCCCC #999999 #999999 #CCCCCC;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }

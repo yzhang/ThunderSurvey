@@ -24,7 +24,7 @@
         <td><%= form.updated_at.to_date%></td> 
         <td class='opt'> 
           <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', '<%= form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=800,left=0,top=0');" title="new form" class='ag' >编辑</a> 
-          <%= link_to '预览', form_path(form), :class => 'ag', :target => '_blank' %>
+          <%= link_to '查看', form_path(form), :class => 'ag', :target => '_blank' %>
           <%= link_to '报表', chart_form_path(form), :class => 'chart', :target => '_blank' %>
           <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => '你确定删除此问卷嘛?', :method => 'delete',:class => 'ag' %>
         </td>
