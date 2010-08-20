@@ -1,4 +1,4 @@
-<% next unless field.multi? %> 
+<% if field.multi? %> 
 <div style='margin:20px 10px'>
 <b><%= field.name %></b>
 <table class='grid' id='huizong' cellspacing="0" cellpadding="0"> 
@@ -28,3 +28,4 @@
   <tbody>
 </table>
 </div> 
+<% end %>
