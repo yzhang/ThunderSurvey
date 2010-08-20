@@ -32,7 +32,6 @@ body{
 }      
 
 form label{  
-	display:block;
 	color:#000;
 	font-weight:bold;
 }
