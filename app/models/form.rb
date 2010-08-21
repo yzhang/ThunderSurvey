@@ -113,7 +113,7 @@ class Form
   end
   
   def deliver_email_notification(row)
-    Mailer.registrant_notification(self, row).deliver if self.user && self.user.email
+    Mailer.registrant_notification(self, row).deliver if self.user && self.user.email && self.email_notify
   end
   
   def sort_fields(positions)
