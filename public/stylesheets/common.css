@@ -34,9 +34,12 @@ ul li{
 body{       
 	font-family:Arial, sans-serif;
 	font-size:12px;     
-	color:#333;  
-/*     background:url(/images/bg/header.jpg) top repeat-x #FDFDFD; */
-}     
+	color:#333; 
+}                
+
+.container{
+ 	background:url(/images/bg/bg.png);         
+}
 
 div.field {
   margin: 10px 0;
@@ -115,8 +118,7 @@ div.question p{
 }
 
 #footer{              
-	margin:10px 0;            
-	padding:10px 0;
+	background:#fff;  
 	text-align:center;
 }  
 
