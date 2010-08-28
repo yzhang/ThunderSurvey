@@ -176,9 +176,10 @@ a.ag:hover {
 /*  grid table */
 
 table.grid thead tr th, table.grid tfoot tr th {  
-	background:#EFEFEF;
-	border-bottom:1px solid #E3E3E3;
-	color:#333;
+	border-bottom:1px solid #E3E3E3;              
+	border-top:1px solid #E3E3E3; 
+	background:#F4F8FF;
+	color:#0054B4;
 	font-size: 12px;  
 	font-weight:bold;
 	padding: 5px;  
@@ -188,7 +189,7 @@ table.grid thead tr th, table.grid tfoot tr th {
 table.grid tbody td { 
 	color: #666; 
 	vertical-align: top; 
-	border-bottom:1px dotted #CCCCCC;
+	border-bottom:1px solid #efefef;
 } 
 
 table.big{
@@ -199,7 +200,7 @@ table.big tbody td {
 	color: #6B7C70;     
 	padding:5px;
 	vertical-align: top; 
-	border-bottom:1px dotted #CCCCCC;
+	border-bottom:1px solid #efefef;
 }        
 
 .tablenav{  

@@ -89,8 +89,8 @@ input.inputFocus {
 
              
 #form{   
-	border-left:1px solid #ccc;  
-	border-right:1px solid #ccc;  
+	border-left:2px solid #E1E8F0;  
+	border-right:2px solid #E1E8F0;  
  	background:#fff;    
 	min-height:400px;
 	position:relative;

@@ -1,8 +1,8 @@
 <div class="field edit" onmouseover="toggle_opration(this, true);" onmouseout="toggle_opration(this, false);" id="<%= field.id %>">
   <div class="opration" style="display:none;">
     <% if field.intern.blank? -%>  
-      <%= link_to("编辑", "#", :onclick => "field_start_editing(this);return false;", :class => 'ag') %> | 
-      <%= link_to("复制", "#", :onclick => "form_dup_field(this);return false;", :class => 'ag') %> |
+      <%= link_to("编辑", "#", :onclick => "field_start_editing(this);return false;", :class => 'ag') %>  
+      <%= link_to("复制", "#", :onclick => "form_dup_field(this);return false;", :class => 'ag') %> 
       <%= link_to("删除", form_field_path(parent, field.id, :edit_key => parent.edit_key),
                         :update => "flash",
                         :method => "delete",
