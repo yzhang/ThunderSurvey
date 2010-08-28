@@ -13,18 +13,26 @@
     </div>     
 </div>
 <div class='span-24' id='opt'>  
-  <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑" class='button' >编辑表单</a>  
-  <%=link_to '查看表单',form_path(@form),:target => '_blank',:class => 'button'%>
+   
+  
   <%=link_to '统计汇总',chart_form_path(@form),:class => 'button'%>
 </div> 
   <div class='span-24 border'>    
-    <b><%=@form.klass.count %>条回应</b> |  
-     <%=link_to '导出为文本文件',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
-    <%=link_to '导出为Excel文件',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>    
+    <b></b> |  
+
   </div>
 <% end %>     
-<span style='color:#999;'>操作提示:双击回应条目可展开</span>
-<div class='span-24' id='results'>     
+
+<div id='results'>      
+  <div class='section_nav'>
+    <div class='section_title'>
+       所有回应 － <%=@form.klass.count %>条
+    </div>
+    <div class='section_button'> 
+       <%=link_to '导出为文本文件',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
+      <%=link_to '导出为Excel文件',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>
+    </div>
+  </div>
 <table id='rows' cellspacing="0" cellpadding="0" class='grid'>  
   <thead>
     <tr>      
@@ -69,7 +77,18 @@
     </table> 
      </div>     
     <div style='text-align:center;'>
-      <%=link_to '编辑',edit_form_row_path(@form,row, :edit_key => @form.edit_key),:class => 'button'%>  <%=link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete',:class => 'button'%>
+      <%=link_to '编辑',edit_form_row_path(@form,row, :edit_key => @form.edit_key),:class => 'ag'%>  <%=link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => '你确定删除此记录嘛?', :method => 'delete',:class => 'ag'%>
     </div>
 </div>    
+<% end %>
+
+<% content_for :sidebar do %>
+  <div class='box'>
+    <ul>
+      <li><%=link_to '查看表单',form_path(@form),:target => '_blank'%> </li> 
+      <li><a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑">编辑表单</a>  </li>
+      <li><%= link_to '报表', chart_form_path(@form), :class => 'chart'%></li>
+    </ul>
+  </div> 
+  <span style='color:#999;'>操作提示:双击回应条目可展开</span>    
 <% end %>

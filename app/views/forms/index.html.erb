@@ -9,38 +9,46 @@
 
 
 <div class='span-18'> 
+  <div class='section_nav'>
+    <div class='section_title'>
+       所有表单
+    </div>
+    <div class='section_button'>
+        <a class='btn' href="#"  onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form"  >创建问卷</a>  
+    </div>
+  </div>
   <% if @forms.empty? %>
     <p style="font-size:14px;">您还没有创建任何问卷，现在就<%= link_to '创建您的第一个问卷', '#', :onclick => "window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" %>吧！</p>
   <% end %>
-  <table class='grid big' border="0" cellspacing="0" cellpadding="0"> 
-    <col width='55%'>
+  <table  id='rows' class='grid big' border="0" cellspacing="0" cellpadding="0"> 
+    <col width='65%'>
     <col width='15%'>
-    <col width='30%'>
+    <col width='20%'>
     <tbody> 
       <% @forms.each do |form| %> 
       <tr id="<%=form.id%>">        
-        <td class='title'><%=link_to form.title,form_rows_path(form, :edit_key => form.edit_key) %><span><%= form.klass.count %>回应 <%= '>>' unless form.klass.count == 0%></span>
+        <td><a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', '<%= form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=800,left=0,top=0');" title="new form" class='ag' >编辑</a> <%=link_to form.title,form_rows_path(form, :edit_key => form.edit_key),:class => 'name' %>
         </td>                                                                                 
         <td><%= form.updated_at.to_date%></td> 
-        <td class='opt'> 
-          <a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', '<%= form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=800,left=0,top=0');" title="new form" class='ag' >编辑</a> 
-          <%= link_to '查看', form_path(form), :class => 'ag', :target => '_blank' %>
-          <%= link_to '报表', chart_form_path(form), :class => 'chart', :target => '_blank' %>
+        <td class='opt'>  
+          <%= link_to '查看表单', form_path(form), :class => 'ag', :target => '_blank' %>
+          <%#= link_to '报表', chart_form_path(form), :class => 'chart', :target => '_blank' %>
           <%= link_to '删除', form_path(form, :edit_key => form.edit_key), :confirm => '你确定删除此问卷嘛?', :method => 'delete',:class => 'ag' %>
         </td>
       </tr>
       <% end %>       
     </tbody>
     </table>
+    <div class='paginate'>
+<%=raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻') %> 
+    </div>
 </div>
 
-<div class='span-6 last sidebar'>
-  <a class='btn create' href="#"  onclick="window.open('/forms/new', 'StatusBar', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="new form"  >创建问卷</a>
+<% content_for :sidebar do %>
   <div class='box'>
-    <h4 class='tip'>小提示</h4>
-    <p style="font-size: 14px;"><strong>需要组织活动，销售门票？<br />
-       <a href="http://www.51qiangzuo.com">试试我们新的抢座网吧！</a></strong>
-    </p>
+    <span class='title'>小提示</span><br />
+    需要组织活动，销售门票？<br />
+       <a href="http://www.51qiangzuo.com">试试我们新的抢座网吧！</a>
   </div>
   <div class='box'>
     抢答所有的服务都是免费的,如果您觉的抢答对您有所帮助,请告诉你的朋友,帮助推广抢答!
@@ -51,9 +59,8 @@
       <li><a href="http://www.kaixin001.com/repaste/share.php?rurl=http://www.51qiangda.com&rcontent=抢答网,一款简单好用的问卷调查工具,我用过,觉得很好，推荐下!&rtitle=抢答网,一款简单好用的问卷调查工具" class='sprite-kaixing001 sprite' target ='_blank'>开心网</a></li>
       <li><a href="http://t.163.com/article/user/checkLogin.do?link=http://www.51qiangda.com&source=抢座网&info=http://www.51qiangda.com" class='sprite-163 sprite'>网易微博</a></li>
     </ul>
-  </div> 
-</div>    
-
+  </div>
+<% end %>
   
 <%= content_for :pagenav do -%>  
 <div id="page_nav">

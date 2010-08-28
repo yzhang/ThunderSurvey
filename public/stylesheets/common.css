@@ -12,7 +12,7 @@ p{
 }   
 
 h1,h2,h3,h4{ 
-	color:#333;
+	color:#666;
 	font-family: 'Microsoft YaHei' '微软雅黑' '雅黑' arial '宋体';  
 }
 
@@ -20,7 +20,6 @@ h3{
 	padding:5px 0px;   
 	font-size:14px;
 	border-bottom:1px solid #ccc;
-	margin:20px 10px;
 }
 
 header,section,footer{
@@ -35,11 +34,8 @@ body{
 	font-family:Arial, sans-serif;
 	font-size:12px;     
 	color:#333; 
-}                
-
-.container{
- 	background:url(/images/bg/bg.png);         
-}
+	background:#F0F4F4;
+}                    
 
 div.field {
   margin: 10px 0;
@@ -117,8 +113,8 @@ div.question p{
 	background:#FFFF99;
 }
 
-#footer{              
-	background:#fff;  
+#footer{           
+	margin:20px 0px;
 	text-align:center;
 }  
 
@@ -128,25 +124,31 @@ div.question p{
 }    
 
 
-a{color:#0099FF;text-decoration:none;}
+a{color:#3F6A97;text-decoration:none;}
 
 .ag:link {
-	color: #0099FF;
-	text-decoration: none;
-}
+	color: #fff;  
+	background:#79B0F3;
+	border:1px solid #3D88CF;
+	text-decoration: none; 
+	font-size:10px;
+	padding:3px 5px;
+}       
+
 a.ag:hover {
 	text-decoration: none;
-	color: #fff;  
-	background:#0099FF;
+	color: #fff; 
+	background:#0099FF; 
 }
 .ag:active {
 	text-decoration: none;   
 	color: #fff;  
-	background:#0099FF;
 }
-.ag:visited {
-	text-decoration: none;
-	color: #0099FF;
+.ag:visited {            
+	background:#79B0F3;  	
+	text-decoration: none;   
+	border:1px solid #3D88CF;   
+	color: #fff;
 }
 
 /*  huizong */
@@ -194,7 +196,7 @@ table.big{
 }
 
 table.big tbody td {  
-	color: #666;     
+	color: #6B7C70;     
 	padding:5px;
 	vertical-align: top; 
 	border-bottom:1px dotted #CCCCCC;
@@ -223,4 +225,25 @@ table.grid tbody td.opt a {
 
 #spinner{
 	display:none;
+}
+
+.box{
+	background:#fff;
+}
+
+.box .title{
+	color:#666;
+	padding:10px 0;
+	font-size:14px;
+	font-weight:bold;
+}
+
+.name{  
+	font-weight:bold;
+	color:#024373;
+}
+
+.paginate{           
+	margin:10px;
+	text-align:center;
 }

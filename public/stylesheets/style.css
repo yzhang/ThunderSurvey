@@ -1,9 +1,8 @@
-                
-
-.header{   
+.header{      
+	padding-top:10px;
 	height:40px;
-	width:100%;     
-	margin-bottom:50px;
+	width:986px;
+	margin:0 auto 20px;
 	} 
 	
 .logo{   
@@ -15,8 +14,9 @@ form label{
 	font-weight:bold;
 }    
 
-.btn{
-	display:block;
+.container{
+	border:2px solid #E1E8F0;
+	background:#fff;
 }
 
 /* --- login ---*/
@@ -247,27 +247,6 @@ form.login_form{
 
 /* ---- href ------*/ 
 
-a{color:#0099FF;text-decoration:none;}
-
-.ag:link {
-	color: #0099FF;
-	text-decoration: none;
-}
-a.ag:hover {
-	text-decoration: none;
-	color: #fff;  
-	background:#0099FF;
-}
-.ag:active {
-	text-decoration: none;   
-	color: #fff;  
-	background:#0099FF;
-}
-.ag:visited {
-	text-decoration: none;
-	color: #0099FF;
-}
-
 .my {
 	color: #FFFFFF;
 	text-decoration: none;
@@ -464,7 +443,10 @@ div.info_item{
 	padding:5px;
 	background:#EFEFEF;
 }    
-
+     
+#rows{
+	width:100%;
+}
 
 #rows td{  
 	cursor:pointer;  
@@ -501,7 +483,7 @@ table.grid{
 }
 
 
-table.grid tr.highlighted td div.info_item{
+table.grid tr.highlighted{
 	background:#FFFDD0;
 }
 
@@ -520,7 +502,7 @@ table.grid tr.highlighted td div.info_item{
 
 /* --- box ----*/
 .box{              
-	margin:10px 3px;
+	margin:0px 3px;
 	background:#EFEFEF;
 	color:#666;
 	line-height:21px;
@@ -563,7 +545,6 @@ h4.tip{
 /*  -- home -- */
 .intro{            
 	line-height:0px;
-	border-bottom:1px solid #ccc;
 }
 
 #logos{
@@ -585,22 +566,17 @@ h4.tip{
 
 /* --- btn ---*/
 .btn {   
-   display: inline-block;
    line-height: 1;
-   padding: 9px 20px;
+   padding:4px 10px;
    text-decoration: none;
    font-weight: bold; 
-   font-size:18px;
+   font-size:14px;
    font-family:'微软雅黑' arial '宋体';       
    color: #fff;
-   background-color: #0099FF;
-   -moz-border-radius: 5px;
-   -webkit-border-radius: 5px;
-   -khtml-border-radius: 5px;
-   border-radius: 5px;
+   background-color:#005DDB;
 }  
 
-a.btn{
+a.btn{                      
   	text-decoration: none;    
 }   
 
@@ -619,9 +595,6 @@ input.btn, button.btn {
    height: 5px;
 }       
 
-.create{
-  margin-left:20px;
-}
 
 .prompt{
 	color:#333;
@@ -655,4 +628,24 @@ input.btn, button.btn {
 #page .haibao img{
 	background:#ccc;
 	padding:5px;
+}
+
+
+/* --  section ----*/
+.section_nav{
+	height:27px;     
+	border-bottom:2px solid #efefef;
+}              
+
+.section_title{   
+	color:#006;
+	font-weight:bold;
+	font-size:14px;
+	float:left;    
+	padding:3px;
+}
+
+.section_button{
+	padding-top:5px;
+	float:right;
 }
