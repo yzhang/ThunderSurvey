@@ -9,13 +9,18 @@
 </div>
 <% end %>
 
-<div class='prepend-6' >
 <%= form_for [@form, @row], :url => form_row_path(@form, @row), :remote => true do |f| %>
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
   <% end %>
      <%= f.submit "更新",:class => 'submit', :onclick => "remote_action(this);" %> <%= image_tag('ajax-loader.gif',:id => 'spinner') %> 
     <% end %>
+
+
+<% content_for :sidebar do %>  
+ <div class='box'>
+   <ul class='sidebar_nav'>
+     <li><%=link_to '返回结果页',form_rows_path(@form, :edit_key => @form.edit_key),:class => 'button'%>       </li>
+   </ul>
  </div>
-
-
+<% end %>

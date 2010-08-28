@@ -24,10 +24,15 @@
     <col width='65%'>
     <col width='15%'>
     <col width='20%'>
+    <thead>
+      <th>名称</th>
+      <th>最后更新</th>
+      <th>操作</th>
+    </thead>
     <tbody> 
       <% @forms.each do |form| %> 
       <tr id="<%=form.id%>">        
-        <td><a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', '<%= form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=800,left=0,top=0');" title="new form" class='ag' >编辑</a> <%=link_to form.title,form_rows_path(form, :edit_key => form.edit_key),:class => 'name' %>
+        <td><a href="#" onclick="window.open('<%=edit_form_path(form, :edit_key => form.edit_key)%>', '<%= form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=800,left=0,top=0');" title="new form" class='ag' >编辑</a> <%=link_to form.title,form_rows_path(form, :edit_key => form.edit_key),:class => 'name' %><div class='count'><%= form.klass.count %>回应 <%= '>>' unless form.klass.count == 0%></div>
         </td>                                                                                 
         <td><%= form.updated_at.to_date%></td> 
         <td class='opt'>  

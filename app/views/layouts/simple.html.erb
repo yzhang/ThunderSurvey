@@ -19,7 +19,11 @@
       $('.button').button();
      })    
   </script>
-
+  <style type="text/css" media="screen">
+    body{
+      background:url(/images/bg/mini_bar_bg.jpg) repeat-x #EFEFEF;
+    }
+  </style>
   <%= yield :headers %>                                                   
   <title>抢答网－<%= @form.nil? ? (@page_title||'新一代问卷系统，让您的表单与众不同') : @form.title %></title>
 </head>

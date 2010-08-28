@@ -480,11 +480,16 @@ div.time{
 
 table.grid{
 	margin:auto;
+}   
+
+#rows thead th{
+	background:#F4F8FF;
+	color:#0054B4;
 }
 
 
 table.grid tr.highlighted{
-	background:#FFFDD0;
+	background:#FDFBEA;
 }
 
 .grid td.name{
@@ -648,4 +653,20 @@ input.btn, button.btn {
 .section_button{
 	padding-top:5px;
 	float:right;
+}
+
+.sidebar_nav li a{
+	display:block;
+	padding:2px 3px;
+} 
+
+.sidebar_nav li a:hover{ 
+	color:#fff;
+	text-decoration: none; 
+	background:#0099FF;
+}
+
+.count{
+	display:inline;
+	margin-left:10px;
 }

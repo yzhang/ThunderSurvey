@@ -52,7 +52,8 @@
   </tr>      
   <% end -%>
   </tbody>
-</table>  
+</table>   
+  <div style='color:#999;text-align:right;'>操作提示:双击回应条目可展开</div>   
 </div>             
 <div style='clear:both'></div>
 <div style='margin:10px;'>
@@ -84,11 +85,11 @@
 
 <% content_for :sidebar do %>
   <div class='box'>
-    <ul>
+    <ul class='sidebar_nav'>
       <li><%=link_to '查看表单',form_path(@form),:target => '_blank'%> </li> 
       <li><a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑">编辑表单</a>  </li>
-      <li><%= link_to '报表', chart_form_path(@form), :class => 'chart'%></li>
+      <li><%= link_to '报表', chart_form_path(@form)%></li>
     </ul>
   </div> 
-  <span style='color:#999;'>操作提示:双击回应条目可展开</span>    
+ 
 <% end %>
