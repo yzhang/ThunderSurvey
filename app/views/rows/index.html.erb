@@ -44,22 +44,21 @@
   </thead>
   <tbody>  
  <% @rows.each do |row| %>
-  <tr id="<%=row.id%>">     
-    <td><div class='info_item time'><%=row.created_at.to_time.to_formatted_s(:datetime_short)%></div></td>          
+  <tr id="<%=row.id%>">              
     <% @form.fields.each do |field| %>         
       <td><div class='info_item'><%=row.send("f#{field.id}") %></div></td>
-    <% end -%>
+    <% end -%>              
+      <td><div class='info_item time'><%=row.created_at.to_time.to_formatted_s(:datetime_short)%></div></td> 
   </tr>      
   <% end -%>
   </tbody>
 </table>   
-  <div style='color:#999;text-align:right;'>操作提示:双击回应条目可展开</div>   
 </div>             
 <div style='clear:both'></div>
 <div style='margin:10px;'>
   <%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>   
 </div>
-   
+<div class='tip'>操作提示:双击回应条目可展开</div>      
 <% @rows.each do |row| %>                    
 <div id="row_<%=row.id%>"  style="display:none;">
   <h3>回应详细</h3>           

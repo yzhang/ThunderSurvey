@@ -6,9 +6,7 @@
   </script>
 <% end %>
       
-<div class='span-24' >    
-  <%= render :partial => 'chart',:collection => @form.fields,:as => :field %>
-</div> 
+<%= render :partial => 'chart',:collection => @form.fields,:as => :field %>
 
 <% content_for :sidebar do %>  
 <div class='box'>

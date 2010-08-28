@@ -482,7 +482,7 @@ table.grid{
 	margin:auto;
 }   
 
-#rows thead th{
+#rows thead th,#huizong thead th{
 	background:#F4F8FF;
 	color:#0054B4;
 }
@@ -669,4 +669,9 @@ input.btn, button.btn {
 .count{
 	display:inline;
 	margin-left:10px;
+}
+
+.tip{
+	text-align:right;
+	color:#999;
 }

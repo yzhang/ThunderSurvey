@@ -1,6 +1,6 @@
 class HomeController < ApplicationController     
   
-  before_filter :redirect_if_loggin
+  before_filter :redirect_if_loggin,:only => [:index,:demo]
   
   def index             
     @section = 'home' 
@@ -15,7 +15,11 @@ class HomeController < ApplicationController
     respond_to do |wants|
       wants.html {redirect_to forms_url}
     end
-  end 
+  end   
+  
+  def intro
+    
+  end
   
   protected
   

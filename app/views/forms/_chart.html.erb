@@ -2,9 +2,9 @@
 <div style='margin:20px 10px'>
 <b><%= field.name %></b>
 <table class='grid' id='huizong' cellspacing="0" cellpadding="0"> 
-  <col width='60%'>
+  <col width='40%'>
   <col width='20%'>
-  <col width='20%'>
+  <col width='40%'>
   <thead>
     <tr>
       <th>选项</th>
@@ -20,7 +20,7 @@
       <td><%= option.value %></td>                          
       <td><%= option_count %></td>
       <td style="text-align:left;">
-        <span class="percentage" style="width:<%= percentage %>px;">&nbsp;</span>
+        <span class="percentage" style="width:<%= percentage*2 %>px;">&nbsp;</span>
         <%= percentage %>%
       </td>
     </tr>
@@ -28,6 +28,4 @@
   <tbody>
 </table>
 </div>    
-<% else %>
-没有可显示的内容
 <% end %>
