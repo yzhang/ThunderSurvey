@@ -31,8 +31,6 @@ class Form
   
   many :fields, :default => 0 
   
-  validates :title, :presence => true
-  
   before_create :make_edit_key
   before_save   :update_timestamps  
     
