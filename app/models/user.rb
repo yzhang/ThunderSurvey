@@ -38,10 +38,10 @@ class User
   before_create :make_activation_code
   before_create :update_timestamps  
   
-  validates :login, :presence => true, :length => {:maximum => 100}
-  validates :email, :presence => true, :length => {:minimum => 6},
-        :format => {:with => Authentication.email_regex}
-        
+  validates_presence_of :login, :message => '用户名不能为空'
+  validates_presence_of :email, :message => 'Email不能为空'
+  validates_format_of   :email, :with => Authentication.email_regex, :message => 'Email格式不正确'
+
   validate :make_email_unique
   
   many :forms
