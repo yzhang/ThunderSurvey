@@ -34,7 +34,6 @@ Confforge::Application.routes.draw do
     end 
     resources :users
     resources :pages 
-    resources :feedbacks
   end
 
   match '/logout' => 'sessions#destroy', :as => :logout
