@@ -2,15 +2,12 @@
 source 'http://rubygems.org'
 
 gem 'agnostic-will_paginate', :require => 'will_paginate'
+gem "mongo", "1.0.7"
+gem "plucky", "0.3.4"
+gem "mongo_mapper", "0.8.3"
+gem "rails", "3.0.0.rc2"
+gem "bson_ext"
 gem 'ar_mailer_rails3', "2.1.9"
-
-# gem "mongo_ext", "0.19.3"
-gem "mongo_mapper", "0.7.1"   
-gem "mongo_ext", "0.19.1"     
-
-gem "mongo_mapper-rails3", "0.7.0.1", :require => "mongo_mapper"
-
-gem "rails", "3.0.0.beta3"
 
 gem "oauth"
 gem "json"
