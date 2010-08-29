@@ -17,7 +17,8 @@ namespace :deploy do
   desc "Custom after update code to put production database.yml in place."
   task :copy_configs, :roles => :app do
     run "cp #{deploy_to}/shared/mongo_mapper.rb #{current_path}/config/initializers/mongo_mapper.rb"
-    run "cd #{deploy_to}/current && bundle install"
+    run "cd #{deploy_to}/current/vendor && ln -s #{deploy_to}/shared/bundle bundle"
+    run "cd #{deploy_to}/current && bundle install --deployment"
   end
   
   desc "Long deploy will update the code migrate the database and restart the servers"
