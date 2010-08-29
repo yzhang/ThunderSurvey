@@ -53,7 +53,6 @@ class Form
   def user_klass
     klass ||= Class.new
     klass.send(:include, MongoMapper::Document)
-    klass.send(:include, ActiveModel::Validations)
     klass.send(:include, ActiveModel::Naming)
     klass.set_collection_name(self.id.to_s)
     klass.key "created_at", Time
