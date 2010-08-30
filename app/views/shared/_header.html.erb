@@ -1,7 +1,6 @@
 <div class='header'>
   <div class="logo span-16" >
-     <%=link_to image_tag('en-logo.png'),root_path%>
-     <%=link_to image_tag('logo.png'),'/' if false %>
+     <%=link_to image_tag(t(:logo)), root_path%>
   </div>
   
   <div class='login span-8 last'>   
@@ -15,23 +14,27 @@
     <% else %>
       <%= link_to t(:signup), signup_path %>
       <%= t(:have_an_account) %><a href='/login' class='signin'><span><%= t(:login) %></span></a>
-         <div id="signin_menu">
-            <%= form_tag session_path,:class => 'login_form' do %>  
-            <p>
-              <label for="username">Email</label><br />
-              <%= text_field_tag 'email', @email %>
-              </p>
-              <p><%= label_tag 'password', t(:password) %>
-              <%= password_field_tag 'password', nil %> 
-              <p><%= submit_tag t(:login),:class => 'submit' %> <br /><%=link_to t(:forgot_password),forget_password_path%></p> 
-              <h4><%= t(:login_with_others) %></h4>
-              <ul>
-                <li><a href="/oauth/login/google" class='google' >Google</a></li> 
-              </ul>        
-              <div style='clear:both'></div>
-            <% end %>
-        </div>  
-    <% end %>  
+      <div id="signin_menu">
+        <%= form_tag session_path,:class => 'login_form' do %>  
+          <p>
+            <label for="username">Email</label><br />
+            <%= text_field_tag 'email', @email %>
+          </p>
+          <p>
+            <%= label_tag 'password', t(:password) %>
+            <%= password_field_tag 'password', nil %> 
+          </p>
+          <p><%= submit_tag t(:login),:class => 'submit' %> <br /><%=link_to t(:forgot_password),forget_password_path%></p> 
+          <h4><%= t(:login_with_others) %></h4>
+          <ul>
+            <li><a href="/oauth/login/google" class='google' >Google</a></li> 
+          </ul>        
+          <div style='clear:both'></div>
+        <% end %>
+      </div>
+    <% end %>
+    <%= link_to 'English', lang_path(:locale => 'en'), :method => 'put' %> |
+    <%= link_to '简体', lang_path(:locale => 'zh-CN'), :method => 'put' %> 
     <%= render :partial => '/shared/notice' %>
   </div>  
 </div>

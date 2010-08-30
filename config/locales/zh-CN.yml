@@ -129,5 +129,7 @@
         odd: "必须为单数"
         even: "必须为双数"
   
+  logo: 'logo.png'
+  
 
   

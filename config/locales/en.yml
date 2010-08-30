@@ -2,12 +2,19 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  create_form: "Create Form"
-  simplest_online_survey: "Simplest survey solution!"
-  give_a_try_now: "It's deadly simple to create online survey with ThunderSurvey, give a try now!"
+  logo: 'en-logo.png'
+  create_survey: "Create Survey"
+  simplest_online_survey: "Simplest Online Survey!"
+  auto_save: "Auto save, deadly simple."
+  easy_to_embed: "Easy to embed."
+  email_notify:  "Email&SMS notification."
+  password_protect: "Password protect."
+  easy_export: "Easy export to CSV&XLS."
+  try_with_demo: "Try with Demo user"
   signup: "Signup"
-  have_an_account: "Have an account?"
+  have_an_account: "Already have account?"
   login: "Login"
+  sidebar: "sidebar_en"
   clients: "Who using ThunderSurvey?"
   password: 'Password'
   forgot_password: "Forgot password?"
@@ -106,3 +113,5 @@ en:
   rights: "All Rights Reserved"
   demo_user: "DemoUser"
   thanks_message: "Your answer has been submitted successfully."
+  updated_at: "Last update"
+  operations: "Operations"

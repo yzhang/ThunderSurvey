@@ -75,9 +75,8 @@ class Form
     
     self.fields.each do |field|
       klass.key "f#{field.id}", String
-      klass.validates "f#{field.id}".to_sym, :presence => true if field.required
-      klass.validates "f#{field.id}".to_sym, :length => {:minimum => 6},
-            :format => {:with => Authentication.email_regex} if field.intern == 'email'
+      klass.validates_presence_of "f#{field.id}".to_sym if field.required
+      klass.validates_format_of "f#{field.id}".to_sym, :format => Authentication.email_regex if field.intern == 'email'
       
       if field.input == 'check' || field.input == 'radio'
         klass.class_eval <<-METHOD

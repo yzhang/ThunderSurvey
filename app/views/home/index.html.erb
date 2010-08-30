@@ -8,19 +8,19 @@
 <div class='intro span-24 last'>
   <div class='guide span-12'>
     <div class='words span-7'>
-      <h3>最简洁的问卷调查工具</h3>
+      <h3><%= t(:simplest_online_survey) %></h3>
       <p>
         <ul>
-          <li>所有操作自动保存，支持拖拽</li>
-          <li>可将表单嵌入到您的网站或博客</li>
-          <li>回应邮件提醒</li>
-          <li>可设置问卷关闭时间及密码保护</li>
-          <li>所有数据轻松导出</li>
+          <li><%= t(:auto_save) %></li>
+          <li><%= t(:easy_to_embed) %></li>
+          <li><%= t(:email_notify) %></li>
+          <li><%= t(:password_protect) %></li>
+          <li><%= t(:easy_export) %></li>
         </ul>
       </p>
       <p>&nbsp;</p>
-      <p><a href='/demo' class='btn'>试用一下<span>(无需注册)</span></a></p>
-      <p>已经有帐号了？<%= link_to "立即登录", login_path ,:class => 'ag' %></p>
+      <p><a href='/demo' class='btn'><%= t(:try_with_demo) %></a></p>
+      <p><%= t(:have_an_account) %> <%= link_to t(:login), login_path ,:class => 'ag' %></p>
     </div>
   </div>
 

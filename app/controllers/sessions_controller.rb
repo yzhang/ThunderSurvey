@@ -33,6 +33,12 @@ class SessionsController < ApplicationController
     flash[:notice] = t(:logout_success)
     redirect_back_or_default('/')
   end
+  
+  def set_lang
+    lang = params[:locale]
+    session[:locale] = ['en', 'zh-CN', 'zh-TW'].include?(lang) ? lang : 'en'
+    redirect_to :back
+  end
 
 protected
   # Track failed login attempts
