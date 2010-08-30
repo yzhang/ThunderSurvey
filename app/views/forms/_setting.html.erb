@@ -1,5 +1,5 @@
 <%= form_for(@form, :url => form_path(@form, :edit_key => @edit_key), :html => {:id => 'edit_form', :method => 'put'}, :remote => true) do |f| %>
-  <%= f.error_messages %> 
+  <%#= f.error_messages %> 
   <!-- 表单头 -->
   <div id="form_header">
      <%= render :partial => 'form', :object => f %>
