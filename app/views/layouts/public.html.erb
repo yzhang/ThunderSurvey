@@ -7,7 +7,7 @@
   <meta charset="utf-8" />
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
   <meta name="csrf-param" content="authenticity_token" />               
-  <%= stylesheet_link_tag "public",'common', :cache => 'public.cache' %>
+  <%= stylesheet_link_tag 'common',"public", :cache => 'public.cache' %>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', :cache => 'public.cache' %>   
   <%= yield :headers %>                                                   
   <title>ThunderSurvey－<%= @form.nil? ? (@page_title||'Free online survey solution.') : @form.title %></title>
@@ -17,11 +17,6 @@
       $("input[type='text']").addClass("text_input")
     })        
   </script> 
-  <style type="text/css" media="screen">
-    body{
-      background:#efefef;
-    }
-  </style>
 </head>
 
 <body>

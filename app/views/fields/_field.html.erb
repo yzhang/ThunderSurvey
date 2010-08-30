@@ -1,17 +1,15 @@
-<div class="field edit" onmouseover="toggle_opration(this);" onmouseout="toggle_opration(this);" id="<%= field.id %>">
+<div class="field edit" onmouseover="toggle_opration(this, true);" onmouseout="toggle_opration(this, false);" id="<%= field.id %>">
   <div class="opration" style="display:none;">
     <% if field.intern.blank? -%>  
-      <%= link_to(t(:edit), "#", :onclick => "field_start_editing(this);return false;")
-                            %> | 
-      <%= link_to(t(:duplicate), "#", :onclick => "form_dup_field(this);return false;")
-                            %> |
+      <%= link_to(t(:edit), "#", :onclick => "field_start_editing(this);return false;", :class => 'ag') %>  
+      <%= link_to(t(:duplicate), "#", :onclick => "form_dup_field(this);return false;", :class => 'ag') %> 
       <%= link_to(t(:delete), form_field_path(parent, field.id, :edit_key => parent.edit_key),
                         :update => "flash",
                         :method => "delete",
-                        :confirm => "确定要删除此问题吗？",
-                        :remote => true, :class => 'remove') %>  
+                        :confirm => t(:are_you_sure),
+                        :remote => true, :class => 'remove ag') %>  
     <% else %>
-      保留字段
+      <%= t(:reserved) %>
     <% end -%>
   </div>
   <div class="question" ondblclick="field_start_editing(this);">     

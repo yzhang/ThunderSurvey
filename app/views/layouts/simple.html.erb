@@ -10,8 +10,7 @@
   <!--[if IE]>
    <script src="/javascripts/html5.js"></script>
   <![endif]-->                   
-  <%= stylesheet_link_tag 'framework/reset','framework/general','framework/grid', :cache => 'simple.framework.cache'  %>  
-  <%= stylesheet_link_tag "simple",'common',"jquery-ui", 'slider', :cache => 'simple.cache'  %>
+  <%= stylesheet_link_tag 'framework/reset','framework/general','framework/grid', "simple",'common',"jquery-ui", :cache => 'simple.cache'  %>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'rails', 'application', :cache => 'simple.cache' %>  
 
 
@@ -20,7 +19,11 @@
       $('.button').button();
      })    
   </script>
-
+  <style type="text/css" media="screen">
+    body{
+      background:url(/images/bg/mini_bar_bg.jpg) repeat-x #EFEFEF;
+    }
+  </style>
   <%= yield :headers %>                                                   
   <title>Thunder Survey－<%= @form.nil? ? (@page_title||'Free online survey solution.') : @form.title %></title>
 </head>

@@ -5,6 +5,17 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  rescue_from ActionController::InvalidAuthenticityToken, :with => :token_expired
+
+  def token_expired
+    flash[:notice] = "对不起，您的会话已超时"
+    respond_to do |accepts|
+      accepts.html do
+        store_location
+        redirect_to(root_path) and return false
+      end
+    end
+  end
   
   before_filter :set_time_zone
     

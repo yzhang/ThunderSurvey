@@ -104,3 +104,5 @@ en:
   generated_automatically: "This email is generated automatically"
   dont_reply: "please don't reply this email."
   rights: "All Rights Reserved"
+  demo_user: "DemoUser"
+  thanks_message: "Your answer has been submitted successfully."

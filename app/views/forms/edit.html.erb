@@ -8,6 +8,9 @@
       $('#form_submit').submit();$('#saving').show();
     });
     
+    $(function(){
+      $("#form_end_at").datepicker();
+    })
     // 100以下的留给保留字段
     var field_count = <%= @form.max_position + 1 %>;   
     if(field_count < 100) { field_count = 101; }
@@ -31,19 +34,20 @@
 <div id="form_wrapper"> 
   <section class='form_oprate'>
     <nav>
-      <div class='setting'>  
-        <%= link_to t(:notify_setting), '#', :onclick => '$("#notify_setting").dialog({width:390, height:200, title:"邮件通知设置",modal: true});', :class => 'button' %>
+      <div class='setting'>
+        <%= link_to '权限设置', '#', :onclick => '$("#password_setting").dialog({width:390, height:200, title:"访问设置",modal: true});', :class => 'button' %>
+        <%= link_to t(:notify_setting), '#', :onclick => '$("#notify_setting").dialog({width:390, height:280, title:"邮件通知设置",modal: true});', :class => 'button' %>
         <%= link_to t(:embed), '#', :onclick => '$("#iframe").dialog({width:490, height:90, title:"问卷嵌入代码",modal: true,
-        open: function(){$("#iframe").focus()}});', :class => 'button' %>
+                open: function(){$("#iframe").focus()}});', :class => 'button' %>
         <%= link_to(t(:save),   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
       <div class='new'>
-        <%=link_to(t(:add_question), '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %> 
+        <%=link_to(t(:add_question), '#', :onclick => 'form_add_field(this);',:class => 'button',:id => 'add_question') %>
       </div>
     </nav>
   </section>
    
-  <section id="form" >
+  <div id="form" >
     <%= render :partial => 'setting' %>  
     <!-- 表单项 --> 
     <div id="fields">   
@@ -61,14 +65,16 @@
     <div id="field_template" style="display:none;">
       <%= render :partial => "/fields/field", :locals => {:parent => @form, :field => @field, :row => @row} %>
     </div>
-  </section>  
+  </div>  
   <!-- 表单尾 -->
   <section class='form_preview right'>
     <%= t(:preview) %>: <%= link_to "#{form_url(@form)}", form_path(@form), :target => '_blank' %>
   </section>
 </div>
 
-<div id="iframe" style="display:none;"> 
-  <%= t(:embed_form_in_your_site) %>:<br />
-  <%= text_field_tag :iframe, "<iframe src='#{form_url(@form)}' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :onfocus => '$(this).focus();$(this).select();', :style => "width:450px;", :readonly => true, :id => 'simple' %>
+<div id="iframe" style="display:none;" class='dialog'>   
+  <p> 
+    <b><%= t(:embed_form_in_your_site) %></b><br />
+    <%= text_field_tag :iframe, "<iframe src='#{form_url(@form)}?embed=true' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :style => "width:450px;", :readonly => true, :id => 'simple' %>
+  </p>
 </div>

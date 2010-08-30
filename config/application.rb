@@ -4,11 +4,11 @@ require File.expand_path('../boot', __FILE__)
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
-require "rails/test_unit/railtie"
+require "rails/test_unit/railtie"   
+  
 
 # Auto-require default libraries and those for the current Rails environment.
 Bundler.require :default, Rails.env
-
 module Confforge
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -17,7 +17,7 @@ module Confforge
 
     # Add additional load paths for your own custom dirs
     # config.load_paths += %W( #{config.root}/extras )
-    config.load_paths += %W( #{config.root}/app/oauth )
+    config.autoload_paths += %W( #{config.root}/app/oauth #{config.root}/lib )
     
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named
@@ -43,6 +43,7 @@ module Confforge
     # end
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters << :password
+    config.filter_parameters << :password   
+    config.secret_token = '97d1c62042e1652892946de3b9w5e6de'
   end
 end

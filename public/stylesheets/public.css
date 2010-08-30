@@ -1,8 +1,8 @@
 body{
-	font-family:arial;
+	font-family: arial, sans-serif;
 	font-size:12px;     
-	color:#333;
-  	background:#efefef;
+	color:#333; 
+  	background:url(/images/bg/bg.png);
 }
 
 /*  ------ form show cotainer -------- */
@@ -11,14 +11,19 @@ body{
 	padding:20px;
 	margin:20px auto;
 	width:45em;
-	background:#fff;
-	border:1px solid #ccc;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	moz-border-radius:5px 5px 5px 5px;
+	-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.1);
+	background-color:#FFFFFF;
+	border:1px solid #CCCCCC;
 }
 
 .desc{
-	padding:10px;  
+	font-size:13px;
+	line-height:150%;
+}
+
+.desc p{
+	padding:10px 0;  
 	line-height:150%;
 }
 
@@ -26,7 +31,7 @@ body{
    color:red;
 }      
 
-form label{
+form label{  
 	color:#000;
 	font-weight:bold;
 }
@@ -34,6 +39,22 @@ form label{
 .support{ 
 	display:block;
 	padding:20px; 
-	color:#bbb;
-	 text-decoration: none;   
+	color:#777;
+	text-decoration: none;   
+}
+
+.prompt{
+	color:#777;
+	font-size:13px;  
+	display:block;
+	padding-top:3px;
+}
+
+#form_header{
+	margin:10px;
+}
+
+#form_header h1{    
+	font-family: 'Microsoft YaHei' '微软雅黑' '雅黑' arial '宋体'; 
+	font-size:24px;
 }

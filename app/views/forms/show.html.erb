@@ -1,19 +1,22 @@
-<header>
-    <h1><%=h @form.title %></h1>   
-    <div class='desc'>
-      <%=@form.description%>
-    </div>
-</header>
-
-<div id='errors' class='error'></div>        
-<%= form_tag form_rows_path(@form),:class => 'conforge', :remote => true do %>    
-  <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
-    <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
-  <% end %>         
-  <%= hidden_field_tag :embed, @embed %>
-  <%= hidden_field_tag 'row[order_id]', @order_id%>
-  <p><%= submit_tag t(:submit),:class => 'submit', :onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
+<div id='form_header'>
+  <h1><%=h @form.title %></h1>   
+  <div class='desc'>
+    <%=raw(simple_format(@form.description))%>
+  </div>
+</div>
+<% if @form.end_at.blank? || @form.end_at > Date.today %>
+  <div id='errors' class='error'></div>        
+  <%= form_tag form_rows_path(@form),:class => 'conforge', :remote => true do %>    
+    <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
+      <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
+    <% end %>         
+    <%= hidden_field_tag :embed, @embed %>
+    <%= hidden_field_tag 'row[order_id]', @order_id%>
+    <p><%= submit_tag '提交',:class => 'submit', :onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
+  <% end %>
+<% else %>
+  此问卷已结束，非常感谢您的参与！
 <% end %>
 
-<p><a href="http://www.thundersurvey.com" class='support' target='_blank'><%= t(:powered_by_ts) %></a></p>
+<p class='support'>由<a href="http://www.51qiangda.com"  target='_blank'>抢答网</a>提供技术支持</p>
 <div style="clear:both;"></div>

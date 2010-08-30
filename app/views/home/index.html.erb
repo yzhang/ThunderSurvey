@@ -1,22 +1,30 @@
+<% content_for :headers do %>
+  <style type="text/css" media="screen">
+    .btn span{
+      font-size:12px;
+    }
+  </style>
+<% end %>
 <div class='intro span-24 last'>
   <div class='guide span-12'>
-    <div class='words span-8'>
-      <h2><%= t(:simplest_online_survey) %></h2>
-      <p><%= t(:give_a_try_now) %></p>
-      <p><a href='/demo' class="btn" style="padding: 9px 40px;"><%= t(:try_with_demo_account) %></a></p>
-      <p><%= t(:have_an_account) %><%= link_to t(:login), login_path %></p>
+    <div class='words span-7'>
+      <h3>最简洁的问卷调查工具</h3>
+      <p>
+        <ul>
+          <li>所有操作自动保存，支持拖拽</li>
+          <li>可将表单嵌入到您的网站或博客</li>
+          <li>回应邮件提醒</li>
+          <li>可设置问卷关闭时间及密码保护</li>
+          <li>所有数据轻松导出</li>
+        </ul>
+      </p>
+      <p>&nbsp;</p>
+      <p><a href='/demo' class='btn'>试用一下<span>(无需注册)</span></a></p>
+      <p>已经有帐号了？<%= link_to "立即登录", login_path ,:class => 'ag' %></p>
     </div>
   </div>
 
   <div class='span-10 last'>
     <%=image_tag 'form.jpg',:class=>'haibao'%>
-  </div>
-</div> 
-<div class='span-13'>
-  <h3><%= t(:clients) %></h3>
-
-  <div id='logos'>
-    <a href="http://www.bloggerinsight.com"><%=image_tag('icons/bloggerinsight.jpg')%></a>
-    <a href="http://www.mmclock.cn"><%=image_tag('icons/mm.jpg')%></a>
   </div>
 </div>

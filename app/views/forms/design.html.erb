@@ -1,0 +1,23 @@
+<% content_for :headers do %>
+  <style type="text/css" media="screen">
+    #form_container{ 
+    	padding:20px;
+    	margin:20px auto;
+    	width:45em;
+    	background:#fff;
+    	border:1px solid #ccc; 
+    	border-color:#CCCCCC #999999 #999999 #CCCCCC;
+    	-moz-border-radius: 5px;
+    	-webkit-border-radius: 5px;
+    }
+  </style>
+<% end %>
+<div id="form_container">   
+  <%= form_for(@form, :url => form_path(@form, :edit_key => @edit_key), :html => {:id => 'edit_form', :method => 'put',:multipart => true}) do |f| %>  
+    <p>
+      <%= f.label :logo, '品牌标识' %>
+      <%= f.file_field :logo %>
+    </p> 
+    <%= f.submit '保存'%>
+  <% end -%>
+</div>

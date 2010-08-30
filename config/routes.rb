@@ -17,8 +17,11 @@ Confforge::Application.routes.draw do
     end
     
     member do
+      get :design
       get :thanks
       get :preview
+      get :chart
+      post :password
     end
   end
   
@@ -31,7 +34,6 @@ Confforge::Application.routes.draw do
     end 
     resources :users
     resources :pages 
-    resources :feedbacks
   end
 
   match '/logout' => 'sessions#destroy', :as => :logout
@@ -42,6 +44,7 @@ Confforge::Application.routes.draw do
   match '/forget_password' => 'users#forget_password', :as => :forget_password 
   match '/reset_password' => 'users#reset_password', :as => :reset_password
   match '/account'   => 'users#setting', :as => :account
+  match '/intro'   => 'home#intro', :as => :intro
   put   '/update'    => 'users#update'
 
   resource :session

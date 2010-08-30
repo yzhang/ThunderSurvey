@@ -80,23 +80,23 @@ input.inputFocus {
 }
 
 #form_description{
+	width:610px;
 	background:#F6F6F6;
 	font-size:12px;  
-	width: 580px;
   	height: 46px;
   	padding: 2px 5px;
 } 
 
              
 #form{   
-	border-left:1px solid #ccc;  
-	border-right:1px solid #ccc;  
+	border-left:2px solid #E1E8F0;  
+	border-right:2px solid #E1E8F0;  
  	background:#fff;    
 	min-height:400px;
 	position:relative;
 	overflow:auto; 
 	padding:20px;
-	margin:0 20px;
+	margin:0 5px;
 }               
 
 
@@ -104,7 +104,7 @@ input.inputFocus {
 	height:400px;
 }
 
-#form p,.setting_form p{
+#form p{
 	margin-bottom:5px;
 }                    
 
@@ -115,9 +115,17 @@ input.inputFocus {
 .form_oprate{  
 	position:relative;     
 	background:#56ACF2;
-	height:30px;
+	height:24px;
 	padding:5px 10px;
 	border-bottom:1px solid #eee;
+	-moz-border-radius-topleft:5px;
+  -moz-border-radius-bottomleft:5px;
+  -moz-border-radius-bottomright:5px;
+  -moz-border-radius-topright:5px;
+  -webkit-border-top-left-radius:5px;
+  -webkit-border-bottom-left-radius:5px;
+  -webkit-border-bottom-right-radius:5px;
+  -webkit-border-top-right-radius:5px;
 } 
 
 .form_preview{ 
@@ -125,10 +133,14 @@ input.inputFocus {
 	color:#fff;
 	position:relative; 
 	background:#1F1F1F;
-	padding:5px; 
+	padding:5px 0; 
 	border-top:1px solid #eee;
 	height: 20px;  
-	text-align:center;
+	text-align:center; 
+	-moz-border-radius-topleft:5px;
+  	-moz-border-radius-topright:5px;
+  	-webkit-border-top-left-radius:5px;
+  	-webkit-border-top-right-radius:5px;
 }  
 
 .form_preview a{
@@ -142,7 +154,7 @@ div.field {
   padding: 10px;
 }
 
-div.edit:hover {
+.highlight_hover {
   background-color: #FDF2C6;
 }
 
@@ -159,7 +171,8 @@ div.edit:hover {
 	height:60px;
 }          
 
-.q_title{     
+.q_title{ 
+	font-weight:bold;
 	margin:0px; 
 	padding:0px;
 }   
@@ -175,14 +188,6 @@ div.edit:hover {
 	font-weight:bold;
 }
 
-#form_description{
-	background:#F6F6F6;
-	font-size:12px;  
-	width: 580px;
-  	height: 46px;
-  	padding: 2px 5px;
-} 
-
 #form_description:hover,#form_description:focus{
 	background:#fff;
 }  
@@ -195,9 +200,6 @@ div.edit:hover {
 	float:right;
 }
 
-form label{
-	font-size:12px;
-}
 
 #saving {
 	-moz-border-radius-bottomleft:4px;
@@ -210,4 +212,17 @@ form label{
 	right:50%;
 	top:0;
 	z-index:2;
+}
+
+.dialog{
+	font-size:12px;
+}
+
+.dialog p{
+	margin-bottom:15px;
+}      
+
+.dialog label{
+	font-size:12px;
+	font-weight:bold;
 }

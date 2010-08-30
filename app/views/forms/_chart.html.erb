@@ -1,0 +1,31 @@
+<% if field.multi? %> 
+<div style='margin:20px 10px'>
+<b><%= field.name %></b>
+<table class='grid' id='huizong' cellspacing="0" cellpadding="0"> 
+  <col width='40%'>
+  <col width='20%'>
+  <col width='40%'>
+  <thead>
+    <tr>
+      <th>选项</th>
+      <th>数量</th> 
+      <th>百分比</th>
+    </tr>                     
+  </thead>
+  <tbody>
+    <% field.options.each do |option| %>
+    <% option_count = @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + option.value + '(\s|$)')}) %>
+    <% percentage = option_count * 100 / @form.rows_count %>    
+    <tr>
+      <td><%= option.value %></td>                          
+      <td><%= option_count %></td>
+      <td style="text-align:left;">
+        <span class="percentage" style="width:<%= percentage*2 %>px;">&nbsp;</span>
+        <%= percentage %>%
+      </td>
+    </tr>
+    <% end %>
+  <tbody>
+</table>
+</div>    
+<% end %>

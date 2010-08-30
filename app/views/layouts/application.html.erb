@@ -3,12 +3,18 @@
 <head>
   <%= render :partial => '/shared/head' %>
 </head>
-<body>
-	<div class="container clearfix">   
-	   <%= render :partial => '/shared/header' %>
-      <%=yield :pagenav %>
-	    <%= yield %>
-	    <%= render :partial => '/shared/footer' unless controller.class == FormsController && action_name == 'edit' %>  
-  </div>
+<body>     
+  <%= render :partial => '/shared/header' %>  
+	<div class="container">   
+	    
+      <%#=yield :pagenav %>    
+      <div class='span-6'>
+	       <%= yield :sidebar %>
+	    </div>
+      <div class='span-18 content last'>
+         <%= yield %> 
+      </div>
+  </div>    
+  	    <%= render :partial => '/shared/footer' unless controller.class == FormsController && action_name == 'edit' %>      
 </body>
 </html>

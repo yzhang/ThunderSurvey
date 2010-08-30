@@ -1,12 +1,12 @@
 class FormsController < ApplicationController
-  before_filter :login_required, :only => [:new, :create, :index, :destroy]
-  before_filter :set_form, :only => [:edit, :update, :thanks]
+  before_filter :login_required, :only => [:new, :create, :index, :destroy, :chart]
+  before_filter :set_form, :only => [:edit, :update, :thanks, :chart,:design]
   before_filter :verify_edit_key, :only => [:edit, :update] 
   before_filter { |c| c.set_section('forms') }
   
   def index   
-    @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '20')
-    @page_title = t(:my_surveys)
+    @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '10')
+    @page_title = "所有问卷"
 
     respond_to do |format|
       format.html
@@ -20,16 +20,50 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id]) rescue nil
     
     respond_to do |format|
-      if @form && @form.allow_insert?
+      if @form && !@form.password.blank? && session[@form.id] != @form.password
+        format.html { render 'password', :layout => params[:embed] ? 'embed' : 'public'}
+      elsif @form && @form.allow_insert?
         @row = @form.klass.new
         @embed = params[:embed]
-        @order_id = params[:order_id]
-        format.html {  render :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
+        format.html {  render 'show', :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
       else
         flash[:notice] = t(:form_no_exist)
         format.html { redirect_to root_path}
       end
     end
+  end    
+  
+  def design     
+          
+    respond_to do |wants|
+      wants.html { render :layout => "simple" }
+    end
+   
+    
+  end
+  
+  def chart
+    respond_to do |format|
+      if @form.klass.count.zero?
+        format.html {redirect_to forms_path,:alert => '此问卷暂无回应'}
+      else
+        format.html
+      end
+    end
+  end
+  
+  def password
+    @form = Form.find(params[:id]) rescue nil
+    
+    respond_to do |format|
+      if @form
+        session[@form.id] = params[:password] if params[:password]
+        format.html {redirect_to form_path(@form)}
+      else
+        flash[:notice] = "对不起，您访问的表单不存在"
+        format.html { redirect_to root_path}
+      end
+    end 
   end
 
   # GET /forms/new
@@ -74,9 +108,15 @@ class FormsController < ApplicationController
     @fields = @form.fields
     
     respond_to do |want|
-      want.html { render :layout => params[:embed].blank? ? 'simple' : "embed"}
+      if @form
+        want.html { render :layout => params[:embed].blank? ? 'simple' : "embed"}
+      else
+        flash[:notice] = "对不起，您访问的表单不存在"
+        format.html { redirect_to root_path}
+      end
     end
-  end
+  end   
+  
 
   # PUT /forms/1
   # PUT /forms/1.xml
@@ -93,6 +133,7 @@ class FormsController < ApplicationController
           render :update do |page|  
             if params[:mod] == 'dialog' 
               page << "$('#notify_setting').dialog('close')"
+              page << "$('#password_setting').dialog('close')"
             end                                             
             page << '$("#saving").hide();'
           end
@@ -123,7 +164,7 @@ class FormsController < ApplicationController
   
   def thanks
     respond_to do |want|
-      want.html { render :layout => params[:embed] ? 'embed' : 'public' }
+      want.html { render :layout => 'public' }
     end
   end
   

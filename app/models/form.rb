@@ -1,8 +1,8 @@
 require 'digest/sha1'
 require 'net/http'
 require 'uri'
-
-class Form
+    
+class Form           
   include ActiveModel::Validations
   
   include MongoMapper::Document
@@ -12,28 +12,28 @@ class Form
   key :description, String
   key :user_id, String
   key :edit_key, String
-  key :email_notify, Boolean, :default => true
+  key :email_notify, Boolean, :default => true 
   key :notify_url, String
   key :notify_type, String, :default => 'email'
-  key :thanks_message, String, :default => "Your answer has been submited."
+  key :thanks_message, String, :default => I18n.t("thanks_message")
+  key :publish_response, Boolean, :default => false 
+  key :password, String, :default => ''
+  key :end_at, Date, :default => nil
+  key :logo,String
+  
+  key :rows_count, Integer, :default => 0
   key :maximum_rows, Integer
   key :height,Integer  
-  key :recommanded,Boolean, :default => false 
+  key :recommanded,Boolean, :default => false
   
   key :created_at, Time, :default => Time.now
   key :updated_at, Time, :default => Time.now
   
   many :fields, :default => 0 
   
-
-  
-  validates :title, :presence => true
-  #validates :email_notify, :format => {:with => Authentication.email_regex}, :allow_blank => true
-  
   before_create :make_edit_key
   before_save   :update_timestamps  
- 
-  
+    
   def id
     self._id.to_s
   end
@@ -53,7 +53,6 @@ class Form
   def user_klass
     klass ||= Class.new
     klass.send(:include, MongoMapper::Document)
-    klass.send(:include, ActiveModel::Validations)
     klass.send(:include, ActiveModel::Naming)
     klass.set_collection_name(self.id.to_s)
     klass.key "created_at", Time
@@ -108,22 +107,12 @@ class Form
     case self.notify_type
     when 'email'
       deliver_email_notification(row)
-    # when 'url'
-    #       url_callback(row)
     end
   end
   
   def deliver_email_notification(row)
-    Mailer.registrant_notification(self, row).deliver
+    Mailer.registrant_notification(self, row).deliver if self.user && self.user.email && self.email_notify
   end
-  
-  # 改为报名成功直接返回会议网站
-  # def url_callback(row)
-  #   return if self.notify_url.blank?
-  #   url = URI.parse(self.notify_url)
-  #   res = Net::HTTP.post_form(url, {'form_id'=> self.id, 'row_id'=>row.id,'order_id' => row.order_id }) 
-  #   return  res.body
-  # end
   
   def sort_fields(positions)
     return if positions.nil? || !positions.is_a?(Hash) || positions.empty?
@@ -149,6 +138,10 @@ class Form
     self.fields.map {|f| f.position > 65530 ? 0 : f.position}.max
   end
   
+  def rows_count
+    @rows_count ||= self.klass.count
+  end
+  
   private
   def make_edit_key
     self.edit_key = self.class.make_token
@@ -159,4 +152,11 @@ class Form
     self.updated_at = Time.now
   end                 
   
+  
+  def self.sum(field)
+    m = "function () {emit('sum', this.#{field.to_s})}"
+    r = "function(k, vals) { var sum = 0; for(var i in vals){sum += vals[i];}; return sum;}"
+    res = self.collection.map_reduce(m, r)
+    return res.find().next_document['value'].to_i
+  end    
 end

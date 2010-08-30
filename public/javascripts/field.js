@@ -10,9 +10,16 @@ function field_done_editing(e)
   // 更新问题名称
   var field_name = $(field_div).find("#field_name").val();
   field_div.find('.question label').html(field_name)
+
+	if(field_div.find('.form #field_required').attr('checked') == true) {
+  	field_div.find('.question .required').html('*');
+	} else {
+		field_div.find('.question .required').html('');
+	}
   
   var field_input = $(field_div).find("#field_input").val();
   var field_uuid  = $(field_div).find("#field_uuid").val();
+  var field_prompt  = $(field_div).find("#field_prompt").val();
   var input = '';
   
   if(field_input == 'text') {
@@ -47,6 +54,7 @@ function field_done_editing(e)
   } else if(field_input == 'date') {
     input += '<input type="text" id="' + field_uuid + '"/>';
   }
+  input += '<br /><span class="prompt">' + field_prompt + '</span>'
 
   field_div.find('.question .input').html(input);
   field_div.css('background-color','') 
@@ -120,11 +128,16 @@ function field_remove_option(e)
   $('#form_height').val($('#fields').innerHeight());
 }   
 
-function toggle_opration(e){
-	$(e).find('.opration').toggle();
+function toggle_opration(e, show){
+	if(show == true) {
+		$(e).find('.opration').show(); 
+	   	$(e).addClass('highlight_hover')
+	} else {
+		$(e).find('.opration').hide(); 
+	 	$(e).removeClass('highlight_hover')
+	}
 }    
 
 function toggle_other(e) {
 	$(e).closest('.field').find('.form_other').toggle();	
 }
-

@@ -11,7 +11,7 @@ $(document).ready(function($) {
       focus(function() {   
       if (this.value == dft_form_title) {
           this.value = "";
-    	  this.style.color = "#000";
+    	  this.style.color = "#333";
       }
   }).blur(function() {
       if (this.value == "") { 
@@ -24,7 +24,7 @@ $(document).ready(function($) {
       focus(function() {   
       if (this.value == dft_form_desc) {
           this.value = "";
-    		  this.style.color = "#000"
+    		  this.style.color = "#333"
       }
   }).blur(function() {
       if (this.value == "") { 
@@ -122,12 +122,18 @@ function form_dup_field(e)
 	new_field.find('.field_form').attr('action', $("#field_template .field_form").attr('action'));
 	$(new_field.find('.field_form').children()[0]).html($($("#field_template .field_form").children()[0]).html());
 	
+	parent.find('.question').show();
+	parent.find('.operation').hide();
+	parent.find('.form').hide();
+	
 	new_field.find('.question').hide();
 	new_field.find('.opration').hide();
   new_field.find('.form').show();
 	new_field.find('.form #field_name').focus();
   new_field.css('background-color','#FDF2C6');
-
+	
+	field_start_editing.current_editing_field = new_field.find('.question');
+	
 	// initial position
 	field_count += 1;
 	new_field.find('.field_position').val(field_count);

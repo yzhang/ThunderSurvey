@@ -27,6 +27,10 @@ class Field
     !new_record?
   end
   
+  def multi?
+    self.input == 'radio' || self.input == 'check'
+  end
+  
   def update_options(options)
     return true if options.nil? || !options.is_a?(Array)
     

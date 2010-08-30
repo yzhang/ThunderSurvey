@@ -10,10 +10,6 @@ class Page
   key :slug, String
   key :body, String
   
-  validates :title, :presence => true
-  validates :slug, :presence => true
-  validates :body, :presence => true
-  
   def persisted?
     !new_record?
   end

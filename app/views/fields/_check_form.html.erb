@@ -11,7 +11,7 @@
   <p>
     <input type="checkbox" style="opacity:0.5;"/>
     <%= text_field_tag "option", "", :onfocus => "field_add_option(this, 'check');", :style => "opacity:0.5;" %>
-    <%= check_box_tag "field_include_other", "1", false, :onchange => 'toggle_other(this);', :name => 'field[include_other]' %> <%= t(:add_other) %>
+    <%= check_box_tag "field_include_other", "1", field.nil? ? false : field.include_other, :onchange => 'toggle_other(this);', :name => 'field[include_other]' %> <%= t(:add_other) %>
   </p>
   <p style="<%= 'display:none;' unless field && field.include_other %>" class="form_other"><input type="checkbox"  style="opacity:0.5;"/> <%= t(:other) %> <%= text_field_tag 'other', '', :style => "opacity:0.5;" %></p>
 </div>

@@ -1,5 +1,9 @@
 <%= content_for :headers do %>
-  <%= javascript_include_tag "fancybox/jquery.fancybox-1.3.1.pack" %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){     
+      $('#opt .button').button();
+     })    
+  </script>
 <% end %>
 
 <%= content_for :pagenav do -%> 
@@ -8,44 +12,52 @@
     <div class='right'>
     </div>     
 </div>
-<div class='span-24'>  
-  <a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="<%= t(:edit) %>" class='button' ><%= t(:edit) %></a> | 
-  <%=link_to t(:preview),form_path(@form),:target => '_blank',:class => 'button'%>
+
+<div class='span-24' id='opt'>  
+  <%=link_to '统计汇总',chart_form_path(@form),:class => 'button'%>
 </div> 
   <div class='span-24 border'>    
-    <b><%=@form.klass.count %> <%= t(:answers) %></b> |  
-     <%=link_to t(:export_to_csv),form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> | 
-    <%=link_to t(:export_to_xls),form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>    
+    <b></b> |  
+
   </div>
 <% end %>     
-<%= t(:tips) %>: <%= t(:dblclick_to_expand) %>
-<div class='span-24' id='results'>     
-<table id='rows' cellspacing="0" cellpadding="0" class='grid'>  
+
+<div id='results'>      
+  <div class='section_nav'>
+    <div class='section_title'>
+       所有回应 － <%=@form.klass.count %>条
+    </div>
+    <div class='section_button'> 
+       <%=link_to '导出为文本文件',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
+      <%=link_to '导出为Excel文件',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>
+    </div>
+  </div>
+  <table id='rows' cellspacing="0" cellpadding="0" class='grid'>  
   <thead>
     <tr>      
       <th><%= t(:timestamps) %></th>
       <% @form.fields.each do |field| %>
-      <th><div class='info_item'><%=field.name%></div></th> 
+      <th><%=truncate field.name,:length => 12%></th> 
       <% end %>
     </tr>
   </thead>
   <tbody>  
  <% @rows.each do |row| %>
-  <tr id="<%=row.id%>">     
-    <td><div class='info_item time'><%=row.created_at.to_time.to_formatted_s(:datetime_short)%></div></td>          
+  <tr id="<%=row.id%>">              
     <% @form.fields.each do |field| %>         
       <td><div class='info_item'><%=row.send("f#{field.id}") %></div></td>
-    <% end -%>
+    <% end -%>              
+      <td><div class='info_item time'><%=row.created_at.to_time.to_formatted_s(:datetime_short)%></div></td> 
   </tr>      
   <% end -%>
   </tbody>
-</table>  
+</table>   
 </div>             
 <div style='clear:both'></div>
 <div style='margin:10px;'>
   <%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>   
 </div>
-   
+<div class='tip'>操作提示:双击回应条目可展开</div>      
 <% @rows.each do |row| %>                    
 <div id="row_<%=row.id%>"  style="display:none;">
   <h3><%= t(:detail_answer) %></h3>           
@@ -64,7 +76,18 @@
     </table> 
      </div>     
     <div style='text-align:center;'>
-      <%=link_to t(:edit),edit_form_row_path(@form,row, :edit_key => @form.edit_key),:class => 'button'%> | <%=link_to t(:delete), form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => t(:are_you_sure), :method => 'delete',:class => 'button'%>
+      <%=link_to t(:edit),edit_form_row_path(@form,row, :edit_key => @form.edit_key),:class => 'ag'%>  <%=link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => t(:are_you_sure), :method => 'delete',:class => 'ag'%>
     </div>
 </div>    
+<% end %>
+
+<% content_for :sidebar do %>
+  <div class='box'>
+    <ul class='sidebar_nav'>
+      <li><%=link_to '查看表单',form_path(@form),:target => '_blank'%> </li> 
+      <li><a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑">编辑表单</a>  </li>
+      <li><%= link_to '报表', chart_form_path(@form)%></li>
+    </ul>
+  </div> 
+ 
 <% end %>

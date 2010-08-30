@@ -1,5 +1,5 @@
 <p>
   <%= radio_button_tag 'radio', false %>
   <%= text_field_tag "options[]", value, :onfocus => "clear_option_initial(this);",:onblur => "set_option_initial(this)", :style => 'color:#666;' %>
-  <%= link_to t(:delete), '#', :onclick => 'field_remove_option(this);' %>
+  <%= link_to t(:delete), '#', :onclick => 'field_remove_option(this);return false;' %>
 </p>

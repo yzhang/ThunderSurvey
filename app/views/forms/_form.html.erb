@@ -1,10 +1,9 @@
-<% unless params[:embed] -%>  
 <p>
 <%=form.text_field :title, :size => '40', :onchange => "$('#form_submit').submit();$('#saving').show();" %>
 </p>  
 
 <p>
-<%= form.text_area :description, :onchange => "$('#form_submit').submit();$('#saving').show();" %>
+<%= form.text_area :description,:onchange => "$('#form_submit').submit();$('#saving').show();" %>
 </p>                              
-<% end %>
+
 <%= form.hidden_field :height,:id => 'form_height' %>

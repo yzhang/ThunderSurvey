@@ -1,7 +1,7 @@
 <div class='section'>
   <div class='box'>
   <h3>问卷统计</h3>
-  共有<%=Form.count%>个问卷
+  共有<%=Form.count%>个问卷, <%= Form.sum(:rows_count) %>个回应
   </div>
   <div class='box'>
   <h3>用户统计</h3> 

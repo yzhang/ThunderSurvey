@@ -5,7 +5,8 @@ class Admin::FormsController < Admin::BaseController
   before_filter Proc.new{ @section = 'forms' }
   
   def index
-    @forms = Form.paginate(:per_page => 25, :page => params[:page], :order => "updated_at DESC")
+    order = params[:order] || 'updated_at DESC'
+    @forms = Form.paginate(:per_page => 25, :page => params[:page], :order => order)
   end   
   
   def recommand

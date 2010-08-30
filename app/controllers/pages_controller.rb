@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   respond_to :html        
   
   def show
-    @page = Page.first(:slug => params[:page])
+    @page = Page.first(:slug => params[:page]) rescue nil
 
     if @page
       @page_title = @page.title
