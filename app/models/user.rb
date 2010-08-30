@@ -128,6 +128,13 @@ class User
         end
         u.destroy
       end
+      
+      User.all({:login => /^DemoUser/}).each do |u|
+        u.forms.each do |f|
+          f.destroy if f
+        end
+        u.destroy
+      end
     
       Visit.where(:city => nil).each do |v|
   	    v.city = get_city_by_ip(v.ip)
