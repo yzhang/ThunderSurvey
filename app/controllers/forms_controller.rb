@@ -19,6 +19,9 @@ class FormsController < ApplicationController
   def show
     @form = Form.find(params[:id]) rescue nil
     
+    referrer = URI.parse(request.headers["HTTP_REFERER"].to_s) rescue URI.parse('')
+    visit = Visit.create(:form_id => @form.id, :ip => request.remote_ip, :referrer => referrer.to_s, :host => referrer.host)
+    
     respond_to do |format|
       if @form && !@form.password.blank? && session[@form.id] != @form.password
         format.html { render 'password', :layout => params[:embed] ? 'embed' : 'public'}

@@ -120,15 +120,34 @@ class User
     /^临时用户/.match self.login
   end
   
-  def self.clean_temp_users
-    User.all({:login => /^临时用户/}).each do |u|
-      u.forms.each do |f|
-        Form.delete(f._id) if f
+  class << self
+    def clean_temp_users
+      User.all({:login => /^临时用户/}).each do |u|
+        u.forms.each do |f|
+          f.destroy if f
+        end
+        u.destroy
       end
-      u.destroy
+    
+      Visit.where(:city => nil).each do |v|
+  	    v.city = get_city_by_ip(v.ip)
+  	    v.save(:validate => false)
+  	  end
+	  
+  	  Email.delete_all
+    end
+
+    def get_city_by_ip(ip)
+  	  begin
+        response = open("http://www.youdao.com/smartresult-xml/search.s?type=ip&q=#{ip}")
+        xml = Nokogiri::XML(response)
+        return xml.css('location').text.split(' ').first
+      rescue
+        return '未知'
+      end
     end
   end
-
+  
   protected
     def make_activation_code
         self.activation_code = self.class.make_token
