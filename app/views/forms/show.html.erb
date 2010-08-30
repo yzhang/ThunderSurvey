@@ -12,11 +12,11 @@
     <% end %>         
     <%= hidden_field_tag :embed, @embed %>
     <%= hidden_field_tag 'row[order_id]', @order_id%>
-    <p><%= submit_tag '提交',:class => 'submit', :onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
+    <p><%= submit_tag t(:submit),:class => 'submit', :onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
   <% end %>
 <% else %>
-  此问卷已结束，非常感谢您的参与！
+  <%= t(:survey_closed) %>
 <% end %>
 
-<p class='support'>由<a href="http://www.51qiangda.com"  target='_blank'>抢答网</a>提供技术支持</p>
+<p class='support'><%= raw t(:powered_by) %></p>
 <div style="clear:both;"></div>

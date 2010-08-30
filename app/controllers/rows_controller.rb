@@ -5,6 +5,7 @@ class RowsController < ApplicationController
   before_filter { |c| c.set_section('forms') }  
 
   def index
+    @tab = 'answers'
     klass = @form.klass
     @rows = klass
     respond_to do |wants| 

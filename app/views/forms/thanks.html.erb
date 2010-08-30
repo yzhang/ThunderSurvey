@@ -2,18 +2,22 @@
   #huizong{width:100%;}
 </style>
 <div class='desc'>                 
-  <p><%=simple_format @form.thanks_message %></p>
+  <p>
+    <% if @form.thanks_message.blank? %>
+      <%= t(:thanks_message) %>
+    <% else %>
+      <%=simple_format @form.thanks_message %>
+    <% end %>
+  </p>
   <% if @form.publish_response %>
     <h3><%=@form.rows_count%>个回应</h3>
     <%= render :partial => 'chart',:collection => @form.fields,:as => :field %>
   <% end %>
-  <p style='text-align:center;'><%=link_to '返回问卷',form_path(@form),:class => 'ag'%> | <%=link_to '创建我的问卷',forms_path,:class => 'ag'%></p> 
+  <p style='text-align:center;'><%=link_to t(:back_to_survey),form_path(@form),:class => 'ag'%> | <%=link_to t(:create_survey),forms_path,:class => 'ag'%></p> 
 </div>       
 
-
-
-<p class='support'>由<a href="http://www.51qiangda.com"  target='_blank'>抢答网</a>提供技术支持</p>    
-<div style="clear:both;">
+<p class='support'><%= raw t(:powered_by) %></p>
+  <div style="clear:both;">
 </div>
  
  

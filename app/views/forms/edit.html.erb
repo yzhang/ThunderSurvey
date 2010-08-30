@@ -35,10 +35,10 @@
   <section class='form_oprate'>
     <nav>
       <div class='setting'>
-        <%= link_to '权限设置', '#', :onclick => '$("#password_setting").dialog({width:390, height:200, title:"访问设置",modal: true});', :class => 'button' %>
-        <%= link_to t(:notify_setting), '#', :onclick => '$("#notify_setting").dialog({width:390, height:280, title:"邮件通知设置",modal: true});', :class => 'button' %>
-        <%= link_to t(:embed), '#', :onclick => '$("#iframe").dialog({width:490, height:90, title:"问卷嵌入代码",modal: true,
-                open: function(){$("#iframe").focus()}});', :class => 'button' %>
+        <%= link_to t(:access_control), '#', :onclick => "$('#password_setting').dialog({width:420, height:200, title:'#{t(:access_control)}',modal: true});", :class => 'button' %>
+        <%= link_to t(:notify_setting), '#', :onclick => "$('#notify_setting').dialog({width:390, height:280, title:'#{t(:notify_setting)}',modal: true});", :class => 'button' %>
+        <%= link_to t(:embed), '#', :onclick => "$('#iframe').dialog({width:490, height:90, title:'#{t(:embed)}',modal: true,
+                open: function(){$('#iframe').focus()}});", :class => 'button' %>
         <%= link_to(t(:save),   '#', :onclick => "$('#form_submit').submit();$('#saving').show();",:class => 'button') %> 
       </div>
       <div class='new'>

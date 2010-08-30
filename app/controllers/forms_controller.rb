@@ -34,15 +34,13 @@ class FormsController < ApplicationController
   end    
   
   def design     
-          
     respond_to do |wants|
       wants.html { render :layout => "simple" }
     end
-   
-    
   end
   
   def chart
+    @tab = 'chart'
     respond_to do |format|
       if @form.klass.count.zero?
         format.html {redirect_to forms_path,:alert => '此问卷暂无回应'}

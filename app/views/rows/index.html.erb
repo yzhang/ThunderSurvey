@@ -5,31 +5,15 @@
      })    
   </script>
 <% end %>
-
-<%= content_for :pagenav do -%> 
-<div id="page_nav">
-    <span><%=link_to t(:my_surveys),forms_path%> / <%= @form.title %></span>    
-    <div class='right'>
-    </div>     
-</div>
-
-<div class='span-24' id='opt'>  
-  <%=link_to '统计汇总',chart_form_path(@form),:class => 'button'%>
-</div> 
-  <div class='span-24 border'>    
-    <b></b> |  
-
-  </div>
-<% end %>     
-
+ 
 <div id='results'>      
   <div class='section_nav'>
     <div class='section_title'>
-       所有回应 － <%=@form.klass.count %>条
+      <%= @form.title %> (<%=@form.klass.count %>)
     </div>
-    <div class='section_button'> 
-       <%=link_to '导出为文本文件',form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
-      <%=link_to '导出为Excel文件',form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>
+    <div class='section_button'>
+      <%=link_to t(:export_to_csv),form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
+      <%=link_to t(:export_to_xls),form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>
     </div>
   </div>
   <table id='rows' cellspacing="0" cellpadding="0" class='grid'>  
@@ -44,10 +28,10 @@
   <tbody>  
  <% @rows.each do |row| %>
   <tr id="<%=row.id%>">              
+    <td><div class='info_item time'><%=row.created_at.to_time.to_formatted_s(:datetime_short)%></div></td> 
     <% @form.fields.each do |field| %>         
       <td><div class='info_item'><%=row.send("f#{field.id}") %></div></td>
     <% end -%>              
-      <td><div class='info_item time'><%=row.created_at.to_time.to_formatted_s(:datetime_short)%></div></td> 
   </tr>      
   <% end -%>
   </tbody>
@@ -55,9 +39,9 @@
 </div>             
 <div style='clear:both'></div>
 <div style='margin:10px;'>
-  <%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => '前翻',:next_label => '后翻' %>   
+  <%=raw will_paginate @rows,:class => 'flickr_pagination',:previous_label => t(:prev),:next_label => t(:next) %>   
 </div>
-<div class='tip'>操作提示:双击回应条目可展开</div>      
+<div class='tip'><%= t(:expand_tips) %></div>      
 <% @rows.each do |row| %>                    
 <div id="row_<%=row.id%>"  style="display:none;">
   <h3><%= t(:detail_answer) %></h3>           
@@ -76,18 +60,11 @@
     </table> 
      </div>     
     <div style='text-align:center;'>
-      <%=link_to t(:edit),edit_form_row_path(@form,row, :edit_key => @form.edit_key),:class => 'ag'%>  <%=link_to '删除', form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => t(:are_you_sure), :method => 'delete',:class => 'ag'%>
+      <%=link_to t(:edit),edit_form_row_path(@form,row, :edit_key => @form.edit_key),:class => 'ag'%>  <%=link_to t(:delete), form_row_path(@form, row, :edit_key => @form.edit_key), :confirm => t(:are_you_sure), :method => 'delete', :class => 'ag'%>
     </div>
 </div>    
 <% end %>
 
 <% content_for :sidebar do %>
-  <div class='box'>
-    <ul class='sidebar_nav'>
-      <li><%=link_to '查看表单',form_path(@form),:target => '_blank'%> </li> 
-      <li><a href="#" onclick="window.open('<%=edit_form_path(@form, :edit_key => @form.edit_key)%>', '<%= @form.id %>', 'toolbar=yes,resizable=yes,scrollbars=no,width=820,height=700,left=0,top=0');" title="编辑">编辑表单</a>  </li>
-      <li><%= link_to '报表', chart_form_path(@form)%></li>
-    </ul>
-  </div> 
- 
+  <%= render :partial => 'rows/answer_sidebar' %> 
 <% end %>

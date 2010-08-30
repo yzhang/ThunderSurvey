@@ -652,7 +652,7 @@ input.btn, button.btn {
 	padding:2px 10px;
 } 
 
-.sidebar_nav li a:hover{ 
+.sidebar_nav li a:hover, .sidebar_nav li.current a{ 
 	color:#fff;
 	text-decoration: none; 
 	background:#0099FF;

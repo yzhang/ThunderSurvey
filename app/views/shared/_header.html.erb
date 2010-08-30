@@ -1,13 +1,13 @@
 <div class='header'>
   <div class="logo span-16" >
-     <%=link_to image_tag(t(:logo)), root_path%>
+     <%=link_to image_tag("logo.png"), root_path%>
   </div>
   
   <div class='login span-8 last'>   
     <% if logged_in? %>
      <ul class="panel"> 
       <li><%=link_to(t(:my_surveys), forms_path)%></li>
-      <li><%=link_to(t(:tutorials), '/intro' )%></li>
+      <li><%=link_to(t(:tutorials), '#' )%></li>
       <li><%=link_to(t(:account),account_path) %></li>
       <li><%= link_to(t(:logout), logout_path) %></li>
      </ul>
@@ -33,13 +33,15 @@
         <% end %>
       </div>
     <% end %>
-    <%= link_to 'English', lang_path(:locale => 'en'), :method => 'put' %> |
-    <%= link_to '简体', lang_path(:locale => 'zh-CN'), :method => 'put' %> 
+    <p>
+      <%= link_to 'English', lang_path(:locale => 'en'), :method => 'put' %> |
+      <%= link_to '简体中文', lang_path(:locale => 'zh-CN'), :method => 'put' %> 
+    </p>
     <%= render :partial => '/shared/notice' %>
   </div>  
 </div>
 <% if logged_in? && current_user.temp? %>
 <div style="padding:10px 10px;background:#FF8888;color:#333;font-size:14px;">
-  您当前使用的是临时帐号,仅供体验之用,此帐号可体验全部功能,但数据不保存,会隔天清空一次.建议免费<%= link_to '注册一个正式帐号', signup_path,:class => 'ag' %>
+  <%= t(:temp_account) %><%= link_to t(:create_real_account), signup_path,:class => 'ag' %>
 </div>
 <% end %>

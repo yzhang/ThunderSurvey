@@ -15,7 +15,7 @@ class Form
   key :email_notify, Boolean, :default => true 
   key :notify_url, String
   key :notify_type, String, :default => 'email'
-  key :thanks_message, String, :default => I18n.t("thanks_message")
+  key :thanks_message, String, :default => ''
   key :publish_response, Boolean, :default => false 
   key :password, String, :default => ''
   key :end_at, Date, :default => nil
@@ -76,7 +76,7 @@ class Form
     self.fields.each do |field|
       klass.key "f#{field.id}", String
       klass.validates_presence_of "f#{field.id}".to_sym if field.required
-      klass.validates_format_of "f#{field.id}".to_sym, :format => Authentication.email_regex if field.intern == 'email'
+      klass.validates_format_of "f#{field.id}".to_sym, :with => Authentication.email_regex if field.intern == 'email'
       
       if field.input == 'check' || field.input == 'radio'
         klass.class_eval <<-METHOD
