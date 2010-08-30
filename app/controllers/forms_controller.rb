@@ -154,8 +154,9 @@ class FormsController < ApplicationController
   end
 
   def destroy
-    @form = Form.find(params[:id], :conditions => {:user_id => current_user.id.to_s})
-    Form.delete(@form._id) if @form
+    @form = Form.where(:id => params[:id], :user_id => current_user._id.to_s).first
+    @form.destroy if @form
+    
     respond_to do |format|
       format.html { redirect_to(forms_url,:notice => '已删除') }
       format.json  { render :json => {:result => 'ok'}.to_json }
