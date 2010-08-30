@@ -7,9 +7,13 @@ set :repository, "git@github.com:yzhang/Confforge.git"
 set :scm, :git
 set :deploy_via, :remote_cache
 
-role :app, "f.51qiangzuo.com", :primary => true
-role :web, "f.51qiangzuo.com"
-role :db,  "f.51qiangzuo.com", :primary => true
+puts domain
+@domain = domain rescue nil
+set :domain, 'f.51qiangzuo.com' unless @domain
+
+role :app, domain, :primary => true
+role :web, domain
+role :db,  domain, :primary => true
 
 namespace :deploy do
   set :deploy_to, "/home/yzhang/app/biaodan"  
@@ -23,10 +27,6 @@ namespace :deploy do
   
   desc "Long deploy will update the code migrate the database and restart the servers"
   task :master do
-    # put up the maintenance screen
-    #     ENV['REASON'] = 'an application upgrade'
-    #     ENV['UNTIL']  = Time.now.+(600).strftime("%H:%M %Z")
-    #     web.disable
     set :deploy_to, "/home/yzhang/app/qd"
     set :branch, "master"
     set :env, "production"
@@ -39,16 +39,26 @@ namespace :deploy do
     end
     
     restart
-
-    # remove the maintenance screen
-    #web.enable
+  end
+  
+  desc "Long deploy will update the code migrate the database and restart the servers"
+  task :en do
+    set :user, "tsurvey"
+    set :deploy_to, "/home/tsurvey/app/qd"
+    set :branch, "master"
+    set :env, "production"
+    
+    transaction do
+      update_code
+      symlink
+      copy_configs
+      migrate
+    end
+    
+    restart
   end
   
   task :conf do
-    # put up the maintenance screen
-    #     ENV['REASON'] = 'an application upgrade'
-    #     ENV['UNTIL']  = Time.now.+(600).strftime("%H:%M %Z")
-    #     web.disable
     set :deploy_to, "/home/yzhang/app/biaodan"
     set :branch, "conf"
     set :env, "production"
@@ -61,16 +71,9 @@ namespace :deploy do
     end
     
     restart
-
-    # remove the maintenance screen
-    #web.enable
   end
   
   task :staging do
-    # put up the maintenance screen
-    #     ENV['REASON'] = 'an application upgrade'
-    #     ENV['UNTIL']  = Time.now.+(600).strftime("%H:%M %Z")
-    #     web.disable
     set :deploy_to, "/home/yzhang/dev/biaodan"
     set :branch, "conf"
     set :env, "production"
