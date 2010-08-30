@@ -7,7 +7,6 @@ set :repository, "git@github.com:yzhang/Confforge.git"
 set :scm, :git
 set :deploy_via, :remote_cache
 
-puts domain
 @domain = domain rescue nil
 set :domain, 'f.51qiangzuo.com' unless @domain
 
