@@ -5,13 +5,20 @@
      })    
   </script>
 <% end %>
-      
-<%= render :partial => 'chart',:collection => @form.fields,:as => :field %>
+
+<div id='results'>
+  <div class='section_nav'>
+    <div class='section_title'>
+      <%= link_to '所有问卷', forms_path %> \ <%= @form.title %> (<%=@form.klass.count %>)
+    </div>
+    <div class='section_button'>
+      <%=link_to t(:export_to_csv),form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
+      <%=link_to t(:export_to_xls),form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>
+    </div>
+  </div>
+  <%= render :partial => 'chart',:collection => @form.fields,:as => :field %>
+</div>
 
 <% content_for :sidebar do %>  
-<div class='box'>
-  <ul class='sidebar_nav'>
-    <li><%=link_to '返回结果页',form_rows_path(@form, :edit_key => @form.edit_key),:class => 'button'%>   </li>
-  </ul>
-</div>
+  <%= render :partial => '/rows/answer_sidebar' %> 
 <% end %>

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   include AuthenticatedSystem           
 
   def new
-    @page_title = "用户登录"
+    @page_title = t(:login)
   end
 
   def create
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       #new_cookie_flag = (params[:remember_me] == "1")
       #handle_remember_cookie! new_cookie_flag
       redirect_back_or_default('/forms')
-      flash[:notice] = "您已成功登录"
+      flash[:notice] = t(:login_success)
     else
       note_failed_signin
       @email       = params[:email]
@@ -30,14 +30,20 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "注销成功."
+    flash[:notice] = t(:logout_success)
     redirect_back_or_default('/')
+  end
+  
+  def set_lang
+    lang = params[:locale]
+    session[:locale] = ['en', 'zh-CN', 'zh-TW'].include?(lang) ? lang : 'en'
+    redirect_to :back
   end
 
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash[:alert] = "用户名或密码错误"
+    flash[:alert] = t(:wrong_email_password)
     logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.zone.now}"
   end
 end

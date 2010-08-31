@@ -1,42 +1,47 @@
 <div class='header'>
-  <div class="logo span-16">
-    <%=link_to image_tag('logo.png'),'/'%>
+  <div class="logo span-16" >
+     <%=link_to image_tag("logo.gif"), root_path%>
   </div>
   
-  <div class='login span-7 last'>   
+  <div class='login span-8 last'>   
     <% if logged_in? %>
      <ul class="panel"> 
-      <li><%=link_to('我的问卷', forms_path)%></li>
-      <li><%=link_to('使用指南', '/intro' )%></li>
-      <li><%=link_to '帐号设置',account_path %></li>
-      <li><%= link_to '注销', logout_path %></li>
+      <li><%=link_to(t(:my_surveys), forms_path)%></li>
+      <li><%=link_to(t(:tutorials), '#' )%></li>
+      <li><%=link_to(t(:account),account_path) %></li>
+      <li><%= link_to(t(:logout), logout_path) %></li>
      </ul>
     <% else %>
-      <%= link_to '注册新用户', signup_path %>
-      已经注册了？<a href='/login' class='signin'><span>立即登录</span></a>
-         <div id="signin_menu">
-            <%= form_tag session_path,:class => 'login_form' do %>  
-            <p>
-              <label for="username">Email</label><br />
-              <%= text_field_tag 'email', @email %>
-              </p>
-              <p><%= label_tag 'password', '密码' %> <br />
-              <%= password_field_tag 'password', nil %> 
-              <p><%= submit_tag '登录',:class => 'submit' %> <%=link_to '找回密码',forget_password_path%></p> 
-              <h4>使用第三方帐号登录</h4>
-              <ul>
-                <li><a href="/oauth/login/google" class='google' >Google</a></li> 
-                <li><a href="/oauth/login/douban" class='douban' >豆瓣网</a></li>
-              </ul>        
-              <div style='clear:both'></div>
-            <% end %>
-        </div>  
-    <% end %>  
+      <%= link_to t(:signup), signup_path %>
+      <%= t(:have_an_account) %><a href='/login' class='signin'><span><%= t(:login) %></span></a>
+      <div id="signin_menu">
+        <%= form_tag session_path,:class => 'login_form' do %>  
+          <p>
+            <label for="username">Email</label><br />
+            <%= text_field_tag 'email', @email %>
+          </p>
+          <p>
+            <%= label_tag 'password', t(:password) %>
+            <%= password_field_tag 'password', nil %> 
+          </p>
+          <p><%= submit_tag t(:login),:class => 'submit' %> <br /><%=link_to t(:forgot_password),forget_password_path%></p> 
+          <h4><%= t(:login_with_others) %></h4>
+          <ul>
+            <li><a href="/oauth/login/google" class='google' >Google</a></li> 
+          </ul>        
+          <div style='clear:both'></div>
+        <% end %>
+      </div>
+    <% end %>
+    <p>
+      <%= link_to 'English', lang_path(:locale => 'en'), :method => 'put' %> |
+      <%= link_to '简体中文', lang_path(:locale => 'zh-CN'), :method => 'put' %> 
+    </p>
     <%= render :partial => '/shared/notice' %>
   </div>  
 </div>
 <% if logged_in? && current_user.temp? %>
 <div style="padding:10px 10px;background:#FF8888;color:#333;font-size:14px;">
-  您当前使用的是临时帐号,仅供体验之用,此帐号可体验全部功能,但数据不保存,会隔天清空一次.建议免费<%= link_to '注册一个正式帐号', signup_path,:class => 'ag' %>
+  <%= t(:temp_account) %><%= link_to t(:create_real_account), signup_path,:class => 'ag' %>
 </div>
 <% end %>

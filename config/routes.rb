@@ -34,19 +34,19 @@ Confforge::Application.routes.draw do
     end 
     resources :users
     resources :pages 
-    resources :feedbacks
   end
 
-  match '/logout' => 'sessions#destroy', :as => :logout
-  match '/login' => 'sessions#new', :as => :login
-  match '/signup' => 'users#new', :as => :signup
-  match '/register' => 'users#create', :as => :register
+  match '/logout'          => 'sessions#destroy', :as => :logout
+  match '/login'           => 'sessions#new', :as => :login
+  match '/signup'          => 'users#new', :as => :signup
+  match '/register'        => 'users#create', :as => :register
   match '/sitemap.:format' => 'sitemap#index', :as => :sitemap
   match '/forget_password' => 'users#forget_password', :as => :forget_password 
-  match '/reset_password' => 'users#reset_password', :as => :reset_password
-  match '/account'   => 'users#setting', :as => :account
-  match '/intro'   => 'home#intro', :as => :intro
-  put   '/update'    => 'users#update'
+  match '/reset_password'  => 'users#reset_password', :as => :reset_password
+  match '/account'         => 'users#setting', :as => :account
+  match '/intro'           => 'home#intro', :as => :intro
+  put   '/update'          => 'users#update'
+  put   '/lang'            => 'sessions#set_lang', :as => :lang
 
   resource :session
   resource :users

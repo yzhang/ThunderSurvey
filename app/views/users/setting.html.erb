@@ -1,39 +1,44 @@
 <%= content_for :pagenav do -%>  
 <div id="page_nav">
-   <span>帐户设定</span> 
+   <span><%= t(:account) %></span> 
 </div>
 <% end %>
 
 <div class = 'prepend-6 span-12'>      
 <%= form_for @user, :url => '/update', :method => 'put', :html => {:class => 'prepend-2'} do |f| %> 
   <p>
-    <%= f.label "用户名" %> <br />
+    <%= f.label t(:name) %> <br />
     <%= f.text_field :login %>
   </p>
   
   <p>
     <%=f.label :email %> <%= @user.email || raw('<br />' + f.text_field(:email)) %>
   </p>
+  
+  <p>
+    <%=f.label :time_zone, t(:time_zone) %> 
+    <%= f.time_zone_select :time_zone %>
+  </p>
 
   <% unless @user.oauth_user? %>
     <p>
-      <%= f.label :current_password, '当前密码' %><br /> 
+      <%= f.label :current_password, t(:current_password) %><br /> 
       <%= password_field_tag :current_password %>
     </p>
     <p>
-      <%= f.label "新密码" %><br /> 
+      <%= f.label t(:new_password) %><br /> 
       <%= f.password_field :password, :size => 20 %>
       <span style="color:red"><%= @user.errors.on(:password) %></span>
     </p>
     <p>
-      <%= f.label "新密码确认" %><br /> 
+      <%= f.label t(:new_password_confirmation) %><br /> 
       <%= f.password_field :password_confirmation, :size => 20 %>
       <span style="color:red"><%= @user.errors.on(:password_confirmation) %></span>
     </p>
   <% end %>
   
   <div class='prepend-top'>
-    <%= submit_tag '保存',:class=> 'submit' %>
+    <%= submit_tag t(:update),:class=> 'submit' %>
   </div>      
 <% end %>
 </div>

@@ -1,19 +1,19 @@
 <%= form_for [parent, field], :html => {:class => 'field_form'}, :remote => true do |form| %>
   <p>
-    <%= form.label :name, '问题名称' %>   
+    <%= form.label :name, t(:title) %>   
     <%= form.text_field :name, :onfocus => "clear_initial(this);",:onblur => "set_initial(this)" %> 
     <%= hidden_field_tag :edit_key, parent.edit_key %>
     <%= form.hidden_field :uuid %> 
     <%= form.hidden_field :position,:class => 'field_position' %>
   </p>  
   <p>
-    <%= form.label :prompt, '问题提示' %>
+    <%= form.label :prompt, t(:hints) %>
     <%= form.text_field :prompt %>  
   </p>
   
   <p>
-    <%= form.label :input, '问题类型' %>
-    <%= form.select :input, Field::TYPES,{}, :onchange => "field_input_changed(this)" %>
+    <%= form.label :input, t(:type) %>
+    <%= form.select :input, Field::TYPES.map{|h| [t(h[0]), h[1]]},{}, :onchange => "field_input_changed(this)" %>
   </p>
   
   <div class="input_options">
@@ -21,9 +21,9 @@
   </div>
   
   <p style='margin-top:10px;'>
-    <%= form.submit '保存', :onclick => 'field_done_editing(this);return false;',:class => 'commit' %>
+    <%= form.submit t(:save), :onclick => 'field_done_editing(this);return false;',:class => 'commit' %>
     <%= form.check_box :required %>    
-    <%= form.label :required, '设为必填项' %>
+    <%= form.label :required, t(:required) %>
      <%#= link_to('取消', '#', :onclick => "field_cancel_editing(this);", :remote => true) %>
   </p>   
 <% end %>

@@ -15,7 +15,7 @@ class Form
   key :email_notify, Boolean, :default => true 
   key :notify_url, String
   key :notify_type, String, :default => 'email'
-  key :thanks_message, String, :default => "您的信息已成功提交！"
+  key :thanks_message, String, :default => ''
   key :publish_response, Boolean, :default => false 
   key :password, String, :default => ''
   key :end_at, Date, :default => nil
@@ -29,9 +29,7 @@ class Form
   key :created_at, Time, :default => Time.now
   key :updated_at, Time, :default => Time.now
   
-  many :fields, :default => 0 
-  
-  validates :title, :presence => true
+  many :fields, :default => 0
   
   before_create :make_edit_key
   before_save   :update_timestamps  
@@ -55,7 +53,6 @@ class Form
   def user_klass
     klass ||= Class.new
     klass.send(:include, MongoMapper::Document)
-    klass.send(:include, ActiveModel::Validations)
     klass.send(:include, ActiveModel::Naming)
     klass.set_collection_name(self.id.to_s)
     klass.key "created_at", Time
@@ -78,8 +75,8 @@ class Form
     
     self.fields.each do |field|
       klass.key "f#{field.id}", String
-      klass.validates_presence_of "f#{field.id}".to_sym, :message => "#{field.name} 不能为空" if field.required
-      klass.validates_format_of "f#{field.id}".to_sym, :message => ' 必须为email格式',:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i if field.intern == 'email'
+      klass.validates_presence_of "f#{field.id}".to_sym if field.required
+      klass.validates_format_of "f#{field.id}".to_sym, :with => Authentication.email_regex if field.intern == 'email'
       
       if field.input == 'check' || field.input == 'radio'
         klass.class_eval <<-METHOD

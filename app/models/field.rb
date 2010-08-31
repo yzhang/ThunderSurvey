@@ -15,9 +15,9 @@ class Field
   
   many :options
   
-  TYPES = [['单行文字', 'string'], ['大段文字', 'text'], 
-            ['多选一', 'radio'], ['多选多', 'check'], 
-            ['下拉列表', 'drop']]
+  TYPES = [['text', 'string'], ['paragraph_text', 'text'], 
+            ['multi_choice', 'radio'], ['checkboxes', 'check'], 
+            ['choose_from_a_list', 'drop']]
   
   def id
     self._id.to_s

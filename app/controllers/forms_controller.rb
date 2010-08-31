@@ -19,6 +19,9 @@ class FormsController < ApplicationController
   def show
     @form = Form.find(params[:id]) rescue nil
     
+    referrer = URI.parse(request.headers["HTTP_REFERER"].to_s) rescue URI.parse('')
+    visit = Visit.create(:form_id => @form.id, :ip => request.remote_ip, :referrer => referrer.to_s, :host => referrer.host)
+    
     respond_to do |format|
       if @form && !@form.password.blank? && session[@form.id] != @form.password
         format.html { render 'password', :layout => params[:embed] ? 'embed' : 'public'}
@@ -27,22 +30,20 @@ class FormsController < ApplicationController
         @embed = params[:embed]
         format.html {  render 'show', :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
       else
-        flash[:notice] = "对不起，您访问的表单不存在"
+        flash[:notice] = t(:form_no_exist)
         format.html { redirect_to root_path}
       end
     end
   end    
   
   def design     
-          
     respond_to do |wants|
       wants.html { render :layout => "simple" }
     end
-   
-    
   end
   
   def chart
+    @tab = 'chart'
     respond_to do |format|
       if @form.klass.count.zero?
         format.html {redirect_to forms_path,:alert => '此问卷暂无回应'}
@@ -69,9 +70,9 @@ class FormsController < ApplicationController
   # GET /forms/new
   # GET /forms/new.xml
   def new    
-    @form = current_user.forms.create(:title => "未命名问卷", :description => '描述一下你的问卷吧')
+    @form = current_user.forms.create(:title => t(:untitled_form), :description => t(:describe_your_form))
 
-    @form.fields << Field.new(:name => '姓名', :required => true, :input => 'string', 
+    @form.fields << Field.new(:name => t(:name), :required => true, :input => 'string', 
               :uuid => Time.now.to_i,:position => 1)
     @form.fields << Field.new(:name => 'Email', :required => true, :input => 'string', 
               :uuid => Time.now.to_i + 5,:position => 2)
@@ -126,7 +127,7 @@ class FormsController < ApplicationController
         @form.sort_fields(params[:uuids])
         
         format.html { 
-          flash[:notice] = 'Form was successfully updated.'
+          flash[:notice] = t(:update_success)
           redirect_to(@form) 
         }
         format.js {
@@ -154,10 +155,11 @@ class FormsController < ApplicationController
   end
 
   def destroy
-    @form = Form.find(params[:id], :conditions => {:user_id => current_user.id.to_s})
-    Form.delete(@form._id) if @form
+    @form = Form.where(:id => params[:id], :user_id => current_user._id.to_s).first
+    @form.destroy if @form
+    
     respond_to do |format|
-      format.html { redirect_to(forms_url,:notice => '已删除') }
+      format.html { redirect_to(forms_url,:notice => t(:removed)) }
       format.json  { render :json => {:result => 'ok'}.to_json }
     end
   end

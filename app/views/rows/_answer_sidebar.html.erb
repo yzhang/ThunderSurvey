@@ -1,0 +1,9 @@
+<div class='box'>
+  <ul class='sidebar_nav'>
+    <li class="<%= 'current' if @tab == 'answers' %>"><%=link_to t(:answers), form_rows_path(@form, :edit_key => @form.edit_key) %> </li> 
+    <li class="<%= 'current' if @tab == 'chart' %>"><%= link_to t(:report), chart_form_path(@form)%></li>
+    <% if false %>
+      <li class="<%= 'current' if @tab == 'visits' %>"><%= link_to t(:visits), '#' %></li>
+    <% end %>
+  </ul>
+</div>

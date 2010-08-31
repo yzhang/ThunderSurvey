@@ -27,7 +27,6 @@ form label{
 }
 
 .login ul.panel {
-	width: 260px;
 	height: 25px;
 	padding: 5px 5px;
 	margin-left: 15px;
@@ -223,7 +222,6 @@ form.login_form{
 	height:0px;
 }  
 
-
 .notes{       
 	margin-bottom:10px;
 	padding:10px;
@@ -334,7 +332,6 @@ div.info_item{
 	margin:0;    
 	border:none;    
 }
-     
 
 /* --- flash -----*/ 
 #flash-message{    
@@ -565,7 +562,7 @@ h4.tip{
 
 /* --- btn ---*/
 .btn {   
-   line-height: 1;
+   line-height: 24px;
    padding:4px 10px;
    text-decoration: none;
    font-weight: bold; 
@@ -576,7 +573,7 @@ h4.tip{
 }  
 
 a.btn{                      
-  	text-decoration: none;    
+ 	text-decoration: none;    
 }   
 
 input.btn, button.btn {
@@ -593,7 +590,6 @@ input.btn, button.btn {
    width: 5px;
    height: 5px;
 }       
-
 
 .prompt{
 	color:#333;
@@ -656,7 +652,7 @@ input.btn, button.btn {
 	padding:2px 10px;
 } 
 
-.sidebar_nav li a:hover{ 
+.sidebar_nav li a:hover, .sidebar_nav li.current a{ 
 	color:#fff;
 	text-decoration: none; 
 	background:#0099FF;

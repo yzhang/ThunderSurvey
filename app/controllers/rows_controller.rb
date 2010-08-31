@@ -5,6 +5,7 @@ class RowsController < ApplicationController
   before_filter { |c| c.set_section('forms') }  
 
   def index
+    @tab = 'answers'
     klass = @form.klass
     @rows = klass
     respond_to do |wants| 
@@ -14,16 +15,16 @@ class RowsController < ApplicationController
           render :layout => params[:embed] ? 'embed' : 'application' 
         }                   
       else
-        wants.html {
-          redirect_to forms_path,:alert => '此问卷暂无回应'
-        }                                        
-      end
-      
-      wants.json {
-        @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
+      wants.html {
+        redirect_to forms_path,:alert => t(:no_answers)
+      }                                        
+     end
+     
+     wants.json {
+       @rows = klass.paginate(:page => params[:page], :per_page => (params[:per_page]||20), :order => 'created_at')
 
-        # 如果grid参数不为0，则为Grid调用，否则为ActiveResource
-        if params[:grid] == '0'
+       # 如果grid参数不为0，则为Grid调用，否则为ActiveResource
+       if params[:grid] == '0'
           @rows << {:total_entries => @rows.total_entries}
           render :json => @rows.to_json
         else
@@ -45,7 +46,7 @@ class RowsController < ApplicationController
       wants.csv do
         @rows = klass.paginate(:page => 1, :per_page => 1000, :order => 'created_at')
         csv_string = FasterCSV.generate(:col_sep => ",", :row_sep => "\r\n") do |csv|
-          csv << (@form.fields.map(&:name) + ['创建时间'])
+          csv << (@form.fields.map(&:name) + [t(:timestamps)])
           first_page = @rows
           write_csv_rows(csv, first_page)
           (2..first_page.total_pages).to_a.each do |page|
@@ -105,7 +106,7 @@ class RowsController < ApplicationController
                 page.replace_html field.id.to_s + '_field',''   
               end
             end     
-            page.alert '报名表填写有误,请检查!'
+            page.alert t(:something_goes_wrong)
           end
            }
       end
@@ -118,12 +119,12 @@ class RowsController < ApplicationController
     
     respond_to do |want|
       if @row.update_attributes(params[:row])
-        want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => '记录已更新!'}
+        want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => t(:update_success)}
         want.json {render :json => @row.to_json}
         want.js   {
           render :update do |page|
            # page['row'].replace_html(:partial => 'row', :locals => {:row => @row,:form => @form})
-           flash[:notice] = '记录已更新'
+           flash[:notice] = t(:update_success)
            page.redirect_to(form_rows_path(@form, :edit_key => @form.edit_key))
           end
         }
@@ -140,7 +141,7 @@ class RowsController < ApplicationController
                 page.replace_html field.id.to_s + '_field',''   
               end
             end
-            page << "alert('内容有误,请检查!')" 
+            page << "alert('#{t(:something_goes_wrong)}')" 
           end
         }
       end
@@ -158,7 +159,7 @@ class RowsController < ApplicationController
     end
     
     respond_to do |want|
-      want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => '记录已删除!'}
+      want.html {redirect_to form_rows_path(@form, :edit_key => @form.edit_key),:notice => t(:update_success)}
       want.json {render :json => [:ok]}
     end
   end

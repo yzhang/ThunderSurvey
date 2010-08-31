@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
   <link rel="shortcut icon" href="/favicon.ico" />
-  <meta name="description" content="<%= @form.nil? ?  "抢答网让您可以轻松创建在线表单，调查问卷，收集用户反馈，类似Google Form的操作界面，让表单的创建如行云流水，简洁干净的问卷页面，让用户爱上问答!" : @form.description %>" />
+  <meta name="description" content="<%= @form.nil? ?  "ThunderSurvey is the simplest free online survey solution, if you perfer to clean and simple survey design, then thundersurvey should be your first choice." : @form.description %>" />
   <meta name='viewport' content='width=device-width' />
   <meta charset="utf-8" />
   <meta name="csrf-token" content="<%= form_authenticity_token %>" />
@@ -25,23 +25,15 @@
     }
   </style>
   <%= yield :headers %>                                                   
-  <title>抢答网－<%= @form.nil? ? (@page_title||'新一代问卷系统，让您的表单与众不同') : @form.title %></title>
+  <title>Thunder Survey－<%= @form.nil? ? (@page_title||'Free online survey solution.') : @form.title %></title>
 </head>
 
-<body>   
+<body>     
   <div class='header'>
-    <div class="logo">
-      <%=image_tag('mini_logo.png') %>
+    <div class="logo" style='margin:6px 10px'>
+      <%=image_tag('mini-en.png')%>
     </div>         
-    <div class='login'>
-      <% if logged_in? %>	
-        你好 <%=current_user.login %> <%= link_to '注销', logout_path, :method => 'delete' %>
-      <% else %>
-        <%= link_to '立即登录', login_path %> |
-        还没有帐号？ <%= link_to '现在就注册', signup_path %>
-      <% end %>
-    </div>  
-    <div id="saving" style="display:none;">正在保存...</div> 
+    <div id="saving" style="display:none;"><%= t(:saving) %></div> 
     <%= render :partial => '/shared/notice' %>
   </div>
   

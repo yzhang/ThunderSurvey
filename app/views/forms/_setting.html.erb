@@ -15,18 +15,17 @@
   <%= form_for(@form, :url => form_path(@form, :edit_key => @edit_key, :mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
   
   <p id="email_notify">
-    <%= f.check_box :email_notify %> <b>有新回应时，发邮件通知我</b>
+    <%= f.check_box :email_notify %> <b><%= t(:send_email_when_receive_new_answer) %></b>
   </p>
-  
+
   <p>
-    <%= f.label :thanks_message, '用户提交回答后的感谢信息' %>
+    <%= f.label :thanks_message, t(:thanks_message) %>
     <%= f.text_area :thanks_message, :cols => 42, :rows => 4, :style => "width:350px; height:80px;" %>
   </p>  
   <p>
-    <%= f.check_box :publish_response,:value => false %> <b>公开投票结果</b><br />
-    <span class="prompt">用户提交成功后可查看结果</span>
+    <%= f.check_box :publish_response,:value => false %> <b><%= t(:make_results_public) %></b>
   </p>                           
-  <%=f.submit '更新',:onclick => "$('#saving').show();" %>  
+  <%=f.submit t(:update),:onclick => "$('#saving').show();" %>
   <% end -%>
 </div>
 
@@ -35,17 +34,17 @@
   <%= form_for(@form, :url => form_path(@form, :edit_key => @edit_key, :mod => 'dialog'),:html => {:class => 'setting_form'}, :remote => true) do |f| -%> 
   
   <p>
-    <%= f.label :password, '访问密码' %><br />
+    <%= f.label :password, t(:access_password) %><br />
     <%= f.password_field :password, :size => 40 %><br />
-    <span class="prompt">留空则任何人可访问</span>
+    <span class="prompt"><%= t(:optional) %></span>
   </p>
   
   <p>
-    <%= f.label :end_at, '报名截止日期' %><br />
+    <%= f.label :end_at, t(:end_at) %><br />
     <%= f.text_field :end_at, :size => 20 %><br />
-    <span class="prompt">可不填</span>
+    <span class="prompt"><%= t(:optional) %></span>
   </p>
   
-  <%=f.submit '保存',:onclick => "$('#saving').show();" %>
+  <%=f.submit t(:save),:onclick => "$('#saving').show();" %>
   <% end -%>
 </div>

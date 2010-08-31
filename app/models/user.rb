@@ -33,15 +33,16 @@ class User
   key :activated_at, Time
   key :oauth_type
   key :oauth_id
+  key :time_zone, String, :default => 'UTC'
 
 
   before_create :make_activation_code
   before_create :update_timestamps  
   
-  validates :login, :presence => true, :length => {:maximum => 100}
-  validates :email, :presence => true, :length => {:minimum => 6},
-        :format => {:with => Authentication.email_regex}
-        
+  validates_presence_of :login, :message => '用户名不能为空'
+  validates_presence_of :email, :message => 'Email不能为空'
+  validates_format_of   :email, :with => Authentication.email_regex, :message => 'Email格式不正确'
+
   validate :make_email_unique
   
   many :forms
@@ -119,15 +120,41 @@ class User
     /^临时用户/.match self.login
   end
   
-  def self.clean_temp_users
-    User.all({:login => /^临时用户/}).each do |u|
-      u.forms.each do |f|
-        Form.delete(f._id) if f
+  class << self
+    def clean_temp_users
+      User.all({:login => /^临时用户/}).each do |u|
+        u.forms.each do |f|
+          f.destroy if f
+        end
+        u.destroy
       end
-      u.destroy
+      
+      User.all({:login => /^DemoUser/}).each do |u|
+        u.forms.each do |f|
+          f.destroy if f
+        end
+        u.destroy
+      end
+    
+      Visit.where(:city => nil).each do |v|
+  	    v.city = get_city_by_ip(v.ip)
+  	    v.save(:validate => false)
+  	  end
+	  
+  	  Email.delete_all
+    end
+
+    def get_city_by_ip(ip)
+  	  begin
+        response = open("http://www.youdao.com/smartresult-xml/search.s?type=ip&q=#{ip}")
+        xml = Nokogiri::XML(response)
+        return xml.css('location').text.split(' ').first
+      rescue
+        return '未知'
+      end
     end
   end
-
+  
   protected
     def make_activation_code
         self.activation_code = self.class.make_token

@@ -1,11 +1,11 @@
 <%= content_for :pagenav do -%> 
 <div id="page_nav">
-    <span><%=link_to '所有问卷',forms_path%> / <%=link_to @form.title,form_rows_path(@form, :edit_key => @form.edit_key) %> / 编辑</span>    
+    <span><%=link_to t(:my_surveys),forms_path%> / <%=link_to @form.title,form_rows_path(@form, :edit_key => @form.edit_key) %> / <%= t(:edit) %></span>    
     <div class='right'>
     </div>     
 </div>     
 <div class='span-24'>  
-  <%=link_to '<< 返回查看回应页',form_rows_path(@form, :edit_key => @form.edit_key),:class => 'ag'%>
+  <%=link_to '<< ' + t(:back),form_rows_path(@form, :edit_key => @form.edit_key),:class => 'ag'%>
 </div>
 <% end %>
 
@@ -13,14 +13,14 @@
   <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %> 
     <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
   <% end %>
-     <%= f.submit "更新",:class => 'submit', :onclick => "remote_action(this);" %> <%= image_tag('ajax-loader.gif',:id => 'spinner') %> 
+     <%= f.submit t(:update),:class => 'submit', :onclick => "remote_action(this);" %> <%= image_tag('ajax-loader.gif',:id => 'spinner') %> 
     <% end %>
 
 
 <% content_for :sidebar do %>  
  <div class='box'>
    <ul class='sidebar_nav'>
-     <li><%=link_to '返回结果页',form_rows_path(@form, :edit_key => @form.edit_key),:class => 'button'%>       </li>
+     <li><%=link_to t(:back_to_survey),form_rows_path(@form, :edit_key => @form.edit_key),:class => 'button'%>       </li>
    </ul>
  </div>
 <% end %>
