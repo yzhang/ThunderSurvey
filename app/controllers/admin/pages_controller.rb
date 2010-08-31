@@ -25,11 +25,7 @@ class Admin::PagesController < Admin::BaseController
     @page.update_attributes(params[:page])         
     
     respond_to do |wants|      
-      if params[:preview]
-        wants.html { redirect_to "/#{@page.slug}?preview=true"  }
-      else
-        wants.html { redirect_to admin_pages_url,:notice => '已保存' }
-      end
+      wants.html { redirect_to admin_pages_url,:notice => '已保存' }
     end
   end
   

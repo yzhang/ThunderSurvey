@@ -34,12 +34,6 @@ class FormsController < ApplicationController
         format.html { redirect_to root_path}
       end
     end
-  end    
-  
-  def design     
-    respond_to do |wants|
-      wants.html { render :layout => "simple" }
-    end
   end
   
   def chart

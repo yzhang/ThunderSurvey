@@ -4,22 +4,10 @@ Confforge::Application.routes.draw do
       resources :options
     end
 
-    resources :rows do
-      collection do
-        post :edit_individual
-        put :update_individual
-      end
-    end
-    
-    collection do
-      post :edit_individual
-      put  :update_individual
-    end
+    resources :rows
     
     member do
-      get :design
       get :thanks
-      get :preview
       get :chart
       post :password
     end
@@ -44,7 +32,6 @@ Confforge::Application.routes.draw do
   match '/forget_password' => 'users#forget_password', :as => :forget_password 
   match '/reset_password'  => 'users#reset_password', :as => :reset_password
   match '/account'         => 'users#setting', :as => :account
-  match '/intro'           => 'home#intro', :as => :intro
   put   '/update'          => 'users#update'
   put   '/lang'            => 'sessions#set_lang', :as => :lang
 

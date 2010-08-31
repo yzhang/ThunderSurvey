@@ -3,11 +3,6 @@
 <% end %>                            
 
 <%= content_for :pagenav do -%>  
-<% if params[:preview]%>  
-<div id="preview">
-  <%=link_to '<< 返回编辑',edit_admin_page_path(@page),:class => 'ag'%>     
-</div>                  
-<% end %>
 <div id="page_nav">
    <span><%=@page.title%></span> 
 </div>
