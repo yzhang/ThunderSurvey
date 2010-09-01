@@ -20,7 +20,10 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id]) rescue nil
     
     referrer = URI.parse(request.headers["HTTP_REFERER"].to_s) rescue URI.parse('')
-    visit = Visit.create(:form_id => @form.id, :ip => request.remote_ip, :referrer => referrer.to_s, :host => referrer.host)
+    visit = Visit.create(:form_id => @form.id, :ip => request.remote_ip, 
+                          :referrer => referrer.to_s, 
+                          :host => referrer.host,
+                          :created_at => Time.now)
     
     respond_to do |format|
       if @form && !@form.password.blank? && session[@form.id] != @form.password
@@ -44,6 +47,30 @@ class FormsController < ApplicationController
       else
         format.html
       end
+    end
+  end
+  
+  def stats
+    @tab = 'stats'
+    # 
+    # @visits_count = @form.visits.last_month.count(:all, :group => 'DATE(created_at)')
+    # @referrers =    @event.visits.last_month.count(:order => 'count(city) DESC', :group => 'host', :limit => 5)
+    # @pages =        @event.visits.last_month.count(:all, :group => 'page')
+    # @cities =       @event.visits.last_month.count(:order => 'count(city) DESC', :group => 'city', :limit => 5)
+    # 
+    # @data = @visits_count.values
+    # @max = @data.max || 0
+    # #@labels = @visits_count.keys.map{|k| k.sub(/20.*?-/, '')}
+    # #@labels[0] = ''
+    # @labels = ['']
+    # [3, 2, 1, 0].each do |i|
+    #   d = Date.today - i.week
+    #   @labels << d.strftime("%m-%d")
+    # end
+    # @axis_labels = [@labels, [0, @max/2, @max]]
+    
+    respond_to do |format|
+      format.html
     end
   end
   

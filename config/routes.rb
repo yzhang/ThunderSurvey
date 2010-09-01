@@ -9,6 +9,7 @@ Confforge::Application.routes.draw do
     member do
       get :thanks
       get :chart
+      get :stats      
       post :password
     end
   end
