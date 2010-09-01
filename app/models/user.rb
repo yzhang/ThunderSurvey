@@ -122,17 +122,7 @@ class User
   
   class << self
     def clean_temp_users
-      User.all({:login => /^临时用户/}).each do |u|
-        u.forms.each do |f|
-          f.destroy if f
-        end
-        u.destroy
-      end
-      
       User.all({:login => /^DemoUser/}).each do |u|
-        u.forms.each do |f|
-          f.destroy if f
-        end
         u.destroy
       end
     
@@ -140,6 +130,10 @@ class User
   	    v.city = get_city_by_ip(v.ip)
   	    v.save(:validate => false)
   	  end
+  	  
+  	  Form.all.each do |f|
+  	    f.destroy if f.user.nil?
+	    end
 	  
   	  Email.delete_all
     end
