@@ -42,7 +42,8 @@
     <% end %>
     <p>
       <%= link_to 'English', lang_path(:locale => 'en'), :method => 'put' %> |
-      <%= link_to '简体中文', lang_path(:locale => 'zh-CN'), :method => 'put' %> 
+      <%= link_to '简体', lang_path(:locale => 'zh-CN'), :method => 'put' %> | 
+      <%= link_to '繁体', lang_path(:locale => 'zh-TW'), :method => 'put' %>
     </p>
     <%= render :partial => '/shared/notice' %>
   </div>  
