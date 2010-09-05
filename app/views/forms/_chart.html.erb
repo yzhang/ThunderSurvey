@@ -1,6 +1,6 @@
 <% if field.multi? %>
-<div style='span-16 prepend-top last text-left'>
-  <h4><%= field.name %></h4>
+<div class='span-16 prepend-top last'>
+  <h4 style="text-align:left"><%= field.name %></h4>
   <section class="span-16 last">
     <% data = field.options.map {|o| @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + o.value + '(\s|$)')})} %>    
     <img src="<%= Gchart.pie_3d(:size => '580x150',
