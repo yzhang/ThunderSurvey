@@ -1,0 +1,16 @@
+<table class='grid' id='rows' cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>城市</th>       
+      <th>访问次数</th>                                                                          
+    </tr>
+  </thead>
+  <tbody> 
+    <% cities.each do |c| %> 
+    <tr>
+      <td class='text-center'><%=c['city'] || '未知' %></td>
+      <td class='text-center'><%=c['count']%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

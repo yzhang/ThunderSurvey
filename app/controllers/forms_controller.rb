@@ -52,6 +52,8 @@ class FormsController < ApplicationController
   
   def stats
     @tab = 'stats'
+    
+
     # 
     # @visits_count = @form.visits.last_month.count(:all, :group => 'DATE(created_at)')
     # @referrers =    @event.visits.last_month.count(:order => 'count(city) DESC', :group => 'host', :limit => 5)

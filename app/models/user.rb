@@ -121,6 +121,8 @@ class User
   end
   
   class << self
+    require 'open-uri'
+    
     def clean_temp_users
       User.all({:login => /^DemoUser/}).each do |u|
         u.destroy

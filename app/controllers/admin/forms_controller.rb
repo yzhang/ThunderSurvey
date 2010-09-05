@@ -21,7 +21,29 @@ class Admin::FormsController < Admin::BaseController
        end                                                                    
        wants.html { redirect_to admin_forms_url }     
      end
-  end   
+  end
+  
+  def stats
+    @tab = 'stats'
+    @form = Form.find(params[:id])
+    @visits_count = Visit.group_by_created_at(:form_id => @form.id)
+    @referrers    = Visit.group_by_host(:form_id => @form.id)[0..4]
+    @cities =       Visit.group_by_city(:form_id => @form.id)[0..4]
+
+    @data = @visits_count.map {|i| i['count'].to_i}
+    @max = @data.max || 0
+    #@labels[0] = ''
+    # @labels = ['']
+    # [3, 2, 1, 0].each do |i|
+    #   d = Date.today - i.week
+    #   @labels << d.strftime("%m-%d")
+    # end
+    @axis_labels = [[], [0, @max/2, @max]]
+    
+    respond_to do |format|
+      format.html
+    end
+  end
   
   def show
     @form = Form.find(params[:id])  

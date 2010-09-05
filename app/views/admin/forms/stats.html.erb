@@ -1,0 +1,22 @@
+<h1><%=@form.title%></h1>
+<div class='span-24' id='results'>     
+  <h4>访问统计(过去一月)</h4>
+  <img src="<%= Gchart.line(:axis_with_labels => 'x,y',
+              :axis_labels => @axis_labels, 
+              :title => "总计: #{Visit.count(:created_at.gt => 1.month.ago.utc, :form_id => @form.id)}",
+              :data => @data,
+              :bg => 'FDFDFD',
+              :width => 700,
+              :height => 200) %>" />
+              
+  <section class="span-9 prepend-top">
+    <h4>访问来源</h4>
+    <%= render :partial => '/shared/referrers', :locals => {:referrers => @referrers} %>
+  </section>
+
+  <div style="clear:both;"></div>
+  <section class="span-9 prepend-top">
+    <h4>地理位置</h4>
+    <%= render :partial => '/shared/cities', :locals => {:cities => @cities} %>
+  </section>
+</div>

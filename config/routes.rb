@@ -19,6 +19,7 @@ Confforge::Application.routes.draw do
     resources :forms do
       member do
         put :recommand
+        get :stats
       end
     end 
     resources :users
