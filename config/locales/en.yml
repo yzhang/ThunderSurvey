@@ -6,6 +6,7 @@ en:
     errors:
       messages:
         blank: "can't be blank"
+        taken: "already been taken"
 
   logo: 'en-logo.png'
   create_survey: "Create Survey"
