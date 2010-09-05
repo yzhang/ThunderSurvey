@@ -17,7 +17,8 @@ class Field
   
   TYPES = [['text', 'string'], ['paragraph_text', 'text'], 
             ['multi_choice', 'radio'], ['checkboxes', 'check'], 
-            ['choose_from_a_list', 'drop']]
+            ['choose_from_a_list', 'drop'],
+            ['page_break', 'page']]
   
   def id
     self._id.to_s

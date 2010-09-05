@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
     Time.zone = current_user.time_zone if logged_in?
     
     lang = request.headers['Accept-Language'].split(',').first
-    session[:locale] ||= ['en', 'zh-CN', 'zh-TW'].include?(lang) ? lang : 'en'
-    I18n.locale = session[:locale]
+    locale = ['en', 'zh-CN', 'zh-TW'].include?(lang) ? lang : 'zh-CN'
+    I18n.locale = session[:locale] || 'zh-CN'
   end
   
   def set_section(section)

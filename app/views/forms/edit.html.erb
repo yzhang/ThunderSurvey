@@ -30,7 +30,8 @@
     .container {width: 680px; margin:0px auto;padding:0px;}
     #content{padding:0px;}  
   </style>      
-<% end -%>   
+<% end -%>
+
 <div id="form_wrapper"> 
   <section class='form_oprate'>
     <nav>
@@ -49,6 +50,7 @@
    
   <div id="form" >
     <%= render :partial => 'setting' %>  
+    
     <!-- 表单项 --> 
     <div id="fields">   
       <% @fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
@@ -70,11 +72,4 @@
   <section class='form_preview right'>
     <%= t(:preview) %>: <%= link_to "#{form_url(@form)}", form_path(@form), :target => '_blank' %>
   </section>
-</div>
-
-<div id="iframe" style="display:none;" class='dialog'>   
-  <p> 
-    <b><%= t(:embed_form_in_your_site) %></b><br />
-    <%= text_field_tag :iframe, "<iframe src='#{form_url(@form)}?embed=true' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :style => "width:450px;", :readonly => true, :id => 'simple' %>
-  </p>
 </div>

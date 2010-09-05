@@ -2,7 +2,7 @@ body{
 	font-family: arial, sans-serif;
 	font-size:12px;     
 	color:#333; 
-  	background:url(/images/bg/bg.png);
+  background:url(/images/bg/bg.png);
 }
 
 /*  ------ form show cotainer -------- */
@@ -17,6 +17,13 @@ body{
 	border:1px solid #CCCCCC;
 }
 
+#form_container form {
+	margin: 10px;
+}
+
+.field {
+	margin: 20px 0;
+}
 .desc{
 	font-size:13px;
 	line-height:150%;

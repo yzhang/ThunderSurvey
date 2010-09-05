@@ -48,3 +48,10 @@
   <%=f.submit t(:save),:onclick => "$('#saving').show();" %>
   <% end -%>
 </div>
+
+<div id="iframe" style="display:none;" class='dialog'>   
+  <p> 
+    <b><%= t(:embed_form_in_your_site) %></b><br />
+    <%= text_field_tag :iframe, "<iframe src='#{form_url(@form)}?embed=true' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :style => "width:450px;", :readonly => true, :id => 'simple' %>
+  </p>
+</div>

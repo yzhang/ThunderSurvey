@@ -19,19 +19,19 @@ class FormsController < ApplicationController
   def show
     @form = Form.find(params[:id]) rescue nil
     
-    referrer = URI.parse(request.headers["HTTP_REFERER"].to_s) rescue URI.parse('')
-    visit = Visit.create(:form_id => @form.id, :ip => request.remote_ip, 
-                          :referrer => referrer.to_s, 
-                          :host => referrer.host,
-                          :created_at => Time.now)
-    
     respond_to do |format|
       if @form && !@form.password.blank? && session[@form.id] != @form.password
         format.html { render 'password', :layout => params[:embed] ? 'embed' : 'public'}
       elsif @form && @form.allow_insert?
+        track_visit
         @row = @form.klass.new
         @embed = params[:embed]
-        format.html {  render 'show', :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
+        
+        @page = params[:page].to_i || 1
+        @page = 1 if @page < 1 || @page > @form.total_page + 1
+        @fields = @form.find_fields_by_page(@page)
+        
+        format.html {  render 'show', :layout => params[:embed] ? 'embed' : 'public' }
       else
         flash[:notice] = t(:form_no_exist)
         format.html { redirect_to root_path}
@@ -192,5 +192,13 @@ class FormsController < ApplicationController
   private 
   def set_form
     @form = Form.find(params[:id])
+  end
+  
+  def track_visit
+    referrer = URI.parse(request.headers["HTTP_REFERER"].to_s) rescue URI.parse('')
+    visit = Visit.create(:form_id => @form.id, :ip => request.remote_ip, 
+                          :referrer => referrer.to_s, 
+                          :host => referrer.host,
+                          :created_at => Time.now)
   end
 end

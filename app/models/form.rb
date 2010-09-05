@@ -53,7 +53,6 @@ class Form
   def user_klass
     klass ||= Class.new
     klass.send(:include, MongoMapper::Document)
-    klass.send(:include, ActiveModel::Naming)
     klass.set_collection_name(self.id.to_s)
     klass.key "created_at", Time
     klass.key 'order_id',Integer #保存订单信息
@@ -139,6 +138,25 @@ class Form
   
   def rows_count
     @rows_count ||= self.klass.count
+  end
+  
+  def total_page
+    @total_page ||= (self.fields.select{|f| f.input == 'page'}.length + 1)
+  end
+  
+  def find_fields_by_page(page)
+    fields = self.fields.sort {|f1, f2| f1.position <=> f2.position}
+    pages = fields.select{|f| f.input == 'page'}
+    pages.insert(0, nil)
+    pages << nil
+    
+    if pages.length > 0
+      start = pages[page -1].nil? ? 0 : pages[page -1].position
+      stop  = pages[page].nil? ? 65535 : pages[page].position
+      return fields.select {|f| f.position > start && f.position < stop}
+    else
+      return fields
+    end
   end
   
   private

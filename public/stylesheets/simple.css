@@ -88,17 +88,17 @@ input.inputFocus {
 } 
 
              
-#form{   
-	border-left:2px solid #E1E8F0;  
-	border-right:2px solid #E1E8F0;  
+#form{    
  	background:#fff;    
 	min-height:400px;
 	position:relative;
 	overflow:auto; 
-	padding:20px;
 	margin:0 5px;
 }               
 
+#form #edit_form{
+	padding: 0 10px;
+}
 
 *html #form{
 	height:400px;
@@ -150,8 +150,7 @@ input.inputFocus {
 .field_form { padding: 10px; margin-top: 10px;}
 
 div.field {
-  margin: 10px 0;
-  padding: 10px;
+  padding: 10px 10px;
 }
 
 .highlight_hover {

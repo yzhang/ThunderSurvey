@@ -1,1 +1,9 @@
-<%= text_area_tag "row[f#{field.id}]", row.send("f#{field.id}"),:size => "60x8" %>
+<div class="field">
+  <%= label_tag field.id,field.name, :class => "q_title" %><%=content_tag(:abbr,'*',:class=> 'required') if field.required %>
+
+  <div class="input">
+    <%= text_area_tag "row[f#{field.id}]", row.send("f#{field.id}"),:size => "60x8" %>
+  </div>
+  <br />
+  <span class="prompt"><%=h field.prompt %></span>
+</div>

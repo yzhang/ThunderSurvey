@@ -37,11 +37,6 @@ body{
 	background:#F0F4F4;
 }                    
 
-div.field {
-  margin: 10px 0;
-  padding: 10px;
-}
-
 .submit{
 	background: url(/images/bg/btn-short.png);     
 	height:26px;

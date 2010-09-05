@@ -34,14 +34,14 @@ $(document).ready(function($) {
   });      
 
   
-  $("#fields").sortable({axis:'y', cursor: 'move', forcePlaceholderSize: true, items: '.field',placeholder: 'placeholder' });
+  $("#fields").sortable({axis:'y', cursor: 'move', forcePlaceholderSize: true, items: '.edit',placeholder: 'placeholder' });
   $("#fields").disableSelection();
   
   // 更新排序结果
   $('#fields').bind('sortupdate', function(event, ui) {
     var i = 1;
     data = []
-    $("#fields").find(".field").each(function(){
+    $("#fields").find(".edit").each(function(){
       uuid = $(this).find('#field_uuid').val();
       data.push('<input type="hidden" name="uuids[' + uuid + ']" value="' + i + '" />')
       i += 1;
@@ -52,9 +52,9 @@ $(document).ready(function($) {
   });
 
 	//根据窗口大小自动调整表单模块的高度
-	$("#form").height(document.documentElement.clientHeight - $("#form").position().top -70);
+	$("#form").height(document.documentElement.clientHeight - $("#form").position().top -30);
 	$(window).resize(function(){
-		$("#form").height(document.documentElement.clientHeight - $("#form").position().top - 70);
+		$("#form").height(document.documentElement.clientHeight - $("#form").position().top - 30);
 	});
 });     
 
@@ -92,7 +92,7 @@ function set_option_initial(obj){
 function form_add_field(e)
 {
   $("#fields").append($("#field_template").html());
-  var new_field = $("#fields").find('.field').last();
+  var new_field = $("#fields").find('.edit').last();
 	$(new_field[0]).attr('id', 'last_field');
   new_field.find('.question').hide();
   new_field.find('.form').show();
@@ -115,8 +115,8 @@ function form_dup_field(e)
 {
   $("#fields").append($("#field_template").html());	
 
-  var new_field = $("#fields").find('.field').last();
-	var parent = $(e).closest('.field')
+  var new_field = $("#fields").find('.edit').last();
+	var parent = $(e).closest('.edit')
 	$(new_field[0]).html(parent.html());
 	$(new_field[0]).attr('id', 'last_field');
 	new_field.find('.field_form').attr('action', $("#field_template .field_form").attr('action'));

@@ -83,18 +83,37 @@ class RowsController < ApplicationController
 
   def create
     params[:row][:created_at] = Time.now
-    @embed = params[:embed]
     klass = @form.klass
-    @row = klass.new(params[:row])
+
+    if @form.total_page == 1
+      @row = klass.new(params[:row])
+      @result = @row.save
+    else
+      @page = params[:page].to_i
+      @fields = @form.find_fields_by_page(@page)
+      @keys   = @fields.map{|f| "f#{f.id}".to_sym}
+      session[:row] ||= {}
+      params[:row].merge(session[:row])
+      @row = klass.new(params[:row])
+      session[:row] = params[:row]
+      @row.valid?
+      errors = @row.errors.select {|k, v| @keys.include?(k) }
+      @result = errors.empty?
+      @row.save if @page == @form.total_page && @result
+    end
     
     respond_to do |want|
-      if @form.allow_insert? && @row.save
-        @form.rows_count += 1
-        @form.save(:validate => false)
+      if @result
+        if @page == @form.total_page
+          @form.rows_count += 1
+          @form.save(:validate => false)
 
-        @form.deliver_notification(@row)
-        params = ["form_id=#{@form.id}", "row_id=#{@row.id}","order_id=#{@row.order_id}"].join("&")
-        want.js { render :js => "window.location='#{thanks_form_path(@form)}'" }
+          @form.deliver_notification(@row)
+          params = ["form_id=#{@form.id}", "row_id=#{@row.id}","order_id=#{@row.order_id}"].join("&")
+          want.js { render :js => "window.location='#{thanks_form_path(@form)}'" }
+        else
+          want.js { render :js => "window.location='#{form_path(@form, :page => @page + 1)}'" }
+        end
       else
         want.js { 
           render :update do |page|

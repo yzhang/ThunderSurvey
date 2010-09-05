@@ -3,16 +3,20 @@
   <div class='desc'>
     <%=raw(simple_format(@form.description))%>
   </div>
+  <% if @form.total_page > 1 %>
+    <p>第<%= @page %>页/共<%= @form.total_page %>页</p>
+  <% end %>
 </div>
 <% if @form.end_at.blank? || @form.end_at > Date.today %>
   <div id='errors' class='error'></div>        
-  <%= form_tag form_rows_path(@form),:class => 'conforge', :remote => true do %>    
-    <% @form.fields.sort {|f1, f2| f1.position <=> f2.position}.each do |field| %>
+  <%= form_tag form_rows_path(@form), :remote => true do %>    
+    
+    <% @fields.each do |field| %>
       <%= render :partial => '/forms/field', :object => field, :locals => {:parent => @form, :row => @row} unless (field.inputable == false)%>   
-    <% end %>         
-    <%= hidden_field_tag :embed, @embed %>
-    <%= hidden_field_tag 'row[order_id]', @order_id%>
-    <p><%= submit_tag t(:submit),:class => 'submit', :onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
+    <% end %>
+            
+    <%= hidden_field_tag 'page', @page %>
+    <p><%= submit_tag t(:submit), :class => 'submit', :onclick => "remote_action(this);" %><%=image_tag('ajax-loader.gif',:id => 'spinner')%></p>  
   <% end %>
 <% else %>
   <%= t(:survey_closed) %>
