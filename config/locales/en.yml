@@ -2,6 +2,11 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  activemodel:
+    errors:
+      messages:
+        blank: "can't be blank"
+
   logo: 'en-logo.png'
   create_survey: "Create Survey"
   simplest_online_survey: "Simplest Online Survey!"

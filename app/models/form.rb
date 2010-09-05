@@ -74,7 +74,7 @@ class Form
     
     self.fields.each do |field|
       klass.key "f#{field.id}", String
-      klass.validates_presence_of "f#{field.id}".to_sym if field.required
+      klass.validates_presence_of "f#{field.id}".to_sym, :message => I18n.t('activemodel.errors.messages.blank') if field.required
       klass.validates_format_of "f#{field.id}".to_sym, :with => Authentication.email_regex if field.intern == 'email'
       
       if field.input == 'check' || field.input == 'radio'
