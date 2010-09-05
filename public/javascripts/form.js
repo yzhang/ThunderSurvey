@@ -52,9 +52,9 @@ $(document).ready(function($) {
   });
 
 	//根据窗口大小自动调整表单模块的高度
-	$("#form").height(document.documentElement.clientHeight - $("#form").position().top -30);
+	$("#form").height(document.documentElement.clientHeight - $("#form").position().top -31);
 	$(window).resize(function(){
-		$("#form").height(document.documentElement.clientHeight - $("#form").position().top - 30);
+		$("#form").height(document.documentElement.clientHeight - $("#form").position().top - 31);
 	});
 });     
 

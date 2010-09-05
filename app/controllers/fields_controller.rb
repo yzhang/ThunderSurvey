@@ -78,7 +78,7 @@ class FieldsController < ApplicationController
     respond_to do |format|
       format.js {
         render :update do |page|
-          page << "$('##{@field.id}.field').highlight(); $('##{@field.id}.field').fade();field_count -= 1;"
+          page << "$('##{@field.id}.edit').highlight(); $('##{@field.id}.edit').fade();field_count -= 1;"
         end
       }
       format.json {render :json => @field.to_json}

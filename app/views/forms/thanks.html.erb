@@ -4,7 +4,7 @@
 <div class='desc'>                 
   <p>
     <% if @form.thanks_message.blank? %>
-      <%= t(:thanks_message) %>
+      <%= t(:default_thanks_message) %>
     <% else %>
       <%=simple_format @form.thanks_message %>
     <% end %>

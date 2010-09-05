@@ -3,8 +3,8 @@
 
   <div class="input">
     <%= select_tag "row[f#{field.id}]", options_for_select(field.options.map(&:value), row.send("f#{field.id}")) %>
+    <span id="<%=field.id%>_field" class='error'></span>
+    <br />
+    <span class="prompt"><%=h field.prompt %></span>
   </div>
-
-  <br />
-  <span class="prompt"><%=h field.prompt %></span>
 </div>

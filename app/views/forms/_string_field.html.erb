@@ -4,7 +4,7 @@
   <div class="input">
     <%= text_field_tag "row[f#{field.id}]", field.new_record? ? '' : row.send("f#{field.id}"), :size => 35 %>
     <span id="<%=field.id%>_field" class='error'></span>
+    <br />
+    <span class="prompt"><%=h field.prompt %></span>
   </div>
-
-  <span class="prompt"><%=h field.prompt %></span>
 </div>

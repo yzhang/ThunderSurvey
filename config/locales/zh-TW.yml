@@ -240,7 +240,7 @@
   dont_reply: "請勿回復。"
   rights: "保留所有權利"
   demo_user: "臨時用戶"
-  thanks_message: "您的回答已成功提交."
+  default_thanks_message: "您的回答已成功提交."
   updated_at: "最後更新"
   operations: "操作"
   back_to_survey: "返回問卷"
@@ -265,3 +265,6 @@
   total: "總計"
   count: "數量"
   city: "城市"
+  must_be_unique: "不允許重復"
+  setting: "设置"
+  locale: '表单语言'

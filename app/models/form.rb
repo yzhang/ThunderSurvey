@@ -19,7 +19,8 @@ class Form
   key :publish_response, Boolean, :default => false 
   key :password, String, :default => ''
   key :end_at, Date, :default => nil
-  key :logo,String
+  key :logo, String
+  key :locale, String, :default => 'zh-CN'
   
   key :rows_count, Integer, :default => 0
   key :maximum_rows, Integer
@@ -75,7 +76,7 @@ class Form
     self.fields.each do |field|
       klass.key "f#{field.id}", String
       klass.validates_presence_of "f#{field.id}".to_sym, :message => I18n.t('activemodel.errors.messages.blank') if field.required
-      klass.validates_uniqueness_of "f#{field.id}", :message => I18n.t('activemodel.errors.messages.taken') if field.unique
+      klass.validates_uniqueness_of "f#{field.id}".to_sym, :message => I18n.t('activemodel.errors.messages.taken') if field.unique
       
       if field.input == 'check' || field.input == 'radio'
         klass.class_eval <<-METHOD
@@ -150,7 +151,7 @@ class Form
     pages.insert(0, nil)
     pages << nil
     
-    if pages.length > 0
+    if pages.length > 2
       start = pages[page -1].nil? ? 0 : pages[page -1].position
       stop  = pages[page].nil? ? 65535 : pages[page].position
       return fields.select {|f| f.position > start && f.position < stop}

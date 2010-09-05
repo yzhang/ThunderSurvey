@@ -3,10 +3,13 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include OauthHelper
 
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  filter_parameter_logging :password
+
   rescue_from ActionController::InvalidAuthenticityToken, :with => :token_expired
 
+  before_filter :set_time_zone_and_locale
+
+  protected
   def token_expired
     flash[:notice] = "对不起，您的会话已超时"
     respond_to do |accepts|
@@ -16,10 +19,7 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  
-  before_filter :set_time_zone_and_locale
 
-  protected
   def set_time_zone_and_locale
     Time.zone = current_user.time_zone if logged_in?
     
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   def verify_edit_key
     @edit_key = params[:edit_key]
     
-    if @form.edit_key != @edit_key
+    if @form.nil? || @form.edit_key != @edit_key
       flash[:notice] = "对不起，您没有权限操作此表单"
       redirect_to '/'
     end

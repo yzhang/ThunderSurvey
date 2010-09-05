@@ -56,7 +56,15 @@ function field_done_editing(e)
   }
   input += '<br /><span class="prompt">' + field_prompt + '</span>'
 
-  field_div.find('.question .input').html(input);
+	if(field_input == 'page'){
+		input = '<div style="height:10px;"></div>'
+		input +=	'<div style="width:100%; margin: 10px 0; background:#EFEFEF; height: 20px;	border-top:2px solid #E1E8F0;	border-bottom:2px solid #E1E8F0;"></div>'
+		input +=	'<div style="height:10px;text-align:center;"></div>'
+		field_div.find('.question').html(input);
+	} else {
+  	field_div.find('.question .input').html(input);
+	}
+	
   field_div.css('background-color','') 
   if(field_input == 'date') {
     $("#" + field_uuid).datepicker({changeMonth:true, changeYear:true});

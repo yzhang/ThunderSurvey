@@ -14,10 +14,9 @@ class FormsController < ApplicationController
     end
   end
 
-  # GET /forms/1
-  # GET /forms/1.xml
   def show
     @form = Form.find(params[:id]) rescue nil
+    I18n.locale = @form.locale
     
     respond_to do |format|
       if @form && !@form.password.blank? && session[@form.id] != @form.password
@@ -27,7 +26,7 @@ class FormsController < ApplicationController
         @row = @form.klass.new
         @embed = params[:embed]
         
-        @page = params[:page].to_i || 1
+        @page = (params[:page] || 1).to_i
         @page = 1 if @page < 1 || @page > @form.total_page + 1
         @fields = @form.find_fields_by_page(@page)
         

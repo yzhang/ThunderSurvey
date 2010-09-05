@@ -3,7 +3,7 @@
   <h4 style="text-align:left"><%= field.name %></h4>
   <section class="span-16 last">
     <% data = field.options.map {|o| @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + o.value + '(\s|$)')})} %>    
-    <img src="<%= Gchart.pie_3d(:size => '580x150',
+    <img src="<%= Gchart.pie(:size => '580x200',
                   :data => data, :labels => field.options.map(&:value), :theme => :thirty7signals) %>" />
   </section>
   

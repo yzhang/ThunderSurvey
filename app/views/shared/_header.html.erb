@@ -1,14 +1,7 @@
 <div class='header'>
-  <% if I18n.locale.to_s == 'en' %>
-    <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
-    <div class="logo span-16" >
-      <a href="/"><h1 style="font-family: 'Cardo', arial, serif; color:#2c87E5; margin-top: 10px;">ThunderSurvey</h1></a>
-    </div>
-  <% else %>
-    <div class="logo span-16" >
-      <a href="/"><img alt="Logo" src="/images/logo.gif" /></a>
-    </div>
-  <% end %>
+  <div class="logo span-16" >
+    <a href="/"><img alt="Logo" src="/images/logo.gif" /></a>
+  </div>
   
   <div class='login span-8 last'>   
     <% if logged_in? %>

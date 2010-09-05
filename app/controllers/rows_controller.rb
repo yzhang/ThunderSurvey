@@ -82,19 +82,20 @@ class RowsController < ApplicationController
   end
 
   def create
+    I18n.locale = @form.locale
+    params[:row] ||= {}
     params[:row][:created_at] = Time.now
     klass = @form.klass
+    @page = (params[:page]||1).to_i
 
     if @form.total_page == 1
       @row = klass.new(params[:row])
       @result = @row.save
     else
-      @page = params[:page].to_i
       @fields = @form.find_fields_by_page(@page)
       @keys   = @fields.map{|f| "f#{f.id}".to_sym}
       session[:row] ||= {}
-      params[:row].merge(session[:row])
-      @row = klass.new(params[:row])
+      @row = klass.new(params[:row].merge(session[:row]))
       session[:row] = params[:row]
       @row.valid?
       errors = @row.errors.select {|k, v| @keys.include?(k) }
@@ -104,7 +105,7 @@ class RowsController < ApplicationController
     
     respond_to do |want|
       if @result
-        if @page == @form.total_page
+        if @form.total_page == 1 || @page == @form.total_page
           @form.rows_count += 1
           @form.save(:validate => false)
 

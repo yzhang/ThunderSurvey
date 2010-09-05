@@ -7,7 +7,8 @@
       $("#<%= "row_f#{field.id}" %>").datepicker({changeMonth:true, changeYear:true});
     });
   </script>
+  
+  <span id="<%=field.id%>_field" class='error'></span>
+  <br />
+  <span class="prompt"><%=h field.prompt %></span>
 </div>
-
-<br />
-<span class="prompt"><%=h field.prompt %></span>

@@ -9,7 +9,9 @@
       </p>
     <% end %>
     <p style="<%= 'display:none;' if !field.include_other %>" class="question_other"><input name="<%= "row[f#{field.id}][]" %>" value="_other" type="radio"/> <%= t(:other) %> <%= text_field_tag "row[f#{field.id}][][other]", '' %></p>
+    
+    <span id="<%=field.id%>_field" class='error'></span>
+    <br />
+    <span class="prompt"><%=h field.prompt %></span>
   </div>
-  <br />
-  <span class="prompt"><%=h field.prompt %></span>
 </div>
