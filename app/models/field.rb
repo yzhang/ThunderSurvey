@@ -6,6 +6,7 @@ class Field
   key :name, String, :required => true
   key :prompt, String
   key :required, Boolean, :required => true
+  key :unique,   Boolean, :required => false  
   key :input, String, :required => true
   key :uuid,  String
   key :position, Integer  # 排序用

@@ -120,12 +120,13 @@ class RowsController < ApplicationController
             page.hide 'spinner'   
             @form.fields.each do |field|  
               if @row.errors["f#{field.id}"].any?
+                @message = field.name + @row.errors["f#{field.id}"].to_s
                 page.replace_html field.id.to_s + '_field',@row.errors["f#{field.id}"]
               else
                 page.replace_html field.id.to_s + '_field',''   
               end
             end     
-            page.alert t(:something_goes_wrong)
+            page.alert t(:something_goes_wrong) + ": #{@message}"
           end
            }
       end
