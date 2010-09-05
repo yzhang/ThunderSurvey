@@ -260,3 +260,8 @@
   blog: '博客'
   open_source: '開源'
   site_title: '搶答'
+  referrer: "訪問來源"
+  location: "地理位置"
+  total: "總計"
+  count: "數量"
+  city: "城市"

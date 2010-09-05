@@ -142,3 +142,8 @@ en:
   blog: 'Blog'
   open_source: "Open Source"
   site_title: "ThunderSurvey"
+  referrer: "Referrer"
+  location: "Location"
+  total: "Total"
+  count: "Count"
+  city: "City"

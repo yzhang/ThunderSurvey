@@ -52,24 +52,20 @@ class FormsController < ApplicationController
   
   def stats
     @tab = 'stats'
-    
+    @form = Form.find(params[:id])
+    @visits_count = Visit.group_by_created_at(:form_id => @form.id)
+    @referrers    = Visit.group_by_host(:form_id => @form.id)[0..4]
+    @cities =       Visit.group_by_city(:form_id => @form.id)[0..4]
 
-    # 
-    # @visits_count = @form.visits.last_month.count(:all, :group => 'DATE(created_at)')
-    # @referrers =    @event.visits.last_month.count(:order => 'count(city) DESC', :group => 'host', :limit => 5)
-    # @pages =        @event.visits.last_month.count(:all, :group => 'page')
-    # @cities =       @event.visits.last_month.count(:order => 'count(city) DESC', :group => 'city', :limit => 5)
-    # 
-    # @data = @visits_count.values
-    # @max = @data.max || 0
-    # #@labels = @visits_count.keys.map{|k| k.sub(/20.*?-/, '')}
-    # #@labels[0] = ''
+    @data = @visits_count.map {|i| i['count'].to_i}
+    @max = @data.max || 0
+    #@labels[0] = ''
     # @labels = ['']
     # [3, 2, 1, 0].each do |i|
     #   d = Date.today - i.week
     #   @labels << d.strftime("%m-%d")
     # end
-    # @axis_labels = [@labels, [0, @max/2, @max]]
+    @axis_labels = [[], [0, @max/2, @max]]
     
     respond_to do |format|
       format.html
