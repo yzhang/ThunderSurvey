@@ -1,18 +1,17 @@
 <% if field.multi? %>
-<div class='span-16 prepend-top last'>
-  <h4 style="text-align:left"><%= field.name %></h4>   
+<div class='span-18 prepend-top last'>
+  <h3 style='text-align:left;'><%= field.name %></h3>   
   <section class="span-10">     
     <% data = field.options.map {|o| @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + o.value + '(\s|$)')})} %>       
     <% if field.options.length >= 5 %>
-    <img src="<%= Gchart.bar(:data => data,:axis_with_labels => 'y,x',:axis_labels => [field.options.map{|f| truncate(f.value,:length => 14)},[0,data.max]],:orientation => 'horizontal',:bar_colors => random_color) %>" />
+    <img src="<%= Gchart.bar(:data => data,:axis_with_labels => 'x,y',:axis_labels => [[0,data.max],field.options.map{|f| truncate(f.value,:length => 14)}.reverse],:orientation => 'horizontal',:bar_colors => random_color) %>" />
     <% else %>
     <img src="<%= Gchart.pie(
                   :data => data, :labels => field.options.map(&:value),:bar_colors => random_color ) %>" />                                                                                              
-   <% end %> 
+   <% end %>                                
   </section> 
   
-  
-  <section class="span-6 last">              
+  <section class="span-8 last">              
     <table class='grid' id='huizong' cellspacing="0" cellpadding="0"> 
       <col width='40%'>
       <col width='20%'>
@@ -26,9 +25,9 @@
       <tbody>
         <% field.options.each do |option| %>
         <% option_count = @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + option.value + '(\s|$)')}) %>      
-        <% percentage = option_count * 100 / @form.rows_count %>    
+        <%# percentage = option_count * 100 / @form.rows_count %>    
         <tr>
-          <td><%= option.value %></td>                          
+          <td><%=option.value%><%#=link_to option.value,chart_form_path(@form,:filter => option) %></td>                          
           <td><%= option_count %></td>
           <% if false %>
           <td style="text-align:left;">
