@@ -263,7 +263,7 @@ form.login_form{
 .nav{       
 	height:30px;
 	clear:both; 
-	border-bottom:1px solid #ccc;
+	border-bottom:1px solid #efefef;
 }
 
 .nav ul{
@@ -501,6 +501,7 @@ table.grid tr.highlighted{
 	background:#EFEFEF;
 	color:#666;
 	line-height:21px;
+	padding:10px;
 }  
 
 h4.tip{  
@@ -597,22 +598,26 @@ input.btn, button.btn {
 
 /* -- page ---*/
 #page p{ 
-	line-height:25px; 
+	line-height:150%; 
 	color:#666;     
-	font-size:13px;
+	font-size:12px;
 }
 
 #page h3,h4,h2{
-	font-family:'微软雅黑' arial '宋体';      
 	clear:both;
 	color:#666;
 	padding: 0 10px; 
 } 
 
 #page h3{ 
-	padding:10px;
+	padding:10px 0;
 	font-size:18px;
-	border-bottom:1px solid #ccc;
+	border-bottom:1px solid #efefef;
+}                 
+
+#page h4{   
+	padding:10px 0;  
+	font-size:12px;
 }
 
 #page .haibao{   
@@ -629,7 +634,7 @@ input.btn, button.btn {
 /* --  section ----*/
 .section_nav{
 	height:27px;     
-	margin-bottom:10px;
+	margin:20px;
 	border-bottom:2px solid #efefef;
 }              
 
@@ -649,7 +654,8 @@ input.btn, button.btn {
 .sidebar_nav li a{  
 	border-bottom:1px solid #efefef;
 	display:block;
-	padding:2px 10px;
+	padding:0px 10px;
+	margin:10px 0px 0px;
 } 
 
 .sidebar_nav li a:hover, .sidebar_nav li.current a{ 

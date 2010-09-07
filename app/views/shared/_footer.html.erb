@@ -13,4 +13,8 @@
       <%=raw t(:sandsroad) %>
     </span>
 </div>
-
+<div style='text-align:center;'>
+  <%= link_to 'English', lang_path(:locale => 'en'), :method => 'put' %> |
+  <%= link_to '简体', lang_path(:locale => 'zh-CN'), :method => 'put' %> | 
+  <%= link_to '繁体', lang_path(:locale => 'zh-TW'), :method => 'put' %> 
+</div>

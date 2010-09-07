@@ -77,8 +77,8 @@ div.question p{
 	height:20px;
    	padding:5px 10px 15px 0px;  
    *padding:5px 10px 0px 0px;
-	margin:10px 0px 15px;   
-	border-bottom:1px solid #ccc;    
+	margin:0px 0px 15px;   
+	border-bottom:1px solid #efefef;    
 }
 
 #page_nav span{       
