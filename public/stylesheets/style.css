@@ -183,7 +183,6 @@ form.login_form{
 	padding:10px;
 } 
     
-.words{padding-left:110px;}
 .words,.words h1,.words p{
 	text-align:center;
 	line-height:200%;
@@ -541,6 +540,7 @@ h4.tip{
 /*  -- home -- */
 .intro{            
 	line-height:0px;
+	margin-bottom:20px;
 }
 
 #logos{
