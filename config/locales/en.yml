@@ -147,7 +147,7 @@ en:
   meta: "ThunderSurvey is the simplest free online survey solution, if you perfer to clean and simple survey design, then thundersurvey should be your first choice."
   blog: 'Blog'
   open_source: "Open Source"
-  site_title: "ThunderSurvey"
+  site_title: "抢答"
   referrer: "Referrer"
   location: "Location"
   total: "Total"
@@ -156,3 +156,4 @@ en:
   must_be_unique: "Must be unique"
   setting: "Setting"
   locale: "Locale"
+  page_break: "Page Break"

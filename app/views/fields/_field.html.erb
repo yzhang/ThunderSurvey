@@ -12,7 +12,7 @@
       <%= t(:reserved) %>
     <% end -%>
   </div>
-  
+
   <div class="question" ondblclick="field_start_editing(this);">
     <%= render :partial => "/forms/#{field.input}_field", :locals => {:field => field, :row => @row} %>  
   </div>
@@ -21,3 +21,5 @@
     <%= render :partial => "/fields/form", :locals => {:parent => parent, :field => field, :row => @row} %>
   </div>
 </div>
+<div style="clear:both"></div>
+
