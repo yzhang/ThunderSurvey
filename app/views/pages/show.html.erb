@@ -2,12 +2,18 @@
   <%= stylesheet_link_tag 'page' %>  
 <% end %>                            
 
-<%= content_for :pagenav do -%>  
 <div id="page_nav">
    <span><%=@page.title%></span> 
 </div>
-<% end %>
 
 <div id='page'>
   <%= raw(@page.body) %>    
 </div>
+
+<% content_for :sidebar do %>
+  <ul class='sidebar_nav'>          
+    <% Page.all.each do |page| %>
+    <li><%=link_to page.title,"/#{page.slug}"%></li>         
+    <% end %>
+  </ul>
+<% end %>
