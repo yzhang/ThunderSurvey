@@ -2,13 +2,12 @@ body{
 	font-family: arial, sans-serif;
 	font-size:12px;     
 	color:#333; 
-  background:url(/images/bg/bg.png);
+  	background:url(/images/bg/bg.png);
 }
 
 /*  ------ form show cotainer -------- */
 
 #form_container{ 
-	padding:20px;
 	margin:20px auto;
 	width:45em;
 	moz-border-radius:5px 5px 5px 5px;
@@ -22,16 +21,20 @@ body{
 }
 
 .field {
-	margin: 20px 0;
-}
+}     
+
+.question{
+	 padding:10px;      
+}                       
+
 .desc{
-	font-size:13px;
-	line-height:150%;
+	padding:0 10px;
+	font-size:12px;
 }
 
-.desc p{
-	padding:10px 0;  
-	line-height:150%;
+.desc p{           
+	margin:0;
+	padding:10px;  
 }
 
 .error{
@@ -39,7 +42,6 @@ body{
 }      
 
 form label{  
-	color:#000;
 	font-weight:bold;
 }
 
@@ -57,11 +59,32 @@ form label{
 	padding-top:3px;
 }
 
-#form_header{
-	margin:10px;
-}
-
-#form_header h1{    
+#form_header h1{   
+	padding:15px;   
 	font-family: 'Microsoft YaHei' '微软雅黑' '雅黑' arial '宋体'; 
 	font-size:24px;
+}   
+
+#form_top{
+	padding:10px;
 }
+
+#from_top img{
+	float:left;
+}
+#form_top .paginaion{
+	width:200px;
+	text-align:right;
+	float:right;
+}
+
+#form_contetn{
+	margin:20px;
+}
+
+h3{
+	font-size:12px;
+	font-family:arial;
+}
+
+

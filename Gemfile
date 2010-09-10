@@ -18,5 +18,3 @@ gem "ekuseru"
 gem "fastercsv"
 
 gem 'newrelic_rpm', :require => false 
-
-

@@ -1,5 +1,4 @@
 <% if field.multi? %>
-<div class='span-18 prepend-top last'>
   <h3 style='text-align:left;'><%= field.name %></h3>   
   <section class="span-10">     
     <% data = field.options.map {|o| @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + o.value + '(\s|$)')})} %>       
@@ -10,7 +9,7 @@
                   :data => data, :labels => field.options.map(&:value),:bar_colors => random_color ) %>" />                                                                                              
    <% end %>                                
   </section> 
-  
+  <% if count %>
   <section class="span-8 last">              
     <table class='grid' id='huizong' cellspacing="0" cellpadding="0"> 
       <col width='80%'>
@@ -39,6 +38,6 @@
       <tbody>
     </table>
   </section>
-</div> 
+  <% end %>
 <div style="clear:both"></div>
 <% end %>

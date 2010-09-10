@@ -7,7 +7,7 @@ class Form
   
   include MongoMapper::Document
   include Authentication
-  
+
   key :title, String, :required => true
   key :description, String
   key :user_id, String
@@ -21,16 +21,19 @@ class Form
   key :end_at, Date, :default => nil
   key :logo, String
   key :locale, String, :default => 'zh-CN'
-  
+  key :theme,Integer,:default => 0
   key :rows_count, Integer, :default => 0
   key :maximum_rows, Integer
   key :height,Integer  
   key :recommanded,Boolean, :default => false
-  
+  key :logo,String
   key :created_at, Time, :default => Time.now
   key :updated_at, Time, :default => Time.now
   
-  many :fields, :default => 0
+  many :fields, :default => 0     
+  
+
+  
   
   before_create :make_edit_key
   before_save   :update_timestamps  

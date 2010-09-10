@@ -226,3 +226,21 @@ div.field {
 	font-size:12px;
 	font-weight:bold;
 }
+
+.tip{
+	color:#666;
+}
+
+#themes ul li{
+	float:left; 
+	margin-right:19px;
+	margin-bottom:20px;
+	display:block;
+	text-align:center;
+} 
+
+#themes ul li img{  
+	border:1px solid #ccc;
+	width:136px;
+	height:169px;
+}

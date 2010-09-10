@@ -15,8 +15,10 @@
       <%=link_to t(:export_to_csv),form_rows_path(@form, :format => :csv, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %> 
       <%=link_to t(:export_to_xls),form_rows_path(@form, :format => :xls, :edit_key => @form.edit_key),:target => '_blank',:class => 'ag' %>
     </div>
+  </div> 
+  <div class='span-18 prepend-top last'>     
+  <%= render :partial => 'chart',:collection => @form.fields,:as => :field,:locals => {:count => true} %>                                                                                        
   </div>
-  <%= render :partial => 'chart',:collection => @form.fields,:as => :field %>
 </div>
 
 <% content_for :sidebar do %>  

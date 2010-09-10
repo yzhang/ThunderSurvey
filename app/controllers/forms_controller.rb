@@ -1,5 +1,5 @@
 class FormsController < ApplicationController
-  before_filter :login_required, :only => [:new, :create, :index, :destroy, :chart]
+  before_filter :login_required, :only => [:new, :create, :index, :destroy, :chart,:deisgn]
   before_filter :set_form, :only => [:edit, :update, :thanks, :chart,:design]
   before_filter :verify_edit_key, :only => [:edit, :update] 
   before_filter { |c| c.set_section('forms') }
@@ -16,6 +16,7 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id]) rescue nil
+    @theme = params[:preview_theme].nil? ? @form.theme : params[:preview_theme] 
     I18n.locale = @form.locale
     
     respond_to do |format|
@@ -35,6 +36,12 @@ class FormsController < ApplicationController
         flash[:notice] = t(:form_no_exist)
         format.html { redirect_to root_path}
       end
+    end
+  end      
+  
+  def design
+    respond_to do |wants|
+      wants.html { render :layout => 'simple' }
     end
   end
   

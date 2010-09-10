@@ -11,6 +11,7 @@ Confforge::Application.routes.draw do
       get :chart
       get :stats      
       post :password
+      get :design
     end
   end
   
@@ -47,6 +48,6 @@ Confforge::Application.routes.draw do
   
   match '/thanks' => 'home#thanks', :as => :thanks
   match '/demo'   => 'home#demo', :as => :demo
-  root :to => 'home#index'
-  match '/*page', :to => 'pages#show'
+  root :to => 'home#index'           
+  match '/*page', :to => 'pages#show'  
 end

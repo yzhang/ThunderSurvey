@@ -1,7 +1,7 @@
 <style type="text/css" media="screen">   
   #huizong{width:100%;}
 </style>
-<div class='desc'>                 
+<div class='thanks'>                 
   <p>
     <% if @form.thanks_message.blank? %>
       <%= t(:default_thanks_message) %>
@@ -9,9 +9,11 @@
       <%=simple_format @form.thanks_message %>
     <% end %>
   </p>
+</div>
   <% if @form.publish_response %>
-    <h3><%=@form.rows_count%>个回应</h3>
-    <%= render :partial => 'chart',:collection => @form.fields,:as => :field %>
+    <h2><%=@form.rows_count%>个回应</h2> 
+          <%= render :partial => 'chart',:collection => @form.fields,:as => :field,:locals => {:count => false} %>  
+
   <% end %>
   <p style='text-align:center;'><%=link_to t(:back_to_survey),form_path(@form),:class => 'ag'%> | <%=link_to t(:create_survey),forms_path,:class => 'ag'%></p> 
 </div>       

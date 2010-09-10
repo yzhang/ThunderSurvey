@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include OauthHelper
 
-  filter_parameter_logging :password
+#  filter_parameter_logging :password
 
   rescue_from ActionController::InvalidAuthenticityToken, :with => :token_expired
 

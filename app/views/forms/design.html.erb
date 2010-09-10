@@ -1,0 +1,48 @@
+<% content_for :headers do -%> 
+  <script type="text/javascript" charset="utf-8">
+    $(window).unload(function() {
+      $('#form_submit').submit();$('#saving').show();
+    });
+  </script>
+  <style type="text/css" media="screen">
+    .container {width: 680px; margin:0px auto;padding:0px;}
+    #content{padding:0px;}  
+  </style>      
+<% end -%>
+
+<div id="form_wrapper"> 
+  <section class='form_oprate'>
+    <nav>
+      <div class='setting'>
+      </div>
+      <div class='new'>
+        <%=link_to(t(:back),edit_form_path(@form, :edit_key => @form.edit_key),:class => 'button',:id => 'add_question') %>
+      </div>
+    </nav>
+  </section>
+   
+  <div id="form" >
+    <%= form_for(@form, :url => form_path(@form, :edit_key => @form.edit_key), :html => {:multipart => true,:id => 'edit_form',:method => 'put',:remote => true,:style => 'margin:10px 0;'}) do |f| %>
+        <p><b>表单标识:</b><br /><%=f.text_field :logo,:size => 60 %><br />
+           <span class='tip'>表单标识的文件地址(如http://xxx.com/logo.jpg)</span>
+        </p>    
+        <div id='themes'>
+          <b>主题</b>
+          <ul>
+            <% (0..9).each do |count|%>
+            <li><%=link_to '预览',form_path(@form,:preview_theme => count),:target => '_blank'%><br /><%=image_tag("themes/theme#{count}.jpg")%><br /><%=f.radio_button(:theme,count)%> </li>
+            <% end %>
+          <ul>     
+          <div style='clear:both;'></div>
+        </div>                                                  
+        <div style='text-align:center'>
+          <%= f.submit t(:save),:onclick => "$('#saving').show();"%>     
+        </div>
+        
+    <% end %>    
+  </div>  
+  <!-- 表单尾 -->
+  <section class='form_preview right'>
+    <%= t(:preview) %>: <%= link_to "#{form_url(@form)}", form_path(@form), :target => '_blank' %>
+  </section>
+</div>

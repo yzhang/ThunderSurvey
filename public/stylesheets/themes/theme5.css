@@ -1,0 +1,22 @@
+body{
+	color:#494440;
+	background:#423E3A; 
+}                       
+
+#form_container{            
+	background:#FAF8F5;
+	border:1px solid #25201C;
+}
+
+#form_header h1.title{       
+	color:#fff;
+	background:#24201C;
+	margin:0;
+}               
+
+
+.thanks{    
+	padding:5px 10px;
+	background:#efefef;
+	margin:10px 0;
+}
