@@ -95,12 +95,14 @@ class RowsController < ApplicationController
       @fields = @form.find_fields_by_page(@page)
       @keys   = @fields.map{|f| "f#{f.id}".to_sym}
       session[:row] ||= {}
-      @row = klass.new(params[:row].merge(session[:row]))
-      session[:row] = params[:row]
+      @row = klass.new(session[:row].merge(params[:row]))
       @row.valid?
       errors = @row.errors.select {|k, v| @keys.include?(k) }
       @result = errors.empty?
-      @row.save if @page == @form.total_page && @result
+      if @page == @form.total_page && @result
+        @row.save
+        session[:row] = nil
+      end
     end
     
     respond_to do |want|

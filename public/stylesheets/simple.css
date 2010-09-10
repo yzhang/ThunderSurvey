@@ -147,7 +147,7 @@ input.inputFocus {
 	color:#0099FF;
 }
 
-.field_form { padding: 10px; margin-top: 10px;}
+.field_form { padding: 20px; margin-top: 10px;}
 
 div.field {
   padding: 20px;
@@ -163,7 +163,6 @@ div.field {
 
 .opration{
 	float:right;
-	margin: 15px 10px;
 }   
 
 .placeholder{
