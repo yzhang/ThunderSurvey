@@ -1,9 +1,29 @@
 <% content_for :headers do -%> 
+  <%= javascript_include_tag 'form' %>
+  
   <script type="text/javascript" charset="utf-8">
     $(window).unload(function() {
       $('#form_submit').submit();$('#saving').show();
     });
+    
+    $(function(){
+      $("#form_end_at").datepicker();
+    })
+    // 100以下的留给保留字段
+    var field_count = <%= @form.max_position + 1 %>;   
+    if(field_count < 100) { field_count = 101; }
+    
+    // 用于国际化
+    var dft_form_title = "<%= t(:untitled_form) %>";
+    var dft_form_desc = "<%= t(:describe_your_form) %>";
+    var new_question_regex = /<%= t(:question) %> #\d/;
+    var new_option_regex = /<%= t(:option) %> #\d/;
+    var new_question_title = "<%= t(:question) %> #";
+    var new_option_name = "<%= t(:option) %> #";
+    var delele_link_text = "<%= t(:delete) %>";
+    var other_text = "<%= t(:other) %>";
   </script>
+
   <style type="text/css" media="screen">
     .container {width: 680px; margin:0px auto;padding:0px;}
     #content{padding:0px;}  

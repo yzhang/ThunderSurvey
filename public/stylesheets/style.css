@@ -633,8 +633,9 @@ input.btn, button.btn {
 
 /* --  section ----*/
 .section_nav{
-	height:27px;     
-	margin:20px;
+	height:32px;     
+	margin:10px 0;
+	line-height:32px;
 	border-bottom:2px solid #efefef;
 }              
 
@@ -647,7 +648,6 @@ input.btn, button.btn {
 }
 
 .section_button{
-	padding-top:5px;
 	float:right;
 }
 
