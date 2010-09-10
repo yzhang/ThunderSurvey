@@ -34,3 +34,7 @@ h2,h3{
 	background:#116427;
 	margin:10px 0;
 }
+
+.support,.support a{
+	color:#fff;
+}

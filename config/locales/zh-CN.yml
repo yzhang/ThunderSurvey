@@ -244,7 +244,7 @@
   updated_at: "最后更新"
   operations: "操作"
   back_to_survey: "返回问卷"
-  powered_by: "本问卷由<a href='/' target='_blank'>抢答网</a>"
+  powered_by: "本问卷由<a href='/' target='_blank'>抢答网</a>提供技术支持"
   next: "后翻"
   prev: "前翻"
   introduction: "介绍"

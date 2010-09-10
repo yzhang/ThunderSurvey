@@ -14,9 +14,12 @@ body{
 	margin:0;
 }               
 
-
 .thanks{    
 	padding:5px 10px;
 	background:#efefef;
 	margin:10px 0;
+}
+
+.support,.support a{
+	color:#fff;
 }

@@ -49,6 +49,7 @@ form label{
 	display:block;
 	padding:20px; 
 	color:#777;
+	text-align:center;
 	text-decoration: none;   
 }
 
@@ -79,7 +80,7 @@ form label{
 }
 
 #form_contetn{
-	margin:20px;
+	padding:20px;
 }
 
 h3{
@@ -88,3 +89,8 @@ h3{
 }
 
 
+#guide{        
+	display:block;
+	margin:10px;
+	text-align:center;
+}

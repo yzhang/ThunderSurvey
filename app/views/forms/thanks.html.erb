@@ -15,7 +15,7 @@
           <%= render :partial => 'chart',:collection => @form.fields,:as => :field,:locals => {:count => false} %>  
 
   <% end %>
-  <p style='text-align:center;'><%=link_to t(:back_to_survey),form_path(@form),:class => 'ag'%> | <%=link_to t(:create_survey),forms_path,:class => 'ag'%></p> 
+  <div id='guide'><%=link_to t(:back_to_survey),form_path(@form),:class => 'ag'%> | <%=link_to t(:create_survey),forms_path,:class => 'ag'%></div> 
 </div>       
 
  

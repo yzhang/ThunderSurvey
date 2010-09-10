@@ -24,6 +24,7 @@ form label{
   font-size:12px;
   text-align:right;
   color:#333;
+  float:right;
 }
 
 .login ul.panel {
