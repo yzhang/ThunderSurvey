@@ -137,7 +137,8 @@ class Form
   end
   
   def max_position
-    self.fields.map {|f| f.position > 65530 ? 0 : f.position}.max
+    m = self.fields.map {|f| f.position > 65530 ? 0 : f.position}.max
+    m.nil? ? 0 : m
   end
   
   def rows_count

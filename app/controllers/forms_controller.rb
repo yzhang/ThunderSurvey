@@ -16,7 +16,7 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id]) rescue nil
-    @theme = params[:preview_theme].nil? ? @form.theme : params[:preview_theme] 
+    @theme = params[:preview_theme].nil? ? @form.theme : params[:preview_theme]       
     I18n.locale = @form.locale
     
     respond_to do |format|
@@ -190,6 +190,7 @@ class FormsController < ApplicationController
   end
   
   def thanks
+    @theme = params[:preview_theme].nil? ? @form.theme : params[:preview_theme]       
     respond_to do |want|
       want.html { render :layout => 'public' }
     end

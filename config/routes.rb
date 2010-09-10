@@ -48,6 +48,7 @@ Confforge::Application.routes.draw do
   
   match '/thanks' => 'home#thanks', :as => :thanks
   match '/demo'   => 'home#demo', :as => :demo
+  match '/tour'   => 'home#tour', :as => :tour
   root :to => 'home#index'           
   match '/*page', :to => 'pages#show'  
 end

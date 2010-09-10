@@ -7,7 +7,6 @@
     <% if logged_in? %>
      <ul class="panel"> 
       <li><%=link_to(t(:my_surveys), forms_path)%></li>
-      <li><%=link_to(t(:tutorials), '#' )%></li>
       <li><%=link_to(t(:account),account_path) %></li>
       <li><%= link_to(t(:logout), logout_path) %></li>
      </ul>

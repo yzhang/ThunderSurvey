@@ -11,8 +11,8 @@
     $(function(){
       $("#form_end_at").datepicker();
     })
-    // 100以下的留给保留字段
-    var field_count = <%= @form.max_position + 1 %>;   
+    // 100以下的留给保留字段   
+    var field_count = <%= @form.max_position  + 1 %>;   
     if(field_count < 100) { field_count = 101; }
     
     // 用于国际化
@@ -30,7 +30,7 @@
     .container {width: 680px; margin:0px auto;padding:0px;}
     #content{padding:0px;}  
   </style>      
-<% end -%>
+<% end -%>      
 
 <div id="form_wrapper"> 
   <section class='form_oprate'>
