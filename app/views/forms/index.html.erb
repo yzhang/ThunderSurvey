@@ -7,8 +7,6 @@
   </script>
 <% end -%>
 
-
-<div class='span-19 last'> 
   <div class='section_nav'>
     <div class='section_title'>
        <%= t(:all_surveys) %>
@@ -47,8 +45,7 @@
     </table>
     <div class='paginate'>
 <%=raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => t(:prev),:next_label => t(:next)) %> 
-    </div>
-</div>
+  </div>
 
 <% content_for :sidebar do %>           
   <%= render :partial => t(:sidebar) %>       

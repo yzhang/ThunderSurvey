@@ -1,6 +1,6 @@
 .header{      
 	padding-top:10px;
-	height:40px;
+	height:60px;
 	width:986px;
 	margin:0 auto 20px;
 	} 
@@ -14,23 +14,22 @@ form label{
 	font-weight:bold;
 }    
 
-.container{
-	border:2px solid #E1E8F0;
-	background:#fff;
-}
 
 /* --- login ---*/
-.login{
+.login{     
   font-size:12px;
   text-align:right;
   color:#333;
   float:right;
+}   
+
+.login a{
+	color:#333;
 }
 
 .login ul.panel {
-	height: 25px;
-	padding: 5px 5px;
-	margin-left: 15px;
+	height: 18px;
+	padding: 10px;
 	-moz-border-radius-topleft:5px;
   -moz-border-radius-bottomleft:5px;
   -moz-border-radius-bottomright:5px;
@@ -39,16 +38,22 @@ form label{
   -webkit-border-bottom-left-radius:5px;
   -webkit-border-bottom-right-radius:5px;
   -webkit-border-top-right-radius:5px;
-	background-color:#fff;
+	background-color:#fff;      
 }
 
 .login ul li{  
-	float:left;
+	float:left;                 
+  
 }
 
-.login ul li a{ 
+.login ul li a{   
+	border-right:1px solid #ccc;  
 	display:block;
-	padding:5px 10px;
+	padding:0px 15px;
+}
+
+.login ul li a.last{   
+	border-right:none;  
 }
 
 /* -- */ 
@@ -101,7 +106,7 @@ a.signin.menu-open span {
     -webkit-border-top-left-radius:5px;
     -webkit-border-bottom-left-radius:5px;
     -webkit-border-bottom-right-radius:5px;
-    display:none;
+    display:none;     
     background-color:#CCCCCC;
     position:absolute;
     width:210px;
@@ -109,11 +114,11 @@ a.signin.menu-open span {
     border:1px transparent;
     text-align:left;
     padding:5px;
-    top: 24.5px; 
-    right: 10px !important; 
+    top: 34.5px; 
+    right: 57px !important; 
 	*right: 31px; 
     margin-top:5px;
-    margin-right: 20px;
+    margin-right: 43px;
     *margin-right: -1px;
     color:#789;
     font-size:11px;
@@ -339,7 +344,7 @@ div.info_item{
 	width:400px;
 	position:absolute;
 	top:5px;
-	left: 220px;
+	left: 320px;
 }       
 
 
@@ -497,9 +502,8 @@ table.grid tr.highlighted{
 }
 
 /* --- box ----*/
-.box{              
-	margin:0px 3px;
-	background:#EFEFEF;
+.box{     
+	margin:0px 3px 10px;
 	color:#666;
 	line-height:21px;
 	padding:10px;

@@ -1,37 +1,20 @@
 <div class='header'>
   <div class="logo span-16" >
-    <a href="/"><img alt="Logo" src="/images/logo.gif" /></a>
+    <a href="/"><img alt="Logo" src="/images/logo.png" /></a>
   </div>
-  
-  <div class='login span-6 last'>   
+  <div class='login'>   
+    <ul class="panel">  
     <% if logged_in? %>
-     <ul class="panel"> 
       <li><%=link_to(t(:my_surveys), forms_path)%></li>
       <li><%=link_to(t(:account),account_path) %></li>
-      <li><%= link_to(t(:logout), logout_path) %></li>
-     </ul>
-    <% else %>
-      <%= link_to t(:signup), signup_path %>
-      <%= t(:have_an_account) %><a href='/login' class='signin'><span><%= t(:login) %></span></a>
-      <div id="signin_menu">
-        <%= form_tag session_path,:class => 'login_form' do %>  
-          <p>
-            <label for="username">Email</label><br />
-            <%= text_field_tag 'email', @email %>
-          </p>
-          <p>
-            <%= label_tag 'password', t(:password) %>
-            <%= password_field_tag 'password', nil %> 
-          </p>
-          <p><%= submit_tag t(:login),:class => 'submit' %> <br /><%=link_to t(:forgot_password),forget_password_path%></p> 
-          <h4><%= t(:login_with_others) %></h4>
-          <ul>
-            <li><a href="/oauth/login/google" class='google' >Google</a></li> 
-          </ul>        
-          <div style='clear:both'></div>
-        <% end %>
-      </div>
-    <% end %>
+      <li><%= link_to(t(:logout), logout_path,:class=>'last') %></li>
+    <% else %> 
+      <li><%= link_to t(:home), root_path %></li>
+      <li><%= link_to t(:signup), signup_path %></li>
+      <li><a href="http://blog.<%= request.domain %>"><%= t(:blog) %></a></li>    
+      <li><a href='/login' class='last'><span><%= t(:login) %></span></a></li> 
+    <% end %>                                                     
+     </ul>   
     <%= render :partial => '/shared/notice' %>
   </div>  
 </div>

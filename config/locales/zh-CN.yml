@@ -149,7 +149,7 @@
   name: "名称"
   submit: "提交"
   password_confirmation: "密码确认"
-  my_surveys: "所有问卷"
+  my_surveys: "我的问卷"
   tutorials: "使用指南"
   account: "我的账户"
   logout: "注销"
@@ -253,7 +253,7 @@
   feedback: "意见/建议"
   services: "服务"
   copy: "&copy; 抢答网 2010"
-  sandsroad: "<a href='http://www.sandsroad.com'>上海沙路网络</a>旗下产品"
+  sandsroad: "上海沙路网络旗下产品"
   site_name: "抢答网"
   page_title: "最简洁的在线问卷调查"
   meta: "抢答网提供免费在线问卷，调查问卷创建工具，提供轻松愉快的表单创建体验，并实时查看结果!"
@@ -270,3 +270,5 @@
   setting: "设置"
   locale: "表单语言"
   next: '下一题'
+  home: '首页'
+  agreement: 服务协议

@@ -34,7 +34,7 @@ body{
 	font-family:Arial, sans-serif;
 	font-size:12px;     
 	color:#333; 
-	background:#F0F4F4;
+	background:url(/images/bg/header.jpg) repeat-x #FDFDFD;
 }                    
 
 .submit{
@@ -108,7 +108,11 @@ div.question p{
 #footer{           
 	margin:20px 0px;
 	text-align:center;
-}  
+} 
+
+#footer a{           
+	color:#999;
+} 
 
 #footer span{
 	font-size:10px;
@@ -223,10 +227,6 @@ table.grid tbody td.opt a {
 	display:none;
 }
 
-.box{
-	background:#fff;
-}
-
 .box .title{
 	color:#666;
 	padding:10px 0;
@@ -237,6 +237,7 @@ table.grid tbody td.opt a {
 .name{  
 	font-weight:bold;
 	color:#024373;
+    margin-left:10px;
 }
 
 .paginate{           
