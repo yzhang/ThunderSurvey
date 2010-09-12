@@ -1,7 +1,7 @@
 /* 用户完成字段编辑后调用此函数 */
 function field_done_editing(e)
 {
-  var field_div = $(e).closest('.field');
+  var field_div = $(e).closest('.edit');
   
 	$("#saving").show();
   field_div.find('.question').show();
@@ -16,7 +16,7 @@ function field_done_editing(e)
 	} else {
 		field_div.find('.question .required').html('');
 	}
-  
+
   var field_input = $(field_div).find("#field_input").val();
   var field_uuid  = $(field_div).find("#field_uuid").val();
   var field_prompt  = $(field_div).find("#field_prompt").val();
@@ -56,20 +56,29 @@ function field_done_editing(e)
   }
   input += '<br /><span class="prompt">' + field_prompt + '</span>'
 
-  field_div.find('.question .input').html(input);
+	if(field_input == 'page'){
+		input = '<div style="height:10px;"></div>'
+		input +=	'<div style="width:100%; margin: 10px 0; background:#EFEFEF; height: 20px;	border-top:2px solid #E1E8F0;	border-bottom:2px solid #E1E8F0;"></div>'
+		input +=	'<div style="height:10px;text-align:center;"></div>'
+		field_div.find('.question').html(input);
+	} else {
+  	field_div.find('.question .input').html(input);
+	}
+	
   field_div.css('background-color','') 
   if(field_input == 'date') {
     $("#" + field_uuid).datepicker({changeMonth:true, changeYear:true});
-  }                                                      
+  }                                         
+
   // 设定表单高度
   $('#form_height').val($('#fields').innerHeight());
 	// 保存字段设置
-	field_div.find('.form #field_submit').submit();     
+	field_div.find('.form #field_submit').submit();
 }
 
 function field_cancel_editing(e)
 {
-  var field = $(e).closest('.field');
+  var field = $(e).closest('.edit');
   field.find('.question').show();
   field.find('.form').hide();
   field.css('background-color','') 
@@ -83,7 +92,7 @@ function field_start_editing(e)
     field_cancel_editing(field_start_editing.current_editing_field)
     field_start_editing.current_editing_field = e;
   }
-  var field = $(e).closest('.field'); 
+  var field = $(e).closest('.edit'); 
   field.css('background-color','#FDF2C6');
   //field.removeClass('edit');
   field.find(".question").hide();
@@ -94,7 +103,7 @@ function field_start_editing(e)
 
 function field_input_changed(e)
 {                             
-  var field = $(e).closest('.field')
+  var field = $(e).closest('.edit')
   var form = $(e).closest('form');
   var input = $(e).val();
   var input_options = $('#' + input + '_input').html();
@@ -131,7 +140,7 @@ function field_remove_option(e)
 function toggle_opration(e, show){
 	if(show == true) {
 		$(e).find('.opration').show(); 
-	   	$(e).addClass('highlight_hover')
+	  $(e).addClass('highlight_hover')
 	} else {
 		$(e).find('.opration').hide(); 
 	 	$(e).removeClass('highlight_hover')
@@ -139,5 +148,5 @@ function toggle_opration(e, show){
 }    
 
 function toggle_other(e) {
-	$(e).closest('.field').find('.form_other').toggle();	
+	$(e).closest('.edit').find('.form_other').toggle();	
 }

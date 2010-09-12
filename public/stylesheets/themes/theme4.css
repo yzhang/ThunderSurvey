@@ -1,0 +1,29 @@
+body{
+	background:#D12B4E;
+}
+
+#form_header h1.title{       
+	color:#D12B4E;  
+	text-align:center;
+	background:none;
+}
+
+.question{  
+	margin:10px;
+	background:#FEFBFC;
+	border:1px solid #FFEFF3;
+}                            
+
+.field{
+	margin:0;
+}
+
+.thanks{    
+	padding:5px 10px;
+	background:#FEFBFC;
+	margin:10px 0;
+}
+
+.support,.support a{
+	color:#fff;
+}

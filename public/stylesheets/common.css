@@ -34,13 +34,8 @@ body{
 	font-family:Arial, sans-serif;
 	font-size:12px;     
 	color:#333; 
-	background:#F0F4F4;
+	background:url(/images/bg/header.jpg) repeat-x #FDFDFD;
 }                    
-
-div.field {
-  margin: 10px 0;
-  padding: 10px;
-}
 
 .submit{
 	background: url(/images/bg/btn-short.png);     
@@ -80,10 +75,10 @@ div.question p{
 /* ---- page nav ----*/
 #page_nav{
 	height:20px;
-   	padding:5px 10px 15px 0px;  
-   *padding:5px 10px 0px 0px;
-	margin:10px 0px 15px;   
-	border-bottom:1px solid #ccc;    
+ 	padding:5px 10px 15px 0px;  
+  *padding:5px 10px 0px 0px;
+	margin:0px 0px 15px;   
+	border-bottom:1px solid #efefef;    
 }
 
 #page_nav span{       
@@ -113,7 +108,11 @@ div.question p{
 #footer{           
 	margin:20px 0px;
 	text-align:center;
-}  
+} 
+
+#footer a{           
+	color:#999;
+} 
 
 #footer span{
 	font-size:10px;
@@ -228,10 +227,6 @@ table.grid tbody td.opt a {
 	display:none;
 }
 
-.box{
-	background:#fff;
-}
-
 .box .title{
 	color:#666;
 	padding:10px 0;
@@ -242,6 +237,7 @@ table.grid tbody td.opt a {
 .name{  
 	font-weight:bold;
 	color:#024373;
+   margin-left:10px;
 }
 
 .paginate{           

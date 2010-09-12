@@ -7,7 +7,7 @@ class Form
   
   include MongoMapper::Document
   include Authentication
-  
+
   key :title, String, :required => true
   key :description, String
   key :user_id, String
@@ -19,18 +19,19 @@ class Form
   key :publish_response, Boolean, :default => false 
   key :password, String, :default => ''
   key :end_at, Date, :default => nil
-  key :logo,String
-  
+  key :logo, String
+  key :locale, String, :default => 'zh-CN'
+  key :theme,Integer,:default => 0
   key :rows_count, Integer, :default => 0
   key :maximum_rows, Integer
   key :height,Integer  
   key :recommanded,Boolean, :default => false
-  
+  key :logo,String
   key :created_at, Time, :default => Time.now
   key :updated_at, Time, :default => Time.now
   
-  many :fields, :default => 0
-  
+  many :fields, :default => 0     
+    
   before_create :make_edit_key
   before_save   :update_timestamps  
     
@@ -53,7 +54,6 @@ class Form
   def user_klass
     klass ||= Class.new
     klass.send(:include, MongoMapper::Document)
-    klass.send(:include, ActiveModel::Naming)
     klass.set_collection_name(self.id.to_s)
     klass.key "created_at", Time
     klass.key 'order_id',Integer #保存订单信息
@@ -75,8 +75,8 @@ class Form
     
     self.fields.each do |field|
       klass.key "f#{field.id}", String
-      klass.validates_presence_of "f#{field.id}".to_sym if field.required
-      klass.validates_format_of "f#{field.id}".to_sym, :with => Authentication.email_regex if field.intern == 'email'
+      klass.validates_presence_of "f#{field.id}".to_sym, :message => I18n.t('activemodel.errors.messages.blank') if field.required
+      klass.validates_uniqueness_of "f#{field.id}".to_sym, :message => I18n.t('activemodel.errors.messages.taken') if field.unique
       
       if field.input == 'check' || field.input == 'radio'
         klass.class_eval <<-METHOD
@@ -134,11 +134,31 @@ class Form
   end
   
   def max_position
-    self.fields.map {|f| f.position > 65530 ? 0 : f.position}.max
+    m = self.fields.map {|f| f.position > 65530 ? 0 : f.position}.max
+    m.nil? ? 0 : m
   end
   
   def rows_count
     @rows_count ||= self.klass.count
+  end
+  
+  def total_page
+    @total_page ||= (self.fields.select{|f| f.input == 'page'}.length + 1)
+  end
+  
+  def find_fields_by_page(page)
+    fields = self.fields.sort {|f1, f2| f1.position <=> f2.position}
+    pages = fields.select{|f| f.input == 'page'}
+    pages.insert(0, nil)
+    pages << nil
+    
+    if pages.length > 2
+      start = pages[page -1].nil? ? 0 : pages[page -1].position
+      stop  = pages[page].nil? ? 65535 : pages[page].position
+      return fields.select {|f| f.position > start && f.position < stop}
+    else
+      return fields
+    end
   end
   
   private

@@ -7,8 +7,6 @@
   </script>
 <% end -%>
 
-
-<div class='span-18'> 
   <div class='section_nav'>
     <div class='section_title'>
        <%= t(:all_surveys) %>
@@ -24,10 +22,12 @@
     <col width='65%'>
     <col width='15%'>
     <col width='20%'>
-    <thead>
+    <thead> 
+      <tr>
       <th><%= t(:title) %></th>
       <th><%= t(:updated_at) %></th>
       <th><%= t(:operations) %></th>
+      </tr>
     </thead>
     <tbody> 
       <% @forms.each do |form| %> 
@@ -45,11 +45,10 @@
     </table>
     <div class='paginate'>
 <%=raw(will_paginate @forms,:class => 'flickr_pagination',:previous_label => t(:prev),:next_label => t(:next)) %> 
-    </div>
-</div>
+  </div>
 
 <% content_for :sidebar do %>
-  <%= render :partial => t(:sidebar) %>
+  <%= render :partial => t(:sidebar) %>       
 <% end %>
   
 <%= content_for :pagenav do -%>  

@@ -1,0 +1,16 @@
+<table class='grid' id='rows' cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th><%= t(:city) %></th>       
+      <th><%= t(:count) %></th>                                                                          
+    </tr>
+  </thead>
+  <tbody> 
+    <% cities.each do |c| %> 
+    <tr>
+      <td class='text-center'><%=c['city'] || '未知' %></td>
+      <td class='text-center'><%=c['count'].to_i%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

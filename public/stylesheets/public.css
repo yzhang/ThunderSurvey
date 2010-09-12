@@ -8,7 +8,6 @@ body{
 /*  ------ form show cotainer -------- */
 
 #form_container{ 
-	padding:20px;
 	margin:20px auto;
 	width:45em;
 	moz-border-radius:5px 5px 5px 5px;
@@ -17,14 +16,25 @@ body{
 	border:1px solid #CCCCCC;
 }
 
-.desc{
-	font-size:13px;
-	line-height:150%;
+#form_container form {
+	margin: 10px;
 }
 
-.desc p{
-	padding:10px 0;  
-	line-height:150%;
+.field {
+}     
+
+.question{
+	 padding:10px;      
+}                       
+
+.desc{
+	padding:0 10px;
+	font-size:12px;
+}
+
+.desc p{           
+	margin:0;
+	padding:10px;  
 }
 
 .error{
@@ -32,7 +42,6 @@ body{
 }      
 
 form label{  
-	color:#000;
 	font-weight:bold;
 }
 
@@ -40,6 +49,7 @@ form label{
 	display:block;
 	padding:20px; 
 	color:#777;
+	text-align:center;
 	text-decoration: none;   
 }
 
@@ -50,11 +60,37 @@ form label{
 	padding-top:3px;
 }
 
-#form_header{
-	margin:10px;
-}
-
-#form_header h1{    
+#form_header h1{   
+	padding:15px;   
 	font-family: 'Microsoft YaHei' '微软雅黑' '雅黑' arial '宋体'; 
 	font-size:24px;
+}   
+
+#form_top{
+	padding:10px;
+}
+
+#from_top img{
+	float:left;
+}
+#form_top .paginaion{
+	width:200px;
+	text-align:right;
+	float:right;
+}
+
+#form_contetn{
+	padding:20px;
+}
+
+h3{
+	font-size:12px;
+	font-family:arial;
+}
+
+
+#guide{        
+	display:block;
+	margin:10px;
+	text-align:center;
 }

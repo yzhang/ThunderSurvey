@@ -20,11 +20,15 @@
 
   <p>
     <%= f.label :thanks_message, t(:thanks_message) %>
-    <%= f.text_area :thanks_message, :cols => 42, :rows => 4, :style => "width:350px; height:80px;" %>
+    <%= f.text_area :thanks_message, :cols => 42, :rows => 3, :style => "width:350px;height:50px;" %>
   </p>  
   <p>
     <%= f.check_box :publish_response,:value => false %> <b><%= t(:make_results_public) %></b>
-  </p>                           
+  </p>
+  <p>
+    <%= f.label :locale, t(:locale) %>    
+    <%= f.select :locale, [['English','en'], ['简体中文','zh-CN'], ['繁体中文','zh-TW']]  %>
+  </p>                        
   <%=f.submit t(:update),:onclick => "$('#saving').show();" %>
   <% end -%>
 </div>
@@ -35,16 +39,21 @@
   
   <p>
     <%= f.label :password, t(:access_password) %><br />
-    <%= f.password_field :password, :size => 40 %><br />
-    <span class="prompt"><%= t(:optional) %></span>
+    <%= f.text_field :password, :size => 40 %><br />
   </p>
   
   <p>
     <%= f.label :end_at, t(:end_at) %><br />
     <%= f.text_field :end_at, :size => 20 %><br />
-    <span class="prompt"><%= t(:optional) %></span>
   </p>
   
   <%=f.submit t(:save),:onclick => "$('#saving').show();" %>
   <% end -%>
+</div>
+
+<div id="iframe" style="display:none;" class='dialog'>   
+  <p> 
+    <b><%= t(:embed_form_in_your_site) %></b><br />
+    <%= text_field_tag :iframe, "<iframe src='#{form_url(@form)}?embed=true' width='700' height='500' frameborder='0' style='overflow:auto'></iframe>", :style => "width:450px;", :readonly => true, :id => 'simple' %>
+  </p>
 </div>

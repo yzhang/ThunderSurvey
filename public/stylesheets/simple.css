@@ -88,17 +88,17 @@ input.inputFocus {
 } 
 
              
-#form{   
-	border-left:2px solid #E1E8F0;  
-	border-right:2px solid #E1E8F0;  
+#form{    
  	background:#fff;    
 	min-height:400px;
 	position:relative;
 	overflow:auto; 
-	padding:20px;
 	margin:0 5px;
 }               
 
+#form #edit_form{
+	padding: 0 20px;
+}
 
 *html #form{
 	height:400px;
@@ -147,11 +147,10 @@ input.inputFocus {
 	color:#0099FF;
 }
 
-.field_form { padding: 10px; margin-top: 10px;}
+.field_form { padding: 20px; margin-top: 10px;}
 
 div.field {
-  margin: 10px 0;
-  padding: 10px;
+  padding: 20px;
 }
 
 .highlight_hover {
@@ -225,4 +224,22 @@ div.field {
 .dialog label{
 	font-size:12px;
 	font-weight:bold;
+}
+
+.tip{
+	color:#666;
+}
+
+#themes ul li{
+	float:left; 
+	margin-right:12px;
+	margin-bottom:20px;
+	display:block;
+	text-align:center;
+} 
+
+#themes ul li img{  
+	border:1px solid #ccc;
+	width:136px;
+	height:169px;
 }

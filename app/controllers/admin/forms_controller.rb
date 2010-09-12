@@ -21,7 +21,7 @@ class Admin::FormsController < Admin::BaseController
        end                                                                    
        wants.html { redirect_to admin_forms_url }     
      end
-  end   
+  end
   
   def show
     @form = Form.find(params[:id])  

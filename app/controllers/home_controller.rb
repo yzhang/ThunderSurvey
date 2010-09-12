@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   end
   
   def demo      
-    user = User.new(:login => "#{t(:demo_user)}#{Time.now.to_i}")
+    user = User.new(:login => "DemoUser#{Time.now.to_i}")
     user.save(:validate => false)
     self.current_user = user
     

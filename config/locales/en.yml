@@ -2,6 +2,12 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  activemodel:
+    errors:
+      messages:
+        blank: "can't be blank"
+        taken: "already been taken"
+
   logo: 'en-logo.png'
   create_survey: "Create Survey"
   simplest_online_survey: "Simplest Online Survey!"
@@ -122,11 +128,11 @@ en:
   dont_reply: "please don't reply this email."
   rights: "All Rights Reserved"
   demo_user: "DemoUser"
-  thanks_message: "Your answer has been submitted successfully."
+  default_thanks_message: "Your answer has been submitted successfully."
   updated_at: "Last update"
   operations: "Operations"
   back_to_survey: "Back to survey"
-  powered_by: "Powered by <a href='http://www.thundersurvey.com' target='_blank'>ThunderSurvey</a>"
+  powered_by: "Powered by <a href='/' target='_blank'>ThunderSurvey</a>"
   next: "Next"
   prev: "Prev"
   introduction: "Introduction"
@@ -140,3 +146,14 @@ en:
   page_title: 'Free online survey solution.'
   meta: "ThunderSurvey is the simplest free online survey solution, if you perfer to clean and simple survey design, then thundersurvey should be your first choice."
   blog: 'Blog'
+  open_source: "Open Source"
+  site_title: "抢答"
+  referrer: "Referrer"
+  location: "Location"
+  total: "Total"
+  count: "Count"
+  city: "City"
+  must_be_unique: "Must be unique"
+  setting: "Setting"
+  locale: "Locale"
+  page_break: "Page Break"

@@ -1,31 +1,43 @@
-<% if field.multi? %> 
-<div style='margin:20px 10px'>
-<b><%= field.name %></b>
-<table class='grid' id='huizong' cellspacing="0" cellpadding="0"> 
-  <col width='40%'>
-  <col width='20%'>
-  <col width='40%'>
-  <thead>
-    <tr>
-      <th>选项</th>
-      <th>数量</th> 
-      <th>百分比</th>
-    </tr>                     
-  </thead>
-  <tbody>
-    <% field.options.each do |option| %>
-    <% option_count = @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + option.value + '(\s|$)')}) %>
-    <% percentage = option_count * 100 / @form.rows_count %>    
-    <tr>
-      <td><%= option.value %></td>                          
-      <td><%= option_count %></td>
-      <td style="text-align:left;">
-        <span class="percentage" style="width:<%= percentage*2 %>px;">&nbsp;</span>
-        <%= percentage %>%
-      </td>
-    </tr>
-    <% end %>
-  <tbody>
-</table>
-</div>    
+<% if field.multi? %>
+  <h3 style='text-align:left;'><%= field.name %></h3>   
+  <section class="span-10">     
+    <% data = field.options.map {|o| @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + o.value + '(\s|$)')})} %>       
+    <% if field.options.length >= 5 %>
+    <img src="<%= Gchart.bar(:data => data,:axis_with_labels => 'x,y',:axis_labels => [[0,data.max],field.options.map{|f| truncate(f.value,:length => 14)}.reverse],:orientation => 'horizontal',:bar_colors => random_color,:height => field.options.length*30) %>" />
+    <% else %>
+    <img src="<%= Gchart.pie(
+                  :data => data, :labels => field.options.map(&:value),:bar_colors => random_color ) %>" />                                                                                              
+   <% end %>                                
+  </section> 
+  <% if count %>
+  <section class="span-8 last">              
+    <table class='grid' id='huizong' cellspacing="0" cellpadding="0"> 
+      <col width='80%'>
+      <col width='20%'>
+      <thead>
+        <tr>
+          <th>选项</th>
+          <th>数量</th>
+        </tr>                     
+      </thead>
+      <tbody>
+        <% field.options.each do |option| %>
+        <% option_count = @form.klass.count({"f#{field.id}" => Regexp.new('(\s|^)' + option.value + '(\s|$)')}) %>      
+        <% percentage = option_count * 100 / @form.rows_count %>    
+        <tr>
+          <td style='text-align:left;'><%=option.value%><%#=link_to option.value,chart_form_path(@form,:filter => option) %></td>                          
+          <td><%= option_count %></td>
+          <% if false %>
+          <td style="text-align:left;">
+            <span class="percentage" style="width:<%= percentage*2 %>px;">&nbsp;</span>
+            <%= percentage %>%
+          </td>       
+          <% end %>
+        </tr>
+        <% end %>  
+      <tbody>
+    </table>
+  </section>
+  <% end %>
+<div style="clear:both"></div>
 <% end %>

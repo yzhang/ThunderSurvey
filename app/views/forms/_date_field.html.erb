@@ -1,6 +1,14 @@
-<%= text_field_tag "row[f#{field.id}]", '', :id => "row_f#{field.id}" %>
-<script type="text/javascript" charset="utf-8">
-  $(function() {
-    $("#<%= "row_f#{field.id}" %>").datepicker({changeMonth:true, changeYear:true});
-  });
-</script>
+<%= label_tag field.id,field.name, :class => "q_title" %><%=content_tag(:abbr,'*',:class=> 'required') if field.required %>
+
+<div class="input">
+  <%= text_field_tag "row[f#{field.id}]", '', :id => "row_f#{field.id}" %>
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      $("#<%= "row_f#{field.id}" %>").datepicker({changeMonth:true, changeYear:true});
+    });
+  </script>
+  
+  <span id="<%=field.id%>_field" class='error'></span>
+  <br />
+  <span class="prompt"><%=h field.prompt %></span>
+</div>

@@ -1,0 +1,19 @@
+body{
+	background:#E096BB;
+	color:#330033;
+}                
+
+#form_container{      
+	border:none;
+	background:#F8D3E3;
+}
+
+h2{
+	color:#fff;
+}
+
+.thanks{    
+	padding:5px 10px;
+	background:#E096BB;
+	margin:10px 0;
+}

@@ -24,6 +24,7 @@
     <%= form.submit t(:save), :onclick => 'field_done_editing(this);return false;',:class => 'commit' %>
     <%= form.check_box :required %>    
     <%= form.label :required, t(:required) %>
-     <%#= link_to('取消', '#', :onclick => "field_cancel_editing(this);", :remote => true) %>
+    <%= form.check_box :unique %>
+    <%= form.label :unique, t(:must_be_unique) %>
   </p>   
 <% end %>

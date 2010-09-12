@@ -1,0 +1,32 @@
+body{
+	color:#fff;
+	background:#556530;
+}                        
+
+#form_header h1.title{       
+	color:#fff;
+	text-align:center;
+}
+
+#form_container{
+	background:#332521;
+	border:none;
+}
+
+.question{
+	background:#3D2C27;
+}                     
+
+.field{
+	margin-bottom:20px;
+}
+
+h2,h3{
+	color:#fff;
+}
+
+.thanks{    
+	padding:5px 10px;
+	background:#3D2C27;
+	margin:10px 0;
+}

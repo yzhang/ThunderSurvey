@@ -1,0 +1,22 @@
+body{
+	font-family: arial, sans-serif;
+	font-size:12px;     
+	color:#333; 
+  	background:#B7C2DC;
+}
+
+#form_header h1.title{       
+	color:#fff;
+	background:#0A114A;
+	margin:0;
+}               
+
+#form_container{
+	border:1px solid #455B9F;
+}
+
+.thanks{    
+	padding:5px 10px;
+	background:#efefef;
+	margin:10px 0;
+}

@@ -1,25 +1,18 @@
 <style type="text/css" media="screen">   
   #huizong{width:100%;}
-</style>
-<div class='desc'>                 
+</style>        
+<div class='thanks'>                 
   <p>
     <% if @form.thanks_message.blank? %>
-      <%= t(:thanks_message) %>
+      <%= t(:default_thanks_message) %>
     <% else %>
       <%=simple_format @form.thanks_message %>
     <% end %>
   </p>
-  <% if @form.publish_response %>
-    <h3><%=@form.rows_count%>个回应</h3>
-    <%= render :partial => 'chart',:collection => @form.fields,:as => :field %>
-  <% end %>
-  <p style='text-align:center;'><%=link_to t(:back_to_survey),form_path(@form),:class => 'ag'%> | <%=link_to t(:create_survey),forms_path,:class => 'ag'%></p> 
-</div>       
-
-<p class='support'><%= raw t(:powered_by) %></p>
-  <div style="clear:both;">
 </div>
- 
- 
-
-
+  <% if @form.publish_response %>
+    <h2><%=@form.rows_count%>个回应</h2> 
+    <%= render :partial => 'chart',:collection => @form.fields,:as => :field,:locals => {:count => false} %>  
+  <% end %>
+  <div id='guide'><%=link_to t(:back_to_survey),form_path(@form),:class => 'ag'%> | <%=link_to t(:create_survey),forms_path,:class => 'ag'%></div> 
+</div>

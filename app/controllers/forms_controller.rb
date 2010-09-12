@@ -1,5 +1,5 @@
 class FormsController < ApplicationController
-  before_filter :login_required, :only => [:new, :create, :index, :destroy, :chart]
+  before_filter :login_required, :only => [:new, :create, :index, :destroy, :chart,:design]
   before_filter :set_form, :only => [:edit, :update, :thanks, :chart,:design]
   before_filter :verify_edit_key, :only => [:edit, :update] 
   before_filter { |c| c.set_section('forms') }
@@ -14,25 +14,34 @@ class FormsController < ApplicationController
     end
   end
 
-  # GET /forms/1
-  # GET /forms/1.xml
   def show
     @form = Form.find(params[:id]) rescue nil
-    
-    referrer = URI.parse(request.headers["HTTP_REFERER"].to_s) rescue URI.parse('')
-    visit = Visit.create(:form_id => @form.id, :ip => request.remote_ip, :referrer => referrer.to_s, :host => referrer.host)
+    @theme = params[:preview_theme].nil? ? @form.theme : params[:preview_theme]       
+    I18n.locale = @form.locale
     
     respond_to do |format|
       if @form && !@form.password.blank? && session[@form.id] != @form.password
         format.html { render 'password', :layout => params[:embed] ? 'embed' : 'public'}
       elsif @form && @form.allow_insert?
+        track_visit
         @row = @form.klass.new
         @embed = params[:embed]
-        format.html {  render 'show', :layout => params[:embed] ? 'embed' : 'public' }# show.html.erb
+        
+        @page = (params[:page] || 1).to_i
+        @page = 1 if @page < 1 || @page > @form.total_page + 1
+        @fields = @form.find_fields_by_page(@page)
+        
+        format.html {  render 'show', :layout => params[:embed] ? 'embed' : 'public' }
       else
         flash[:notice] = t(:form_no_exist)
         format.html { redirect_to root_path}
       end
+    end
+  end      
+  
+  def design
+    respond_to do |wants|
+      wants.html { render :layout => 'simple' }
     end
   end
   
@@ -44,6 +53,28 @@ class FormsController < ApplicationController
       else
         format.html
       end
+    end
+  end
+  
+  def stats
+    @tab = 'stats'
+    @form = Form.find(params[:id])
+    @visits_count = Visit.group_by_created_at(:form_id => @form.id)
+    @referrers    = Visit.group_by_host(:form_id => @form.id)[0..4]
+    @cities =       Visit.group_by_city(:form_id => @form.id)[0..4]
+
+    @data = @visits_count.map {|i| i['count'].to_i}
+    @max = @data.max || 0
+    #@labels[0] = ''
+    # @labels = ['']
+    # [3, 2, 1, 0].each do |i|
+    #   d = Date.today - i.week
+    #   @labels << d.strftime("%m-%d")
+    # end
+    @axis_labels = [[], [0, @max/2, @max]]
+    
+    respond_to do |format|
+      format.html
     end
   end
   
@@ -159,6 +190,8 @@ class FormsController < ApplicationController
   end
   
   def thanks
+    @theme = params[:preview_theme].nil? ? @form.theme : params[:preview_theme]       
+
     respond_to do |want|
       want.html { render :layout => 'public' }
     end
@@ -167,5 +200,13 @@ class FormsController < ApplicationController
   private 
   def set_form
     @form = Form.find(params[:id])
+  end
+  
+  def track_visit
+    referrer = URI.parse(request.headers["HTTP_REFERER"].to_s) rescue URI.parse('')
+    visit = Visit.create(:form_id => @form.id, :ip => request.remote_ip, 
+                          :referrer => referrer.to_s, 
+                          :host => referrer.host,
+                          :created_at => Time.now)
   end
 end

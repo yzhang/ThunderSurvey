@@ -9,7 +9,10 @@ ThunderSurvey::Application.routes.draw do
     member do
       get :thanks
       get :chart
+
+      get :stats      
       post :password
+      get :design
     end
   end
   
@@ -45,6 +48,7 @@ ThunderSurvey::Application.routes.draw do
   
   match '/thanks' => 'home#thanks', :as => :thanks
   match '/demo'   => 'home#demo', :as => :demo
-  root :to => 'home#index'
-  match '/*page', :to => 'pages#show'
+  match '/tour'   => 'home#tour', :as => :tour
+  root :to => 'home#index'           
+  match '/*page', :to => 'pages#show'  
 end

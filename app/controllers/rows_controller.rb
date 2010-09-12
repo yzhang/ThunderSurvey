@@ -82,33 +82,56 @@ class RowsController < ApplicationController
   end
 
   def create
+    I18n.locale = @form.locale
+    params[:row] ||= {}
     params[:row][:created_at] = Time.now
-    @embed = params[:embed]
     klass = @form.klass
-    @row = klass.new(params[:row])
+    @page = (params[:page]||1).to_i
+
+    if @form.total_page == 1
+      @row = klass.new(params[:row])
+      @result = @row.save
+    else
+      @fields = @form.find_fields_by_page(@page)
+      @keys   = @fields.map{|f| "f#{f.id}".to_sym}
+      session[:row] ||= {}
+      @row = klass.new(session[:row].merge(params[:row]))
+      @row.valid?
+      errors = @row.errors.select {|k, v| @keys.include?(k) }
+      @result = errors.empty?
+      if @page == @form.total_page && @result
+        @row.save
+        session[:row] = nil
+      end
+    end
     
     respond_to do |want|
-      if @form.allow_insert? && @row.save
-        @form.rows_count += 1
-        @form.save(:validate => false)
+      if @result
+        if @form.total_page == 1 || @page == @form.total_page
+          @form.rows_count += 1
+          @form.save(:validate => false)
 
-        @form.deliver_notification(@row)
-        params = ["form_id=#{@form.id}", "row_id=#{@row.id}","order_id=#{@row.order_id}"].join("&")
-        want.js { render :js => "window.location='#{thanks_form_path(@form)}'" }
+          @form.deliver_notification(@row)
+          params = ["form_id=#{@form.id}", "row_id=#{@row.id}","order_id=#{@row.order_id}"].join("&")
+          want.js { render :js => "window.location='#{thanks_form_path(@form)}'" }
+        else
+          want.js { render :js => "window.location='#{form_path(@form, :page => @page + 1)}'" }
+        end
       else
         want.js { 
           render :update do |page|
             page.hide 'spinner'   
             @form.fields.each do |field|  
               if @row.errors["f#{field.id}"].any?
+                @message = field.name + @row.errors["f#{field.id}"].to_s
                 page.replace_html field.id.to_s + '_field',@row.errors["f#{field.id}"]
               else
                 page.replace_html field.id.to_s + '_field',''   
               end
             end     
-            page.alert t(:something_goes_wrong)
+            page.alert t(:something_goes_wrong) + ": #{@message}"
           end
-           }
+        }
       end
     end
   end

@@ -1,13 +1,21 @@
-<div style='clear:both;'></div>
+<div style='clear:both;'>
+  
+</div> 
+
 <div id='footer'>
-    <a href="http://www.thundersurvey.com/about"><%= t(:about) %></a> | 
-    <a href="#"><%= t(:contact) %></a> |
-    <a href="#"><%= t(:feedback) %></a> |
-    <a href="#"><%= t(:services) %></a> |
-    <br /> <br />
+    <hr /> 
+    <a href="/about"><%= t(:about) %></a> | 
+    <a href="/contact"><%= t(:contact) %></a> |
+    <a href="/agreement"><%= t(:agreement) %></a> |
+    <a href="http://blog.<%= request.domain %>"><%= t(:blog) %></a>
+    <br />
     <span>
       <%=raw t(:copy) %>
-      <%=raw t(:sandsroad) %>
-    </span>
+      <%=raw t(:sandsroad) %> 
+    </span>   
+    <div style='text-align:center;'>
+      <%= link_to 'English', lang_path(:locale => 'en'), :method => 'put' %> |
+      <%= link_to '简体', lang_path(:locale => 'zh-CN'), :method => 'put' %> | 
+      <%= link_to '繁体', lang_path(:locale => 'zh-TW'), :method => 'put' %> 
+    </div>
 </div>
-

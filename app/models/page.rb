@@ -9,4 +9,8 @@ class Page
   key :title, String
   key :slug, String
   key :body, String
+  
+  def persisted?
+    !new_record?
+  end
 end

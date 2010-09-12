@@ -1,0 +1,16 @@
+<table class='grid' id='rows' cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+    <th><%= t(:referrer) %></th>
+    <th><%= t(:count) %></th>                                                                          
+    </tr>
+  </thead>
+  <tbody> 
+    <% referrers.each do |r| %> 
+    <tr>
+      <td class='text-center'><%=r['host']||'直接访问'%></td>
+      <td class='text-center'><%=r['count'].to_i%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,17 @@
+body{
+	background:#B3D7E3;
+	color:#20273C;
+}                     
+
+#form_header h1.title{       
+	color:#fff;  
+	margin:0px 10px;
+	background:#B3D7E3;
+}
+
+.thanks{    
+	padding:5px 10px;
+	background:#efefef;
+	margin:10px 0;
+}
+

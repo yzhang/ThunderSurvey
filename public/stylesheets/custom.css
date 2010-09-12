@@ -188,11 +188,6 @@ section.form_list ul li{
 
 .field_form { padding: 10px; margin-top: 10px;}
 
-div.field {
-  margin: 10px 0;
-  padding: 10px;
-}
-
 div.edit:hover {
   background-color: #FDF2C6;
 }

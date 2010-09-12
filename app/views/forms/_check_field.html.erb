@@ -1,7 +1,17 @@
-<%  field.options.each do |option| %>
-  <p>
-  <%= check_box_tag "row[f#{field.id}][]", option.value, row.send("f#{field.id}") == option.value %>
-  <%= option.value %>
-  </p>
-<% end %>
-<p style="<%= 'display:none;' if !field.include_other %>" class="question_other"><input name="<%= "row[f#{field.id}][]" %>" value="_other" type="checkbox"/> <%= t(:other) %> <%= text_field_tag "row[f#{field.id}][][other]", '' %></p>
+<div class="field">
+  <%= label_tag field.id,field.name, :class => "q_title" %><%=content_tag(:abbr,'*',:class=> 'required') if field.required %>
+
+  <div class="input">
+    <%  field.options.each do |option| %>
+      <p>
+      <%= check_box_tag "row[f#{field.id}][]", option.value, row.send("f#{field.id}") == option.value %>
+      <%= option.value %>
+      </p>
+    <% end %>
+    <p style="<%= 'display:none;' if !field.include_other %>" class="question_other"><input name="<%= "row[f#{field.id}][]" %>" value="_other" type="checkbox"/> <%= t(:other) %> <%= text_field_tag "row[f#{field.id}][][other]", '' %></p>
+    
+    <span id="<%=field.id%>_field" class='error'></span>
+    <br />
+    <span class="prompt"><%=h field.prompt %></span>
+  </div>
+</div>
