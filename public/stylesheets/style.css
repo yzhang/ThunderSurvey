@@ -608,7 +608,8 @@ input.btn, button.btn {
 	font-size:12px;
 }
 
-#page h3,h4,h2{
+#page h3,h4,h2{ 
+	font-family:arial;
 	clear:both;
 	color:#666;
 	padding: 0 10px; 
@@ -616,12 +617,13 @@ input.btn, button.btn {
 
 #page h3{ 
 	padding:10px 0;
-	font-size:18px;
+	font-size:14px;
 	border-bottom:1px solid #efefef;
 }                 
 
-#page h4{   
-	padding:10px 0;  
+#page h4{  
+	font-family:arial;  
+	padding:0;  
 	font-size:12px;
 }
 
@@ -659,14 +661,13 @@ input.btn, button.btn {
 .sidebar_nav li a{  
 	border-bottom:1px solid #efefef;
 	display:block;
-	padding:0px 10px;
-	margin:10px 0px 0px;
+	padding:3px 5px;
 } 
 
 .sidebar_nav li a:hover, .sidebar_nav li.current a{ 
 	color:#fff;
 	text-decoration: none; 
-	background:#0099FF;
+	background:#3F6A97;
 }
 
 .count{

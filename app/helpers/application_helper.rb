@@ -32,4 +32,8 @@ module ApplicationHelper
     ['194E84','1F242A','60BB22','F2BABB','FFC200','FF5B00','B80028','84002E','4AC0F2'][rand(8)]
   end
   
+  def auto_highlight(coming_title,title)
+    'current' if (coming_title == title)
+  end
+  
 end
