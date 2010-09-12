@@ -447,6 +447,7 @@ div.info_item{
 }    
      
 #rows{
+	border:1px solid #E3E3E3;
 	width:100%;
 }
 
@@ -457,6 +458,7 @@ div.info_item{
 
 div.info_item{
 	padding:5px;
+	color:#333;
 }   
 
 div.time{   
@@ -466,7 +468,7 @@ div.time{
 }
 
 #results{  
-	margin:10px 0;   
+	margin:0px 0 10px;   
 	text-align:center;      
 	width:100%;
 	overflow:auto;
@@ -639,9 +641,9 @@ input.btn, button.btn {
 
 
 /* --  section ----*/
-.section_nav{
+.section_nav{ 
 	height:32px;     
-	margin:10px 0;
+	margin:0px 0 10px;
 	line-height:32px;
 	border-bottom:2px solid #efefef;
 }              
@@ -661,13 +663,19 @@ input.btn, button.btn {
 .sidebar_nav li a{  
 	border-bottom:1px solid #efefef;
 	display:block;
-	padding:3px 5px;
+	padding:1px 5px;
+	margin:5px 0px;
 } 
 
 .sidebar_nav li a:hover, .sidebar_nav li.current a{ 
-	color:#fff;
-	text-decoration: none; 
-	background:#4B4B4B;
+	text-decoration: none;                          
+	border:1px solid #ccc;
+	color:#0099FF;
+	background:#F6F6F6;
+} 
+
+.sidebar a{
+	color:#333;
 }
 
 .count{
@@ -678,4 +686,9 @@ input.btn, button.btn {
 .tip{
 	text-align:right;
 	color:#999;
+}
+
+.sidenav{
+	padding:5px;
+	margin-bottom:10px;
 }

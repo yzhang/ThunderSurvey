@@ -1,5 +1,6 @@
-<div class='box'>
-  <ul class='sidebar_nav'>    
+<div class='box'>                
+  <h3 class='sidenav'><%=t(:guide)%></h3>         
+  <ul class='sidebar_nav'>       
     <li class="<%= 'current' if @tab == 'answers' %>"><%=link_to t(:answers), form_rows_path(@form, :edit_key => @form.edit_key) %> </li> 
     <li class="<%= 'current' if @tab == 'chart' %>"><%= link_to t(:report), chart_form_path(@form)%></li>
     <li class="<%= 'current' if @tab == 'stats' %>"><%= link_to t(:visits), stats_form_path(@form) %></li>

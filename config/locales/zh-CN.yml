@@ -196,7 +196,7 @@
   other: "其它"
   send_email_when_receive_new_answer: "收到新回应时发送邮件通知。"
   embed_form_in_your_site: "将以下代码粘贴到您的网页中:"
-  answers: "回应"
+  answers: "所有回应"
   thanks_message: "用户提交回答后的感谢信息"
   add_other: "允许用户填写其它选择"
   option_one: "选项 #1"
@@ -272,3 +272,4 @@
   next: '下一题'
   home: '首页'
   agreement: 服务协议
+  guide: '导航'
