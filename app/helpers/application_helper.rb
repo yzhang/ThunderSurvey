@@ -25,7 +25,7 @@ module ApplicationHelper
   end  
   
   def recommand_link(form)
-    form.recommanded ? link_to('取消推荐',recommand_admin_form_path(form,:mark => 0),:method => :put) : link_to('推荐',recommand_admin_form_path(form,:mark => 1),:method => :put)
+    form.recommanded ? link_to(t("cancel_recommend"),recommand_admin_form_path(form,:mark => 0),:method => :put) : link_to(t("recommend"),recommand_admin_form_path(form,:mark => 1),:method => :put)
   end 
 
   def random_color

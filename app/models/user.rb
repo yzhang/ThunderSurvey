@@ -39,7 +39,7 @@ class User
   before_create :make_activation_code
   before_create :update_timestamps  
   
-  validates_presence_of :login, :message => '用户名不能为空'
+  validates_presence_of :login, :message => t("username_blank_error")
   validates_presence_of :email, :message => 'Email不能为空'
   validates_format_of   :email, :with => Authentication.email_regex, :message => 'Email格式不正确'
 
