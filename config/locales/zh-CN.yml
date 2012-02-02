@@ -282,3 +282,6 @@
   no_response_currently: "此问卷暂无回应"
   sorry_form_no_exist: "对不起，您访问的表单不存在"
   username_blank_error: "用户名不能为空"
+  email_blank_error: "Email不能为空"
+  email_format_error: "Email格式不正确"
+  already_exist: "已被占用"
