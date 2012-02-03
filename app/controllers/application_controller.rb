@@ -3,15 +3,13 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include OauthHelper
 
-  filter_parameter_logging :password
-
   rescue_from ActionController::InvalidAuthenticityToken, :with => :token_expired
 
   before_filter :set_time_zone_and_locale
 
   protected
   def token_expired
-    flash[:notice] = "对不起，您的会话已超时"
+    flash[:notice] = t(:session_timeout)
     respond_to do |accepts|
       accepts.html do
         store_location
@@ -33,8 +31,26 @@ class ApplicationController < ActionController::Base
     @edit_key = params[:edit_key]
     
     if @form.nil? || @form.edit_key != @edit_key
-      flash[:notice] = "对不起，您没有权限操作此表单"
+      flash[:notice] = t(:form_unauthorized)
       redirect_to '/'
     end
   end
+
+  def render_404
+    render_optional_error_file(404)
+  end
+
+  def render_403
+    render_optional_error_file(403)
+  end
+
+  def render_optional_error_file(status_code)
+    status = status_code.to_s
+    if ["404","403", "422", "500"].include?(status)
+      render :template => "/errors/#{status}.html.erb", :status => status, :layout => "application"
+    else
+      render :template => "/errors/unknown.html.erb", :status => status, :layout => "application"
+    end
+  end
+
 end

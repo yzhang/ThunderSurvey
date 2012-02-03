@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       @section = params[:page]
       respond_with(@page)
     else
-      render :file => "#{Rails.root}/public/404.html"
+      render_404
     end
   end
 end

@@ -1,3 +1,4 @@
+# coding: utf-8
 class FieldsController < ApplicationController
   before_filter :set_form
   before_filter :verify_edit_key, :only => [:edit, :update, :index, :create]

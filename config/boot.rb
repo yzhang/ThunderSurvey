@@ -1,3 +1,5 @@
+require 'yaml'
+YAML::ENGINE.yamler= 'syck'
 # Use Bundler (preferred)
 begin
   require File.expand_path('../../.bundle/environment', __FILE__)
