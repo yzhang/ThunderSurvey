@@ -1,3 +1,4 @@
+# coding: utf-8
 class FormsController < ApplicationController
   before_filter :login_required, :only => [:new, :create, :index, :destroy, :chart,:design]
   before_filter :set_form, :only => [:edit, :update, :thanks, :chart,:design]

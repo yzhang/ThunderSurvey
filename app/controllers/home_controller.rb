@@ -1,4 +1,5 @@
-class HomeController < ApplicationController     
+# coding: utf-8
+class HomeController < ApplicationController
   
   before_filter :redirect_if_loggin,:only => [:demo]
   

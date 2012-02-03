@@ -1,3 +1,4 @@
+# coding: utf-8
 class Admin::PagesController < Admin::BaseController
   respond_to :html
   before_filter Proc.new{ @section = 'pages' }
