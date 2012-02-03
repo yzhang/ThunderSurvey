@@ -1,5 +1,5 @@
 # Edit this Gemfile to bundle your application's dependencies.
-source 'http://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'agnostic-will_paginate', :require => 'will_paginate'
 gem "mongo", "1.0.8"
@@ -15,4 +15,6 @@ gem "json"
 gem "nokogiri"            
 
 gem "ekuseru"
-gem "fastercsv"
+#gem "fastercsv"
+
+gem "test-unit"

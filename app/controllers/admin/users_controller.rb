@@ -1,3 +1,4 @@
+# coding: utf-8
 class Admin::UsersController < Admin::BaseController
   before_filter Proc.new{ @section = 'users' }
   

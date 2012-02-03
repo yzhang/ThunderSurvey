@@ -1,3 +1,4 @@
+# coding: utf-8
 class FormsController < ApplicationController
   before_filter :login_required, :only => [:new, :create, :index, :destroy, :chart,:design]
   before_filter :set_form, :only => [:edit, :update, :thanks, :chart,:design]
@@ -6,7 +7,7 @@ class FormsController < ApplicationController
   
   def index   
     @forms = Form.all(:user_id => current_user.id.to_s,:order => 'created_at DESC').paginate(:page => params[:page], :per_page => '10')
-    @page_title = "所有问卷"
+    @page_title = t("all_survey")
 
     respond_to do |format|
       format.html
@@ -49,7 +50,7 @@ class FormsController < ApplicationController
     @tab = 'chart'
     respond_to do |format|
       if @form.klass.count.zero?
-        format.html {redirect_to forms_path,:alert => '此问卷暂无回应'}
+        format.html {redirect_to forms_path,:alert => t("no_response_currently")}
       else
         format.html
       end
@@ -86,7 +87,7 @@ class FormsController < ApplicationController
         session[@form.id] = params[:password] if params[:password]
         format.html {redirect_to form_path(@form)}
       else
-        flash[:notice] = "对不起，您访问的表单不存在"
+        flash[:notice] = t("sorry_form_no_exist")
         format.html { redirect_to root_path}
       end
     end 
@@ -137,7 +138,7 @@ class FormsController < ApplicationController
       if @form
         want.html { render :layout => params[:embed].blank? ? 'simple' : "embed"}
       else
-        flash[:notice] = "对不起，您访问的表单不存在"
+        flash[:notice] = t("sorry_form_no_exists")
         format.html { redirect_to root_path}
       end
     end

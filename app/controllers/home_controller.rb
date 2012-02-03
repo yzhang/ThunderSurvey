@@ -1,4 +1,5 @@
-class HomeController < ApplicationController     
+# coding: utf-8
+class HomeController < ApplicationController
   
   before_filter :redirect_if_loggin,:only => [:demo]
   
@@ -19,6 +20,6 @@ class HomeController < ApplicationController
   protected
   
   def redirect_if_loggin
-    redirect_to forms_url,:notice => '你已有帐户,可直接帐户下创建问卷' if logged_in? 
+    redirect_to forms_url,:notice => t("account_already_exist") if logged_in?
   end
 end

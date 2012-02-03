@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'digest/sha1'
 require 'active_model'
 
@@ -39,9 +40,9 @@ class User
   before_create :make_activation_code
   before_create :update_timestamps  
   
-  validates_presence_of :login, :message => '用户名不能为空'
-  validates_presence_of :email, :message => 'Email不能为空'
-  validates_format_of   :email, :with => Authentication.email_regex, :message => 'Email格式不正确'
+  validates_presence_of :login, :message => I18n.t("username_blank_error")
+  validates_presence_of :email, :message => I18n.t("email_blank_error")
+  validates_format_of   :email, :with => Authentication.email_regex, :message => I18n.t("email_format_error")
 
   validate :make_email_unique
   
@@ -49,7 +50,7 @@ class User
   many :roles
   
   def make_email_unique
-    self.errors.add(:email, "已被占用") if self.new_record? && !User.first(:conditions => {:email => self.email}).nil?
+    self.errors.add(:email, I18n.t("already_exist")) if self.new_record? && !User.first(:conditions => {:email => self.email}).nil?
   end
   
   # Activates the user in the database.

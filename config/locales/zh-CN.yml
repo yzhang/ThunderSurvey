@@ -269,7 +269,19 @@
   must_be_unique: "不允许重复"
   setting: "设置"
   locale: "表单语言"
-  next: '下一题'
-  home: '首页'
-  agreement: 服务协议
-  guide: '导航'
+  next: "下一题"
+  home: "首页"
+  agreement: "服务协议"
+  guide: "导航"
+  account_already_exist: "你已有帐户,可直接帐户下创建问卷"
+  session_timeout: "对不起，您的会话已超时"
+  form_unauthorized: "对不起，您没有权限操作此表单"
+  cancel_recommend: "取消推荐"
+  recommend: "推荐"
+  all_survey: "所有问卷"
+  no_response_currently: "此问卷暂无回应"
+  sorry_form_no_exist: "对不起，您访问的表单不存在"
+  username_blank_error: "用户名不能为空"
+  email_blank_error: "Email不能为空"
+  email_format_error: "Email格式不正确"
+  already_exist: "已被占用"

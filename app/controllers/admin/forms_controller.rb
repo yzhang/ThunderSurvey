@@ -1,3 +1,4 @@
+# coding: utf-8
 class Admin::FormsController < Admin::BaseController
   before_filter :login_required
   access_control :DEFAULT => '(superuser)'
